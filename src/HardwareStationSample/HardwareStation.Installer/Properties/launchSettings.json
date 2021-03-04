@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Contoso.HardwareStation.Installer": {
+      "commandName": "Project",
+      "commandLineArgs": "install"
+    }
+  }
+}

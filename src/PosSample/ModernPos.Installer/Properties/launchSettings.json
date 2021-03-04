@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Contoso.ModernPos.Installer": {
+      "commandName": "Project",
+      "commandLineArgs": "install"
+    }
+  }
+}
