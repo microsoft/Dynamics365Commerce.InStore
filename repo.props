@@ -11,6 +11,6 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <CommerceSdkPackagesVersion>9.28.21061.7-preview</CommerceSdkPackagesVersion>
+    <CommerceSdkPackagesVersion>9.28.*</CommerceSdkPackagesVersion>
   </PropertyGroup>
 </Project>
