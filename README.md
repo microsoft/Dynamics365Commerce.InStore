@@ -1,3 +1,16 @@
+
+---
+page_type: sample
+languages:
+- csharp
+- typescript
+- html
+products:
+- Dynamics 365 Commerce
+name: Extend Commerce POS, HWS and Headless commerce engine (CRT/RS)
+description: This repo contains the sample code on how to extend the Dynamics 365 Commerce POS, Hardware station, Retail Server and Commerce runtime.
+---
+
 # Dynamics 365 Commerce SDK
 
 The Dynamics 365 Commerce SDK contains the reference package, samples, and tools to build extension for the Dynamics 365 Commerce components.

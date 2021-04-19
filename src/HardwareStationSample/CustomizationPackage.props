@@ -1,0 +1,12 @@
+<Project>
+  <Import Project="..\..\repo.props" />
+
+  <PropertyGroup>
+    <PackagePublisher Condition="'$(PackagePublisher)' == ''">$(Publisher)</PackagePublisher>
+    <PackagePublisherDisplayName Condition="'$(PackagePublisherDisplayName)' == ''">$(PublisherDisplayName)</PackagePublisherDisplayName>
+    <PackageVersion Condition="'$(PackageVersion)' == ''">$(Version)</PackageVersion>
+    <PackageName Condition="'$(PackageName)' == ''">Contoso.Commerce.PaymentDevice</PackageName>
+    <PackageDisplayName Condition="'$(PackageDisplayName)' == ''">Contoso Payment Device Commerce Customization</PackageDisplayName>
+    <PackageDescription Condition="'$(PackageDescription)' == ''">Contoso Payment Device Commerce Customization</PackageDescription>
+  </PropertyGroup>
+</Project>
