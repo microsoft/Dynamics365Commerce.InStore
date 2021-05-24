@@ -1,0 +1,66 @@
+pr: none
+trigger: none
+
+pool:
+  vmImage: 'windows-latest'
+
+#Your build pipeline references an undefined variable named ‘AzureKeyVaultURI’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+#Your build pipeline references an undefined variable named ‘ApplicationId’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+#Your build pipeline references an undefined variable named ‘SecretValue’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+#Your build pipeline references an undefined variable named ‘CertificateName’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+#Your build pipeline references an undefined variable named ‘Timestamp’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+
+steps:
+  - task: PowerShell@2
+    displayName: 'Pre-Build steps'
+    inputs:
+      targetType: filePath
+      filePath: ./Pipeline/PowershellScripts/Pre-Build.ps1
+      failOnStderr: true
+
+  - task: NuGetToolInstaller@1
+    displayName: 'Use NuGet 5.4.0'
+    inputs:
+      versionSpec: '5.4.0'
+
+  - task: NuGetCommand@2
+    displayName: 'NuGet restore'
+    inputs:
+      feedsToUse: config
+      nugetConfigPath: nuget.config
+
+  - task: VSBuild@1
+    displayName: 'Build solution **\*.sln'
+    inputs:
+      solution: '**\*.sln'
+
+  - task: DotNetCoreCLI@2
+    displayName: 'Install AzureSignTool'
+    inputs:
+      command: custom
+      custom: tool
+      arguments: 'install --global azuresigntool'
+
+  - task: PowerShell@2
+    displayName: 'Copy Hardware Station Installer to Artifact directory'
+    inputs:
+      targetType: filePath
+      filePath: ./Pipeline/PowerShellScripts/CopyFileToDestination.ps1
+      arguments: '-RelativePath "$(Build.SourcesDirectory)\src\HardwareStationSample\HardwareStation.Installer" -File "HardwareStation.Installer.exe" -DestinationFullName "$(Build.ArtifactStagingDirectory)\HardwareStation.Installer_$(Build.BuildNumber).exe"'
+
+  - task: PowerShell@2
+    displayName: 'Copy Modern POS Installer to Artifact directory'
+    inputs:
+      targetType: filePath
+      filePath: ./Pipeline/PowerShellScripts/CopyFileToDestination.ps1
+      arguments: '-RelativePath "$(Build.SourcesDirectory)\src\PosSample\ModernPos.Installer" -File "ModernPos.Installer.exe" -DestinationFullName "$(Build.ArtifactStagingDirectory)\ModernPos.Installer_$(Build.BuildNumber).exe"'
+
+  - task: PowerShell@2
+    displayName: 'Sign Files'
+    inputs:
+      targetType: filePath
+      filePath: ./Pipeline/PowerShellScripts/CodeSign.ps1
+      arguments: '-AzureKeyVaultURI $(AzureKeyVaultURI) -ApplicationId $(ApplicationId) -ApplicationSecretValue $(SecretValue) -CertificateName $(CertificateName) -Timestamp $(Timestamp) -TimestampDigest "sha256" -Files "$(Build.ArtifactStagingDirectory)\HardwareStation.Installer_$(Build.BuildNumber).exe $(Build.ArtifactStagingDirectory)\ModernPos.Installer_$(Build.BuildNumber).exe"'
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: drop'
