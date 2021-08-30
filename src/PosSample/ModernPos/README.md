@@ -1,0 +1,3 @@
+This project contains samples on how to create a Modern Point of Sale (MPOS) packaging project by using Visual Studio 2017. These steps are required only if you're developing extensions for MPOS. The MPOS extension packaging project generates the MSIX Windows app package that will extend the MPOS app.
+
+[Create an .appx file for a Modern POS extension package](https://docs.microsoft.com/en-us/dynamics365/commerce/dev-itpro/pos-extension/create-pos-extension-appx)

@@ -3,106 +3,53 @@
 page_type: sample
 languages:
 - csharp
-- typescript
-- html
 products:
-- Dynamics 365 Commerce
-name: Extend Commerce POS, HWS and Headless commerce engine (CRT/RS)
-description: This repo contains the sample code on how to extend the Dynamics 365 Commerce POS, Hardware station, Retail Server and Commerce runtime.
+- dynamics-365 
+- dynamics-commerce
+name: Extend Commerce POS, HWS and Headless Commerce APIs and Commerce runtime.
+description: This repo contains the sample code on how to extend the Dynamics 365 Commerce POS, Hardware station, Headless Commerce APIs, and Commerce runtime.
 ---
 
-# Dynamics 365 Commerce SDK
+# Extend Commerce POS, HWS and Headless commerce engine (CRT/RS)
+This readme file explains how to run the POS, Hardware station and Headless Commerce extensions samples and consume the reference package from the public feed for Dynamics 365 Commerce extension development.
 
-The Dynamics 365 Commerce SDK contains the reference package, samples, and tools to build extension for the Dynamics 365 Commerce components.
+This repo contains code samples, templates, and tools that are required to extend or customize existing Commerce functionality, samples are published into different repos in GitHub based on the Commerce extension components. This topic applies to Dynamics 365 commerce application version 10.0.18 or greater. For earlier version refer this [doc](https://docs.microsoft.com/en-us/dynamics365/commerce/dev-itpro/retail-sdk/retail-sdk-overview).
 
-This repo contains the sample that demonstrates how to create extension for Modern Point of Sale (MPOS), Cloud Point of sale (CPOS), Hardware station (HWS) and Commerce Scale unit – Self hosted (CSU)
+## Dynamics365Commerce.InStore repo:
 
-| Release branch name                                                                        | version | Application release version |
-| ------------------------------------------------------------------------------------------ | ------- | --------------------------- |
+This repo contains the sample code for how to customize the POS, HWS and Commerce runtime (CRT), Headless Commerce APIs and channel database.
+
+The samples in the repo are organized by Dynamics 365 Commerce application release, each branch in the repo points to an application release of Dynamics 365 Commerce, use the right release branch based on your go-live version. 
+
+Note: The repo contains only samples, so its not required to clone this repo.
+
+| Release branch name                                                                          | version | Application release version |
+| -------------------------------------------------------------------------------------------- | ------- | --------------------------- |
 | [Release/9.28](https://github.com/microsoft/Dynamics365Commerce.InStore/tree/release/9.28) | 9.28.\* | 10.0.18                     |
 | [Release/9.29](https://github.com/microsoft/Dynamics365Commerce.InStore/tree/release/9.29) | 9.29.\* | 10.0.19                     |
+| [Release/9.30](https://github.com/microsoft/Dynamics365Commerce.InStore/tree/release/9.30) | 9.30.\* | 10.0.20                     |
+| [Release/9.31](https://github.com/microsoft/Dynamics365Commerce.InStore/tree/release/9.31) | 9.31.\* | 10.0.21                     |
 
-To clone a specific release branch, use the following command:
+**Extension repository:**
 
-git clone --single-branch --branch release/9.28 [https://github.com/microsoft/Dynamics365Commerce.InStore.git](https://github.com/microsoft/Dynamics365Commerce.InStore.git)
+Extension code or repository if required can download and consume the samples and templates from [microsoft](https://github.com/microsoft)/[Dynamics365Commerce.InStore](https://github.com/microsoft/Dynamics365Commerce.InStore), the sample InStore repo contains nuget.config, repo.props, CustomizationPackage.props and build pipelines script which provide guidance on how extension can setup the repo metadata files.
 
-This will clone the release/9.28 into your current directory.
+### Dynamics365Commerce.InStore repo folders and projects:
 
-The **Commerce.InStore repo** folders and projects:
+| Folder           | Project              | Description                                   |
+| ---------------- | ---------------------| --------------------------------------------- |
+| HardwareStationSample | HardwareStation.Samples.sln| This project contains samples on how to create Hardware station, Payment extensions and extension installers.|  
+| POSSample  | Pos.sln | This folder/project contains POS, CRT, Headless Commerce APIs and HWS extension and installer samples. | 
 
-POS – Sample code and installer project related to POS extensions.
+More samples for CSU – self hosted and Commerce Runtime and Headless Commerce APIs are published in the [Dynamics365Commerce.ScaleUnit](https://github.com/microsoft/Dynamics365Commerce.ScaleUnit) repo.
 
-Store Commerce – Sample packaging related to UWP modification packages for DesktopBridge extensions.
+Readme files inside the project folder contains more details on how to run these samples.
 
-HWS – Sample code and packaging project related to HWS extensions.
+**Download reference packages for creating Commerce extension:**
 
-CSU – Self hosted – Sample code and installer project related CSU self-hosted extension.
+Commerce contracts, messages, entities, and request packages are published in this public feedfor commerce extension code to consume and customize existing functionalities or build new functionalities for Dynamics 365 Commerce product.
 
-## Hardware station sample
-This samples showcases how to do a payment device extension for POS device, this sample requires Visual studio 2017 to build and requires local hardware station or the shared hardware station hosted in IIS.
-
-## Using the samples
-
-You can download the sample as zip and open it in Visual Studio (VS 2017) or clone the sample using Git and open it in VS 2017.
-After opening in VS 2017, build the project. After successful build, output installer package will be created.
-
-To deploy the Hardware station extension in Modern POS and test it by using the local Hardware station, follow these steps.
-The Sealed HWS installer must be installed before running the extension installer.
-
-1. Run the extension installer generated using command prompt.
-2. Close Modern POS if it's running.
-3. Open Modern POS and configure it to use the local Hardware Station.
-4. Validate the extension payment scenario.
-
-To validate it with CPOS, you need to install the shared HWS and then run the extension installer.
-
-## Modern Point of Sale (MPOS) sample
-The POS sample showcases how to create a new view, custom dialogs and extend existing view with App bar buttons. Also, from the custom view how to call the custom Headless commerce APIs.
-
-## Using the samples
-You can download the sample as zip and open it in Visual Studio (VS 2017) or clone the sample using Git and open it in VS 2017.
-After opening in VS 2017, build the project. After successful build, output installer package will be created.
-
-To deploy the MPOS extension, follow these steps.
-Note: Sealed MPOS must be installed before deploying the extension.
-1. Run the extension installer generated using command prompt.
-2. Close Modern POS if it's running.
-3. Open Modern POS and click the Setting button and check the extension package deployment status under the Extension package section.
-4. Validate the extension by navigating to Product Search view and click the custom app bar button.
-
-## Store Commerce sample
-The Store Commerce sample showcases how to package existing HWS extensions as an UWP modification package for the DesktopBridge process.
-
-## Using the samples
-You can download the sample as zip and open it in Visual Studio (VS 2017) or clone the sample using Git and open it in VS 2017.
-After opening in VS 2017, build the project. After successful build, an MSIX modification package will be created.
-
-To deploy the Store Commerce extension, follow these steps.
-Note: Store Commerce must be installed before deploying the extension. It may be found on the Microsoft Store.
-1. Run the MSIX generated by opening it in Windows Explorer.
-2. Close Store Commerce if it's running.
-3. Open Store Commerce and configure it to use the local Hardware Station.
-4. Validate the extension payment scenario.
-
-## Commerce Scale unit – Self hosted (CSU)
-This repo contains the sample code for how to customize the Commerce runtime (CRT), Retail server (RS) and channel database.
-The sample showcase to create a new trigger for CRT, override the CRT handler, create new RS extension, and add database extensions in ext schema. Check this doc for more detailed information on the [Commerce runtime extension](https://docs.microsoft.com/en-us/dynamics365/commerce/dev-itpro/commerce-runtime-extensibility)
-
-## Using the samples
-You can download the sample as zip and open it in Visual Studio (VS 2017) or clone the sample using Git and open it in VS 2017.
-After opening in VS 2017, build the project. After successful build, output installer package will be created.
-
-To deploy the CSU-Self hosted extension, follow these steps.
-Note: Sealed CSU-self hosted must be installed before deploying the extension.
-1. Run the extension installer generated using command prompt.
-2. Navigate to RetailServer\webroot\bin\Ext folder to check the extension component deployed correctly.
-
-
-## Download reference packages for Commerce SDK extensions
-
-APIs, Contracts, messages, entities, and request packages are published in the public repository, extension code to consume and create or extend functionalities.
-
-Consume the packages from https://pkgs.dev.azure.com/commerce-partner/Registry/_packaging/dynamics365-commerce/nuget/v3/index.json. You can add the package source location in the nuget.config file of your extension project file.
+Consume the commerce packages from this [location](https://pkgs.dev.azure.com/commerce-partner/Registry/_packaging/dynamics365-commerce/nuget/v3/index.json), extension can add package source location in the nuget.config of their extension project file.
 
 ```
 <packageSources>
@@ -110,3 +57,130 @@ Consume the packages from https://pkgs.dev.azure.com/commerce-partner/Registry/_
     <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />
 </packageSources>
 ```
+
+**Commerce packages available in the public feed:**
+
+| Package name                            | Description |
+| --------------------------------------- | ----------- | 
+| Microsoft.Dynamics.Commerce.Sdk.ChannelDatabase | This package is required to generate the DB packages with CSU.  |
+| Microsoft.Dynamics.Commerce.Sdk.Runtime | This package contains all commerce runtime libraries |
+| Microsoft.Dynamics.Commerce.Sdk.ScaleUnit | This package is required to generate the CSU package for deployment. |
+| Microsoft.Dynamics.Commerce.Sdk.Installers.ScaleUnit|  This package is required to generate the ScaleUnit package for deployment |
+| Microsoft.Dynamics.Commerce.Sdk.HardwareAndPeripherals|  This package contains all commerce Hardware station and peripherals libraries |
+| Microsoft.Dynamics.Commerce.Sdk.Installers| This package contains all the installers libraries |
+| Microsoft.Dynamics.Commerce.Sdk.Installers.HardwareStation| This package is required to generate the Hardware station package for deployment  |
+| Microsoft.Dynamics.Commerce.Sdk.Pos| This package contains all POS libraries |
+| Microsoft.Dynamics.Commerce.Sdk.Installers.ModernPos| This package is required to generate the POS extension installer for deployment |
+| Microsoft.Dynamics.Commerce.Diagnostics| This package contains all the diagnostic libraries |
+| Microsoft.Dynamics.Commerce.Runtime.Data| This package contains all data contract libraries |
+| Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages| This package contains all data services message libraries |
+| Microsoft.Dynamics.Commerce.Runtime.Entities| This package contains all commerce entities definition |
+| Microsoft.Dynamics.Commerce.Runtime.Framework| This package contains all commerce framework libraries |
+| Microsoft.Dynamics.Commerce.Runtime.Hosting.Contracts| This package contains all commerce controller libraries |
+| Microsoft.Dynamics.Commerce.Runtime.Messages| This package contains all commerce runtime messages libraries |
+| Microsoft.Dynamics.Commerce.Runtime.RealtimeServices.Messages| This package contains all the commerce real runtime libraries |
+| Microsoft.Dynamics.Commerce.Runtime.Services.Messages| This package contains all the commerce service messages libraries |
+| Microsoft.Dynamics.Commerce.HardwareStation.Core| This package contains all the HWS libraries |
+| Microsoft.Dynamics.Commerce.HardwareStation.PeripheralRequests| This package contains all the HWS peripherals request libraries |
+| Microsoft.Dynamics.Commerce.HardwareStation.Peripherals.Contracts| This package contains all the HWS peripherals contracts libraries |
+| Microsoft.Dynamics.Commerce.HardwareStation.Peripherals.Entities| This package contains all the HWS peripherals entities libraries |
+| Microsoft.Dynamics.Commerce.Installers.Framework|  This package contains all the installers framework libraries |
+| Microsoft.Dynamics.Commerce.KeyVault.Contracts| This package contains all the key vault contract libraries |
+| Microsoft.Dynamics.Commerce.PaymentSDK.Extensions.Portable| This package contains all the payment extension libraries |
+| Microsoft.Dynamics.Commerce.PaymentSDK.Portable| This package contains all the payment libraries  |
+| Microsoft.Dynamics.Commerce.Runtime.FIF.Connector.Messages| This package contains all the FIF connector libraries  |
+| Microsoft.Dynamics.Commerce.Runtime.FIF.DocumentProvider.Messages|  This package contains all the FIF document provider libraries   |
+| Microsoft.Dynamics.Commerce.Installers.Framework.DatabaseExtensions| This package contains all the database installer framework libraries |
+| Microsoft.Dynamics.Commerce.Tools.DbUtilities| This package contains all the DB utilities libraries |
+
+**Package versioning:**
+
+| Package version  | Application release      |
+| ---------------- | ------------------------ |
+| 9.28.x.x-preview | 10.0.18 PEAP release     |
+| 9.28.x.x         | 10.0.18 Customer preview |
+| 9.28.x.x         | 10.0.18 GA               |
+| 9.29.x.x-preview | 10.0.19 PEAP release     |
+| 9.29.x.x         | 10.0.19 Customer preview |
+| 9.29.x.x         | 10.0.19 GA               |
+| 9.30.x.x-preview | 10.0.20 PEAP release     |
+| 9.30.x.x         | 10.0.20 Customer preview |
+| 9.30.x.x         | 10.0.20 GA               |
+| 9.31.x.x-preview | 10.0.21 PEAP release     |
+| 9.31.x.x         | 10.0.21 Customer preview |
+| 9.31.x.x         | 10.0.21 GA               |
+
+Extension project can consume the correct version by adding the package reference to the project with full version number or use wild card to always get the latest version, recommend option is to use the full version number and update the version based on your go-live version.
+
+```
+<PackageReference Include="Microsoft.Dynamics.Commerce.Sdk.Pos " Version="9.28.x.x" />
+```
+
+Or
+
+```
+<PackageReference Include="Microsoft.Dynamics.Commerce.Sdk.Pos " Version="9.28.*" />
+```
+
+With every hotfix and new application release, new version of the package will be published in the same public feed, consume the right package version based on the version required for your go live. Consuming the higher version of the package than your go-live application version may result in runtime and deployment failures.
+
+**Setup Azure DevOps pipeline for build automation and package generation:**
+
+[Set up a build pipeline for the independent-packaging SDK](https://docs.microsoft.com/en-us/dynamics365/commerce/dev-itpro/build-pipeline)
+
+**Best practice and branching strategies:**
+
+Detailed information on git branching strategy refer [Git branching strategy](https://docs.microsoft.com/en-us/azure/devops/repos/git/git-branching-guidance?view=azure-devops) doc.
+
+The following branching strategies are based on the way we use Git here at Microsoft. For more information, see [How we use Git at Microsoft](https://docs.microsoft.com/en-us/azure/devops/learn/devops-at-microsoft/use-git-microsoft).
+
+Keep your branch strategy simple. Build your strategy from these three concepts:
+
+- Use feature branches for all new features and bug fixes.
+- Merge feature branches into the main branch using pull requests.
+- Keep a high quality, up-to-date main branch.
+
+**Create a new feature branch for development and bug fixes:**
+
+Create a new feature main branch for our extension, follow the proper naming convention (refer the [Git branching doc for sample naming convention](https://docs.microsoft.com/en-us/azure/devops/repos/git/git-branching-guidance?view=azure-devops#name-your-feature-branches-by-convention))
+
+** Create a new development branch:**
+
+Create a private branch for the development:
+
+- git checkout -b private/{username}/{feature/description}
+
+Add and commit new changes to the development branch using git -add . and git commit -m&quot; commit message.&quot;
+
+After the development is completed, tested, and validated push the changes to the main branch by doing git push \&lt;remote\&gt; \&lt;branch\&gt;
+
+- git push origin {private branch name}
+
+**Create a release branch after development:**
+
+After the development changes pushed into the main branch, create a new release branch, and create the deployable packages from the release branch.
+
+- Git checkout -b release/x.x.x
+
+Merge the changes from the release branch back to main branch if any changes done in the release branch.
+
+```
+
+- git checkout master git merge release/x.x.x
+
+```
+
+**Extension hotfix branch:**
+
+Like release branch, create hotfix branch for extension from main branch and release the fix and later merge the changes back to the main branch.
+
+**Merge new release branch to main and development branch:**
+
+After a new version of the samples released, if required merge your development branch with the new branch. The repo contains only samples, so it&#39;s not required to always get the updated changes from the branch.
+
+```
+
+- git checkout master git merge release/x.x.x
+
+```
+
