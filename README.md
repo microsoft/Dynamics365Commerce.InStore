@@ -17,11 +17,11 @@ This repo contains code samples, templates, and tools that are required to exten
 
 ## Dynamics365Commerce.InStore repo:
 
-This repo contains the sample code for how to customize the POS, HWS and Commerce runtime (CRT), Headless Commerce APIs and channel database.
+This repo contains the sample code for how to customize the POS, Hardware Station(HWS) and Commerce runtime (CRT), Headless Commerce APIs and channel database.
 
 The samples in the repo are organized by Dynamics 365 Commerce application release, each branch in the repo points to an application release of Dynamics 365 Commerce, use the right release branch based on your go-live version. 
 
-Note: The repo contains only samples, so its not required to clone this repo.
+Note: The repo contains only samples, so it’s not required to clone this repo.
 
 | Release branch name                                                                          | version | Application release version |
 | -------------------------------------------------------------------------------------------- | ------- | --------------------------- |
@@ -29,6 +29,8 @@ Note: The repo contains only samples, so its not required to clone this repo.
 | [Release/9.29](https://github.com/microsoft/Dynamics365Commerce.InStore/tree/release/9.29) | 9.29.\* | 10.0.19                     |
 | [Release/9.30](https://github.com/microsoft/Dynamics365Commerce.InStore/tree/release/9.30) | 9.30.\* | 10.0.20                     |
 | [Release/9.31](https://github.com/microsoft/Dynamics365Commerce.InStore/tree/release/9.31) | 9.31.\* | 10.0.21                     |
+| [Release/9.32](https://github.com/microsoft/Dynamics365Commerce.InStore/tree/release/9.32) | 9.32.\* | 10.0.22                     |
+| [Release/9.33](https://github.com/microsoft/Dynamics365Commerce.InStore/tree/release/9.33) | 9.33.\* | 10.0.23                     |
 
 **Extension repository:**
 
@@ -36,10 +38,13 @@ Extension code or repository if required can download and consume the samples an
 
 ### Dynamics365Commerce.InStore repo folders and projects:
 
-| Folder           | Project              | Description                                   |
+| Folder           | Solutions              | Description                                   |
 | ---------------- | ---------------------| --------------------------------------------- |
 | HardwareStationSample | HardwareStation.Samples.sln| This project contains samples on how to create Hardware station, Payment extensions and extension installers.|  
 | POSSample  | Pos.sln | This folder/project contains POS, CRT, Headless Commerce APIs and HWS extension and installer samples. | 
+| StoreCommerceSample  | StoreCommerce.sln | This folder/project contains Store Commerce HWS extension samples. | 
+| Pipeline  | YAML and PowerShell script files | This folder/project contains sample scripts and YAML files to setup the build automation in Azure DevOps build pipeline. | 
+
 
 More samples for CSU – self hosted and Commerce Runtime and Headless Commerce APIs are published in the [Dynamics365Commerce.ScaleUnit](https://github.com/microsoft/Dynamics365Commerce.ScaleUnit) repo.
 
@@ -47,7 +52,7 @@ Readme files inside the project folder contains more details on how to run these
 
 **Download reference packages for creating Commerce extension:**
 
-Commerce contracts, messages, entities, and request packages are published in this public feedfor commerce extension code to consume and customize existing functionalities or build new functionalities for Dynamics 365 Commerce product.
+Commerce contracts, messages, entities, and request packages are published in this public feed for commerce extension code to consume and customize existing functionalities or build new functionalities for Dynamics 365 Commerce product.
 
 Consume the commerce packages from this [location](https://pkgs.dev.azure.com/commerce-partner/Registry/_packaging/dynamics365-commerce/nuget/v3/index.json), extension can add package source location in the nuget.config of their extension project file.
 
@@ -92,6 +97,8 @@ Consume the commerce packages from this [location](https://pkgs.dev.azure.com/co
 | Microsoft.Dynamics.Commerce.Runtime.FIF.DocumentProvider.Messages|  This package contains all the FIF document provider libraries   |
 | Microsoft.Dynamics.Commerce.Installers.Framework.DatabaseExtensions| This package contains all the database installer framework libraries |
 | Microsoft.Dynamics.Commerce.Tools.DbUtilities| This package contains all the DB utilities libraries |
+| Microsoft.Dynamics.Commerce.Tools.ExtensionsProxyGenerator.AspNetCore | This package contains all the extensions proxy generator utilities                                                                                            |
+| Microsoft.Dynamics.Commerce.Proxy.ScaleUnit                           | This package contains all the proxies class for extension applications to consume the Headless Commerce APIs in online mode (connected to Headless Commerce). |
 
 **Package versioning:**
 
@@ -109,6 +116,12 @@ Consume the commerce packages from this [location](https://pkgs.dev.azure.com/co
 | 9.31.x.x-preview | 10.0.21 PEAP release     |
 | 9.31.x.x         | 10.0.21 Customer preview |
 | 9.31.x.x         | 10.0.21 GA               |
+| 9.32.x.x-preview | 10.0.22 PEAP release     |
+| 9.32.x.x         | 10.0.22 Customer preview |
+| 9.32.x.x         | 10.0.22 GA               |
+| 9.33.x.x-preview | 10.0.23 PEAP release     |
+| 9.33.x.x         | 10.0.23 Customer preview |
+| 9.33.x.x         | 10.0.23 GA               |
 
 Extension project can consume the correct version by adding the package reference to the project with full version number or use wild card to always get the latest version, recommend option is to use the full version number and update the version based on your go-live version.
 
