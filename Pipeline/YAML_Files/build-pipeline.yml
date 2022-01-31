@@ -46,21 +46,21 @@ steps:
     inputs:
       targetType: filePath
       filePath: ./Pipeline/PowerShellScripts/CopyFileToDestination.ps1
-      arguments: '-RelativePath "$(Build.SourcesDirectory)\src\HardwareStationSample\HardwareStation.Installer" -File "HardwareStation.Installer.exe" -DestinationFullName "$(Build.ArtifactStagingDirectory)\HardwareStation.Installer_$(Build.BuildNumber).exe"'
+      arguments: '-RelativePath "$(Build.SourcesDirectory)\src\HardwareStationSample\HardwareStation.Installer" -File "Contoso.HardwareStation.Installer.exe" -DestinationFullName "$(Build.ArtifactStagingDirectory)\Contoso.HardwareStation.Installer_$(Build.BuildNumber).exe"'
 
   - task: PowerShell@2
     displayName: 'Copy Modern POS Installer to Artifact directory'
     inputs:
       targetType: filePath
       filePath: ./Pipeline/PowerShellScripts/CopyFileToDestination.ps1
-      arguments: '-RelativePath "$(Build.SourcesDirectory)\src\PosSample\ModernPos.Installer" -File "ModernPos.Installer.exe" -DestinationFullName "$(Build.ArtifactStagingDirectory)\ModernPos.Installer_$(Build.BuildNumber).exe"'
+      arguments: '-RelativePath "$(Build.SourcesDirectory)\src\PackagingSamples\ModernPos\ModernPos.Installer" -File "Contoso.ModernPosPackagingSample.ModernPos.Installer.exe" -DestinationFullName "$(Build.ArtifactStagingDirectory)\Contoso.ModernPosPackagingSample.ModernPos.Installer_$(Build.BuildNumber).exe"'
 
   - task: PowerShell@2
     displayName: 'Sign Files'
     inputs:
       targetType: filePath
       filePath: ./Pipeline/PowerShellScripts/CodeSign.ps1
-      arguments: '-AzureKeyVaultURI $(AzureKeyVaultURI) -ApplicationId $(ApplicationId) -ApplicationSecretValue $(SecretValue) -CertificateName $(CertificateName) -Timestamp $(Timestamp) -TimestampDigest "sha256" -Files "$(Build.ArtifactStagingDirectory)\HardwareStation.Installer_$(Build.BuildNumber).exe $(Build.ArtifactStagingDirectory)\ModernPos.Installer_$(Build.BuildNumber).exe"'
+      arguments: '-AzureKeyVaultURI $(AzureKeyVaultURI) -ApplicationId $(ApplicationId) -ApplicationSecretValue $(SecretValue) -CertificateName $(CertificateName) -Timestamp $(Timestamp) -TimestampDigest "sha256" -Files "$(Build.ArtifactStagingDirectory)\Contoso.PaymentDeviceSample.HardwareStation.Installer_$(Build.BuildNumber).exe $(Build.ArtifactStagingDirectory)\Contoso.ModernPosPackagingSample.ModernPos.Installer_$(Build.BuildNumber).exe"'
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'

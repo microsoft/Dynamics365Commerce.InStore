@@ -1,0 +1,93 @@
+﻿{
+  "$schema": "./devDependencies/schemas/manifestSchema.json",
+  "name": "Contoso.ModernPosPackagingSample",
+  "publisher": "Contoso",
+  "version": "1.0.0",
+  "minimumPosVersion": "9.28.0.0",
+  "description": "An extension package containing Modern POS samples to showcase how to create a Modern POS App package and installer.",
+  "dependencies": [
+    {
+      "alias": "knockout",
+      "format": "amd",
+      "modulePath": "Libraries/knockout"
+    }
+  ],
+  "components": {
+    "resources": {
+      "supportedUICultures": [ "en-US" ],
+      "fallbackUICulture": "en-US",
+      "culturesDirectoryPath": "Resources/Strings",
+      "stringResourcesFileName": "resources.resjson"
+    },
+    "extend": {
+      "views": {
+        "SearchView": {
+          "productListConfiguration": {
+            "name": "Customized Product Search Columns",
+            "description": "An extension providing a customized set of columns on the product search grid.",
+            "modulePath": "ViewExtensions/Search/CustomProductSearchColumns"
+          },
+          "productAppBarCommands": [
+            { "modulePath": "ViewExtensions/Search/NavigateToKnockoutSamplesViewCommand" },
+            { "modulePath": "ViewExtensions/Search/NavigateToExampleViewCommand" }
+          ]
+        },
+        "SimpleProductDetailsView": {
+          "controlsConfig": {
+            "customControls": [
+              {
+                "controlName": "ProductAvailabilityPanel",
+                "htmlPath": "ViewExtensions/SimpleProductDetails/ProductAvailabilityPanel.html",
+                "modulePath": "ViewExtensions/SimpleProductDetails/ProductAvailabilityPanel"
+              }
+            ]
+          }
+        }
+      },
+      "triggers": [
+        {
+          "name": "PreProductSaleTrigger",
+          "description": "An extension to execute custom logic prior to executing the Product Sale Operation.",
+          "triggerType": "PreProductSale",
+          "modulePath": "Triggers/PreProductSaleTrigger"
+        },
+        {
+          "triggerType": "ApplicationStart",
+          "modulePath": "Triggers/ApplicationStartTrigger"
+        }
+      ]
+    },
+    "create": {
+      "templatedDialogs": [
+        {
+          "htmlPath": "Controls/Dialogs/Create/ExampleCreateDialog.html",
+          "modulePath": "Controls/Dialogs/Create/ExampleCreateDialogModule"
+        },
+        {
+          "htmlPath": "Controls/Dialogs/Edit/ExampleEditDialog.html",
+          "modulePath": "Controls/Dialogs/Edit/ExampleEditDialogModule"
+        },
+        {
+          "htmlPath": "Controls/Dialogs/Display/PingResultDialog.html",
+          "modulePath": "Controls/Dialogs/Display/PingResultDialogModule"
+        }
+      ],
+      "views": [
+        {
+          "title": "Knockout Samples View",
+          "pageName": "KnockoutSamplesView",
+          "phonePageName": "KnockoutSamplesView",
+          "viewDirectory": "Views/",
+          "viewControllerPath": "Views/KnockoutSamplesView"
+        },
+        {
+          "title": "Example View",
+          "pageName": "ExampleView",
+          "phonePageName": "ExampleView",
+          "viewDirectory": "Views/",
+          "viewControllerPath": "Views/ExampleView"
+        }
+      ]
+    }
+  }
+}

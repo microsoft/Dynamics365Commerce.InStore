@@ -1,0 +1,33 @@
+﻿{
+  "$schema": "./devDependencies/schemas/manifestSchema.json",
+  "name": "Contoso.BarcodeMsrDialogSample",
+  "publisher": "Contoso",
+  "version": "1.0.0.0",
+  "minimumPosVersion": "9.28.0.0",
+  "description": "A sample that shows how to create a new dialog that listens to barcode scanner and MSR events.",
+  "components": {
+    "create": {
+      "templatedDialogs": [
+        {
+          "name": "Barcode MSR Dialog",
+          "description": "A sample dialog showing how to listen to barcode scanner and MSR events",
+          "htmlPath": "BarcodeMsrDialog.html",
+          "modulePath": "BarcodeMsrDialog"
+        }
+      ]
+    },
+    "extend": {
+      "views": {
+        "FulfillmentLineView": {
+          "appBarCommands": [
+            {
+              "name": "Scan and Select Product Button",
+              "description": "A sample extension command that shows a dialog to scan a product to be selected on the fulfillment lines page.",
+              "modulePath": "FulfillmentLineCommand"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

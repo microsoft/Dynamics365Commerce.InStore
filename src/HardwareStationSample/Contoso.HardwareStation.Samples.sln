@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
+MinimumVisualStudioVersion = 15.0.0.0
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contoso.PaymentDeviceSample", "PaymentDevice\Contoso.PaymentDeviceSample.csproj", "{B5561175-66C2-4FA7-A10E-0296EB3BC292}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contoso.PaymentDeviceSample.HardwareStation.Installer", "HardwareStation.Installer\Contoso.PaymentDeviceSample.HardwareStation.Installer.csproj", "{B133C2C6-0E0C-41AE-ACCF-2948812890CA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B5561175-66C2-4FA7-A10E-0296EB3BC292}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5561175-66C2-4FA7-A10E-0296EB3BC292}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5561175-66C2-4FA7-A10E-0296EB3BC292}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5561175-66C2-4FA7-A10E-0296EB3BC292}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B133C2C6-0E0C-41AE-ACCF-2948812890CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B133C2C6-0E0C-41AE-ACCF-2948812890CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B133C2C6-0E0C-41AE-ACCF-2948812890CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B133C2C6-0E0C-41AE-ACCF-2948812890CA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {94595632-82A6-4FBA-BA6F-A595F070BC98}
+	EndGlobalSection
+EndGlobal

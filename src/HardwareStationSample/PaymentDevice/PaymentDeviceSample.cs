@@ -11,7 +11,7 @@ NO TECHNICAL SUPPORT IS PROVIDED.  YOU MAY NOT DISTRIBUTE THIS CODE UNLESS YOU H
  IMPORTANT!!!
  THIS IS SAMPLE CODE ONLY.
  THE CODE SHOULD BE UPDATED TO WORK WITH THE APPROPRIATE PAYMENT PROVIDERS.
- PROPER MESASURES SHOULD BE TAKEN TO ENSURE THAT THE PA-DSS AND PCI DSS REQUIREMENTS ARE MET.
+ PROPER MEASURES SHOULD BE TAKEN TO ENSURE THAT THE PA-DSS AND PCI DSS REQUIREMENTS ARE MET.
 */
 
 namespace Contoso.Commerce.HardwareStation.PaymentSample
@@ -55,16 +55,8 @@ namespace Contoso.Commerce.HardwareStation.PaymentSample
     /// </remarks>
     public class PaymentDeviceSample : INamedRequestHandler, IDisposable
     {
-        // Name of the Device configured on the hardware profile.
-        private const string DeviceName = "SAMPLEDEVICE";
-
-        private PaySdk.PaymentProperty[] merchantProperties;
-        
+        private PaySdk.PaymentProperty[] merchantProperties;      
         private string paymentConnectorName;
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields", Justification = "Required for payment processor.")]
-        private bool isTestMode;
-
         private SettingsInfo terminalSettings;
         private CancellationTokenSource timeoutTask;
 
@@ -104,13 +96,7 @@ namespace Contoso.Commerce.HardwareStation.PaymentSample
         /// <summary>
         /// Gets the unique name for this request handler.
         /// </summary>
-        public string HandlerName
-        {
-            get
-            {
-                return DeviceName;
-            }
-        }
+        public string HandlerName => "SAMPLEDEVICE";
 
         /// <summary>
         /// Represents the entry point of the request handler.
@@ -121,88 +107,65 @@ namespace Contoso.Commerce.HardwareStation.PaymentSample
         {
              ThrowIf.Null(request, nameof(request));
 
-            Response response;
+            switch (request)
+            {
+                case OpenPaymentTerminalDeviceRequest openPaymentTerminalDeviceRequest:
+                    return this.Open(openPaymentTerminalDeviceRequest);
 
-            Type requestType = request.GetType();
+                case ClosePaymentTerminalDeviceRequest closePaymentTerminalDeviceRequest:
+                    return this.Close();
 
-            if (requestType == typeof(OpenPaymentTerminalDeviceRequest))
-            {
-                response = this.Open((OpenPaymentTerminalDeviceRequest)request);
-            }
-            else if (requestType == typeof(ClosePaymentTerminalDeviceRequest))
-            {
-                response = this.Close();
-            }
-            else if (requestType == typeof(BeginTransactionPaymentTerminalDeviceRequest))
-            {
-                response = this.BeginTransaction((BeginTransactionPaymentTerminalDeviceRequest)request);
-            }
-            else if (requestType == typeof(EndTransactionPaymentTerminalDeviceRequest))
-            {
-                response = this.EndTransaction();
-            }
-            else if (requestType == typeof(CancelOperationPaymentTerminalDeviceRequest))
-            {
-                response = this.CancelOperation();
-            }
-            else if (requestType == typeof(UpdateLineItemsPaymentTerminalDeviceRequest))
-            {
-                response = this.UpdateLineItems((UpdateLineItemsPaymentTerminalDeviceRequest)request);
-            }
-            else if (requestType == typeof(AuthorizePaymentTerminalDeviceRequest))
-            {
-                response = this.AuthorizePayment((AuthorizePaymentTerminalDeviceRequest)request);
-            }
-            else if (requestType == typeof(CapturePaymentTerminalDeviceRequest))
-            {
-                response = this.CapturePayment((CapturePaymentTerminalDeviceRequest)request);
-            }
-            else if (requestType == typeof(VoidPaymentTerminalDeviceRequest))
-            {
-                response = this.VoidPayment((VoidPaymentTerminalDeviceRequest)request);
-            }
-            else if (requestType == typeof(RefundPaymentTerminalDeviceRequest))
-            {
-                response = this.RefundPayment((RefundPaymentTerminalDeviceRequest)request);
-            }
-            else if (requestType == typeof(GetPrivateTenderPaymentTerminalDeviceRequest))
-            {
-                response = this.GetPrivateTender((GetPrivateTenderPaymentTerminalDeviceRequest)request);
-            }
-            else if (requestType == typeof(ExecuteTaskPaymentTerminalDeviceRequest))
-            {
-                response = this.ExecuteTask((ExecuteTaskPaymentTerminalDeviceRequest)request);
-            }
-            else if (requestType == typeof(FetchTokenPaymentTerminalDeviceRequest))
-            {
-                response = this.FetchToken((FetchTokenPaymentTerminalDeviceRequest)request);
-            }
-            else if (requestType == typeof(ActivateGiftCardPaymentTerminalRequest))
-            {
-                response = this.ActivateGiftCard((ActivateGiftCardPaymentTerminalRequest)request);
-            }
-            else if (requestType == typeof(AddBalanceToGiftCardPaymentTerminalRequest))
-            {
-                response = this.AddBalanceToGiftCard((AddBalanceToGiftCardPaymentTerminalRequest)request);
-            }
-            else if (requestType == typeof(GetGiftCardBalancePaymentRequest))
-            {
-                response = this.GetGiftCardBalance((GetGiftCardBalancePaymentTerminalRequest)request);
-            }
-            else if (requestType == typeof(GetTransactionReferencePaymentTerminalDeviceRequest))
-            {
-                response = this.GetTransactionReferenceId((GetTransactionReferencePaymentTerminalDeviceRequest)request);
-            }
-            else if (requestType == typeof(GetTransactionByTransactionReferencePaymentTerminalDeviceRequest))
-            {
-                response = this.GetTransactionByTransactionReference((GetTransactionByTransactionReferencePaymentTerminalDeviceRequest)request);
-            }
-            else
-            {
-                throw new NotSupportedException($"Request '{requestType.FullName}' is not supported.");
-            }
+                case BeginTransactionPaymentTerminalDeviceRequest beginTransactionPaymentTerminalDeviceRequest:
+                    return this.BeginTransaction(beginTransactionPaymentTerminalDeviceRequest);
 
-            return response;
+                case EndTransactionPaymentTerminalDeviceRequest endTransactionPaymentTerminalDeviceRequest:
+                    return this.EndTransaction();
+
+                case CancelOperationPaymentTerminalDeviceRequest cancelOperationPaymentTerminalDeviceRequest:
+                    return this.CancelOperation();
+
+                case UpdateLineItemsPaymentTerminalDeviceRequest updateLineItemsPaymentTerminalDeviceRequest:
+                    return this.UpdateLineItems(updateLineItemsPaymentTerminalDeviceRequest);
+
+                case AuthorizePaymentTerminalDeviceRequest authorizePaymentTerminalDeviceRequest:
+                    return this.AuthorizePayment(authorizePaymentTerminalDeviceRequest);
+
+                case CapturePaymentTerminalDeviceRequest capturePaymentTerminalDeviceRequest:
+                    return this.CapturePayment(capturePaymentTerminalDeviceRequest);
+
+                case VoidPaymentTerminalDeviceRequest voidPaymentTerminalDeviceRequest:
+                    return this.VoidPayment(voidPaymentTerminalDeviceRequest);
+
+                case RefundPaymentTerminalDeviceRequest refundPaymentTerminalDeviceRequest:
+                    return this.RefundPayment(refundPaymentTerminalDeviceRequest);
+
+                case GetPrivateTenderPaymentTerminalDeviceRequest getPrivateTenderPaymentTerminalDeviceRequest:
+                    return this.GetPrivateTender(getPrivateTenderPaymentTerminalDeviceRequest);
+
+                case ExecuteTaskPaymentTerminalDeviceRequest executeTaskPaymentTerminalDeviceRequest:
+                    return this.ExecuteTask(executeTaskPaymentTerminalDeviceRequest);
+
+                case FetchTokenPaymentTerminalDeviceRequest fetchTokenPaymentTerminalDeviceRequest:
+                    return this.FetchToken(fetchTokenPaymentTerminalDeviceRequest);
+
+                case ActivateGiftCardPaymentTerminalRequest activateGiftCardPaymentTerminalRequest:
+                    return this.ActivateGiftCard(activateGiftCardPaymentTerminalRequest);
+
+                case AddBalanceToGiftCardPaymentTerminalRequest addBalanceToGiftCardPaymentTerminalRequest:
+                    return this.AddBalanceToGiftCard(addBalanceToGiftCardPaymentTerminalRequest);
+
+                case GetGiftCardBalancePaymentTerminalRequest getGiftCardBalancePaymentTerminalRequest:
+                    return this.GetGiftCardBalance(getGiftCardBalancePaymentTerminalRequest);
+
+                case GetTransactionReferencePaymentTerminalDeviceRequest getTransactionReferencePaymentTerminalDeviceRequest:
+                    return this.GetTransactionReferenceId(getTransactionReferencePaymentTerminalDeviceRequest);
+
+                case GetTransactionByTransactionReferencePaymentTerminalDeviceRequest getTransactionByTransactionReferencePaymentTerminalDeviceRequest:
+                    return this.GetTransactionByTransactionReference(getTransactionByTransactionReferencePaymentTerminalDeviceRequest);
+
+                default:
+                    throw new NotSupportedException($"Request '{request.GetType().FullName}' is not supported.");
+            }
         }
 
         /// <summary>
@@ -228,11 +191,9 @@ namespace Contoso.Commerce.HardwareStation.PaymentSample
         /// <param name="paymentConnectorName">The payment connector name.</param>
         /// <param name="merchantPaymentPropertiesXml">The merchant properties.</param>
         /// <param name="terminalSettings">The terminal settings.</param>
-        /// <param name="isTestMode">The boolean value indicating whether the payment is in test mode.</param>
-        private void InitializeSettings(string paymentConnectorName, string merchantPaymentPropertiesXml, SettingsInfo terminalSettings, bool isTestMode)
+        private void InitializeSettings(string paymentConnectorName, string merchantPaymentPropertiesXml, SettingsInfo terminalSettings)
         {
             this.terminalSettings = terminalSettings;
-            this.isTestMode = isTestMode;
             this.paymentConnectorName = paymentConnectorName;
 
             // Convert the connector properties to local
@@ -248,7 +209,6 @@ namespace Contoso.Commerce.HardwareStation.PaymentSample
         {
             this.merchantProperties = null;
             this.paymentConnectorName = null;
-            this.isTestMode = false;
             this.terminalSettings = null;
             this.timeoutTask = null;
         }
@@ -358,7 +318,7 @@ namespace Contoso.Commerce.HardwareStation.PaymentSample
             ThrowIf.Null(request, nameof(request));
             Utilities.WaitAsyncTask(() => Task.Run(async () =>
             {
-                await this.BeginTransactionAsync(request.PaymentConnectorName, request.MerchantInformation, request.IsTestMode).ConfigureAwait(false);
+                await this.BeginTransactionAsync(request.PaymentConnectorName, request.MerchantInformation).ConfigureAwait(false);
             }));
 
             return new NullResponse();
@@ -468,7 +428,7 @@ namespace Contoso.Commerce.HardwareStation.PaymentSample
         /// <summary>
         /// Executes Task.
         /// </summary>
-        /// <param name="request">The reuqest.</param>
+        /// <param name="request">The request.</param>
         /// <returns>The response.</returns>
         private ExecuteTaskPaymentTerminalDeviceResponse ExecuteTask(ExecuteTaskPaymentTerminalDeviceRequest request)
         {
@@ -576,7 +536,7 @@ namespace Contoso.Commerce.HardwareStation.PaymentSample
         }
 
         /// <summary>
-        /// Gets Trasnaction Reference ID.
+        /// Gets Transaction Reference ID.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The response.</returns>
@@ -629,11 +589,10 @@ namespace Contoso.Commerce.HardwareStation.PaymentSample
         /// </summary>
         /// <param name="paymentConnectorName">The payment connector name for payment.</param>
         /// <param name="merchantPaymentPropertiesXml">The merchant provider payment properties.</param>
-        /// <param name="isTestMode">The boolean value indicating whether the payment is in test mode.</param>
         /// <returns>A task that can be awaited until the operation is completed.</returns>
-        private async Task BeginTransactionAsync(string paymentConnectorName, string merchantPaymentPropertiesXml, bool isTestMode)
+        private async Task BeginTransactionAsync(string paymentConnectorName, string merchantPaymentPropertiesXml)
         {
-            await Task.Run(() => this.InitializeSettings(paymentConnectorName, merchantPaymentPropertiesXml, this.terminalSettings, isTestMode)).ConfigureAwait(false);
+            await Task.Run(() => this.InitializeSettings(paymentConnectorName, merchantPaymentPropertiesXml, this.terminalSettings)).ConfigureAwait(false);
         }
 
         /// <summary>

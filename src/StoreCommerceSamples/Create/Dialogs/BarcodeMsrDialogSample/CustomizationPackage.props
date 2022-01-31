@@ -1,0 +1,12 @@
+<Project>
+  <Import Project="..\..\..\..\..\repo.props" />
+
+  <PropertyGroup>
+    <PackagePublisher Condition="'$(PackagePublisher)' == ''">$(Publisher)</PackagePublisher>
+    <PackagePublisherDisplayName Condition="'$(PackagePublisherDisplayName)' == ''">$(PublisherDisplayName)</PackagePublisherDisplayName>
+    <PackageVersion Condition="'$(PackageVersion)' == ''">$(Version)</PackageVersion>
+    <PackageName Condition="'$(PackageName)' == ''">Contoso.BarcodeMsrDialogSample</PackageName>
+    <PackageDisplayName Condition="'$(PackageDisplayName)' == ''">Barcode MSR Dialog Sample</PackageDisplayName>
+    <PackageDescription Condition="'$(PackageDescription)' == ''">A sample that shows how to create a new dialog that listens to barcode scanner and MSR events.</PackageDescription>
+  </PropertyGroup>
+</Project>

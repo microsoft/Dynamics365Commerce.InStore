@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 15.0.28307.1267
+VisualStudioVersion = 15.0.28307.1267
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contoso.BarcodeMsrDialogSample.CommerceRuntime", "CommerceRuntime\Contoso.BarcodeMsrDialogSample.CommerceRuntime.csproj", "{0A8E24B8-84E0-4061-BE51-DDB9F3B0EA44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contoso.BarcodeMsrDialogSample.Pos", "Pos\Contoso.BarcodeMsrDialogSample.Pos.csproj", "{5B4EC383-7E18-4125-8920-EFF518648AA0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A8E24B8-84E0-4061-BE51-DDB9F3B0EA44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A8E24B8-84E0-4061-BE51-DDB9F3B0EA44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A8E24B8-84E0-4061-BE51-DDB9F3B0EA44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A8E24B8-84E0-4061-BE51-DDB9F3B0EA44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B4EC383-7E18-4125-8920-EFF518648AA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B4EC383-7E18-4125-8920-EFF518648AA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B4EC383-7E18-4125-8920-EFF518648AA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B4EC383-7E18-4125-8920-EFF518648AA0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
