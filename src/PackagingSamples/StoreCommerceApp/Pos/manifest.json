@@ -1,0 +1,35 @@
+﻿{
+  "$schema": "./devDependencies/schemas/manifestSchema.json",
+  "name": "Contoso.StoreCommercePackagingSample",
+  "publisher": "Contoso",
+  "version": "1.0.0",
+  "minimumPosVersion": "9.28.0.0",
+  "description": "An extension package containing POS samples to showcase how to create a Store Commerce Extension Package and Installer.",
+  "components": {
+    "extend": {
+      "triggers": [
+        {
+          "name": "PreProductSaleTrigger",
+          "description": "An extension to execute custom logic prior to executing the Product Sale Operation.",
+          "triggerType": "PreProductSale",
+          "modulePath": "Triggers/PreProductSaleTrigger"
+        },
+        {
+          "name": "PostCartCheckoutPrintFileTrigger",
+          "description": "An extension to execute custom logic after the cart checkout is completed.",
+          "triggerType": "PostCartCheckoutTransaction",
+          "modulePath": "Triggers/PostCheckoutPrintFileTrigger"
+        }
+      ],
+      "views": {
+        "SearchView": {
+          "productListConfiguration": {
+            "name": "Customized Product Search Columns",
+            "description": "An extension providing a customized set of columns on the product search grid.",
+            "modulePath": "ViewExtensions/CustomProductSearchColumns"
+          }
+        }
+      }
+    }
+  }
+}

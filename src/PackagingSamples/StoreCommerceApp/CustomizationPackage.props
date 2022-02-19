@@ -5,8 +5,8 @@
     <PackagePublisher Condition="'$(PackagePublisher)' == ''">$(Publisher)</PackagePublisher>
     <PackagePublisherDisplayName Condition="'$(PackagePublisherDisplayName)' == ''">$(PublisherDisplayName)</PackagePublisherDisplayName>
     <PackageVersion Condition="'$(PackageVersion)' == ''">$(Version)</PackageVersion>
-    <PackageName Condition="'$(PackageName)' == ''">Contoso.Commerce.StoreCommerce</PackageName>
-    <PackageDisplayName Condition="'$(PackageDisplayName)' == ''">Contoso Store commerce Customization</PackageDisplayName>
-    <PackageDescription Condition="'$(PackageDescription)' == ''">Contoso Store commerce Customization</PackageDescription>
+    <PackageName Condition="'$(PackageName)' == ''">Contoso.StoreCommercePackagingSample</PackageName>
+    <PackageDisplayName Condition="'$(PackageDisplayName)' == ''">Contoso Store Commerce Customization Packaging Sample</PackageDisplayName>
+    <PackageDescription Condition="'$(PackageDescription)' == ''">Contoso Store Commerce Customization Packaging Sample</PackageDescription>
   </PropertyGroup>
 </Project>
