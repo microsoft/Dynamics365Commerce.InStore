@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Gas Pump Status View</title>
+</head>
+<body>
+    <div class="GasPumpStatusView">
+        <div class="row height100Percent marginLeft20">
+            <!-- Main content -->
+            <div class="col grow">
+                <h2 class="marginTop8 marginBottom8">Gas Pumps</h2>
+                <div id="contoso_gasPumpStatusView_DataList" class="col grow"></div>
+            </div>
+
+            <a href="#" 
+               id="toggleDetailsPanelButton" 
+               class="icon-20x20 width48 height48 center" 
+               type="button" 
+               data-bind="click: toggleDetailsPanel, css: isDetailsPanelVisible() ? 'iconClosePane' : 'iconOpenPane'"
+               style="position: fixed; right:20px"></a>
+
+            <div class="col no-shrink width320 marginLeft20 marginBottom12 marginRight20" data-bind="visible: isDetailsPanelVisible()">
+                <h2 class="marginTop8 marginBottom8">Details</h2>
+                <div class="primaryPanelBackgroundColor highContrastBorder grow pad20">
+                    <!-- ko if: !isGasPumpSelected() -->
+                    <div class="textCenter marginTop56">
+                        <div class="center">
+                            <div class="h1 iconBulletedList width72 height72 center icon-40x40 secondaryFontColor"></div>
+                        </div>
+                        <div class="h2">Select a gas pump</div>
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko if: isGasPumpSelected() -->
+                    <div>
+                        <div class="marginBottom20">
+                            <div class="row marginBottom4">
+                                <div class="h6 secondaryFontColor">Pump Status</div>
+                            </div>
+                            <div class="row">
+                                <div class="h4 width280 wrapTextWithoutHyphen" data-bind="text: selectedPumpStatus"></div>
+                            </div>
+                        </div>
+                        <div class="marginBottom20">
+                            <div class="row marginBottom4">
+                                <div class="h6 secondaryFontColor">Description</div>
+                            </div>
+                            <div class="row">
+                                <div class="h4 width280 wrapTextWithoutHyphen" data-bind="text: selectedPumpDescription"></div>
+                            </div>
+                        </div>
+                        <div class="marginBottom20" data-bind="visible: isSelectedGasPumpPumping">
+                            <div class="row marginBottom4">
+                                <div class="h6 secondaryFontColor">Sale Total:</div>
+                            </div>
+                            <div class="row">
+                                <div class="h4 width280 wrapTextWithoutHyphen" data-bind="text: selectedGasPumpTotal"></div>
+                            </div>
+                        </div>
+                        <div class="marginBottom20" data-bind="visible: isSelectedGasPumpPumping">
+                            <div class="row marginBottom4">
+                                <div class="h6 secondaryFontColor">Sale Volume:</div>
+                            </div>
+                            <div class="row">
+                                <div class="h4 width280 wrapTextWithoutHyphen" data-bind="text: selectedGasPumpVolume"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+            <div class="col no-shrink width48 marginLeft20 marginTop48 marginBottom12 marginRight20 primaryPanelBackgroundColor highContrastBorder grow"
+                 data-bind="visible: !isDetailsPanelVisible()"></div>
+        </div>
+    </div>
+</body>
+</html>

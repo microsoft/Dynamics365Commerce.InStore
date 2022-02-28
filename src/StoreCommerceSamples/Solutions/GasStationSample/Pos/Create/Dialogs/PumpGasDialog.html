@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Gas Pump Status Dialog</title>
+</head>
+<body>
+    <div class="grow col">
+        <div>
+            <h1 class="wrapTextWithoutHyphen marginBottom20" data-bind="visible: isEmergencyInProgress" style="color:red;">Pump overflow emergency!</h1>
+
+            <div class="marginBottom20">
+                <div class="row marginBottom4">
+                    <div class="h6 secondaryFontColor">Price per gallon</div>
+                </div>
+                <div class="row">
+                    <div class="h4 width280" data-bind="text: pricePerUnit"></div>
+                </div>
+            </div>
+            <div class="marginBottom20">
+                <div class="row marginBottom4">
+                    <div class="h6 secondaryFontColor">Total Sale</div>
+                </div>
+                <div class="row">
+                    <div class="h4 width280" data-bind="text: pumpedTotalAmount"></div>
+                </div>
+            </div>
+            <div class="marginBottom20">
+                <div class="row marginBottom4">
+                    <div class="h6 secondaryFontColor">Gallons</div>
+                </div>
+                <div class="row">
+                    <div class="h4 width280" data-bind="text: pumpedQuantity"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

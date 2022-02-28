@@ -4,6 +4,7 @@ trigger: none
 pool:
   vmImage: 'windows-latest'
 
+#Your build pipeline references an undefined variable named ‘TenantId’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
 #Your build pipeline references an undefined variable named ‘AzureKeyVaultURI’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
 #Your build pipeline references an undefined variable named ‘ApplicationId’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
 #Your build pipeline references an undefined variable named ‘SecretValue’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
@@ -60,7 +61,7 @@ steps:
     inputs:
       targetType: filePath
       filePath: ./Pipeline/PowerShellScripts/CodeSign.ps1
-      arguments: '-AzureKeyVaultURI $(AzureKeyVaultURI) -ApplicationId $(ApplicationId) -ApplicationSecretValue $(SecretValue) -CertificateName $(CertificateName) -Timestamp $(Timestamp) -TimestampDigest "sha256" -Files "$(Build.ArtifactStagingDirectory)\Contoso.PaymentDeviceSample.HardwareStation.Installer_$(Build.BuildNumber).exe $(Build.ArtifactStagingDirectory)\Contoso.ModernPosPackagingSample.ModernPos.Installer_$(Build.BuildNumber).exe"'
+      arguments: '-TenantId $(TenantId) -ApplicationId $(ApplicationId) -ApplicationSecretValue $(SecretValue) -AzureKeyVaultURI $(AzureKeyVaultURI) -CertificateName $(CertificateName) -Timestamp $(Timestamp) -TimestampDigest "sha256" -Files "$(Build.ArtifactStagingDirectory)\Contoso.PaymentDeviceSample.HardwareStation.Installer_$(Build.BuildNumber).exe $(Build.ArtifactStagingDirectory)\Contoso.ModernPosPackagingSample.ModernPos.Installer_$(Build.BuildNumber).exe"'
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'
