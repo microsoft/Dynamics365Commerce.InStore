@@ -190,14 +190,14 @@
 
         private List<GasPump> CreateGasPumps(OrgUnit orgUnit)
         {
-            var pumpCount = orgUnit.RecordId % 12;
+            var pumpCount = (orgUnit.RecordId % 12) + 2;
             var gasPumps = new List<GasPump>();
             var saleAmountGenerator = new Random();
             for (int i = 1; i <= pumpCount; i++)
             {
                 GasPumpStatus status = (GasPumpStatus)(((orgUnit.RecordId + i) % 5) + 1);
                 var gasPump = new GasPump() { Id = i, Name = $"Gas Pump {i.ToString()}", State = new GasPumpState(status) };
-                if (status == GasPumpStatus.Pumping)
+                if (status == GasPumpStatus.Pumping || status == GasPumpStatus.PumpingComplete)
                 {
                     gasPump.State.SaleVolume = Math.Round(Convert.ToDecimal(saleAmountGenerator.NextDouble() * 25), 3);
                     gasPump.State.SaleTotal = GetSaleTotal(gasPump.State.SaleVolume);

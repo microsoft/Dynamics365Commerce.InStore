@@ -1,8 +1,8 @@
 ﻿namespace GasStationSample.CommerceRuntime
 {
-    using Microsoft.Dynamics.Commerce.Runtime.ComponentModel.DataAnnotations;
     using Microsoft.Dynamics.Commerce.Runtime.DataModel;
     using System.Runtime.Serialization;
+    using SystemAnnotations = System.ComponentModel.DataAnnotations;
 
     public class GasPump : CommerceEntity
     {
@@ -17,7 +17,7 @@
         /// <summary>
         /// Gets or sets the identifier.
         /// </summary>
-        [Key]
+        [SystemAnnotations.Key]
         [DataMember]
         public long Id { get; set; }
 
