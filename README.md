@@ -9,15 +9,18 @@ name: Extend Commerce POS, HWS and Headless Commerce APIs and Commerce runtime.
 description: This repo contains the sample code on how to extend the Dynamics 365 Commerce POS, Hardware station, Headless Commerce APIs, and Commerce runtime.
 ---
 
-# Dynamics365Commerce.InStore repo:
+# Dynamics365Commerce.InStore repo
+
 This repo contains the sample code for how to customize the POS, Hardware Station(HWS) and Commerce runtime (CRT), Headless Commerce APIs and channel database. Please note that these are only samples and it is not required to clone this repo to develop Dynamics 365 Commerce extensions. This topic applies to Dynamics 365 commerce application version 10.0.18 or greater.
 
 This file explains the structure of the InStore samples repo and explains how to set up a repo to reference the Commerce SDK nuget packages from the public feed for Dynamics 365 Commerce extension development. Please visit our [docs site](aka.ms/Dynamics365CommerceDevDocs) for additional resources about Dynamics 365 Commerce development.
 
 ## Prerequisites
+
 This process doesn't require a specific pre-configured environment or virtual machine. Development and testing can be done on any machine with relatively modern version of Windows. If you don't require Modern POS development you can leverage Windows 10, Windows Server 2016/2019. If you require Sealed Modern POS development, install these prerequisites. For more details on the development environment prerequisites please refer to [this article](https://docs.microsoft.com/en-us/dynamics365/commerce/dev-itpro/pos-extension/pos-extension-getting-started#prerequisites)
 
 ## Repo folder and solution structure
+
 The sample InStore repo contains nuget.config, repo.props, CustomizationPackage.props and build pipelines script which provide guidance on how extension can setup the repo metadata files.
 
 | Folder                | Description                                                                                                              |
@@ -27,45 +30,46 @@ The sample InStore repo contains nuget.config, repo.props, CustomizationPackage.
 | PackagingSamples      | This folder contains samples that demonstrate how to structure your Commerce SDK solution to create packages/installers for the appropriate Commerce components.                                                       |
 | Pipeline              | YAML and PowerShell script files | This folder/project contains sample scripts and YAML files to setup the build automation in Azure DevOps build pipeline. |
 
-
 The [Dynamics365Commerce.ScaleUnit](https://github.com/microsoft/Dynamics365Commerce.ScaleUnit) repo contains additional samples focused on Headless Commerce extension development scenarios like Headless Commerce APIs and Commerce Runtime.
 
 ## What to expect with each sample
+
 Each sample in this repo is accompanied by a readme.md file with the following information:
-  - A description of its functionality
-  - The steps to build and run the sample
-  - The list of Commerce APIs and extension points used in the sample and a description of what they do.
-  - A link to relevant documentation of the Commerce APIs and feature area
-  - A gif or a screenshot of the functionality, if applicable
+
+- A description of its functionality
+- The steps to build and run the sample
+- The list of Commerce APIs and extension points used in the sample and a description of what they do.
+- A link to relevant documentation of the Commerce APIs and feature area
+- A gif or a screenshot of the functionality, if applicable
 
 ## Troubleshooting Build & Other Development Issues
-The Commerce team has build automation that validates that all the samples in this repo build successfully, but that doesn't guarantee that these samples will always build and run without issues that are common during software development. If you encounter an issue with the InStore samples or the Commerce SDK in please search the issues section of this Github repo to see if it is a known issue. There may already be a fix or workaround available. 
+
+The Commerce team has build automation that validates that all the samples in this repo build successfully, but that doesn't guarantee that these samples will always build and run without issues that are common during software development. If you encounter an issue with the InStore samples or the Commerce SDK in please search the issues section of this Github repo to see if it is a known issue. There may already be a fix or workaround available.
 
 If you don't see your issue listed in the issues section please create a new issue to with details about the issue you're facing. This will help ensure that everyone using the Commerce SDK and these samples has the best experience possible, and that all known issues will be searchable online. We will monitor these issues and help as soon as we possibly can.
 
 Note: For the best experience, please limit the use of the issues section to report problems with the Commerce SDK and the InStore samples.
 
 ## Branches
+
 The branches in the repo are organized by Dynamics 365 Commerce application release, each branch in the repo points to an application release of Dynamics 365 Commerce, use the right release branch based on your go-live version.
 
 | Release branch name                                                                        | version | Application release version |
 | ------------------------------------------------------------------------------------------ | ------- | --------------------------- |
-| [Release/9.28](https://github.com/microsoft/Dynamics365Commerce.InStore/tree/release/9.28) | 9.28.\* | 10.0.18                     |
-| [Release/9.29](https://github.com/microsoft/Dynamics365Commerce.InStore/tree/release/9.29) | 9.29.\* | 10.0.19                     |
-| [Release/9.30](https://github.com/microsoft/Dynamics365Commerce.InStore/tree/release/9.30) | 9.30.\* | 10.0.20                     |
-| [Release/9.31](https://github.com/microsoft/Dynamics365Commerce.InStore/tree/release/9.31) | 9.31.\* | 10.0.21                     |
-| [Release/9.32](https://github.com/microsoft/Dynamics365Commerce.InStore/tree/release/9.32) | 9.32.\* | 10.0.22                     |
-| [Release/9.33](https://github.com/microsoft/Dynamics365Commerce.InStore/tree/release/9.33) | 9.33.\* | 10.0.23                     |
 | [Release/9.34](https://github.com/microsoft/Dynamics365Commerce.InStore/tree/release/9.34) | 9.34.\* | 10.0.24                     |
 | [Release/9.35](https://github.com/microsoft/Dynamics365Commerce.InStore/tree/release/9.35) | 9.35.\* | 10.0.25                     |
+| [Release/9.36](https://github.com/microsoft/Dynamics365Commerce.InStore/tree/release/9.36) | 9.36.\* | 10.0.26                     |
+| [Release/9.37](https://github.com/microsoft/Dynamics365Commerce.InStore/tree/release/9.37) | 9.37.\* | 10.0.27                     |
+| [Release/9.38](https://github.com/microsoft/Dynamics365Commerce.InStore/tree/release/9.38) | 9.38.\* | 10.0.28                     |
+| [Release/9.39](https://github.com/microsoft/Dynamics365Commerce.InStore/tree/release/9.39) | 9.39.\* | 10.0.29                     |
 
-# Referencing Commerce SDK Nuget packages
+## Referencing Commerce SDK Nuget packages
 
 Commerce contracts, messages, entities, and request packages are published in this public feed for commerce extension code to consume and customize existing functionalities or build new functionalities for Dynamics 365 Commerce product.
 
 Consume the commerce packages from this [location](https://pkgs.dev.azure.com/commerce-partner/Registry/_packaging/dynamics365-commerce/nuget/v3/index.json), extension can add package source location in the nuget.config of their extension project file.
 
-```
+```xml
 <packageSources>
     <add key="dynamics365-commerce" value="https://pkgs.dev.azure.com/commerce-partner/Registry/_packaging/dynamics365-commerce/nuget/v3/index.json" />
     <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />
@@ -114,35 +118,32 @@ Consume the commerce packages from this [location](https://pkgs.dev.azure.com/co
 
 | Package version  | Application release      |
 | ---------------- | ------------------------ |
-| 9.28.x.x-preview | 10.0.18 PEAP release     |
-| 9.28.x.x         | 10.0.18 Customer preview |
-| 9.28.x.x         | 10.0.18 GA               |
-| 9.29.x.x-preview | 10.0.19 PEAP release     |
-| 9.29.x.x         | 10.0.19 Customer preview |
-| 9.29.x.x         | 10.0.19 GA               |
-| 9.30.x.x-preview | 10.0.20 PEAP release     |
-| 9.30.x.x         | 10.0.20 Customer preview |
-| 9.30.x.x         | 10.0.20 GA               |
-| 9.31.x.x-preview | 10.0.21 PEAP release     |
-| 9.31.x.x         | 10.0.21 Customer preview |
-| 9.31.x.x         | 10.0.21 GA               |
-| 9.32.x.x-preview | 10.0.22 PEAP release     |
-| 9.32.x.x         | 10.0.22 Customer preview |
-| 9.32.x.x         | 10.0.22 GA               |
-| 9.33.x.x-preview | 10.0.23 PEAP release     |
-| 9.33.x.x         | 10.0.23 Customer preview |
-| 9.33.x.x         | 10.0.23 GA               |
+| 9.35.x.x-preview | 10.0.25 PEAP release     |
+| 9.35.x.x         | 10.0.25 Customer preview |
+| 9.35.x.x         | 10.0.25 GA               |
+| 9.36.x.x-preview | 10.0.26 PEAP release     |
+| 9.36.x.x         | 10.0.26 Customer preview |
+| 9.36.x.x         | 10.0.26 GA               |
+| 9.37.x.x-preview | 10.0.27 PEAP release     |
+| 9.37.x.x         | 10.0.27 Customer preview |
+| 9.37.x.x         | 10.0.27 GA               |
+| 9.38.x.x-preview | 10.0.28 PEAP release     |
+| 9.38.x.x         | 10.0.28 Customer preview |
+| 9.38.x.x         | 10.0.28 GA               |
+| 9.39.x.x-preview | 10.0.29 PEAP release     |
+| 9.39.x.x         | 10.0.29 Customer preview |
+| 9.39.x.x         | 10.0.29 GA               |
 
 Extension project can consume the correct version by adding the package reference to the project with full version number or use wild card to always get the latest version, recommend option is to use the full version number and update the version based on your go-live version.
 
-```
-<PackageReference Include="Microsoft.Dynamics.Commerce.Sdk.Pos " Version="9.28.x.x" />
+```xml
+<PackageReference Include="Microsoft.Dynamics.Commerce.Sdk.Pos " Version="9.39.x.x" />
 ```
 
 Or
 
-```
-<PackageReference Include="Microsoft.Dynamics.Commerce.Sdk.Pos " Version="9.28.*" />
+```xml
+<PackageReference Include="Microsoft.Dynamics.Commerce.Sdk.Pos " Version="9.39.*" />
 ```
 
 With every hotfix and new application release, new version of the package will be published in the same public feed, consume the right package version based on the version required for your go live. Consuming the higher version of the package than your go-live application version may result in runtime and deployment failures.
@@ -167,7 +168,7 @@ Keep your branch strategy simple. Build your strategy from these three concepts:
 
 Create a new feature main branch for our extension, follow the proper naming convention (refer the [Git branching doc for sample naming convention](https://docs.microsoft.com/en-us/azure/devops/repos/git/git-branching-guidance?view=azure-devops#name-your-feature-branches-by-convention))
 
-** Create a new development branch:**
+**Create a new development branch:**
 
 Create a private branch for the development:
 
@@ -187,7 +188,7 @@ After the development changes pushed into the main branch, create a new release 
 
 Merge the changes from the release branch back to main branch if any changes done in the release branch.
 
-```
+```text
 
 - git checkout master git merge release/x.x.x
 
@@ -201,7 +202,7 @@ Like release branch, create hotfix branch for extension from main branch and rel
 
 After a new version of the samples released, if required merge your development branch with the new branch. The repo contains only samples, so it&#39;s not required to always get the updated changes from the branch.
 
-```
+```text
 
 - git checkout master git merge release/x.x.x
 

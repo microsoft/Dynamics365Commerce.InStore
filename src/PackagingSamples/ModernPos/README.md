@@ -9,7 +9,7 @@ To deploy the MPOS extension, follow these steps.
 Note: Sealed MPOS must be installed before deploying the extension.
 1. Run the extension installer generated using command prompt.
 
-   Ex: C:\ModernPos.Installer\bin\Debug\net461> .\ModernPos.Installer.exe install
+   Ex: C:\ModernPos.Installer\bin\Debug\net472> .\ModernPos.Installer.exe install
 
 2. Close Modern POS if it's running.
 3. Open Modern POS and click the setting button and check the extension package deployment status under the Extension package section.

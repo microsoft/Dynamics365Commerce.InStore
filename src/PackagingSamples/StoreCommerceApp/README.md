@@ -10,7 +10,7 @@ Note: Store Commerce must be installed before deploying the extension.
 1. Close Store Commerce if it's running.
 2. Run the extension installer generated using command prompt.
 
-   Ex: C:\Contoso.StoreCommercePackagingSample.StoreCommerce.Installer\bin\Debug\net461> .\Contoso.StoreCommercePackagingSample.StoreCommerce.Installer.exe install
+   Ex: C:\Contoso.StoreCommercePackagingSample.StoreCommerce.Installer\bin\Debug\net472> .\Contoso.StoreCommercePackagingSample.StoreCommerce.Installer.exe install
 
 3. Open Store Commerce and click the setting button and check the extension package deployment status under the Extension package section.
 

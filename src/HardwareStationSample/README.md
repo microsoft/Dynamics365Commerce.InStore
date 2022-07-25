@@ -28,7 +28,7 @@ To deploy the Shared Hardware station extension for POS and to test it, follow t
 
 1. Run the extension installer generated using command prompt.
 
-   Ex: C:\HardwareStation.Installer\bin\Debug\net461> .\HardwareStation.Installer.exe install
+   Ex: C:\HardwareStation.Installer\bin\Debug\net472> .\HardwareStation.Installer.exe install
 
 2. Close POS if it's running.
 3. Open POS and configure it to use the Shared Hardware Station.
