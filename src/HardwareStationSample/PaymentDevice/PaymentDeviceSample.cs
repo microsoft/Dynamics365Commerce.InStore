@@ -290,7 +290,7 @@ namespace Contoso.Commerce.HardwareStation.PaymentSample
                 await this.OpenAsync(request.DeviceName, request.TerminalSettings, request.DeviceConfig).ConfigureAwait(false);
             }));
 
-            return new NullResponse();
+            return NullResponse.Instance;
         }
 
         /// <summary>
@@ -305,7 +305,7 @@ namespace Contoso.Commerce.HardwareStation.PaymentSample
                 await this.CloseAsync().ConfigureAwait(false);
             }));
 
-            return new NullResponse();
+            return NullResponse.Instance;
         }
 
         /// <summary>
@@ -321,7 +321,7 @@ namespace Contoso.Commerce.HardwareStation.PaymentSample
                 await this.BeginTransactionAsync(request.PaymentConnectorName, request.MerchantInformation).ConfigureAwait(false);
             }));
 
-            return new NullResponse();
+            return NullResponse.Instance;
         }
 
         /// <summary>
@@ -339,7 +339,7 @@ namespace Contoso.Commerce.HardwareStation.PaymentSample
 
             this.ResetCardPaymentInfo();
 
-            return new NullResponse();
+            return NullResponse.Instance;
         }
 
         /// <summary>
@@ -354,7 +354,7 @@ namespace Contoso.Commerce.HardwareStation.PaymentSample
                 await this.CancelOperationAsync().ConfigureAwait(false);
             }));
 
-            return new NullResponse();
+            return NullResponse.Instance;
         }
 
         /// <summary>
@@ -368,7 +368,7 @@ namespace Contoso.Commerce.HardwareStation.PaymentSample
 
             Utilities.WaitAsyncTask(() => this.UpdateLineItemsAsync(request));
 
-            return new NullResponse();
+            return NullResponse.Instance;
         }
 
         /// <summary>
