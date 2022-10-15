@@ -11,12 +11,13 @@ namespace Contoso.CommerceRuntime
 {
     using System;
     using System.Collections.Generic;
+    using System.Threading.Tasks;
     using Microsoft.Dynamics.Commerce.Runtime;
     using Microsoft.Dynamics.Commerce.Runtime.DataModel;
     using Microsoft.Dynamics.Commerce.Runtime.Services.Messages;
     using Microsoft.Dynamics.Commerce.Runtime.Messages;
 
-    public class AddExtensionPropertiesToProductSearchResults : IRequestTrigger
+    public class AddExtensionPropertiesToProductSearchResults : IRequestTriggerAsync
     {
         // This key must match the name of the setting included in the CommerceRuntimeExtensionSettings.
         private const string IncludeExtensionPropertiesInProductSearchKey = "ext.Contoso.IncludeExtensionPropertiesInProductSearch";
@@ -38,7 +39,7 @@ namespace Contoso.CommerceRuntime
         /// </summary>
         /// <param name="request">The request.</param>
         /// <param name="response">The response.</param>
-        public void OnExecuted(Request request, Response response)
+        public Task OnExecuted(Request request, Response response)
         {
             ThrowIf.Null(request, "request");
             ThrowIf.Null(response, "response");
@@ -60,14 +61,17 @@ namespace Contoso.CommerceRuntime
                     }
                 }
             }
+
+            return Task.CompletedTask;
         }
 
         /// <summary>
         /// Pre trigger code.
         /// </summary>
         /// <param name="request">The request.</param>
-        public void OnExecuting(Request request)
+        public Task OnExecuting(Request request)
         {
+            return Task.CompletedTask;
         }
     }
 }
