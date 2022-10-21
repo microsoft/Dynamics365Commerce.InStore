@@ -4,16 +4,18 @@
     <MajorVersion>9.40</MajorVersion>
     <Version>$(MajorVersion).$(BuildNumber)</Version>
   </PropertyGroup>
+
   <PropertyGroup>
     <Publisher Condition="'$(Publisher)' == ''">CN=Contoso Ltd.</Publisher>
     <PublisherDisplayName Condition="'$(PublisherDisplayName)' == ''">Contoso Ltd.</PublisherDisplayName>
   </PropertyGroup>
+
   <PropertyGroup>
-    <CommerceSdkPackagesVersion>[9.40.22293.5-preview,9.41)</CommerceSdkPackagesVersion>
+    <CommerceSdkPackagesVersion>[9.40.*,9.41)</CommerceSdkPackagesVersion>
     <CommercePosPackagesVersion>[9.40.*,9.41)</CommercePosPackagesVersion>
-    <CommerceChannelPackagesVersion>[9.40.22292.16-preview,9.41)</CommerceChannelPackagesVersion>
-    <CommerceHwsPackagesVersion>[9.40.22293.8-preview,9.41)</CommerceHwsPackagesVersion>
-    <CommerceToolsPackagesVersion>[10.26.22249.1,10.27)</CommerceToolsPackagesVersion>
-    <CommercePaymentsPackagesVersion>[10.40.22286.3-preview,10.41)</CommercePaymentsPackagesVersion>
+    <CommerceChannelPackagesVersion>[9.40.*,9.41)</CommerceChannelPackagesVersion>
+    <CommerceHwsPackagesVersion>[9.40.*,9.41)</CommerceHwsPackagesVersion>
+    <CommerceToolsPackagesVersion>[10.26.*,10.27)</CommerceToolsPackagesVersion>
+    <CommercePaymentsPackagesVersion>[10.40.*,10.41)</CommercePaymentsPackagesVersion>
   </PropertyGroup>
 </Project>
