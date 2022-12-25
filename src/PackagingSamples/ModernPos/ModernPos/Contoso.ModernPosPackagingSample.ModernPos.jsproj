@@ -3,7 +3,7 @@
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).Default.props" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).props" />
-  <Import Project="..\..\..\Dependencies\Microsoft.Dynamics.Commerce.Sdk.Pos.9.38.22358.2\build\Microsoft.Dynamics.Commerce.Sdk.Pos.props" Condition="Exists('..\..\..\Dependencies\Microsoft.Dynamics.Commerce.Sdk.Pos.9.38.22358.2\build\Microsoft.Dynamics.Commerce.Sdk.Pos.props')" />
+  <Import Project="..\..\..\Dependencies\Microsoft.Dynamics.Commerce.Sdk.Pos.9.38.22359.2\build\Microsoft.Dynamics.Commerce.Sdk.Pos.props" Condition="Exists('..\..\..\Dependencies\Microsoft.Dynamics.Commerce.Sdk.Pos.9.38.22359.2\build\Microsoft.Dynamics.Commerce.Sdk.Pos.props')" />
   <Import Project="..\CustomizationPackage.props" />
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x86">
@@ -52,8 +52,8 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\..\..\Dependencies\Microsoft.Dynamics.Commerce.Sdk.Pos.9.38.22358.2\build\Microsoft.Dynamics.Commerce.Sdk.Pos.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\Dependencies\Microsoft.Dynamics.Commerce.Sdk.Pos.9.38.22358.2\build\Microsoft.Dynamics.Commerce.Sdk.Pos.props'))" />
-    <Error Condition="!Exists('..\..\..\Dependencies\Microsoft.Dynamics.Commerce.Sdk.Pos.9.38.22358.2\build\Microsoft.Dynamics.Commerce.Sdk.Pos.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\Dependencies\Microsoft.Dynamics.Commerce.Sdk.Pos.9.38.22358.2\build\Microsoft.Dynamics.Commerce.Sdk.Pos.targets'))" />
+    <Error Condition="!Exists('..\..\..\Dependencies\Microsoft.Dynamics.Commerce.Sdk.Pos.9.38.22359.2\build\Microsoft.Dynamics.Commerce.Sdk.Pos.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\Dependencies\Microsoft.Dynamics.Commerce.Sdk.Pos.9.38.22359.2\build\Microsoft.Dynamics.Commerce.Sdk.Pos.props'))" />
+    <Error Condition="!Exists('..\..\..\Dependencies\Microsoft.Dynamics.Commerce.Sdk.Pos.9.38.22359.2\build\Microsoft.Dynamics.Commerce.Sdk.Pos.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\Dependencies\Microsoft.Dynamics.Commerce.Sdk.Pos.9.38.22359.2\build\Microsoft.Dynamics.Commerce.Sdk.Pos.targets'))" />
   </Target>
-  <Import Project="..\..\..\Dependencies\Microsoft.Dynamics.Commerce.Sdk.Pos.9.38.22358.2\build\Microsoft.Dynamics.Commerce.Sdk.Pos.targets" Condition="Exists('..\..\..\Dependencies\Microsoft.Dynamics.Commerce.Sdk.Pos.9.38.22358.2\build\Microsoft.Dynamics.Commerce.Sdk.Pos.targets')" />
+  <Import Project="..\..\..\Dependencies\Microsoft.Dynamics.Commerce.Sdk.Pos.9.38.22359.2\build\Microsoft.Dynamics.Commerce.Sdk.Pos.targets" Condition="Exists('..\..\..\Dependencies\Microsoft.Dynamics.Commerce.Sdk.Pos.9.38.22359.2\build\Microsoft.Dynamics.Commerce.Sdk.Pos.targets')" />
 </Project>
