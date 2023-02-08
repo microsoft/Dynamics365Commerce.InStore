@@ -53,7 +53,9 @@ namespace Contoso.Commerce.HardwareStation.PaymentSample
     /// In the case of unsupported operations by the Payment Device, the request must still be supported, but an exception should be thrown.
     /// A real implementation should replace all mock and hard-coded information with properties retrieved from the actual device.
     /// </remarks>
+#pragma warning disable CS0618 // Type or member is obsolete. JUSTIFICATION: TODO: transform to asynchronous handler
     public class PaymentDeviceSample : INamedRequestHandler, IDisposable
+#pragma warning restore CS0618 // Type or member is obsolete
     {
         private PaySdk.PaymentProperty[] merchantProperties;      
         private string paymentConnectorName;

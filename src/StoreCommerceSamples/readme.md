@@ -10,5 +10,8 @@ This folder contains sample solutions that demonstrate how to customize the Stor
 - Create/
   - Dialogs/
     - [BarcodeMsrDialogSample](./Create/Dialogs/BarcodeMsrDialogSample/readme.md)
+- Extend/
+  - Triggers/
+    - [TriggerSamples](./Extend/Triggers/TriggerSamples/readme.md)
 - Solutions/
   - [GasStationSample](./Solutions/GasStationSample/README.md)

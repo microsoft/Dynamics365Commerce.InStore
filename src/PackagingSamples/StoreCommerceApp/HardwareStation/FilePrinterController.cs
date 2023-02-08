@@ -30,7 +30,7 @@ namespace Contoso
             /// <param name="printRequest">The print request.</param>
             /// <exception cref="System.Web.Http.HttpResponseException">Exception thrown when an error occurs.</exception>
             [HttpPost]
-            public Task<bool> Print(PrintFileRequest printRequest)
+            public async Task<bool> Print(PrintFileRequest printRequest)
             {
                 ThrowIf.Null(printRequest, "printRequest");
 
@@ -44,7 +44,7 @@ namespace Contoso
                     }
 
                     File.WriteAllLines(Path.Combine(directory, printRequest.FileName), printRequest.Lines, encoding: Encoding.UTF8);
-                    return Task.FromResult(true);
+                    return await Task.FromResult(true).ConfigureAwait(false);
                 }
                 catch (PeripheralException ex)
                 {

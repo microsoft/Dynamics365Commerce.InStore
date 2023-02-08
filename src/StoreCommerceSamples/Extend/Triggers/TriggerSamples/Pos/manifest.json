@@ -1,0 +1,38 @@
+{
+  "$schema": "./devDependencies/schemas/manifestSchema.json",
+  "name": "Contoso.TriggerSamples",
+  "publisher": "Contoso",
+  "version": "1.0.0.0",
+  "minimumPosVersion": "9.28.0.0",
+  "description": "A collection of samples that show how to extend triggers.",
+  "components": {
+    "extend": {
+      "triggers": [
+        {
+          "name": "ConfirmChangeQuantityTrigger",
+          "description": "A sample trigger showing how to implement a cancelable trigger. Adds a dialog to the Set Quantity flow requesting user confirmation prior to changing quantity.",
+          "triggerType": "PreSetQuantity",
+          "modulePath": "ConfirmChangeQuantityTrigger"
+        },
+        {
+          "name": "ChangeUnitOfMeasurePostProductSaleTrigger",
+          "description": "A sample trigger showing how to implement a noncancelable trigger. Automatically changes the unit of measure of Product 81212 to 'Dozen' when modifying the cart.",
+          "triggerType": "PostProductSale",
+          "modulePath": "ChangeUnitOfMeasurePostProductSaleTrigger"
+        },
+        {
+          "name": "CreditCardOnlyPreSelectTransactionPaymentMethod",
+          "description": "A sample trigger showing how to implement a data modification trigger. Filters out all payment methods except for credit cards.",
+          "triggerType": "PreSelectTransactionPaymentMethod",
+          "modulePath": "CreditCardOnlyPreSelectTransactionPaymentMethod"
+        },
+        {
+          "name": "ForceErrorPreProductSaleTrigger",
+          "description": "A sample trigger showing how to return an error. Shows an error dialog when trying to add Product 81213 to the cart.",
+          "triggerType": "PreProductSale",
+          "modulePath": "ForceErrorPreProductSaleTrigger"
+        }
+      ]
+    }
+  }
+}

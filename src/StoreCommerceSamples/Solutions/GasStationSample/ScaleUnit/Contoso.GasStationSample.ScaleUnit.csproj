@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CommerceRuntime\Contoso.GasStationSample.CommerceRuntime.csproj" />
+    <ProjectReference Include="..\Pos\Contoso.GasStationSample.Pos.csproj" />
   </ItemGroup>
 
   <ItemGroup>

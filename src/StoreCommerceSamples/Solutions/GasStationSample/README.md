@@ -13,11 +13,14 @@ This sample showcases a sample where the Store Commerce App is extended to suppo
 - Run the download jobs (1040, 1070 or 9999)
 
 ## Running the sample
-- Open the solution in Visual Studio 2017
-- Restore the nuget packages for the solution
-- Build the solution
-- Follow the steps outlined [here](https://docs.microsoft.com/en-us/dynamics365/commerce/dev-itpro/pos-extension/debug-pos-extension#run-and-debug-cloud-pos) on how to debug extensions
-- Sign in to Cloud POS
+- Open the Developer Command Prompt for Visual Studio 2022
+- Restore the nuget packages for the solution by running "nuget restore GasStationSample.sln"
+- Initialize Store Commerce development for the solution by running "msbuild GasStationSample.sln /t:InitDev"
+- Open Visual Studio Code in the solution root directory
+- Build the solution using the "Build & Install Store Commerce Extension" task in VSCode
+- Open PowerShell as Admin in the ScaleUnit.Installer bin directory & run ".\Contoso.GasStationSample.ScaleUnit.Installer.exe install"
+- Open the "Run & Debug Tab" in VSCode and use the "Debug Store Commerce" option to launch Store Commerce app with the debugger attached.
+- Sign in to Store Commerce or Cloud POS
 - Navigate to the product details page for the gasoline product created in the previous section and click the pump gas command to launch the gas pump dialog.
 
 ## APIs and extension points used

@@ -21,8 +21,8 @@ If you have only HWS extension, then remove all the other unwanted project refer
 
 ## Using the samples
 
-You can download the sample as zip and open it in Visual Studio (VS 2017).
-After opening in VS 2017, build the project. After successful build, output installer package will be created.
+You can download the sample as zip and open it in Visual Studio (VS 2022).
+After opening in VS 2022, build the project. After successful build, output installer package will be created.
 
 To deploy the Shared Hardware station extension for POS and to test it, follow the below steps.
 

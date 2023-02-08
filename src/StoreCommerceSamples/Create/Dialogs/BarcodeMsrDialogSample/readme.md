@@ -5,7 +5,7 @@ This sample shows how to create a new dialog that listens to barcode scanner and
 ![Demo](./Demo.gif)
 
 ## Running the sample
-- Open the solution in Visual Studio 2017
+- Open the solution in Visual Studio 2022
 - Restore the nuget packages for the solution
 - Build the solution
 - Follow the steps outlined [here](https://docs.microsoft.com/en-us/dynamics365/commerce/dev-itpro/pos-extension/debug-pos-extension#run-and-debug-cloud-pos) on how to debug extensions

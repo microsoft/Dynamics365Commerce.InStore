@@ -40,7 +40,7 @@
                 throw new ArgumentNullException("request");
             }
 
-            await this.InitializeGasPumps(request);
+            await this.InitializeGasPumps(request).ConfigureAwait(false);
             Type reqType = request.GetType();
             if (reqType == typeof(GetGasPumpsDataRequest))
             {
@@ -157,14 +157,14 @@
             var gasScanInfo = new ScanInfo();
             gasScanInfo.ScannedText = GetGasolineItemId(request);
             var getScanResultRequest = new GetScanResultRequest(gasScanInfo);
-            var response = await request.RequestContext.Runtime.ExecuteAsync<GetScanResultResponse>(getScanResultRequest, request.RequestContext);
+            var response = await request.RequestContext.Runtime.ExecuteAsync<GetScanResultResponse>(getScanResultRequest, request.RequestContext).ConfigureAwait(false);
 
             if (response.Result.MaskType == BarcodeMaskType.Item)
             {
                 GasPumpsDataService.COST_PER_UNIT = response.Result.Product.BasePrice;
             }
 
-            var orgUnits = await GetAllOrgUnitsAsync(request);
+            var orgUnits = await GetAllOrgUnitsAsync(request).ConfigureAwait(false);
             GasPumpsByStore = new Dictionary<string, IEnumerable<GasPump>>();
             var itemId = GetGasolineItemId(request);
             if (orgUnits.Any())
