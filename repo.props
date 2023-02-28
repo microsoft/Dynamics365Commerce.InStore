@@ -11,6 +11,12 @@
   </PropertyGroup>
 
   <PropertyGroup>
+    <!-- Workaround for breaking changes in PackageDefinitions metadata. https://github.com/dotnet/sdk/issues/30809 -->
+    <!-- TODO: avoid of the PackageDefinitions usage. -->
+    <EmitLegacyAssetsFileItems>true</EmitLegacyAssetsFileItems>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <CommerceSdkPackagesVersion>[9.41.*,9.42)</CommerceSdkPackagesVersion>
     <CommercePosPackagesVersion>[9.41.*,9.42)</CommercePosPackagesVersion>
     <CommerceChannelPackagesVersion>[9.41.*,9.42)</CommerceChannelPackagesVersion>
