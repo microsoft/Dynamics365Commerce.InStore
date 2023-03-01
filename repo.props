@@ -9,6 +9,11 @@
     <PublisherDisplayName Condition="'$(PublisherDisplayName)' == ''">Contoso Ltd.</PublisherDisplayName>
   </PropertyGroup>
   <PropertyGroup>
+    <!-- Workaround for breaking changes in PackageDefinitions metadata. https://github.com/dotnet/sdk/issues/30809 -->
+    <!-- TODO: avoid of the PackageDefinitions usage. -->
+    <EmitLegacyAssetsFileItems>true</EmitLegacyAssetsFileItems>
+  </PropertyGroup>
+  <PropertyGroup>
     <CommerceSdkPackagesVersion>[9.42.23059.5-preview,9.43)</CommerceSdkPackagesVersion>
     <CommercePosPackagesVersion>[9.42.*,9.43)</CommercePosPackagesVersion>
     <CommerceChannelPackagesVersion>[9.42.23056.4-preview,9.43)</CommerceChannelPackagesVersion>
