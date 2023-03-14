@@ -2,11 +2,16 @@
 {
     using System.Threading.Tasks;
     using Microsoft.Dynamics.Commerce.Sdk.Installers;
-    using Microsoft.Extensions.Logging;
+    using Microsoft.Dynamics.Retail.Diagnostics;
 
     [ExtensionInstallerStepExecutionPosition(ExtensionInstallerStepExecutionPhase.PostInstall, 1)]
     public class TestExtensionInstallerPostInstallStep : IExtensionInstallerStep
     {
+        private enum Events
+        {
+            ExecutingPostInstallStep,
+            ConfigurationValueFound
+        }
         public string Name { get; } = "TestExtensionInstallerPostInstallStep";
 
         public string DisplayName { get; } = "TestExtensionInstallerPostInstallStep";
@@ -15,11 +20,11 @@
 
         public Task Run(IExtensionInstallerStepContext context)
         {
-            context.Logger.LogInformation("************** Executing extension installer extension PostInstall step **************");
+            RetailLogger.Log.LogInformation(Events.ExecutingPostInstallStep, "************** Executing extension installer extension PostInstall step **************");
 
             context.PowerShellService.Run("echo 'About to print the value received from the PreInstallStep'");
 
-            context.Logger.LogInformation($"Found configuration value: {context.GetConfigurationValue(ConfigurationKeys.SampleKey)}");
+            RetailLogger.Log.LogInformation(Events.ConfigurationValueFound, $"Found configuration value: {context.GetConfigurationValue(ConfigurationKeys.SampleKey)}");
 
             return Task.CompletedTask;
         }
