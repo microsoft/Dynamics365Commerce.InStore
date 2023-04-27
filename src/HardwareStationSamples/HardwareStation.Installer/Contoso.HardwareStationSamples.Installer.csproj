@@ -13,5 +13,6 @@
     <ProjectReference Include="..\PaymentDevice\Contoso.PaymentDeviceSample.csproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
+    <ProjectReference Include="..\PeripheralCustomizations\Contoso.PeripheralCustomizations.csproj" />
   </ItemGroup>
 </Project>
