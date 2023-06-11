@@ -14,7 +14,7 @@
     <EmitLegacyAssetsFileItems>true</EmitLegacyAssetsFileItems>
   </PropertyGroup>
   <PropertyGroup>
-    <CommerceSdkPackagesVersion>[9.45.23161.5-preview,9.46)</CommerceSdkPackagesVersion>
+    <CommerceSdkPackagesVersion>[9.45.23162.5-preview,9.46)</CommerceSdkPackagesVersion>
     <CommercePosPackagesVersion>[9.45.*,9.46)</CommercePosPackagesVersion>
     <CommerceChannelPackagesVersion>[9.45.23159.5-preview,9.46)</CommerceChannelPackagesVersion>
     <CommerceHwsPackagesVersion>[9.45.23159.5-preview,9.46)</CommerceHwsPackagesVersion>
