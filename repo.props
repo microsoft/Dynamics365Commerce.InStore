@@ -4,22 +4,25 @@
     <MajorVersion>9.44</MajorVersion>
     <Version>$(MajorVersion).$(BuildNumber)</Version>
   </PropertyGroup>
+
   <PropertyGroup>
     <Publisher Condition="'$(Publisher)' == ''">CN=Contoso Ltd.</Publisher>
     <PublisherDisplayName Condition="'$(PublisherDisplayName)' == ''">Contoso Ltd.</PublisherDisplayName>
   </PropertyGroup>
+
   <PropertyGroup>
     <!-- Workaround for breaking changes in PackageDefinitions metadata. https://github.com/dotnet/sdk/issues/30809 -->
     <!-- TODO: avoid of the PackageDefinitions usage. -->
     <EmitLegacyAssetsFileItems>true</EmitLegacyAssetsFileItems>
   </PropertyGroup>
+
   <PropertyGroup>
-    <CommerceSdkPackagesVersion>[9.44.23167.4-preview,9.45)</CommerceSdkPackagesVersion>
+    <CommerceSdkPackagesVersion>[9.44.*,9.45)</CommerceSdkPackagesVersion>
     <CommercePosPackagesVersion>[9.44.*,9.45)</CommercePosPackagesVersion>
-    <CommerceChannelPackagesVersion>[9.44.23152.4-preview,9.45)</CommerceChannelPackagesVersion>
-    <CommerceHwsPackagesVersion>[9.44.23152.13-preview,9.45)</CommerceHwsPackagesVersion>
-    <CommerceToolsPackagesVersion>[10.31.23123.1-preview,10.32)</CommerceToolsPackagesVersion>
-    <CommercePaymentsPackagesVersion>[10.44.23151.3-preview,10.45)</CommercePaymentsPackagesVersion>
+    <CommerceChannelPackagesVersion>[9.44.*,9.45)</CommerceChannelPackagesVersion>
+    <CommerceHwsPackagesVersion>[9.44.*,9.45)</CommerceHwsPackagesVersion>
+    <CommerceToolsPackagesVersion>[10.31.*,10.32)</CommerceToolsPackagesVersion>
+    <CommercePaymentsPackagesVersion>[10.44.*,10.45)</CommercePaymentsPackagesVersion>
     <TypeScriptPackagesVersion>4.7.*</TypeScriptPackagesVersion>
   </PropertyGroup>
 </Project>
