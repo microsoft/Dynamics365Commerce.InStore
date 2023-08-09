@@ -33,3 +33,16 @@ To deploy the Shared Hardware station extension for POS and to test it, follow t
 2. Close POS if it's running.
 3. Open POS and configure it to use the Shared Hardware Station.
 4. Validate the extension scenario.
+
+To deploy the Dedicated Hardware station extensions (OPOS and Windows printer samples) for POS and to test them, follow the steps below:
+
+1. Close POS if it's running.
+2. Rebuild the Contoso.HardwareStation.Samples solution. Verify that in the build output, the installer completed successfully by seeing the message:
+
+  `InstallStoreCommerceExtensions: Running the StoreCommerce extensions installer completed successfully.`
+  
+3. Copy the CommerceRuntime DLL (HardwareStationSamples\CommerceRuntime\bin\Debug\netstandard2.0\Contoso.HardwareStationSamples.CommerceRuntime.dll) into your dev environment's Retail Server extension folder (\Pkg\bin\Ext).
+4. In the same folder, open the CommerceRuntime.Ext.config and add a line for the extension assembly:
+  `	<add source="assembly" value="Contoso.HardwareStationSamples.CommerceRuntime" />`
+5. Open POS and configure it to use the Local Hardware Station.
+6. Validate the extension scenarios.
