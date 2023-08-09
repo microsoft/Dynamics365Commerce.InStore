@@ -16,3 +16,6 @@ The CustomOposPrinterDevice class utilizes three Requests that showcases how to 
 - ExecuteOposDeviceMethodRequest executes a method on the OPOS device with a list of parameters. The method must exist and the parameters will be sent in the same order that they are given.
 - GetOposDevicePropertyValueRequest gets the value of a property on the OPOS Device. The property getter must be publicly accessible.
 - SetOposDevicePropertyValueRequest sets the value of a property on the OPOS Device. The property setter must be publicly accessible.
+
+### Custom Windows Printer Request
+Windows printer requests can be overriden to modify the receipt content, for example to center fixed-width 40-character receipts on a standard sheet of paper.
