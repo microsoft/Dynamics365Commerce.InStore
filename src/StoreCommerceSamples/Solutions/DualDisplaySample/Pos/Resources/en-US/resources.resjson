@@ -1,0 +1,28 @@
+﻿{
+    "string_0"              : "ID",
+    "_string_0.comment"     : "Item ID label text",
+
+    "string_1"              : "Name",
+    "_string_1.comment"     : "Item name label text",
+
+    "string_2"              : "Quantity",
+    "_string_2.comment"     : "Item cost label text",
+
+    "string_3"              : "Discount",
+    "_string_3.comment"     : "Total amount label text",
+
+    "string_4"              : "Cost",
+    "_string_4.comment"     : "Item cost label text",
+
+    "string_5"              : "Total Amount:",
+    "_string_5.comment"     : "Total amount label text",
+
+    "string_6"              : "Customer Name:",
+    "_string_6.comment"     : "Customer name label text",
+
+    "string_7"              : "Customer Account Number:",
+    "_string_7.comment"     : "Customer account number label text",
+
+    "string_8"              : "Employee Name:",
+    "_string_8.comment"     : "Employee name label text"
+}

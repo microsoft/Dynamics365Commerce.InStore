@@ -1,0 +1,29 @@
+﻿{
+  "$schema": "./devDependencies/schemas/manifestSchema.json",
+  "name": "DualDisplaySample",
+  "publisher": "Contoso",
+  "version": "1.0.0.0",
+  "minimumPosVersion": "9.32.0.0",
+  "dependencies": [
+    {
+      "alias": "knockout",
+      "format": "amd",
+      "modulePath": "Libraries/knockout"
+    }
+  ],
+  "components": {
+    "resources": {
+      "supportedUICultures": [ "en-US" ],
+      "fallbackUICulture": "en-US",
+      "culturesDirectoryPath": "Resources",
+      "stringResourcesFileName": "resources.resjson"
+    },
+    "dualDisplay": {
+      "customControl": {
+        "controlName": "DualDisplayCustomControl",
+        "htmlPath": "CustomControl/DualDisplayCustomControl.html",
+        "modulePath": "CustomControl/DualDisplayCustomControl"
+      }
+    }
+  }
+}

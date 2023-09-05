@@ -1,0 +1,378 @@
+{
+  "$schema": "./devDependencies/schemas/manifestSchema.json",
+  "name": "Contoso.PosExtensionSamples",
+  "publisher": "Contoso",
+  "version": "1.0.0.0",
+  "minimumPosVersion": "9.28.0.0",
+  "description": "A collection of samples that show how to extend pos.",
+  "dependencies": [
+    {
+      "alias": "knockout",
+      "format": "amd",
+      "modulePath": "Libraries/knockout"
+    }
+  ],
+  "components": {
+    "resources": {
+      "supportedUICultures": [ "en-US" ],
+      "fallbackUICulture": "en-US",
+      "culturesDirectoryPath": "Resources",
+      "stringResourcesFileName": "strings.resjson"
+    },
+    "extend": {
+      "triggers": [
+        {
+          "name": "ConfirmChangeQuantityTrigger",
+          "description": "A sample trigger showing how to implement a cancelable trigger. Adds a dialog to the Set Quantity flow requesting user confirmation prior to changing quantity.",
+          "triggerType": "PreSetQuantity",
+          "modulePath": "Extend/Triggers/ConfirmChangeQuantityTrigger"
+        },
+        {
+          "name": "ChangeUnitOfMeasurePostProductSaleTrigger",
+          "description": "A sample trigger showing how to implement a noncancellable trigger. Automatically changes the unit of measure of Product 81212 to 'Dozen' when modifying the cart.",
+          "triggerType": "PostProductSale",
+          "modulePath": "Extend/Triggers/ChangeUnitOfMeasurePostProductSaleTrigger"
+        },
+        {
+          "name": "CreditCardOnlyPreSelectTransactionPaymentMethod",
+          "description": "A sample trigger showing how to implement a data modification trigger. Filters out all payment methods except for credit cards.",
+          "triggerType": "PreSelectTransactionPaymentMethod",
+          "modulePath": "Extend/Triggers/CreditCardOnlyPreSelectTransactionPaymentMethod"
+        },
+        {
+          "name": "ForceErrorPreProductSaleTrigger",
+          "description": "A sample trigger showing how to return an error. Shows an error dialog when trying to add Product 81213 to the cart.",
+          "triggerType": "PreProductSale",
+          "modulePath": "Extend/Triggers/ForceErrorPreProductSaleTrigger"
+        }
+      ],
+      "views": {
+        "AddressAddEditView": {
+          "controlsConfig": {
+            "customControls": [
+              {
+                "controlName": "addressAddEditCustomFieldsSection",
+                "htmlPath": "Extend/ViewExtensions/AddressAddEdit/AddressAddEditCustomFieldsSection.html",
+                "modulePath": "Extend/ViewExtensions/AddressAddEdit/AddressAddEditCustomFieldsSection"
+              }
+            ]
+          },
+          "appBarCommands": [
+            {
+              "modulePath": "Extend/ViewExtensions/AddressAddEdit/GetExternalAddressCommand"
+            }
+          ]
+        },
+        "CartView": {
+          "viewController": {
+            "modulePath": "Extend/ViewExtensions/Cart/CartViewController"
+          },
+          "linesGrid": {
+            "customColumn1": {
+              "modulePath": "Extend/ViewExtensions/Cart/LinesGrid/CustomColumn1Configuration"
+            },
+            "customColumn2": {
+              "modulePath": "Extend/ViewExtensions/Cart/LinesGrid/CustomColumn2Configuration"
+            },
+            "customColumn3": {
+              "modulePath": "Extend/ViewExtensions/Cart/LinesGrid/CustomColumn3Configuration"
+            },
+            "customColumn4": {
+              "modulePath": "Extend/ViewExtensions/Cart/LinesGrid/CustomColumn4Configuration"
+            },
+            "customColumn5": {
+              "modulePath": "Extend/ViewExtensions/Cart/LinesGrid/CustomColumn5Configuration"
+            },
+            "customItemSubfields": [
+              {
+                "itemSubfieldName": "fraudCheckReminderItemSubfield",
+                "modulePath": "Extend/ViewExtensions/Cart/LinesGrid/FraudCheckReminderItemSubfield"
+              },
+              {
+                "itemSubfieldName": "subscribeAndSaveItemSubfield",
+                "modulePath": "Extend/ViewExtensions/Cart/LinesGrid/SubscribeAndSaveItemSubfield"
+              }
+            ]
+          },
+          "paymentsGrid": {
+            "customColumn1": {
+              "modulePath": "Extend/ViewExtensions/Cart/PaymentsGrid/CustomColumn1Configuration"
+            }
+          },
+          "deliveryGrid": {
+            "customColumn1": {
+              "modulePath": "Extend/ViewExtensions/Cart/DeliveryGrid/CustomColumn1Configuration"
+            }
+          },
+          "controlsConfig": {
+            "customControls": [
+              {
+                "controlName": "lineDetails",
+                "htmlPath": "Extend/ViewExtensions/Cart/LineDetailsCustomControl.html",
+                "modulePath": "Extend/ViewExtensions/Cart/LineDetailsCustomControl"
+              },
+              {
+                "controlName": "customerDetails",
+                "htmlPath": "Extend/ViewExtensions/Cart/CustomerDetailsCustomControl.html",
+                "modulePath": "Extend/ViewExtensions/Cart/CustomerDetailsCustomControl"
+              }
+            ]
+          },
+          "totalsPanel": {
+            "customFields": [
+              {
+                "fieldName": "TipsField",
+                "modulePath": "Extend/ViewExtensions/Cart/TipsCustomField"
+              }
+            ]
+          }
+        },
+        "ShippingMethodsView": {
+          "viewController": {
+            "modulePath": "Extend/ViewExtensions/ShippingMethods/ShippingMethodsViewController"
+          }
+        },
+        "CustomerAddEditView": {
+          "appBarCommands": [
+            {
+              "modulePath": "Extend/ViewExtensions/CustomerAddEdit/GetExternalCustomerCommand"
+            }
+          ],
+          "controlsConfig": {
+            "customControls": [
+              {
+                "controlName": "customFieldsSection",
+                "htmlPath": "Extend/ViewExtensions/CustomerAddEdit/CustomFieldsSection.html",
+                "modulePath": "Extend/ViewExtensions/CustomerAddEdit/CustomFieldsSection"
+              }
+            ]
+          }
+        },
+        "CustomerDetailsView": {
+          "appBarCommands": [
+            {
+              "modulePath": "Extend/ViewExtensions/CustomerDetails/DisplayCustomerSummaryCommand"
+            }
+          ],
+          "controlsConfig": {
+            "customControls": [
+              {
+                "controlName": "customerDetailsFriendsPanel",
+                "htmlPath": "Extend/ViewExtensions/CustomerDetails/CustomerDetailsFriendsPanel.html",
+                "modulePath": "Extend/ViewExtensions/CustomerDetails/CustomerDetailsFriendsPanel"
+              }
+            ]
+          }
+        },
+        "InventoryLookupMatrixView": {
+          "cellInteractionMenu": {
+            "customCommands": [
+              {
+                "modulePath": "Extend/ViewExtensions/InventoryLookupMatrix/MoreDetailsMenuCommand"
+              }
+            ]
+          }
+        },
+        "InventoryLookupView": {
+          "appBarCommands": [
+            {
+              "modulePath": "Extend/ViewExtensions/InventoryLookup/DownloadDocCommand"
+            }
+          ],
+          "inventoryByStoreListConfiguration": {
+            "modulePath": "Extend/ViewExtensions/InventoryLookup/CustomInventoryByStoreListColumns"
+          }
+        },
+        "FulfillmentLineView": {
+          "appBarCommands": [
+            {
+              "modulePath": "Extend/ViewExtensions/FulfillmentLine/FulfillmentLineCommand"
+            }
+          ],
+          "customSortColumns": [
+            {
+              "modulePath": "Extend/ViewExtensions/FulfillmentLine/DeliveryModeSortColumn"
+            }
+          ]
+        },
+        "ManageShiftsView": {
+          "appBarCommands": [
+            {
+              "modulePath": "Extend/ViewExtensions/ManageShifts/ManageShiftsCommand"
+            }
+          ]
+        },
+        "PaymentView": {
+          "appBarCommands": [
+            {
+              "modulePath": "Extend/ViewExtensions/Payment/PaymentViewCommand"
+            }
+          ]
+        },
+        "PickingAndReceivingDetailsView": {
+          "appBarCommands": [
+            {
+              "modulePath": "Extend/ViewExtensions/PickingAndReceivingDetails/PickingAndReceivingDetailsCmd"
+            }
+          ],
+          "orderLinesListConfiguration": {
+            "modulePath": "Extend/ViewExtensions/PickingAndReceivingDetails/CustomOrderLinesListColumns"
+          }
+        },
+        "ResumeCartView": {
+          "suspendedCartsListConfiguration": {
+            "modulePath": "Extend/ViewExtensions/ResumeCart/ResumeCartListColumns"
+          }
+        },
+        "SearchOrdersView": {
+          "appBarCommands": [
+            {
+              "modulePath": "Extend/ViewExtensions/SearchOrders/SampleSearchOrdersCommand"
+            }
+          ],
+          "ordersListConfiguration": {
+            "modulePath": "Extend/ViewExtensions/SearchOrders/CustomOrdersListColumns"
+          },
+          "searchFilters": [
+            {
+              "modulePath": "Extend/ViewExtensions/SearchOrders/SampleOrderSearchTextFilter"
+            }
+          ]
+        },
+        "SearchPickingAndReceivingView": {
+          "appBarCommands": [
+            {
+              "modulePath": "Extend/ViewExtensions/SearchPickingAndReceiving/SearchPickingAndReceivingCmd"
+            }
+          ],
+          "ordersListConfiguration": {
+            "modulePath": "Extend/ViewExtensions/SearchPickingAndReceiving/CustomOrdersListColumns"
+          }
+        },
+        "SearchView": {
+          "productAppBarCommands": [
+            {
+              "modulePath": "Extend/ViewExtensions/Search/NavigateToSimpleExtensionViewCommand"
+            },
+            {
+              "modulePath": "Extend/ViewExtensions/Search/QuickCompareProductsCommand"
+            }
+          ],
+          "customerAppBarCommands": [
+            {
+              "modulePath": "Extend/ViewExtensions/Search/ViewCustomerSummaryCommand"
+            }
+          ],
+          "productListConfiguration": {
+            "modulePath": "Extend/ViewExtensions/Search/CustomProductSearchColumns"
+          },
+          "customerListConfiguration": {
+            "modulePath": "Extend/ViewExtensions/Search/CustomCustomerSearchColumns"
+          }
+        },
+        "ShowJournalView": {
+          "appBarCommands": [
+            {
+              "modulePath": "Extend/ViewExtensions/ShowJournal/DownloadDocumentCommand"
+            }
+          ],
+          "transactionListConfiguration": {
+            "modulePath": "Extend/ViewExtensions/ShowJournal/TransactionListColumns"
+          },
+          "customerOrderHistoryListConfiguration": {
+            "modulePath": "Extend/ViewExtensions/ShowJournal/CustomerOrderHistoryListColumns"
+          },
+          "searchFilters": [
+            {
+              "modulePath": "Extend/ViewExtensions/ShowJournal/SampleTransactionSearchTextFilter"
+            }
+          ],
+          "linesGrid": {
+            "customItemSubfields": [
+              {
+                "itemSubfieldName": "fraudCheckReminderItemSubfield",
+                "modulePath": "Extend/ViewExtensions/ShowJournal/LinesGrid/FraudCheckReminderItemSubfield"
+              },
+              {
+                "itemSubfieldName": "subscribeAndSaveItemSubfield",
+                "modulePath": "Extend/ViewExtensions/ShowJournal/LinesGrid/SubscribeAndSaveItemSubfield"
+              }
+            ]
+          }
+        },
+        "SimpleProductDetailsView": {
+          "controlsConfig": {
+            "customControls": [
+              {
+                "controlName": "productAvailabilityPanel",
+                "htmlPath": "Extend/ViewExtensions/SimpleProductDetails/ProductAvailabilityPanel.html",
+                "modulePath": "Extend/ViewExtensions/SimpleProductDetails/ProductAvailabilityPanel"
+              }
+            ]
+          }
+        },
+        "PriceCheckView": {
+          "controlsConfig": {
+            "customControls": [
+              {
+                "controlName": "priceCheckPanel",
+                "htmlPath": "Extend/ViewExtensions/PriceCheck/PriceCheckCustomControlPanel.html",
+                "modulePath": "Extend/ViewExtensions/PriceCheck/PriceCheckCustomControlPanel"
+              }
+            ]
+          }
+        },
+        "ReportDetailsView": {
+          "appBarCommands": [
+            {
+              "modulePath": "Extend/ViewExtensions/ReportDetails/ReportDetailsCommand"
+            }
+          ]
+        },
+        "ReturnTransactionView": {
+          "appBarCommands": [
+            {
+              "modulePath": "Extend/ViewExtensions/ReturnTransaction/ReturnTransactionCommand"
+            }
+          ],
+          "salesOrderLinesGrid": {
+            "customItemSubfields": [
+              {
+                "itemSubfieldName": "fraudCheckReminderItemSubfield",
+                "modulePath": "Extend/ViewExtensions/ReturnTransaction/LinesGrid/FraudCheckReminderItemSubfield"
+              }
+            ]
+          }
+        },
+        "StockCountDetailsView": {
+          "appBarCommands": [
+            {
+              "modulePath": "Extend/ViewExtensions/StockCountDetails/StockCountDetailsCommand"
+            }
+          ]
+        },
+        "HealthCheckView": {
+          "customHealthChecks": [
+            {
+              "name": "customHealthCheck",
+              "modulePath": "Extend/ViewExtensions/HealthCheck/CustomHealthCheck"
+            }
+          ]
+        }
+      }
+    },
+    "create": {
+      "templatedDialogs": [
+        {
+          "htmlPath": "Create/Dialogs/BarcodeMsrDialog/BarcodeMsrDialog.html",
+          "modulePath": "Create/Dialogs/BarcodeMsrDialog/BarcodeMsrDialog"
+        }
+      ],
+      "requestHandlers": [
+        {
+          "modulePath": "Create/RequestHandlers/SendEmailRequestHandler"
+        }
+      ]
+    }
+  }
+}
