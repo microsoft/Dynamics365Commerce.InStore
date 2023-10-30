@@ -16,7 +16,6 @@ import { ProxyEntities } from "PosApi/Entities";
 import { ObjectExtensions, StringExtensions } from "PosApi/TypeExtensions";
 
 export default class SubscribeAndSaveItemSubfield extends CustomLinesGridItemSubfieldBase {
-
     constructor(context: ICustomLinesGridItemSubfieldContext) {
         super(context);
     }
@@ -41,6 +40,6 @@ export default class SubscribeAndSaveItemSubfield extends CustomLinesGridItemSub
      * @returns {boolean} Whether or not the given sales line is for an item that supports subscribing and saving.
      */
     private _isSubscribeAndSaveCartLine(salesLine: ProxyEntities.SalesLine): boolean {
-        return !ObjectExtensions.isNullOrUndefined(salesLine) && salesLine.ItemId === "0006"; // Inner Tube Patches
+        return !ObjectExtensions.isNullOrUndefined(salesLine) && salesLine.ItemId === "0006"; // Inner Tube Patches.
     }
 }

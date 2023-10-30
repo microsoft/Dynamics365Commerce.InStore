@@ -1,0 +1,106 @@
+﻿<!--
+    HTMLLint is an internal tool that fails on this file due to non-localized example labels,
+    there is no need for this comment and the one below in real-world extensions.
+-->
+<!-- HTMLLint Disable LabelExistsValidator -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>AppBarView</title>
+</head>
+<body>
+    <div class="AppBarView">
+            <div class="grow marginBottom48 scrollY">
+                <div class="pad20 col width680">
+                    <h3>AppBar</h3>
+                    <div class="h4 padTop40">ViewModel interface</div>
+                    <textarea class="height220">
+
+/**
+ * Type interface representing a command definition.
+ */
+export interface ICommandDefinition extends Commerce.Extensibility.ICommandDefinition {
+    /**
+     * The command's execute implementation.
+     * @param {CustomViewControllerExecuteCommandArgs} args The command execution arguments.
+     */
+    readonly execute: (args: CustomViewControllerExecuteCommandArgs) => void;
+}
+/**
+ * Type interface representing the command bar configuration.
+ */
+export interface ICommandBarConfiguration {
+    readonly commands: ICommandDefinition[];
+}
+
+/**
+ * Type interface representing a custom view controller configuration.
+ */
+export interface ICustomViewControllerConfiguration {
+    readonly title: string;
+    readonly commandBar?: ICommandBarConfiguration;
+}
+                    </textarea>
+                    <div class="h4 padTop40">Controller syntax</div>
+                    <textarea class="height220">
+import * as Views from "PosApi/Create/Views";
+import { ObjectExtensions } from "PosApi/TypeExtensions";
+
+/**
+ * The controller for AppBarView.
+ */
+export default class AppBarView extends Views.CustomViewControllerBase {
+
+    constructor(context: Views.ICustomViewControllerContext) {
+        let config: Views.ICustomViewControllerConfiguration = {
+            title: "",
+            commandBar: {
+                commands: [
+                    {
+                        name: "AppBarView_appBarCommand",
+                        label: "Execute command",
+                        icon: Views.Icons.Add,
+                        isVisible: true,
+                        canExecute: true,
+                        execute: (args: Views.CustomViewControllerExecuteCommandArgs): void => {
+                            this.appBarCommandExecute();
+                        }
+                    }
+                ]
+            }
+        };
+
+        super(context, config);
+        this.state.title = "AppBar sample"
+    }
+
+    /**
+     * Bind the html element with view controller.
+     *
+     * @param {HTMLElement} element DOM element.
+     */
+    public onReady(element: HTMLElement): void {
+        ko.applyBindings(this, element);
+    }
+
+    /**
+     * Called when the object is disposed.
+     */
+    public dispose(): void {
+        ObjectExtensions.disposeAllProperties(this);
+    }
+
+    /**
+     * Callback for appbar command.
+     */
+    private appBarCommandExecute(): void {
+        this.context.logger.logInformational("appBarCommandExecute");
+    }
+}
+                    </textarea>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

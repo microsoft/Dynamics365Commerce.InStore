@@ -1,6 +1,6 @@
 # Gas Station Pump Control Sample
 ## Overview
-This sample showcases a sample where the Store Commerce App is extended to support common gas station scenarios. This sample extends the Store Commerce header to add a custom item that will provide users with information about the gas pump statuses on all views. The sample also adds a new view to display the complete status information for all gas pumps in the station. This view is reached by clicking the header extension and can be used to control the pumps and add gasoline to the cart. To simulate a customer pumping gas the sample adds an extension command to the SimpleProductDetailsView that is displayed when the details page is shown for a gasoline product.
+This sample showcases a sample where the Store Commerce App is extended to support common gas station scenarios. This sample extends the Store Commerce header to add a custom item that will provide users with information about the gas pump statuses on all views. The sample also adds a new view to display the complete status information for all gas pumps in the station. The view is divided into two pivot sections: Active pumps and Out of service pumps. This view is reached by clicking the header extension and can be used to control the pumps and add gasoline to the cart. To simulate a customer pumping gas the sample adds an extension command to the SimpleProductDetailsView that is displayed when the details page is shown for a gasoline product.
 
 ![Demo](./Demo.gif)
 
@@ -51,6 +51,9 @@ This sample showcases a sample where the Store Commerce App is extended to suppo
 - IDataList: The interface for the POS datalist control.
   - addEventListener: Used to add event listeners for the events listed below. Adding event listeners allows the extension to know when the datalist received input from the user.
     - "SelectionChanged": Event raised when a datalist row is selected or deselected.
+- IPivot: The interface for the POS pivot control.
+  - addEventListener: Used to add event listeners for the events listed below. Adding event listeners allows the extension to know when the pivot received input from the user.
+    - "SelectionChanged": Event raised when a pivot item selection is changed.
 ### "PosApi/Consume/Dialogs"
 - ShowListInputDialogClientRequest/ShowListInputDialogClientResponse: This API is used to show a list of options to the user and to get their selection. This sample uses the API to select a gas pump in the PumpGasExtensionCommand class.
 - ShowMessageDialogClientRequest/ShowMessageDialogClientResponse: This API is used to show a message in POS and in this sample it is used to display an error message.

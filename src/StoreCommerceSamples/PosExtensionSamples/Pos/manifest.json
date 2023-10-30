@@ -20,6 +20,22 @@
       "stringResourcesFileName": "strings.resjson"
     },
     "extend": {
+      "header": {
+        "customPackingItems": [
+          {
+            "name": "Samples View Header Item",
+            "description": "An item links to the extension samples on the POS header.",
+            "modulePath": "Extend/Header/SamplesViewPackingItem",
+            "htmlPath": "Extend/Header/SamplesViewPackingItem.html"
+          },
+          {
+            "name": "CartAmountDuePackingItem",
+            "htmlPath": "Extend/Header/CartAmountDuePackingItem.html",
+            "modulePath": "Extend/Header/CartAmountDuePackingItem"
+
+          }
+        ]
+      },
       "triggers": [
         {
           "name": "ConfirmChangeQuantityTrigger",
@@ -34,6 +50,12 @@
           "modulePath": "Extend/Triggers/ChangeUnitOfMeasurePostProductSaleTrigger"
         },
         {
+          "name": "BeepSoundPostProductSaleTrigger",
+          "description": "A sample trigger showing how to use resource files in extension. Automatically plays a beep sound when adding product to the cart.",
+          "triggerType": "PostProductSale",
+          "modulePath": "Extend/Triggers/BeepSoundPostProductSaleTrigger"
+        },
+        {
           "name": "CreditCardOnlyPreSelectTransactionPaymentMethod",
           "description": "A sample trigger showing how to implement a data modification trigger. Filters out all payment methods except for credit cards.",
           "triggerType": "PreSelectTransactionPaymentMethod",
@@ -44,6 +66,94 @@
           "description": "A sample trigger showing how to return an error. Shows an error dialog when trying to add Product 81213 to the cart.",
           "triggerType": "PreProductSale",
           "modulePath": "Extend/Triggers/ForceErrorPreProductSaleTrigger"
+        },
+        {
+          "triggerType": "PreProductSale",
+          "modulePath": "Extend/Triggers/PreProductSaleTrigger"
+        },
+        {
+          "triggerType": "PreProductSale",
+          "modulePath": "Extend/Triggers/InfoLoggingPreProductSaleTrigger"
+        },
+        {
+          "triggerType": "PostProductSale",
+          "modulePath": "Extend/Triggers/PostProductSaleTrigger"
+        },
+        {
+          "triggerType": "ApplicationStart",
+          "modulePath": "Extend/Triggers/ApplicationStartTrigger"
+        },
+        {
+          "triggerType": "ApplicationSuspend",
+          "modulePath": "Extend/Triggers/ApplicationSuspendTrigger"
+        },
+        {
+          "triggerType": "PrePrintReceiptCopy",
+          "modulePath": "Extend/Triggers/PrePrintReceiptCopyTrigger"
+        },
+        {
+          "triggerType": "PostGetSerialNumber",
+          "modulePath": "Extend/Triggers/PostGetSerialNumberTrigger"
+        },
+        {
+          "triggerType": "PostGetGiftCardNumber",
+          "modulePath": "Extend/Triggers/PostGetGiftCardNumberTrigger"
+        },
+        {
+          "triggerType": "PostProductSale",
+          "modulePath": "Extend/Triggers/ChangeUnitOfMeasurePostProductSaleTrigger"
+        },
+        {
+          "triggerType": "PreGetLoyaltyCardBalance",
+          "modulePath": "Extend/Triggers/PreGetLoyaltyCardBalanceTrigger"
+        },
+        {
+          "triggerType": "PreDisplayLoyaltyCardBalance",
+          "modulePath": "Extend/Triggers/PreDisplayLoyaltyCardBalanceTrigger"
+        },
+        {
+          "triggerType": "PostGetLoyaltyCardBalance",
+          "modulePath": "Extend/Triggers/PostGetLoyaltyCardBalanceTrigger"
+        },
+        {
+          "triggerType": "PreCreatePackingSlip",
+          "modulePath": "Extend/Triggers/PreCreatePackingSlipTrigger"
+        },
+        {
+          "triggerType": "PreCustomerSave",
+          "modulePath": "Extend/Triggers/PreCustomerSaveTrigger"
+        },
+        {
+          "triggerType": "PostCustomerSave",
+          "modulePath": "Extend/Triggers/PostCustomerSaveTrigger"
+        },
+        {
+          "triggerType": "PreFloatEntry",
+          "modulePath": "Extend/Triggers/PreFloatEntryTrigger"
+        },
+        {
+          "triggerType": "PostFloatEntry",
+          "modulePath": "Extend/Triggers/PostFloatEntryTrigger"
+        },
+        {
+          "triggerType": "PreMarkFulfillmentLinesAsPacked",
+          "modulePath": "Extend/Triggers/PreMarkFulfillmentLinesAsPackedTrigger"
+        },
+        {
+          "triggerType": "PreShipFulfillmentLines",
+          "modulePath": "Extend/Triggers/PreShipFulfillmentLinesTrigger"
+        },
+        {
+          "triggerType": "PostReceiptPrompt",
+          "modulePath": "Extend/Triggers/PostReceiptPromptTrigger"
+        },
+        {
+          "triggerType": "PreSearchOrders",
+          "modulePath": "Extend/Triggers/PreSearchOrdersTrigger"
+        },
+        {
+          "triggerType": "PostLogon",
+          "modulePath": "Extend/Triggers/PostLogonTrigger"
         }
       ],
       "views": {
@@ -252,9 +362,6 @@
         "SearchView": {
           "productAppBarCommands": [
             {
-              "modulePath": "Extend/ViewExtensions/Search/NavigateToSimpleExtensionViewCommand"
-            },
-            {
               "modulePath": "Extend/ViewExtensions/Search/QuickCompareProductsCommand"
             }
           ],
@@ -359,18 +466,302 @@
             }
           ]
         }
-      }
+      },
+      "requestHandlers": [
+        {
+          "modulePath": "Extend/RequestHandlers/CashDrawerOpenRequestHandlerExt"
+        },
+        {
+          "modulePath": "Extend/RequestHandlers/DepositOverrideOperationRequestHandlerExt"
+        },
+        {
+          "modulePath": "Extend/RequestHandlers/GetCancellationChargeClientRequestHandlerExt"
+        },
+        {
+          "modulePath": "Extend/RequestHandlers/GetScanResultClientRequestHandlerExt"
+        },
+        {
+          "modulePath": "Extend/RequestHandlers/GetSerialNumberClientRequestHandlerExt"
+        },
+        {
+          "modulePath": "Extend/RequestHandlers/GetKeyedInPriceClientRequestHandlerExt"
+        },
+        {
+          "modulePath": "Extend/RequestHandlers/GetPickupDateClientRequestHandlerExt"
+        },
+        {
+          "modulePath": "Extend/RequestHandlers/GetReportParametersClientRequestHandlerExt"
+        },
+        {
+          "modulePath": "Extend/RequestHandlers/GetTenderDetailsClientRequestHandlerExt"
+        },
+        {
+          "modulePath": "Extend/RequestHandlers/PrintPackingSlipClientRequestHandlerExt"
+        },
+        {
+          "modulePath": "Extend/RequestHandlers/GetShippingDateClientRequestHandlerExt"
+        },
+        {
+          "modulePath": "Extend/RequestHandlers/GetRefinerValuesByTextServiceRequestHandlerExt"
+        },
+        {
+          "modulePath": "Extend/RequestHandlers/ShowChangeDueClientRequestHandlerExt"
+        },
+        {
+          "modulePath": "Extend/RequestHandlers/GetReceiptEmailAddressClientRequestHandlerExt"
+        },
+        {
+          "modulePath": "Extend/RequestHandlers/SelectZipCodeInfoClientRequestHandlerExt"
+        },
+        {
+          "modulePath": "Extend/RequestHandlers/LoyaltyCardPointsBalanceOperationRequestHandlerExt"
+        },
+        {
+          "modulePath": "Extend/RequestHandlers/GetShippingChargeClientRequestHandlerExt"
+        },
+        {
+          "modulePath": "Extend/RequestHandlers/GetCountedTenderDetailAmountClientRequestHandlerExt"
+        }
+      ]
     },
     "create": {
       "templatedDialogs": [
         {
+          "htmlPath": "Create/Dialogs/DialogSample/DialogSample.html",
+          "modulePath": "Create/Dialogs/DialogSample/DialogSampleModule"
+        },
+        {
           "htmlPath": "Create/Dialogs/BarcodeMsrDialog/BarcodeMsrDialog.html",
           "modulePath": "Create/Dialogs/BarcodeMsrDialog/BarcodeMsrDialog"
+        },
+        {
+          "htmlPath": "Create/Dialogs/GiftCardBalanceDialog/GiftCardBalanceDialog.html",
+          "modulePath": "Create/Dialogs/GiftCardBalanceDialog/GiftCardBalanceDialog"
+        }
+      ],
+      "views": [
+        {
+          "title": "Samples View",
+          "pageName": "SamplesView",
+          "phonePageName": "SamplesView",
+          "viewDirectory": "Create/Views/",
+          "viewControllerPath": "Create/Views/SamplesView"
+        },
+        {
+          "title": "Simple View Test",
+          "pageName": "SimpleExtensionView",
+          "phonePageName": "SimpleExtensionView",
+          "viewDirectory": "Create/Views/",
+          "viewControllerPath": "Create/Views/SimpleExtensionView"
+        },
+        {
+          "title": "Simple Next View",
+          "pageName": "SimpleNextView",
+          "phonePageName": "SimpleNextView",
+          "viewDirectory": "Create/Views/",
+          "viewControllerPath": "Create/Views/SimpleNextView"
+        },
+        {
+          "title": "AddTenderLineToCartView",
+          "pageName": "AddTenderLineToCartView",
+          "phonePageName": "AddTenderLineToCartView",
+          "viewDirectory": "Create/Views/Samples/",
+          "viewControllerPath": "Create/Views/Samples/AddTenderLineToCartView"
+        },
+        {
+          "title": "AlphanumericNumPadView",
+          "pageName": "AlphanumericNumPadView",
+          "phonePageName": "AlphanumericNumPadView",
+          "viewDirectory": "Create/Views/Samples/",
+          "viewControllerPath": "Create/Views/Samples/AlphanumericNumPadView"
+        },
+        {
+          "title": "TextInputDialogView",
+          "pageName": "TextInputDialogView",
+          "phonePageName": "TextInputDialogView",
+          "viewDirectory": "Create/Views/Samples/",
+          "viewControllerPath": "Create/Views/Samples/TextInputDialogView"
+        },
+        {
+          "title": "ApiView",
+          "pageName": "ApiView",
+          "phonePageName": "ApiView",
+          "viewDirectory": "Create/Views/Samples/",
+          "viewControllerPath": "Create/Views/Samples/ApiView"
+        },
+        {
+          "title": "AppBarView",
+          "pageName": "AppBarView",
+          "phonePageName": "AppBarView",
+          "viewDirectory": "Create/Views/Samples/",
+          "viewControllerPath": "Create/Views/Samples/AppBarView"
+        },
+        {
+          "title": "CurrencyNumPadView",
+          "pageName": "CurrencyNumPadView",
+          "phonePageName": "CurrencyNumPadView",
+          "viewDirectory": "Create/Views/Samples/",
+          "viewControllerPath": "Create/Views/Samples/CurrencyNumPadView"
+        },
+        {
+          "title": "DataListView",
+          "pageName": "DataListView",
+          "phonePageName": "DataListView",
+          "viewDirectory": "Create/Views/Samples/",
+          "viewControllerPath": "Create/Views/Samples/DataListView"
+        },
+        {
+          "title": "DatePickerView",
+          "pageName": "DatePickerView",
+          "phonePageName": "DatePickerView",
+          "viewDirectory": "Create/Views/Samples/",
+          "viewControllerPath": "Create/Views/Samples/DatePickerView"
+        },
+        {
+          "title": "DynamicDataListView",
+          "pageName": "DynamicDataListView",
+          "phonePageName": "DynamicDataListView",
+          "viewDirectory": "Create/Views/Samples/",
+          "viewControllerPath": "Create/Views/Samples/DynamicDataListView"
+        },
+        {
+          "title": "ForceVoidTransactionView",
+          "pageName": "ForceVoidTransactionView",
+          "phonePageName": "ForceVoidTransactionView",
+          "viewDirectory": "Create/Views/Samples/",
+          "viewControllerPath": "Create/Views/Samples/ForceVoidTransactionView"
+        },
+        {
+          "title": "LoaderView",
+          "pageName": "LoaderView",
+          "phonePageName": "LoaderView",
+          "viewDirectory": "Create/Views/Samples/",
+          "viewControllerPath": "Create/Views/Samples/LoaderView"
+        },
+        {
+          "title": "MenuView",
+          "pageName": "MenuView",
+          "phonePageName": "MenuView",
+          "viewDirectory": "Create/Views/Samples/",
+          "viewControllerPath": "Create/Views/Samples/MenuView"
+        },
+        {
+          "title": "AlphanumericInputDialogView",
+          "pageName": "AlphanumericInputDialogView",
+          "phonePageName": "AlphanumericInputDialogView",
+          "viewDirectory": "Create/Views/Samples/",
+          "viewControllerPath": "Create/Views/Samples/AlphanumericInputDialogView"
+        },
+        {
+          "title": "NumericInputDialogView",
+          "pageName": "NumericInputDialogView",
+          "phonePageName": "NumericInputDialogView",
+          "viewDirectory": "Create/Views/Samples/",
+          "viewControllerPath": "Create/Views/Samples/NumericInputDialogView"
+        },
+        {
+          "title": "ListInputDialogView",
+          "pageName": "ListInputDialogView",
+          "phonePageName": "ListInputDialogView",
+          "viewDirectory": "Create/Views/Samples/",
+          "viewControllerPath": "Create/Views/Samples/ListInputDialogView"
+        },
+        {
+          "title": "NumericNumPadView",
+          "pageName": "NumericNumPadView",
+          "phonePageName": "NumericNumPadView",
+          "viewDirectory": "Create/Views/Samples/",
+          "viewControllerPath": "Create/Views/Samples/NumericNumPadView"
+        },
+        {
+          "title": "TimePickerView",
+          "pageName": "TimePickerView",
+          "phonePageName": "TimePickerView",
+          "viewDirectory": "Create/Views/Samples/",
+          "viewControllerPath": "Create/Views/Samples/TimePickerView"
+        },
+        {
+          "title": "ToggleMenuView",
+          "pageName": "ToggleMenuView",
+          "phonePageName": "ToggleMenuView",
+          "viewDirectory": "Create/Views/Samples/",
+          "viewControllerPath": "Create/Views/Samples/ToggleMenuView"
+        },
+        {
+          "title": "ToggleSwitchView",
+          "pageName": "ToggleSwitchView",
+          "phonePageName": "ToggleSwitchView",
+          "viewDirectory": "Create/Views/Samples/",
+          "viewControllerPath": "Create/Views/Samples/ToggleSwitchView"
+        },
+        {
+          "title": "CloseShiftView",
+          "pageName": "CloseShiftView",
+          "phonePageName": "CloseShiftView",
+          "viewDirectory": "Create/Views/Samples/",
+          "viewControllerPath": "Create/Views/Samples/CloseShiftView"
+        },
+        {
+          "title": "VoidCartLineView",
+          "pageName": "VoidCartLineView",
+          "phonePageName": "VoidCartLineView",
+          "viewDirectory": "Create/Views/Samples/",
+          "viewControllerPath": "Create/Views/Samples/VoidCartLineView"
+        },
+        {
+          "title": "SyncStockCountJournalsView",
+          "pageName": "SyncStockCountJournalsView",
+          "phonePageName": "SyncStockCountJournalsView",
+          "viewDirectory": "Create/Views/Samples/",
+          "viewControllerPath": "Create/Views/Samples/SyncStockCountJournalsView"
+        },
+        {
+          "title": "VoidTenderLineView",
+          "pageName": "VoidTenderLineView",
+          "phonePageName": "VoidTenderLineView",
+          "viewDirectory": "Create/Views/Samples/",
+          "viewControllerPath": "Create/Views/Samples/VoidTenderLineView"
+        },
+        {
+          "title": "PostLogOnView",
+          "pageName": "PostLogOnView",
+          "phonePageName": "PostLogOnView",
+          "viewDirectory": "Create/Views/Samples/",
+          "viewControllerPath": "Create/Views/Samples/PostLogOnView"
+        },
+        {
+          "title": "TransactionNumPadView",
+          "pageName": "TransactionNumPadView",
+          "phonePageName": "TransactionNumPadView",
+          "viewDirectory": "Create/Views/Samples/",
+          "viewControllerPath": "Create/Views/Samples/TransactionNumPadView"
         }
       ],
       "requestHandlers": [
         {
           "modulePath": "Create/RequestHandlers/SendEmailRequestHandler"
+        }
+      ],
+      "operations": [
+        {
+          "operationId": "5000",
+          "operationRequestFactoryPath": "Create/Operations/Print/PrintOperationRequestFactory",
+          "operationRequestHandlerPath": "Create/Operations/Print/PrintOperationRequestHandler"
+        },
+        {
+          "operationId": "5001",
+          "operationRequestFactoryPath": "Create/Operations/EndOfDay/EndOfDayOperationRequestFactory",
+          "operationRequestHandlerPath": "Create/Operations/EndOfDay/EndOfDayOperationRequestHandler"
+        },
+        {
+          "operationId": "5002",
+          "operationRequestFactoryPath": "Create/Operations/CheckGiftCardBalance/CheckGiftCardBalanceFactory",
+          "operationRequestHandlerPath": "Create/Operations/CheckGiftCardBalance/CheckGiftCardBalanceHandler"
+        },
+        {
+          "operationId": "5003",
+          "operationRequestFactoryPath": "Create/Operations/SaveDataToSelectedCartLine/SaveDataToSelectedCartLineFactory",
+          "operationRequestHandlerPath": "Create/Operations/SaveDataToSelectedCartLine/SaveDataToSelectedCartLineHandler"
         }
       ]
     }

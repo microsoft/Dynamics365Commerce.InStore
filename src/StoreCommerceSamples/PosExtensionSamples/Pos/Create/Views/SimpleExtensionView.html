@@ -1,0 +1,52 @@
+﻿<!--
+    HTMLLint is an internal tool that fails on this file due to non-localized example labels,
+    there is no need for this comment and the one below in real-world extensions.
+-->
+<!-- HTMLLint Disable LabelExistsValidator -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Simple view test</title>
+    <link href="SimpleExtension.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="simpleExtensionView">
+            <div class="h6" id="simpleStrTest" data-bind="text: viewModel.simpleMessage"></div>
+
+            <br />
+            <button aria-label="Update message" id="btSimpleClick" data-bind="click: viewModel.updateMessage.bind(viewModel)">Update message</button>
+            <button aria-label="Next" id="btnNext" data-bind="click: viewModel.navigateNext.bind(viewModel)">Next</button>
+            <button id="btnOpenTemplatedDialog" data-bind="resx: { ariaLabel: 'string_49' }, click: viewModel.openTemplatedDialog.bind(viewModel)">open templated dialog</button>
+            <button id="btnOpenMessageDialog" data-bind="resx: { ariaLabel: 'string_49' }, click: viewModel.openMessageDialog.bind(viewModel)">open message dialog</button>
+            <button id="btnOpenBarcodeMSRDialog" data-bind="resx: { ariaLabel: 'string_49' }, click: viewModel.openBarcodeMsrDialog.bind(viewModel)">open barcode msr dialog</button>
+            <div class="h4">Dialog result</div>
+            <div class="h4" data-bind="text: viewModel.dialogResult"></div>
+
+            <div class="h4">Sample control</div>
+            <div style="border: solid green 1px" data-bind="microsoftSampleExtensionsCustomControl: { msg: 'hello' }"></div>
+
+            <br />
+
+            <div id="SimpleViewToggleSwitch">
+            </div>
+
+            <br /><br />
+
+            <div class="h4">Example Date Picker (input)</div>
+            <div id="datePicker"></div>
+            <div class="h4" data-bind="text: 'Date Picker Value: ' + viewModel.date().toString()"></div>
+            <div class="h4">Example Time Picker (input)</div>
+            <div id="timePicker"></div>
+            <div class="h4" data-bind="text: 'Time Picker Value: ' + viewModel.time().toString()"></div>
+
+            <br /><br />
+
+            <div class="h4">Sample Menu control</div>
+                <button id="SimpleExtensionView_ShowStaticMenu" data-bind="click: showMenuStatic" style="float: left">Show static menu</button>
+                <div id="menuStatic"></div>
+                <button id="SimpleExtensionView_ShowStaticToggleMenu" data-bind="click: showToggleMenuStatic">Show static toggle menu</button>
+                <div id="toggleMenu"></div>
+        </div>
+</body>
+</html>

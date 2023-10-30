@@ -15,7 +15,6 @@ import { ProxyEntities } from "PosApi/Entities";
 import { ObjectExtensions, StringExtensions } from "PosApi/TypeExtensions";
 
 export default class FraudCheckReminderItemSubfield extends CustomLinesGridItemSubfieldBase {
-
     constructor(context: ICustomLinesGridItemSubfieldContext) {
         super(context);
     }

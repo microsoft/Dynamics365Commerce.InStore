@@ -1,0 +1,100 @@
+﻿<!--
+    HTMLLint is an internal tool that fails on this file due to non-localized example labels,
+    there is no need for this comment and the one below in real-world extensions.
+-->
+<!-- HTMLLint Disable LabelExistsValidator -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>AlphanumericInputDialogView</title>
+</head>
+<body>
+    <div class="AlphanumericInputDialogView">
+            <div class="grow marginBottom48 scrollY">
+                <div class="pad20 col width680">
+                    <h3>InputAlphanumericDialog</h3>
+                    <div class="pad8">
+                        <button id="btnOpenInputAlphanumericDialog" data-bind="resx: { ariaLabel: 'string_49' }, click: openAlphanumericInputDialog">Open Input Alphanumeric Dialog</button>
+                    </div>
+                    <div class="h4">Dialog result</div>
+                    <div class="h4" data-bind="text: dialogResult"></div>
+                    <div class="h4 padTop40">AlphanumericInputDialog option interface</div>
+                    <textarea class="height220">
+export interface IAlphanumericInputDialogOptions extends IInputDialogOptions<IAlphanumericInputDialogResult> {
+    numPadLabel: string;
+    defaultValue?: string;
+    enableMagneticStripReader?: boolean;
+    enableBarcodeScanner?: boolean;
+}
+</textarea>
+                    <div class="h4 padTop40">Controller syntax</div>
+                    <textarea class="height220">
+
+import * as Views from "PosApi/Create/Views";
+import { ObjectExtensions } from "PosApi/TypeExtensions";
+
+import AlphanumericInputDialog from "../../Controls/DialogSample/AlphanumericInputDialog";
+
+/**
+ * The controller for AlphanumericInputDialogView.
+ */
+export default class AlphanumericInputDialogView extends Views.CustomViewControllerBase {
+    public dialogResult: Observable<string>;
+
+    constructor(context: Views.ICustomViewControllerContext) {
+        super(context);
+
+        this.dialogResult = ko.observable("");
+        this.state.title = "Alphanumeric Input Dialog Sample";
+    }
+
+    /**
+     * Bind the html element with view controller.
+     *
+     * @param {HTMLElement} element DOM element.
+     */
+    public onReady(element: HTMLElement): void {
+        ko.applyBindings(this, element);
+    }
+
+
+    /**
+    * Bind the html element with view controller.
+    *
+    * @param {HTMLElement} element DOM element.
+    */
+    public onReady(element: HTMLElement): void {
+        super.onReady(element);
+
+        // Customized binding
+        ko.applyBindings(this, element);
+    }
+
+    /**
+    * Opens the Alphanumeric Input dialog sample.
+    */
+    public openAlphanumericInputDialog(): void {
+        let alphanumericInputDialog: AlphanumericInputDialog = new AlphanumericInputDialog();
+        alphanumericInputDialog.show(this.context, this.context.resources.getString("string_55"))
+        .then((result: string) => {
+            this.dialogResult(result);
+        }).catch((reason: any) => {
+            this.context.logger.logError("AlphanumericInputDialog: " + JSON.stringify(reason));
+        });
+    }
+
+                        
+    /**
+     * Called when the object is disposed.
+     */
+    public dispose(): void {
+        ObjectExtensions.disposeAllProperties(this);
+    }
+}
+</textarea>
+                </div>
+            </div>
+    </div>
+</body>
+</html>

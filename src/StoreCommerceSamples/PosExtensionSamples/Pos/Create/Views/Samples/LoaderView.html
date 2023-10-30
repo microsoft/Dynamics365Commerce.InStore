@@ -1,0 +1,78 @@
+﻿<!--
+    HTMLLint is an internal tool that fails on this file due to non-localized example labels,
+    there is no need for this comment and the one below in real-world extensions.
+-->
+<!-- HTMLLint Disable LabelExistsValidator -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>LoaderView</title>
+</head>
+<body>
+    <div class="LoaderView">
+            <div class="grow marginBottom48 scrollY">
+                <div class="pad20 col width680">
+                    <h3>Loader</h3>
+                    <div class="pad8">
+                        <button data-bind="click: showLoaderClick">Show loader</button>
+                    </div>
+                    <div class="h4 padTop40">ViewModel interface</div>
+                    <textarea class="height220">
+import * as Views from "PosApi/Create/Views";
+import * as HeaderSplitView from "PosUISdk/Controls/HeaderSplitView";
+import { ObjectExtensions } from "PosApi/TypeExtensions";
+
+/**
+ * The controller for LoaderView.
+ */
+export default class LoaderView extends Views.CustomViewControllerBase {
+    private _isLoaderVisible: Observable<boolean>;
+
+    constructor(context: Views.ICustomViewControllerContext) {
+
+        super(context);
+        this._isLoaderVisible = ko.observable(false);
+
+        this.state.title = "Loader sample"
+        this.state.isProcessing = this._isLoaderVisible();
+    }
+
+    /**
+     * Show loader control.
+     */
+    public showLoaderClick(): void {
+        this._isLoaderVisible(true);
+        window.setTimeout(() => {
+            this._isLoaderVisible(false);
+        }, 3000);
+    }
+
+    /**
+     * Bind the html element with view controller.
+     *
+     * @param {HTMLElement} element DOM element.
+     */
+    public onReady(element: HTMLElement): void {
+        ko.applyBindings(this, element);
+    }
+
+    /**
+     * Called when the object is disposed.
+     */
+    public dispose(): void {
+        ObjectExtensions.disposeAllProperties(this);
+    }
+}
+
+                    </textarea>
+                    <div class="h4 padTop40">HTML syntax</div>
+                    <textarea class="height220">
+    <div id="loader">
+    </div>
+                    </textarea>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

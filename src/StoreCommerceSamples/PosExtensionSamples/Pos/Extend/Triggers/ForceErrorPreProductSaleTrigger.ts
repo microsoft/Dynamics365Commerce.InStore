@@ -8,6 +8,7 @@ export default class ForceErrorPreProductSaleTrigger extends PreProductSaleTrigg
     /**
      * Executes the trigger functionality.
      * @param {IPreProductSaleTriggerOptions} options The options provided to the trigger.
+     * @return {Promise<ICancelable>} The cancelable promise.
      */
     public execute(options: IPreProductSaleTriggerOptions): Promise<ClientEntities.ICancelable> {
         this.context.logger.logInformational("Executing ForceErrorPreProductSaleTrigger with options " + JSON.stringify(options) + ".");
@@ -15,7 +16,7 @@ export default class ForceErrorPreProductSaleTrigger extends PreProductSaleTrigg
         // If trying to add product 81213 to the cart, then return error from trigger...
         if (options.productSaleDetails.length > 0 && options.productSaleDetails[0].product.ItemId == "81213") {
             return Promise.reject(new ClientEntities.ExtensionError("Product 81213 is not available."));
-        // ... else do not block the trigger flow
+        // ... else do not block the trigger flow.
         } else {
             return Promise.resolve({ canceled: false });
         }

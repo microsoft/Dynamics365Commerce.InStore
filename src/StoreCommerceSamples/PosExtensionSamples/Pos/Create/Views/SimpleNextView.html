@@ -1,0 +1,26 @@
+﻿<!--
+    HTMLLint is an internal tool that fails on this file due to non-localized example labels,
+    there is no need for this comment and the one below in real-world extensions.
+-->
+<!-- HTMLLint Disable LabelExistsValidator -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Simple view test</title>
+</head>
+<body>
+    <div class="simpleNextView">
+        <div id="SimpleViewPivot"></div>
+    </div>
+    <script id="PivotItem1" type="text/html">
+        <div class="padLeft20">
+            <button aria-label="Update message" id="btnClick" data-bind="click: viewModel.updateMessage.bind(viewModel)">Update message</button>
+            <button aria-label="Simple page" id="btnSimple" data-bind="click: viewModel.navigateToSimplePage.bind(viewModel)">Simple page</button>
+            <div class="simpleView">
+                <div class="h6" id="simpleStrTest" data-bind="text: viewModel.simpleMessage"></div>
+            </div>
+        </div>
+    </script>
+</body>
+</html>

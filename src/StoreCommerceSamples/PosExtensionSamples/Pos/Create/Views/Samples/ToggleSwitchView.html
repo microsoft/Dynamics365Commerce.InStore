@@ -1,0 +1,98 @@
+﻿<!--
+    HTMLLint is an internal tool that fails on this file due to non-localized example labels,
+    there is no need for this comment and the one below in real-world extensions.
+-->
+<!-- HTMLLint Disable LabelExistsValidator -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ToggleSwitchView</title>
+</head>
+<body>
+    <div class="ToggleSwitchView">
+            <div class="grow marginBottom48 scrollY">
+                <div class="pad20 col width680">
+                    <h3>ToggleSwitch</h3>
+                    <div class="pad8">
+                        <div id="toggleSwitch">
+                        </div>
+                    </div>
+                    <div class="h4 padTop40">ViewModel interface</div>
+                    <textarea class="height220">
+                        export interface IToggleOptions extends IControlOptions {
+                            labelOn: string;
+                            labelOff: string;
+                            enabled: boolean;
+                            checked: boolean;
+                            tabIndex: number;
+                        }
+                    </textarea>
+                    <div class="h4 padTop40">Controller syntax</div>
+                    <textarea class="height220">
+                        import * as Views from "PosApi/Create/Views";
+import { ObjectExtensions } from "PosApi/TypeExtensions";
+import * as Controls from "PosApi/Consume/Controls";
+
+/**
+ * The controller for ToggleSwitchView.
+ */
+export default class ToggleSwitchView extends Views.CustomViewControllerBase {
+    public toggleSwitch: Controls.IToggle;
+
+    constructor(context: Views.ICustomViewControllerContext) {
+        super(context);
+
+        this.state.title = "ToggleSwitch sample";
+    }
+
+    /**
+     * Bind the html element with view controller.
+     *
+     * @param {HTMLElement} element DOM element.
+     */
+    public onReady(element: HTMLElement): void {
+        ko.applyBindings(this, element);
+
+        let toggleOptions: Controls.IToggleOptions = {
+            tabIndex: 0,
+            enabled: true,
+            checked: false,
+            labelOn: "On",
+            labelOff: "Off",
+        };
+
+        let toggleRootElem: HTMLDivElement = element.querySelector("#toggleSwitch") as HTMLDivElement;
+        this.toggleSwitch = this.context.controlFactory.create(this.context.logger.getNewCorrelationId(), "Toggle", toggleOptions, toggleRootElem);
+        this.toggleSwitch.addEventListener("CheckedChanged", (eventData: { checked: boolean }) => {
+            this.toggleSwitchChanged(eventData.checked);
+        });
+    }
+
+    /**
+     * Called when the object is disposed.
+     */
+    public dispose(): void {
+        ObjectExtensions.disposeAllProperties(this);
+    }
+
+    /**
+     * Callback for toggle switch.
+     * @param {boolean} checked True if checked, otherwise false.
+     */
+    private toggleSwitchChanged(checked: boolean): void {
+        this.context.logger.logInformational("toggleSwitchChanged: " + checked);
+    }
+}
+
+                    </textarea>
+                    <div class="h4 padTop40">HTML syntax</div>
+                    <textarea class="height220">
+    <div id="toggleSwitch">
+    </div>
+                    </textarea>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

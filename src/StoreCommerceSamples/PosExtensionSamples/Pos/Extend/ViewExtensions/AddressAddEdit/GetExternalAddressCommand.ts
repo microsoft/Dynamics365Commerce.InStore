@@ -7,10 +7,10 @@
  * NO TECHNICAL SUPPORT IS PROVIDED.  YOU MAY NOT DISTRIBUTE THIS CODE UNLESS YOU HAVE A LICENSE AGREEMENT WITH MICROSOFT THAT ALLOWS YOU TO DO SO.
  */
 
+import * as AddressAddEditView from "PosApi/Extend/Views/AddressAddEditView";
 import { ProxyEntities, ClientEntities } from "PosApi/Entities";
 import { IAlphanumericInputDialogOptions, ShowAlphanumericInputDialogClientResponse, ShowAlphanumericInputDialogClientRequest } from "PosApi/Consume/Dialogs";
 import { IExtensionCommandContext } from "PosApi/Extend/Views/AppBarCommands";
-import * as AddressAddEditView from "PosApi/Extend/Views/AddressAddEditView";
 
 /**
  * This class extends the base one to include an additional button in the app bar.

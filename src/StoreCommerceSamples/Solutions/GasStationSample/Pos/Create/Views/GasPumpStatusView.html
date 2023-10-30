@@ -8,15 +8,15 @@
     <div class="GasPumpStatusView">
         <div class="row height100Percent marginLeft20">
             <!-- Main content -->
-            <div class="col grow">
-                <h2 class="marginTop8 marginBottom8">Gas Pumps</h2>
-                <div id="contoso_gasPumpStatusView_DataList" class="col grow"></div>
+            <div class="col grow height100Percent">
+                <div id="PivotId" class="col grow">
+                </div>
             </div>
 
-            <a href="#" 
-               id="toggleDetailsPanelButton" 
-               class="icon-20x20 width48 height48 center" 
-               type="button" 
+            <a href="#"
+               id="toggleDetailsPanelButton"
+               class="icon-20x20 width48 height48 center"
+               type="button"
                data-bind="click: toggleDetailsPanel, css: isDetailsPanelVisible() ? 'iconClosePane' : 'iconOpenPane'"
                style="position: fixed; right:20px"></a>
 

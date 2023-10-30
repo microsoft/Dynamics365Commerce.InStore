@@ -1,0 +1,224 @@
+﻿<!--
+    HTMLLint is an internal tool that fails on this file due to non-localized example labels,
+    there is no need for this comment and the one below in real-world extensions.
+-->
+<!-- HTMLLint Disable LabelExistsValidator -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>DataListView</title>
+</head>
+<body>
+    <div class="datalistview">
+            <div class="grow scrollY">
+                <div class="pad20 col width680">
+                    <div class="h3">DataList</div>
+                    <div class="pad8 height220">
+                        <div id="dataListSample">
+                        </div>
+                    </div>
+                    <div class="pad8">
+                        <button id="selectRandomItemButton" class="primaryButton">
+                            Select random item by id
+                        </button>
+                    </div>
+                    <div class="pad8">
+                        <div class="margin8">
+                            <input id="nameFilter" type="text" placeholder="Name" />
+                        </div>
+                        <button id="selectItemsByNameButton" class="primaryButton">
+                            Select items filtered by name
+                        </button>
+                    </div>
+                    <div class="h4 padTop40">ViewModel interface</div>
+                    <textarea class="height220">
+/**
+* The interface for data list control options.
+*/
+export interface IDataListOptions&lt;TData&gt; extends IDataListBaseOptions&lt;TData&gt; {
+    data: Readonly&lt;TData[]&gt;;
+}
+
+/**
+* The interface for data lists.
+*/
+export interface IDataList&lt;TData&gt; extends IDataListBase&lt;TData&gt; {
+    data: Readonly&lt;TData[]&gt;;
+}
+                    </textarea>
+                    <div class="h4 padTop40">Controller syntax</div>
+                    <textarea class="height220">
+import * as Views from "PosApi/Create/Views";
+import * as Controls from "PosApi/Consume/Controls";
+import { ObjectExtensions } from "PosApi/TypeExtensions";
+
+export interface IShiftData {
+    requestId: number;
+    requestDateTime: Date;
+    requestedWorkerName: string;
+    requestType: string;
+    requestStatus: string;
+}
+
+/**
+ * The controller for DataListView.
+ */
+export default class DataListView extends Views.CustomViewControllerBase {
+    public dataList: Controls.IDataList&lt;IShiftData&gt;;
+
+    constructor(context: Views.ICustomViewControllerContext) {
+        super(context);
+
+        this.state.title = "DataList sample";
+    }
+
+    /**
+     * Bind the html element with view controller.
+     * @param {HTMLElement} element DOM element.
+     */
+    public onReady(element: HTMLElement): void {
+        ko.applyBindings(this, element);
+
+        document.getElementById("selectRandomItemButton").addEventListener('click', () =&gt; {
+            this.selectRandomItem();
+        });
+        document.getElementById("selectItemsByNameButton").addEventListener('click', () =&gt; {
+            this.selectItemsByName();
+        });
+
+        let dataListDataSource: Readonly&lt;IShiftData[]&gt; = [
+            {
+                requestId: 1,
+                requestDateTime: new Date(),
+                requestedWorkerName: "Allison Berker",
+                requestType: "Leave request",
+                requestStatus: "Approved"
+            },
+            {
+                requestId: 2,
+                requestDateTime: new Date(),
+                requestedWorkerName: "Bert Miner",
+                requestType: "Shift Swap",
+                requestStatus: "Pending"
+            },
+            {
+                requestId: 3,
+                requestDateTime: new Date(),
+                requestedWorkerName: "Greg Marchievsky",
+                requestType: "Shift Offer",
+                requestStatus: "Rejected"
+            },
+            {
+                requestId: 4,
+                requestDateTime: new Date(),
+                requestedWorkerName: "Bohdan Yevchenko",
+                requestType: "Vacation request",
+                requestStatus: "Approved"
+            }
+        ];
+
+        let dataListOptions: Readonly&lt;Controls.IDataListOptions&lt;IShiftData&gt;&gt; = {
+            columns: [
+                {
+                    title: "Name",
+                    ratio: 30,
+                    collapseOrder: 3,
+                    minWidth: 100,
+                    computeValue: (value: IShiftData): string =&gt; {
+                        return value.requestedWorkerName;
+                    }
+                },
+                {
+                    title: "Type",
+                    ratio: 30,
+                    collapseOrder: 1,
+                    minWidth: 100,
+                    computeValue: (value: IShiftData): string =&gt; {
+                        return value.requestType;
+                    }
+                },
+                {
+                    title: "Status",
+                    ratio: 40,
+                    collapseOrder: 2,
+                    minWidth: 100,
+                    computeValue: (value: IShiftData): string =&gt; {
+                        return value.requestStatus;
+                    }
+                }
+            ],
+            data: dataListDataSource,
+            interactionMode: Controls.DataListInteractionMode.MultiSelect,
+            equalityComparer: (left: IShiftData, right: IShiftData): boolean =&gt; left.requestId === right.requestId
+        };
+
+        let dataListRootElem: HTMLDivElement = element.querySelector("#dataListSample") as HTMLDivElement;
+        this.dataList = this.context.controlFactory.create("", "DataList", dataListOptions, dataListRootElem);
+        this.dataList.addEventListener("SelectionChanged", (eventData: { items: IShiftData[] }) =&gt; {
+            this._dataListSelectionChanged(eventData.items);
+        });
+        this.dataList.addEventListener("ItemInvoked", (eventData: { item: IShiftData }) =&gt; {
+            this._dataListItemInvoked(eventData.item);
+        });
+    }
+
+    /**
+     * Called when the object is disposed.
+     */
+    public dispose(): void {
+        ObjectExtensions.disposeAllProperties(this);
+    }
+
+    /**
+     * Callback for selecting random items button.
+     */
+    public selectRandomItem(): void {
+        if (this.dataList.data.length == 0) {
+            return;
+        }
+
+        let index = Math.floor(Math.random() * this.dataList.data.length);
+
+        let item = this.dataList.data[index];
+        this.dataList.selectItems([item]);
+    }
+
+    /**
+     * Callback for selecting items by name button.
+     */
+    public selectItemsByName(): void {
+        let nameFilterValue = (&lt;HTMLInputElement&gt;document.getElementById("nameFilter")).value;
+        let itemsToSelect = this.dataList.data.filter(
+            item =&gt; item.requestedWorkerName.toLowerCase().indexOf(nameFilterValue.toLowerCase()) != -1);
+        this.dataList.selectItems(itemsToSelect);
+    }
+
+    /**
+     * Callback for data list selection changed.
+     */
+    private _dataListSelectionChanged(items: IShiftData[]): void {
+        this.context.logger.logInformational("SelectionChanged: " + JSON.stringify(items));
+    }
+
+    /**
+     * Callback for data list item invoked.
+     */
+    private _dataListItemInvoked(item: IShiftData): void {
+        this.context.logger.logInformational("ItemInvoked " + JSON.stringify(item));
+    }
+}
+                    </textarea>
+                    <div class="h4 padTop40">HTML syntax</div>
+                    <textarea class="height220">
+Height must be greater than row height in order for data list to work.
+So make sure you have sufficient space.
+&lt;div class="pad8 height220"&gt;
+    &lt;div id="dataListSample"&gt;&lt;/div&gt;
+&lt;/div&gt;
+                    </textarea>
+                </div>
+            </div>
+    </div>
+</body>
+</html>

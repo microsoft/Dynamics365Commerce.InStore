@@ -1,0 +1,26 @@
+﻿<!--
+    HTMLLint is an internal tool that fails on this file due to non-localized example labels,
+    there is no need for this comment and the one below in real-world extensions.
+-->
+<!-- HTMLLint Disable LabelExistsValidator -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>VoidTenderLineView</title>
+</head>
+<body>
+    <div class="VoidTenderLineView height100Percent">
+        <div class="grow marginBottom48 scrollY">
+            <div class="pad20 col width680">
+                <div>
+                    <div class="h4">Void payments</div>
+                    <button data-bind="click:getCurrentCart">Refresh Cart</button>
+                    <button data-bind="click:voidTenderLine">Void Tender Line</button>
+                </div>
+                <textarea class="height220" data-bind="text: currentCart"></textarea>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

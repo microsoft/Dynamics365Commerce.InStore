@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Sample Dialog</title>
+    <link rel="stylesheet" href="DialogSampleStyles.min.css" />
+</head>
+<body>
+    <!-- HTMLLint Disable LabelExistsValidator -->
+    <div class="sampleExtension_dialogSample col grow">
+        <div>
+            <div class="h4">Enter value:</div>
+        </div>
+        <div>
+            <input type="text" data-bind="value: userEnteredValue" />
+        </div>
+        <div class="grow"></div>
+        <div class="col">
+            <button class="primaryButton stretch" data-bind="click: enableOkClicked">Enable Ok</button>
+            <button class="primaryButton stretch" data-bind="click: closeDialogClicked">Close dialog</button>
+        </div>
+    </div>
+</body>
+</html>

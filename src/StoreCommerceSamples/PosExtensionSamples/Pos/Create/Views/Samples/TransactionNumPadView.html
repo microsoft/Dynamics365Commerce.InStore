@@ -1,0 +1,205 @@
+﻿<!--
+    HTMLLint is an internal tool that fails on this file due to non-localized example labels,
+    there is no need for this comment and the one below in real-world extensions.
+-->
+<!-- HTMLLint Disable LabelExistsValidator -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>TransactionNumPadView</title>
+</head>
+<body>
+    <div class="TransactionNumPadView">
+        <div data-bind="msPosHeaderSplitView: headerSplitView">
+            <div class="grow marginBottom48 scrollY">
+                <div class="pad20 col width680">
+                    <h3>TransactionNumPad</h3>
+                    <div class="pad8">
+                        <div class="minWidth260 maxWidth320" id="TransactionNumPad"></div>
+                        <div class="h4" data-bind="text: 'onEnter - value: ' + numPadValue() + ' quantity: '+ numPadQuantity()"></div>
+                        <div class="h4" data-bind="text: scanResult()"></div>
+                    </div>
+                    <div class="h4 padTop40">ViewModel interface</div>
+                    <textarea class="height220">
+                        interface ITransactionNumPadOptions extends INumPadOptions<string>
+                        {
+                        }
+
+                        interface ITransactionNumPadEventMap extends INumPadEventMap<string>
+                        {
+                             "EnterPressed": {
+                              value: string;
+                              quantity?: number;
+                              };
+                        }
+
+                        interface ITransactionNumPad extends INumPad<string, ITransactionNumPadEventMap>
+                        {
+                        }
+                    </textarea>
+                    <div class="h4 padTop40">Controller syntax</div>
+                    <textarea class="height220">
+                        import * as Views from "PosApi/Create/Views";
+                        import * as HeaderSplitView from "PosUISdk/Controls/HeaderSplitView";
+                        import * as ScanResults from "PosApi/Consume/ScanResults";
+                        import * as Products from "PosApi/Consume/Products";
+                        import { ClientEntities, ProxyEntities } from "PosApi/Entities";
+                        import { ObjectExtensions } from "PosApi/TypeExtensions";
+
+                        import * as Controls from "PosApi/Consume/Controls";
+                        import { INumPadInputBroker } from "PosApi/Consume/Peripherals";
+
+                        /**
+                        * The controller for TransactionNumPadView.
+                        */
+                        export default class TransactionNumPadView extends Views.ExtensionViewControllerBase {
+                            public readonly headerSplitView: HeaderSplitView.HeaderSplitView;
+                            public readonly numPad: TransactionNumPad;
+                            public numPadValue: Observable<string>;
+                            public numPadQuantity: Observable<string>;
+                            public scanResult: Observable<string>;
+
+                            constructor(context: Views.IExtensionViewControllerContext) {
+                            // Do not save in history
+                            super(context, false);
+
+                            this.headerSplitView = new HeaderSplitView.HeaderSplitView({
+                            title: "TransactionNumPad sample"
+                            });
+
+                            this.numPadValue = ko.observable("");
+                            this.numPadQuantity = ko.observable("");
+                            this.scanResult = ko.observable("");
+                            }
+
+                            /**
+                            * Bind the html element with view controller.
+                            *
+                            * @param {HTMLElement} element DOM element.
+                            */
+                            public onReady(element: HTMLElement): void {
+                            super.onReady(element);
+
+                            // Customized binding
+                            ko.applyBindings(this, element);
+
+                            //Initialize numpad
+                            let inputBroker: INumPadInputBroker = null;
+                            let numPadOptions: Controls.ITransactionNumPadOptions = {
+                                globalInputBroker: inputBroker,
+                                label: "NumPad label",
+                                value: ""
+                            };
+
+                            let numPadRootElem: HTMLDivElement = element.querySelector("#TransactionNumPad") as HTMLDivElement;
+                            this.numPad = this.context.controlFactory.create(this.context.logger.getNewCorrelationId(), "TransactionNumPad", numPadOptions, numPadRootElem);
+                            this.numPad.addEventListener("EnterPressed", (eventData: { quantity: number; value: string}) => {
+                                this.numPadValue(eventData.value);
+                                if (eventData.quantity) {
+                                    this.numPadQuantity(eventData.quantity.toString());
+                                } else {
+                                    this.numPadQuantity("");
+                                }
+                                this.onNumPadEnter(eventData.value);
+                                });
+                            }
+
+                            /**
+                            * Callback for numpad.
+                            * @param {string} value Numpad current value.
+                            */
+                            private onNumPadEnter(value: string): void {
+
+                            this.numPad.value = "";
+                            this.scanResult("");
+
+                            let getScanResultClientRequest: ScanResults.GetScanResultClientRequest<ScanResults.GetScanResultClientResponse>
+                                =
+                                new ScanResults.GetScanResultClientRequest(value);
+
+                                this.context.runtime.executeAsync(getScanResultClientRequest)
+                                .then((response: ClientEntities.ICancelableDataResult<ScanResults.GetScanResultClientResponse>): void => {
+                                        if (ObjectExtensions.isNullOrUndefined(response.data)
+                                        || ObjectExtensions.isNullOrUndefined(response.data.result)) {
+                                        this.scanResult("Error");
+                                        } else {
+                                        let scanResult: ProxyEntities.ScanResult = response.data.result;
+                                        let barcodeMaskType: ProxyEntities.BarcodeMaskType = scanResult.MaskTypeValue;
+                                        switch (barcodeMaskType) {
+                                        case ProxyEntities.BarcodeMaskType.Item:
+                                        // If the scanned text maps to a product bar code based on the bar code mask,
+                                        // but the product associated with the bar code is not found, the Product field
+                                        // on the scanResult won't be set.
+                                        let product: ProxyEntities.SimpleProduct = scanResult.Product;
+                                        if (ObjectExtensions.isNullOrUndefined(product)) {
+                                        this.scanResult("Product error: The product associated with the bar code was not found.");
+                                        } else {
+                                        // If a KitMaster product is passed on the request below, its default configuration will be loaded.
+                                        if (product.ProductTypeValue === ProxyEntities.ProductType.Master) {
+                                        let selectPVClientRequest: Products.SelectProductVariantClientRequest<Products.SelectProductVariantClientResponse> =
+                                            new Products.SelectProductVariantClientRequest(product);
+                                            this.context.runtime.executeAsync(selectPVClientRequest)
+                                            .then((response: ClientEntities.ICancelableDataResult<Products.SelectProductVariantClientResponse>): void => {
+                                                    if (response.canceled) {
+                                                    this.scanResult("Product variant selection canceled.");
+                                                    } else {
+                                                    this.scanResult("Product variant: " + response.data.result.Name);
+                                                    }
+                                                    }).catch((reason: any) => {
+                                                    this.context.logger.logError("Select product variant error: " + JSON.stringify(reason));
+                                                    });
+                                                    } else {
+                                                    this.scanResult("Product: " + product.Name);
+                                                    }
+                                                }
+                                                break;
+                                                case ProxyEntities.BarcodeMaskType.Customer:
+                                                // If the scanned text maps to a customer bar code based on the bar code mask,
+                                                // but the customer associated with the bar code is not found, the Customer field
+                                                // on the scanResult won't be set.
+                                                if (ObjectExtensions.isNullOrUndefined(scanResult.Customer)) {
+                                                this.scanResult("Customer error: The customer associated with the bar code was not found.");
+                                                } else {
+                                                this.scanResult("Customer: " + scanResult.Customer.Name);
+                                                }
+                                                break;
+                                                case ProxyEntities.BarcodeMaskType.LoyaltyCard:
+                                                // If the scanned text maps to a loyalty card bar code based on the bar code mask,
+                                                // but the loyalty card associated with the bar code is not found, the Loyalty card field
+                                                // on the scanResult won't be set.
+                                                if (ObjectExtensions.isNullOrUndefined(scanResult.LoyaltyCard)) {
+                                                this.scanResult("Customer error: The customer associated with the bar code was not found.");
+                                                } else {
+                                                this.scanResult("LoyaltyCard: " + scanResult.LoyaltyCard.CardNumber);
+                                                }
+                                                break;
+                                                case ProxyEntities.BarcodeMaskType.DiscountCode:
+                                                this.scanResult("Discount code: " + scanResult.Barcode.DiscountCode);
+                                                break;
+                                                case ProxyEntities.BarcodeMaskType.Coupon:
+                                                this.scanResult("Coupon code: " + scanResult.Barcode.CouponId);
+                                                break;
+                                                case ProxyEntities.BarcodeMaskType.None:
+                                                this.scanResult("Nothing was found");
+                                                break;
+                                                default:
+                                                this.scanResult("The bar code type that was scanned is not supported.");
+                                                break;
+                                                }
+                                                }
+                                                });
+                                            }
+                                            }
+</textarea>
+                    <div class="h4 padTop40">HTML syntax</div>
+                    <textarea class="height220">
+                        <div data-bind="msPosAlphanumericNumPad: numPad">
+                        </div>
+                    </textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

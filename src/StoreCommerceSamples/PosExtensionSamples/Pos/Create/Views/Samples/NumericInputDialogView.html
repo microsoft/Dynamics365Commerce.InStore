@@ -1,0 +1,84 @@
+﻿<!--
+    HTMLLint is an internal tool that fails on this file due to non-localized example labels,
+    there is no need for this comment and the one below in real-world extensions.
+-->
+<!-- HTMLLint Disable LabelExistsValidator -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>NumericInputDialogView</title>
+</head>
+<body>
+    <div class="NumericInputDialogView">
+            <div class="grow marginBottom48 scrollY">
+                <div class="pad20 col width680">
+                    <h3>InputNumberDialog</h3>
+                    <div class="pad8">
+                        <button id="btnOpenInputNumDialog" data-bind="resx: { ariaLabel: 'string_49' }, click: openNumericInputDialog">open NumericInput dialog</button>
+                    </div>
+                    <div class="h4">Dialog result</div>
+                    <div class="h4" data-bind="text: dialogResult"></div>
+                    <div class="h4 padTop40">NumericInputDialog option interface</div>
+                    <textarea class="height220">
+export interface INumericInputDialogOptions extends IInputDialogOptions<INumericInputDialogResult> {
+    numPadLabel: string;
+    defaultNumber?: string;
+    decimalPrecision?: number;
+}
+</textarea>
+                    <div class="h4 padTop40">Controller syntax</div>
+                    <textarea class="height220">
+import * as Views from "PosApi/Create/Views";
+import { ObjectExtensions } from "PosApi/TypeExtensions";
+
+import NumericInputDialog from "../../Controls/DialogSample/NumericInputDialog";
+
+/**
+ * The controller for NumericInputDialogView.
+ */
+export default class NumericInputDialogView extends Views.CustomViewControllerBase {
+    public dialogResult: Observable<string>;
+
+    constructor(context: Views.ICustomViewControllerContext) {
+        super(context);
+        this.state.title = "NumericInputDialog sample";
+        this.dialogResult = ko.observable("");
+    }
+
+    /**
+     * Bind the html element with view controller.
+     *
+     * @param {HTMLElement} element DOM element.
+     */
+    public onReady(element: HTMLElement): void {
+        ko.applyBindings(this, element);
+    }
+
+    /**
+    * Opens the numeric input dialog sample.
+    */
+    public openNumericInputDialog(): void {
+        let numericInputDialog: NumericInputDialog = new NumericInputDialog();
+        numericInputDialog.show(this.context, this.context.resources.getString("string_55"))
+            .then((result: string) => {
+                this.dialogResult(result);
+            }).catch((reason: any) => {
+                this.context.logger.logError("NumericInputDialog: " + JSON.stringify(reason));
+            });
+    }
+
+    /**
+     * Called when the object is disposed.
+     */
+    public dispose(): void {
+        ObjectExtensions.disposeAllProperties(this);
+    }
+}
+
+</textarea>
+                </div>
+            </div>
+    </div>
+</body>
+</html>

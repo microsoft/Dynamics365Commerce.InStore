@@ -12,6 +12,12 @@ import { IExtensionContext } from "PosApi/Framework/ExtensionContext";
 import { ClientEntities } from "PosApi/Entities";
 
 export default class MessageDialog {
+    /**
+     * Shows the message dialog.
+     * @param context The extension context.
+     * @param message The message to display in the dialog.
+     * @returns {Promise<string>} The promise.
+     */
     public static show(context: IExtensionContext, message: string): Promise<string> {
         let promise: Promise<string> = new Promise<string>((resolve: (value: string) => void, reject: (reason?: any) => void) => {
                     let messageDialogOptions: IMessageDialogOptions = {

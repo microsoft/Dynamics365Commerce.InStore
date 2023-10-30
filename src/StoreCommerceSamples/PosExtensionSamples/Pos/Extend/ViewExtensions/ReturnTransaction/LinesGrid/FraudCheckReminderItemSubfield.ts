@@ -1,6 +1,6 @@
 /**
  * SAMPLE CODE NOTICE
- * 
+ *
  * THIS SAMPLE CODE IS MADE AVAILABLE AS IS.  MICROSOFT MAKES NO WARRANTIES, WHETHER EXPRESS OR IMPLIED,
  * OF FITNESS FOR A PARTICULAR PURPOSE, OF ACCURACY OR COMPLETENESS OF RESPONSES, OF RESULTS, OR CONDITIONS OF MERCHANTABILITY.
  * THE ENTIRE RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS SAMPLE CODE REMAINS WITH THE USER.
@@ -15,7 +15,7 @@ import { ProxyEntities } from "PosApi/Entities";
 import { ObjectExtensions, StringExtensions } from "PosApi/TypeExtensions";
 
 /**
- * This class extends the base one to issue a fraud check warning in case the total value of the purchase is above $100.00
+ * This class extends the base one to issue a fraud check warning in case the total value of the purchase is above $100.00.
  */
 export default class FraudCheckReminderItemSubfield extends CustomSalesOrderLinesGridItemSubfieldBase {
     /**

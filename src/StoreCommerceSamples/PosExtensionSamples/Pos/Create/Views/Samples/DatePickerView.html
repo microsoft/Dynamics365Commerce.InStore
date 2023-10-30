@@ -1,0 +1,104 @@
+﻿<!--
+    HTMLLint is an internal tool that fails on this file due to non-localized example labels,
+    there is no need for this comment and the one below in real-world extensions.
+-->
+<!-- HTMLLint Disable LabelExistsValidator -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>DatePickerView</title>
+</head>
+<body>
+    <div class="DatePickerView">
+        <div class="grow marginBottom48 scrollY">
+            <div class="pad20 col width680">
+                <h3>DatePicker</h3>
+                <div class="pad8">
+                    <div id="datePickerSample">
+                    </div>
+                </div>
+                <div class="h4 padTop40">ViewModel interface</div>
+                <textarea class="height220">
+                    export interface IDatePickerOptions {
+                    date: Date;
+                    enabled: boolean;
+                    }
+
+                    export interface IDatePicker {
+                    readonly date: Date;
+                    enabled: boolean;
+                    }
+
+                    export interface IDatePickerEventMap {
+                    "DateChanged": {
+                    date: Date;
+                    };
+                    }
+                </textarea>
+                <div class="h4 padTop40">Controller syntax</div>
+                <textarea class="height220">
+                    import * as Views from "PosApi/Create/Views";
+                    import * as HeaderSplitView from "PosUISdk/Controls/HeaderSplitView";
+                    import * as Controls from "PosApi/Consume/Controls";
+
+                    /**
+                    * The controller for DatePickerView.
+                    */
+                    export default class DatePickerView extends Views.CustomViewControllerBase {
+                    public datePicker: Controls.IDatePicker;
+
+                    constructor(context: Views.ICustomViewControllerContext) {
+                    // Do not save in history
+                    super(context);
+                    this.state.title = "DatePicker sample";
+                    }
+
+                    /**
+                    * Bind the html element with view controller.
+                    *
+                    * @param {HTMLElement} element DOM element.
+                    */
+                    public onReady(element: HTMLElement): void {
+
+                    ko.applyBindings(this, element);
+
+                    let datePickerOptions: Controls.IDatePickerOptions = {
+                        date: new Date(),
+                        enabled: true
+                    };
+
+                    let datePickerRootElem: HTMLDivElement = element.querySelector("#datePickerSample") as HTMLDivElement;
+                    this.datePicker = this.context.controlFactory.create("", "DatePicker", datePickerOptions, datePickerRootElem);
+                    this.datePicker.addEventListener("DateChanged", (eventData: { date: Date }) => {
+                            this._dateChangedHandler(eventData.date);
+                        });
+                    }
+
+                    /**
+                    * Called when the object is disposed.
+                    */
+                    public dispose(): void {
+                        ObjectExtensions.disposeAllProperties(this);
+                    }
+
+                    /**
+                    * Callback for date picker.
+                    * @param {Date} newDate
+                    */
+                    private _dateChangedHandler(newDate: Date): void {
+                        this.context.logger.logInformational("DateChanged: " + JSON.stringify(newDate));
+                    }
+                }
+                </textarea>
+                <div class="h4 padTop40">HTML syntax</div>
+                <textarea class="height220">
+                    <div id="datePickerSample">
+                    </div>
+                </textarea>
+            </div>
+        </div>
+            </div>
+        </div>
+</body>
+</html>

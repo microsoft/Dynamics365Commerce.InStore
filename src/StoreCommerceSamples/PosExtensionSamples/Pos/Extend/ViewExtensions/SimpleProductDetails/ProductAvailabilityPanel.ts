@@ -7,6 +7,7 @@
  * NO TECHNICAL SUPPORT IS PROVIDED.  YOU MAY NOT DISTRIBUTE THIS CODE UNLESS YOU HAVE A LICENSE AGREEMENT WITH MICROSOFT THAT ALLOWS YOU TO DO SO.
  */
 
+import * as Controls from "PosApi/Consume/Controls";
 import {
     SimpleProductDetailsCustomControlBase,
     ISimpleProductDetailsCustomControlState,
@@ -15,14 +16,12 @@ import {
 import { InventoryLookupOperationRequest, InventoryLookupOperationResponse } from "PosApi/Consume/OrgUnits";
 import { ClientEntities, ProxyEntities } from "PosApi/Entities";
 import { ArrayExtensions } from "PosApi/TypeExtensions";
-import * as Controls from "PosApi/Consume/Controls";
 import ko from "knockout";
 
 export default class ProductAvailabilityPanel extends SimpleProductDetailsCustomControlBase {
     public dataList: Controls.IDataList<ProxyEntities.OrgUnitAvailability>;
     public readonly title: ko.Observable<string>;
-
-    private static readonly TEMPLATE_ID: string = "Microsot_Pos_Extensibility_Samples_ProductAvailabilityPanel";
+    private static readonly TEMPLATE_ID: string = "Microsoft_Pos_Extensibility_Samples_ProductAvailabilityPanel";
     private _state: ISimpleProductDetailsCustomControlState;
     private _orgUnitAvailabilities: ProxyEntities.OrgUnitAvailability[] = [];
 
@@ -87,7 +86,7 @@ export default class ProductAvailabilityPanel extends SimpleProductDetailsCustom
             interactionMode: Controls.DataListInteractionMode.None,
         };
 
-        let dataListRootElem: HTMLDivElement = element.querySelector("#Microsot_Pos_Extensibility_Samples_ProductAvailabilityPanel_DataList") as HTMLDivElement;
+        let dataListRootElem: HTMLDivElement = element.querySelector("#Microsoft_Pos_Extensibility_Samples_ProductAvailabilityPanel_DataList") as HTMLDivElement;
         this.dataList = this.context.controlFactory.create(this.context.logger.getNewCorrelationId(), "DataList", dataListOptions, dataListRootElem);
     }
 

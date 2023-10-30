@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Cart Amount Due Item Templates</title>
+</head>
+<body>
+    <script id="Microsoft_Pos_Extensibility_Samples_UnpackedCartAmountDueItem" type="text/html">
+        <button class="pad0 center row"
+                data-bind="click: onItemClickedHandler">
+            <div class="iconShop buttonIcon height20"></div>
+            <div class="h4 padRight8" data-bind="text: amountDueLabel"></div>
+        </button>
+    </script>
+    <script id="Microsoft_Pos_Extensibility_Samples_PackedCartAmountDueItem" type="text/html">
+        <button class="row pad0"
+                data-bind="click: onItemClickedHandler">
+            <div class="iconShop buttonIcon height20 margin12">
+            </div>
+            <div class="grow row marginLeft8 padTop12">
+                <div class="h4 padRight4">Amount due: </div>
+                <div class="h4 padRight8" data-bind="text: amountDueLabel"></div>
+            </div>
+        </button>
+    </script>
+</body>
+</html>

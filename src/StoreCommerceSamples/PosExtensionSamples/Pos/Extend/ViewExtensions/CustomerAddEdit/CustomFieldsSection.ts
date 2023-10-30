@@ -1,12 +1,13 @@
 /**
  * SAMPLE CODE NOTICE
- * 
+ *
  * THIS SAMPLE CODE IS MADE AVAILABLE AS IS.  MICROSOFT MAKES NO WARRANTIES, WHETHER EXPRESS OR IMPLIED,
  * OF FITNESS FOR A PARTICULAR PURPOSE, OF ACCURACY OR COMPLETENESS OF RESPONSES, OF RESULTS, OR CONDITIONS OF MERCHANTABILITY.
  * THE ENTIRE RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS SAMPLE CODE REMAINS WITH THE USER.
  * NO TECHNICAL SUPPORT IS PROVIDED.  YOU MAY NOT DISTRIBUTE THIS CODE UNLESS YOU HAVE A LICENSE AGREEMENT WITH MICROSOFT THAT ALLOWS YOU TO DO SO.
  */
 
+import * as Controls from "PosApi/Consume/Controls";
 import {
     CustomerAddEditCustomControlBase,
     ICustomerAddEditCustomControlState,
@@ -15,7 +16,6 @@ import {
 } from "PosApi/Extend/Views/CustomerAddEditView";
 import { ObjectExtensions } from "PosApi/TypeExtensions";
 import { ProxyEntities } from "PosApi/Entities";
-import * as Controls from "PosApi/Consume/Controls";
 import ko from "knockout";
 
 export default class CustomFieldsSection extends CustomerAddEditCustomControlBase {
@@ -95,6 +95,8 @@ export default class CustomFieldsSection extends CustomerAddEditCustomControlBas
 
     /**
      * Gets the property value from the property bag, by its key. Optionally creates the property value on the bag, if it does not exist.
+     * @param {string} key The key of the property to get.
+     * @param {ProxyEntities.CommercePropertyValue} newValue The new value to set on the property.
      */
     private _addOrUpdateExtensionProperty(key: string, newValue: ProxyEntities.CommercePropertyValue): void {
         let customer: ProxyEntities.Customer = this.customer;

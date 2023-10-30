@@ -9,7 +9,6 @@
 
 import { ISearchFilterDefinitionContext, CustomTextSearchFilterDefinitionBase } from "PosApi/Extend/Views/CustomSearchFilters";
 
-
 /**
  * Represents a sample text search filter.
  */

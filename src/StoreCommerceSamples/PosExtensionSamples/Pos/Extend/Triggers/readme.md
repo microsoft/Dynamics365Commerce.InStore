@@ -5,6 +5,7 @@ This sample shows how to use Cancelable, NonCancelable, and DataModification tri
  - A NonCancelable trigger has been implemented to adjust the Unit of Measure for a product when it is added to the cart.
  - A DataModification trigger has been implemented to filter out the list of allowable payment types, simulating a credit card only POS terminal.
  - Another Cancelable trigger has been implemented to demonstrate how users can return errors during trigger execution that break the normal action flow.
+ - A trigger has been implemented sound play product was added to demonstrate how to use resource files in extension.
 
 ![Demo](./Demo.gif)
 
@@ -20,7 +21,7 @@ This sample shows how to use Cancelable, NonCancelable, and DataModification tri
   - Add Product ID 81212 to the cart, selecting any size.
   - Notice that after the cart line has been added, the Unit of Measure is updated to dozen and a new price is calculated.
 - **Cancelable Trigger**:
-  - Click *Set Quantiy* and notice the new dialog confirming if the user wants to continue.
+  - Click *Set Quantity* and notice the new dialog confirming if the user wants to continue.
     - Clicking *Yes* will continue the action flow as normal.
     - Clicking *No* will cancel the action flow.
 - **DataModification Trigger**:
@@ -29,6 +30,9 @@ This sample shows how to use Cancelable, NonCancelable, and DataModification tri
 - **Cancelable Trigger with errors**:
   - Add Product ID 81213 to the cart.
   - Notice that an error dialog is shown, and the action flow is canceled.
+- **Sound Play Trigger**:
+  - Add any product to the cart.
+  - Notice that a sound is played.
 
 ## APIs and extension points used
 ###"PosApi/Consume/Cart"

@@ -1,7 +1,7 @@
 ﻿import ko from "knockout";
 import { CustomViewControllerBase, CustomViewControllerExecuteCommandArgs, ICommand, Icons, ICustomViewControllerConfiguration, ICustomViewControllerContext } from "PosApi/Create/Views";
 import { ArrayExtensions, ObjectExtensions } from "PosApi/TypeExtensions";
-import { IDataList, DataListInteractionMode } from "PosApi/Consume/Controls";
+import { IDataList, DataListInteractionMode, IPivot } from "PosApi/Consume/Controls";
 import { CurrencyFormatter, DateFormatter } from "PosApi/Consume/Formatters";
 import { AddItemToCartOperationRequest, AddItemToCartOperationResponse, SaveExtensionPropertiesOnCartClientRequest, SaveExtensionPropertiesOnCartClientResponse } from "PosApi/Consume/Cart";
 import { ClientEntities, ProxyEntities } from "PosApi/Entities";
@@ -30,14 +30,17 @@ export default class GasPumpStatusView extends CustomViewControllerBase {
     public readonly selectedGasPumpTotal: ko.Computed<string>;
     public readonly selectedGasPumpVolume: ko.Computed<string>;
 
-    private static readonly DATA_LIST_QUERY_SELECTOR: string = "#contoso_gasPumpStatusView_DataList";
     private static readonly STOP_ALL_COMMAND_NAME: string = "StopAllPumps";
     private static readonly START_ALL_COMMAND_NAME: string = "StartAllPumps";
     private static readonly CHECKOUT_COMMAND_NAME: string = "Checkout";
     private static readonly START_STOP_COMMAND_NAME: string = "StartStopPumpCommand";
+    private static readonly PIVOT_ITEM_ACTIVE_PUMPS_ID: string = "activePumpsId";
+    private static readonly PIVOT_ITEM_OUT_OF_SERVICE_PUMPS_ID: string = "outOfServicePumpsId";
 
-    private _dataList: IDataList<Entities.GasPump>;
+    private _activePumpsDataList: IDataList<Entities.GasPump>;
+    private _outOfServicePumpsDataList: IDataList<Entities.GasPump>;
     private _gasPumpChangedHandlerId: number;
+    private _pivot: IPivot;
 
     /**
      * Creates a new instance of the GasPumpStatusView class.
@@ -218,10 +221,88 @@ export default class GasPumpStatusView extends CustomViewControllerBase {
      * @param {HTMLElement} element The root element for the view.
      */
     public onReady(element: HTMLElement): void {
-        let dataListElement: HTMLDivElement = element.querySelector(GasPumpStatusView.DATA_LIST_QUERY_SELECTOR) as HTMLDivElement;
+        ko.applyBindings(this, element);
+        const correlationId: string = this.context.logger.getNewCorrelationId();
 
+        let pivotElement: HTMLDivElement = element.querySelector("#PivotId") as HTMLDivElement;
+        this._pivot = this.context.controlFactory.create(
+            correlationId,
+            "Pivot",
+            {
+                items: [
+                    {
+                        id: GasPumpStatusView.PIVOT_ITEM_ACTIVE_PUMPS_ID,
+                        header: "Active pumps",
+                        onReady: (element: HTMLElement) => {
+                            this._activePumpsDataList = this._initDataList(element, this._getActivePumps());
+                        },
+                        onShown: () => {
+                            return;
+                        }
+                    },
+                    {
+                        id: GasPumpStatusView.PIVOT_ITEM_OUT_OF_SERVICE_PUMPS_ID,
+                        header: "Out of service",
+                        onReady: (element: HTMLElement) => {
+                            this._outOfServicePumpsDataList = this._initDataList(element, this._getOutOfServicePumps());
+                        },
+                        onShown: () => {
+                            return;
+                        }
+                    }
+                ]
+            },
+            pivotElement);
+
+        this._pivot.addEventListener("SelectionChanged", (): void => {
+            this._refreshCurrentPumpList();
+        });
+
+        this._refreshCurrentPumpList();
+    }
+
+    /**
+     * The onShown method is called by the view framework every time the view is displayed.
+     */
+    public onShown(): void {
+        this._gasPumpChangedHandlerId = GasStationDataStore.instance.addPumpStatusChangedHandler(() => { this._refreshCurrentPumpList(); })
+    }
+
+    /**
+     * The onHidden method is called by the view framework every time the view is hidden.
+     */
+    public onHidden(): void {
+        if (!ObjectExtensions.isNullOrUndefined(this._gasPumpChangedHandlerId)) {
+            let id: number = this._gasPumpChangedHandlerId;
+            this._gasPumpChangedHandlerId = undefined;
+            GasStationDataStore.instance.removePumpStatusChangedHandler(id);
+        }
+    }
+
+    /**
+     * The dispose method is called by the POS framework when the view is removed from the DOM and the navigation history.
+     * It is important to release the view controller resources when it is disposed to prevent memory leaks.
+     */
+    public dispose(): void {
+        ObjectExtensions.disposeAllProperties(this);
+    }
+
+    /**
+     * Toggles the visibility of the details panel.
+     */
+    public toggleDetailsPanel(): void {
+        this.isDetailsPanelVisible(!this.isDetailsPanelVisible());
+    }
+
+    /**
+     * Initializes the data list control.
+     * @param {HTMLElement} element The root element for the data list.
+     * @param {Entities.GasPump[]} pumps The gas pumps to display in the data list.
+     * @returns {IDataList<Entities.GasPump>} The initialized data list.
+     */
+    private _initDataList(element: HTMLElement, pumps: Entities.GasPump[]): IDataList<Entities.GasPump> {
         // Use the control factory from the context to create a datalist control showing all of the gas pumps.
-        this._dataList = this.context.controlFactory.create<Entities.GasPump>(
+        let dataList: IDataList<Entities.GasPump> = this.context.controlFactory.create<Entities.GasPump>(
             this.context.logger.getNewCorrelationId(),
             "DataList",
             {
@@ -259,16 +340,16 @@ export default class GasPumpStatusView extends CustomViewControllerBase {
                         title: "Last Updated"
                     }
                 ],
-                data: GasStationDataStore.instance.pumps,
+                data: pumps,
                 interactionMode: DataListInteractionMode.SingleSelect,
                 equalityComparer: (left: Entities.GasPump, right: Entities.GasPump): boolean => {
                     return left.Id === right.Id;
                 }
             },
-            dataListElement);
+            element as HTMLDivElement);
 
         // Add an event listener for the "SelectionChanged" event to update the view controller state when the user interacts with the data list.
-        this._dataList.addEventListener("SelectionChanged", (selectionData: { items: Entities.GasPump[] }): void => {
+        dataList.addEventListener("SelectionChanged", (selectionData: { items: Entities.GasPump[] }): void => {
             if (ArrayExtensions.hasElements(selectionData.items)) {
                 this.selectedGasPump(selectionData.items[0]);
                 this._checkoutCommand.canExecute = selectionData.items[0].State.GasPumpStatusValue === GasPumpStatus.PumpingComplete;
@@ -280,49 +361,53 @@ export default class GasPumpStatusView extends CustomViewControllerBase {
             }
         });
 
-        this._refreshPumps(GasStationDataStore.instance.pumps);
-        ko.applyBindings(this, element);
+        return dataList;
     }
 
     /**
-     * The onShown method is called by the view framework every time the view is displayed.
+     * Gets the active gas pumps.
+     * @returns {Entities.GasPump[]} The active gas pumps.
      */
-    public onShown(): void {
-        this._gasPumpChangedHandlerId = GasStationDataStore.instance.addPumpStatusChangedHandler(() => { this._refreshPumps(GasStationDataStore.instance.pumps); })
+    private _getActivePumps(): Entities.GasPump[] {
+        return GasStationDataStore.instance.pumps.filter(
+            (p) => p.State.GasPumpStatusValue !== GasPumpStatus.Emergency && p.State.GasPumpStatusValue !== GasPumpStatus.Unknown
+        );
     }
 
     /**
-     * The onHidden method is called by the view framework every time the view is hidden.
+     * Gets the out of service gas pumps.
+     * @returns {Entities.GasPump[]} The out of service gas pumps.
      */
-    public onHidden(): void {
-        if (typeof this._gasPumpChangedHandlerId === "number") {
-            let id: number = this._gasPumpChangedHandlerId;
-            this._gasPumpChangedHandlerId = undefined;
-            GasStationDataStore.instance.removePumpStatusChangedHandler(id);
+    private _getOutOfServicePumps(): Entities.GasPump[] {
+        return GasStationDataStore.instance.pumps.filter(
+            (p) => p.State.GasPumpStatusValue === GasPumpStatus.Emergency || p.State.GasPumpStatusValue === GasPumpStatus.Unknown
+        );
+    }
+
+    /**
+     * Refreshes the current pump list.
+     */
+    private _refreshCurrentPumpList(): void {
+        switch (this._pivot.selectedItem.id) {
+            case GasPumpStatusView.PIVOT_ITEM_ACTIVE_PUMPS_ID:
+                this._refreshPumps(this._activePumpsDataList, this._getActivePumps());
+                break;
+            case GasPumpStatusView.PIVOT_ITEM_OUT_OF_SERVICE_PUMPS_ID:
+                this._refreshPumps(this._outOfServicePumpsDataList, this._getOutOfServicePumps());
+                break;
         }
     }
 
     /**
-     * The dispose method is called by the POS framework when the view is removed from the DOM and the navigation history.
-     * It is important to release the view controller resources when it is disposed to prevent memory leaks.
+     * Refreshes the provided data list with the provided gas pumps.
+     * @param {IDataList<Entities.GasPump>} datalist The data list to update.
+     * @param {ReadonlyArray<Entities.GasPump>} pumps The gas pumps to update the data list with.
      */
-    public dispose(): void {
-        ObjectExtensions.disposeAllProperties(this);
-    }
-
-    public toggleDetailsPanel(): void {
-        this.isDetailsPanelVisible(!this.isDetailsPanelVisible());
-    }
-
-    /**
-     * Updates the view controller state with the provided gas pumps.
-     * @param {ReadonlyArray<Entities.GasPump>} pumps The gas pumps.
-     */
-    private _refreshPumps(pumps: ReadonlyArray<Entities.GasPump>): void {
-        this._dataList.data = pumps;
+    private _refreshPumps(datalist: IDataList<Entities.GasPump>, pumps: Entities.GasPump[]): void {
+        datalist.data = pumps;
         let pumpInEmergency: Entities.GasPump = ArrayExtensions.firstOrUndefined(pumps, (p) => p.State.GasPumpStatusValue === GasPumpStatus.Emergency);
         if (!ObjectExtensions.isNullOrUndefined(pumpInEmergency)) {
-            this._dataList.selectItems([pumpInEmergency])
+            this._activePumpsDataList.selectItems([pumpInEmergency])
         }
 
         // Allow stop all if some pumps are pumping.

@@ -7,8 +7,8 @@
  * NO TECHNICAL SUPPORT IS PROVIDED.  YOU MAY NOT DISTRIBUTE THIS CODE UNLESS YOU HAVE A LICENSE AGREEMENT WITH MICROSOFT THAT ALLOWS YOU TO DO SO.
  */
 
-import { IExtensionShippingMethodsViewControllerContext } from "PosApi/Extend/Views/ShippingMethodsView";
 import * as ShippingMethodsView from "PosApi/Extend/Views/ShippingMethodsView";
+import { IExtensionShippingMethodsViewControllerContext } from "PosApi/Extend/Views/ShippingMethodsView";
 import { StringExtensions } from "PosApi/TypeExtensions";
 
 /**

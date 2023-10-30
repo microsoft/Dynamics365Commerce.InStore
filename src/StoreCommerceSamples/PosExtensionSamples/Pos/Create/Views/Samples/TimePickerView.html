@@ -1,0 +1,93 @@
+﻿<!--
+    HTMLLint is an internal tool that fails on this file due to non-localized example labels,
+    there is no need for this comment and the one below in real-world extensions.
+-->
+<!-- HTMLLint Disable LabelExistsValidator -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>TimePickerView</title>
+</head>
+<body>
+    <div class="TimePickerView">
+        <div class="grow marginBottom48 scrollY">
+            <div class="pad20 col width680">
+                <h3>TimePicker</h3>
+                <div class="pad8">
+                    <div id="timePicker">
+                    </div>
+                </div>
+                <div class="h4 padTop40">ViewModel interface</div>
+                <textarea class="height220">
+                    export interface ITimePickerOptions extends IControlOptions {
+                    enabled: boolean;
+                    minuteIncrement: number;
+                    time: Date;
+                    }
+                </textarea>
+                <div class="h4 padTop40">Controller syntax</div>
+                <textarea class="height220">
+                    import * as Views from "PosApi/Create/Views";
+                    import { ObjectExtensions } from "PosApi/TypeExtensions";
+                    import * as Controls from "PosApi/Consume/Controls";
+
+                    /**
+                    * The controller for TimePickerView.
+                    */
+                    export default class TimePickerView extends Views.CustomViewControllerBase {
+                    public timePicker: Controls.ITimePicker;
+
+                    constructor(context: Views.ICustomViewControllerContext) {
+                    super(context);
+                    this.state.title = "TimePicker sample";
+                    }
+
+                    /**
+                    * Bind the html element with view controller.
+                    *
+                    * @param {HTMLElement} element DOM element.
+                    */
+                    public onReady(element: HTMLElement): void {
+                    ko.applyBindings(this, element);
+
+                    let timePickerOptions: Controls.ITimePickerOptions = {
+                        enabled: true,
+                        minuteIncrement: 15,
+                        time: new Date()
+                    };
+
+                    let timePickerRootElem: HTMLDivElement = element.querySelector("#timePicker") as HTMLDivElement;
+                    this.timePicker = this.context.controlFactory.create(this.context.logger.getNewCorrelationId(), "TimePicker", timePickerOptions, timePickerRootElem);
+                    this.timePicker.addEventListener("TimeChanged", (eventData: { time: Date }) => {
+                            this.timePickerChanged(eventData.time);
+                        });
+                    }
+
+                    /**
+                    * Callback for time picker.
+                    * @param {Date} newDate New date.
+                    */
+                    private timePickerChanged(newDate: Date): void {
+                        this.context.logger.logInformational(newDate.getHours() + ":" + newDate.getMinutes());
+                    }
+
+                    /**
+                    * Called when the object is disposed.
+                    */
+                    public dispose(): void {
+                        ObjectExtensions.disposeAllProperties(this);
+                    }
+                    }
+
+                </textarea>
+                <div class="h4 padTop40">HTML syntax</div>
+                <textarea class="height220">
+                    <div id="timePicker">
+                    </div>
+                </textarea>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

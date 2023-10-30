@@ -1,0 +1,117 @@
+﻿<!--
+    HTMLLint is an internal tool that fails on this file due to non-localized example labels,
+    there is no need for this comment and the one below in real-world extensions.
+-->
+<!-- HTMLLint Disable LabelExistsValidator -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>MenuView</title>
+</head>
+<body>
+    <div class="MenuView">
+            <div class="grow marginBottom48 scrollY">
+                <div class="pad20 col width680">
+                    <h3>Menu</h3>
+                    <div class="pad8">
+                        <button data-bind="click: showMenu" style="float: left">Menu anchor</button>
+                        <div id="menu">
+                        </div>
+                        <button data-bind="click: showMenu">Another menu anchor</button>
+                    </div>
+                    <div class="h4 padTop40">ViewModel interface</div>
+                    <textarea class="height220">
+                        export interface IMenuState {
+                        placement?: MenuPlacementOptions;
+                        alignment?: MenuAlignmentOptions;
+                        commands?: IMenuCommandState[];
+                        }
+
+                        export interface IMenuCommandState {
+                        id: string;
+                        label: string;
+                        onClick?: MenuCommandClickCallback;
+                        }
+                    </textarea>
+                    <div class="h4 padTop40">Controller syntax</div>
+                    <textarea class="height220">
+import * as Views from "PosApi/Create/Views";
+import { ObjectExtensions } from "PosApi/TypeExtensions";
+import * as Controls from "PosApi/Consume/Controls";
+
+/**
+ * The controller for MenuView.
+ */
+export default class MenuView extends Views.CustomViewControllerBase {
+    public menu: Controls.IMenu;
+
+    constructor(context: Views.ICustomViewControllerContext) {
+        super(context);
+        this.state.title = "Menu sample";
+    }
+
+    /**
+     * Bind the html element with view controller.
+     *
+     * @param {HTMLElement} element DOM element.
+     */
+    public onReady(element: HTMLElement): void {
+        ko.applyBindings(this, element);
+
+        let menuOptions: Controls.IMenuOptions = {
+            commands: [{
+                id: "MenuCommand1",
+                label: "Menu command 1",
+            }, {
+                    id: "MenuCommand2",
+                    label: "Menu command 2",
+                }],
+            directionalHint: Controls.DirectionalHint.BottomCenter,
+            type: "button"
+        };
+
+        let menuRootElem: HTMLDivElement = element.querySelector("#menu") as HTMLDivElement;
+        this.menu = this.context.controlFactory.create(this.context.logger.getNewCorrelationId(), "Menu", menuOptions, menuRootElem);
+        this.menu.addEventListener("CommandInvoked", (eventData: { id: string }) => {
+            this.menuCommandClick(eventData.id);
+        });
+    }
+
+    /**
+     * Callback for menu.
+     * @param {MenuView} controller View controller.
+     * @param {Event} eventArgs Html event.
+     */
+    public showMenu(controller: MenuView, eventArgs: Event): void {
+        this.menu.show(<HTMLElement>event.currentTarget);
+    }
+
+    /**
+     * Called when the object is disposed.
+     */
+    public dispose(): void {
+        ObjectExtensions.disposeAllProperties(this);
+    }
+
+    /**
+     * Callback for menu command.
+     * @param {string} args Menu command arguments.
+     */
+    private menuCommandClick(args: string): void {
+        this.context.logger.logInformational("menuCommandClick: " + args);
+    }
+}
+</textarea>
+                    <div class="h4 padTop40">HTML syntax</div>
+                    <textarea class="height220">
+                        <button data-bind="click: showMenu" style="float:left">Menu anchor</button>
+                        <div id="menu">
+                        </div>
+                        <button data-bind="click: showMenu">Another menu anchor</button>
+                    </textarea>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

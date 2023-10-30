@@ -12,12 +12,13 @@ export default class ConfirmChangeQuantityTrigger extends PreSetQuantityTrigger 
 
     /**
      * Executes the trigger functionality.
-     * @param {IPreSetQuantityTriggerOptions} options The options provided to the trigger
+     * @param {IPreSetQuantityTriggerOptions} options The options provided to the trigger.
+     * @return {Promise<ICancelable>} The cancelable promise.
      */
     public execute(options: IPreSetQuantityTriggerOptions): Promise<ClientEntities.ICancelable> {
         this.context.logger.logInformational("Executing ConfirmChangeQuantityTrigger with options " + JSON.stringify(options) + ".");
 
-        // Configure options for dialog that will confirm user wants to change quantity
+        // Configure options for dialog that will confirm user wants to change quantity.
         let dialogOptions: IMessageDialogOptions = {
             message: ConfirmChangeQuantityTrigger.dialogMessage,
             showCloseX: false,
@@ -35,20 +36,20 @@ export default class ConfirmChangeQuantityTrigger extends PreSetQuantityTrigger 
             }
         };
 
-        // Construct show dialog request
+        // Construct show dialog request.
         let showMessageDialogClientRequest: ShowMessageDialogClientRequest<ShowMessageDialogClientResponse> =
             new ShowMessageDialogClientRequest(dialogOptions);
 
-        // Show the confirmation dialog to the user and process the result
+        // Show the confirmation dialog to the user and process the result.
         return this.context.runtime.executeAsync(showMessageDialogClientRequest).then((value) => {
-            // If user clicks 'Yes', continue with the Set Quantity flow...
+            // If user clicks 'Yes', continue with the Set Quantity flow.
             if (!value.canceled && value.data.result.dialogResult == ConfirmChangeQuantityTrigger.yesButtonLabel) {
                 return Promise.resolve({ canceled: false });
-            // ... else if user clicks 'No', cancel the Set Quantity flow
+            // ... else if user clicks 'No', cancel the Set Quantity flow.
             } else {
                 return Promise.resolve({ canceled: true })
             }
-        // Continue with the Set Quantity flow if any errors occur with the confirmation dialog
+        // Continue with the Set Quantity flow if any errors occur with the confirmation dialog.
         }).catch((reason: any) => {
             return Promise.resolve({ canceled: false })
         });

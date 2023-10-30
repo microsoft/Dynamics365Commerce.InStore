@@ -20,6 +20,9 @@ import {
 import { ProxyEntities } from "PosApi/Entities";
 import ko from "knockout";
 
+/**
+ * The controller for CustomerDetailsCustomControl.
+ */
 export default class CustomerDetailsCustomControl extends CartViewCustomControlBase {
     public readonly isCustomerSelected: ko.Computed<boolean>;
     public readonly accountHolder: ko.Computed<string>;

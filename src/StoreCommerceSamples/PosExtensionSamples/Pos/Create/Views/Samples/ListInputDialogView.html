@@ -1,0 +1,89 @@
+﻿<!--
+    HTMLLint is an internal tool that fails on this file due to non-localized example labels,
+    there is no need for this comment and the one below in real-world extensions.
+-->
+<!-- HTMLLint Disable LabelExistsValidator -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ListInputDialogView</title>
+</head>
+<body>
+    <div class="ListInputDialogView">
+            <div class="grow marginBottom48 scrollY">
+                <div class="pad20 col width680">
+                    <h3>ListDialog</h3>
+                    <div class="pad8">
+                        <button id="btnOpenInputNumDialog" data-bind="resx: { ariaLabel: 'string_49' }, click: openListInputDialog">open list input dialog</button>
+                    </div>
+                    <div class="h4">Dialog result</div>
+                    <div class="h4" data-bind="text: dialogResult"></div>
+                    <div class="h4 padTop40">ListDialog item and option interface</div>
+                    <textarea class="height220">
+export interface IListInputDialogItem {
+    label: string;
+    value: any;
+}
+export interface IListInputDialogOptions extends IInputDialogOptions<IListInputDialogResult>{
+    items: IListInputDialogItem[];
+}
+</textarea>
+                    <div class="h4 padTop40">Controller syntax</div>
+                    <textarea class="height220">
+import * as Views from "PosApi/Create/Views";
+import { ObjectExtensions } from "PosApi/TypeExtensions";
+
+import ListInputDialog from "../../Controls/DialogSample/ListInputDialog";
+
+/**
+ * The controller for ListInputDialogView.
+ */
+export default class ListInputDialogView extends Views.CustomViewControllerBase {
+    public dialogResult: Observable<string>;
+
+    constructor(context: Views.ICustomViewControllerContext) {
+        super(context);
+        this.state.title = "ListInputDialog sample";
+
+        this.dialogResult = ko.observable("");
+    }
+
+    /**
+    * Bind the html element with view controller.
+    *
+    * @param {HTMLElement} element DOM element.
+    */
+    public onReady(element: HTMLElement): void {
+        super.onReady(element);
+
+        // Customized binding
+        ko.applyBindings(this, element);
+    }
+
+    /**
+    * Opens the list input dialog sample.
+    */
+    public openListInputDialog(): void {
+        let listInputDialog: ListInputDialog = new ListInputDialog();
+        listInputDialog.show(this.context, this.context.resources.getString("string_55"))
+        .then((result: string) => {
+            this.dialogResult(result);
+        }).catch((reason: any) => {
+            this.context.logger.logError("ListDialog: " + JSON.stringify(reason));
+        });
+    }
+
+    /**
+     * Called when the object is disposed.
+     */
+    public dispose(): void {
+        ObjectExtensions.disposeAllProperties(this);
+    }
+}
+                </textarea>
+                </div>
+            </div>
+    </div>
+</body>
+</html>

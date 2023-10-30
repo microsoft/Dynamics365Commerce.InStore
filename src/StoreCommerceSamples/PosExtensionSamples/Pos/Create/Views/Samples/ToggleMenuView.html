@@ -1,0 +1,119 @@
+﻿<!--
+    HTMLLint is an internal tool that fails on this file due to non-localized example labels,
+    there is no need for this comment and the one below in real-world extensions.
+-->
+<!-- HTMLLint Disable LabelExistsValidator -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ToggleMenuView</title>
+</head>
+<body>
+    <div class="ToggleMenuView">
+            <div class="grow marginBottom48 scrollY">
+                <div class="pad20 col width680">
+                    <h3>ToggleMenu</h3>
+                    <div class="pad8">
+                        <div id="toggleMenu">
+                        </div>
+                        <button data-bind="click: showToggleMenu">Show toggle menu</button>
+                    </div>
+                    <div class="h4 padTop40">ViewModel interface</div>
+                    <textarea class="height220">
+                        export interface IToggleMenuState {
+                        placement?: MenuPlacementOptions;
+                        alignment?: MenuAlignmentOptions;
+                        commands?: IToggleMenuCommandState[];
+                        }
+
+                        export interface IMenuCommandState {
+                        id: string;
+                        label: string;
+                        onClick?: MenuToggleCommandClickCallback;
+                        selected?: boolean;
+                        }
+                    </textarea>
+                    <div class="h4 padTop40">Controller syntax</div>
+                    <textarea class="height220">
+import * as Views from "PosApi/Create/Views";
+import { ObjectExtensions } from "PosApi/TypeExtensions";
+import * as Controls from "PosApi/Consume/Controls";
+
+/**
+ * The controller for ToggleMenuView.
+ */
+export default class ToggleMenuView extends Views.CustomViewControllerBase {
+    public toggleMenu: Controls.IMenu;
+
+    constructor(context: Views.ICustomViewControllerContext) {
+        super(context);
+
+        this.state.title = "ToggleMenuView sample";
+    }
+
+    /**
+     * Bind the html element with view controller.
+     *
+     * @param {HTMLElement} element DOM element.
+     */
+    public onReady(element: HTMLElement): void {
+        ko.applyBindings(this, element);
+
+        let toggleMenuOptions: Controls.IMenuOptions = {
+            commands: [{
+                id: "MenuCommand1",
+                label: "Menu command 1",
+            }, {
+                    id: "MenuCommand2",
+                    label: "Menu command 2",
+                    selected: true,
+                }],
+            directionalHint: Controls.DirectionalHint.BottomCenter,
+            type: "toggle"
+        };
+
+        let toggleMenuRootElem: HTMLDivElement = element.querySelector("#toggleMenu") as HTMLDivElement;
+        this.toggleMenu = this.context.controlFactory.create(this.context.logger.getNewCorrelationId(), "Menu", toggleMenuOptions, toggleMenuRootElem);
+            this.toggleMenu.addEventListener("CommandInvoked", (eventData: { id: string }) => {
+             this.menuCommandClick(eventData.id);
+        });
+    }
+
+    /**
+     * Callback for toggle menu.
+     * @param {ToggleMenuView} controller View controller.
+     * @param {Event} event Html event object.
+     */
+    public showToggleMenu(controller: ToggleMenuView, event: Event): void {
+        this.toggleMenu.show(<HTMLElement>event.currentTarget);
+    }
+
+    /**
+     * Called when the object is disposed.
+     */
+    public dispose(): void {
+        ObjectExtensions.disposeAllProperties(this);
+    }
+
+    /**
+     * Callback for toggle menu command.
+     * @param {string} args Arguments.
+     */
+    private menuCommandClick(args: string): void {
+        this.context.logger.logInformational(JSON.stringify(args));
+    }
+}
+
+                    </textarea>
+                    <div class="h4 padTop40">HTML syntax</div>
+                    <textarea class="height220">
+                        <div data-bind="msPosToggleMenu: toggleMenu">
+                        </div>
+                        <button data-bind="click: showToggleMenu">Show toggle menu</button>
+                    </textarea>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

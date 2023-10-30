@@ -1,0 +1,98 @@
+﻿<!--
+    HTMLLint is an internal tool that fails on this file due to non-localized example labels,
+    there is no need for this comment and the one below in real-world extensions.
+-->
+<!-- HTMLLint Disable LabelExistsValidator -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>AlphanumericNumPadView</title>
+</head>
+<body>
+    <div class="AlphanumericNumPadView">
+            <div class="grow marginBottom48 scrollY">
+                <div class="pad20 col width680">
+                    <h3>AlphanumericNumPad</h3>
+                    <div class="pad8">
+                        <div class="minWidth260 maxWidth320" id="AlphanumericNumPad"></div>
+                        <div class="h4" data-bind="text: 'onEnter - value: ' + numPadValue()"></div>
+                    </div>
+                    <div class="h4 padTop40">ViewModel interface</div>
+                    <textarea class="height220">
+                        interface IAlphanumericNumPadOptions extends INumPadOptions<string>
+                        {
+                        }
+                            interface IAlphanumericNumPad extends INumPad<string, INumPadEventMap<string>> 
+                        {
+                        }
+                    </textarea>
+                    <div class="h4 padTop40">Controller syntax</div>
+                    <textarea class="height220">
+import * as Views from "PosApi/Create/Views";
+import * as Controls from "PosApi/Consume/Controls";
+import { ObjectExtensions } from "PosApi/TypeExtensions";
+
+/**
+ * The controller for AlphanumericNumPadView.
+ */
+export default class AlphanumericNumPadView extends Views.CustomViewControllerBase {
+    public numPad: Controls.IAlphanumericNumPad;
+    public numPadValue: Observable<string>;
+
+    constructor(context: Views.ICustomViewControllerContext) {
+        super(context);
+
+        this.numPadValue = ko.observable("");
+        this.state.title = "AlphanumericNumPad sample"
+    }
+
+    /**
+     * Bind the html element with view controller.
+     *
+     * @param {HTMLElement} element DOM element.
+     */
+    public onReady(element: HTMLElement): void {
+        ko.applyBindings(this, element);
+
+        //Initialize numpad
+        let numPadOptions: Controls.IAlphanumericNumPadOptions = {
+            globalInputBroker: this.numPadInputBroker,
+            label: "NumPad Label",
+            value: this.numPadValue()
+        };
+
+        let numPadRootElem: HTMLDivElement = element.querySelector("#AlphanumericNumPad") as HTMLDivElement;
+        this.numPad = this.context.controlFactory.create(this.context.logger.getNewCorrelationId(), "AlphanumericNumPad", numPadOptions, numPadRootElem);
+        this.numPad.addEventListener("EnterPressed", (eventData: { value: Commerce.Extensibility.NumPadValue }) => {
+            this.onNumPadEnter(eventData.value);
+        });
+    }
+
+    /**
+     * Callback for numpad.
+     * @param {number} value Numpad current value.
+     */
+    private onNumPadEnter(result: Commerce.Extensibility.NumPadValue): void {
+        this.numPadValue(result.toString());
+        this.numPad.value = "";
+    }
+
+    /**
+     * Called when the object is disposed.
+     */
+    public dispose(): void {
+        ObjectExtensions.disposeAllProperties(this);
+    }
+}
+                    </textarea>
+                    <div class="h4 padTop40">HTML syntax</div>
+                    <textarea class="height220">
+                        <div id="AlphanumericNumPad">
+                        </div>
+                    </textarea>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

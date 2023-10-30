@@ -10,19 +10,20 @@ export default class CreditCardOnlyPreSelectTransactionPaymentMethod extends Pre
     /**
      * Executes the trigger functionality.
      * @param {IPreSelectTransactionPaymentMethodTriggerOptions} options The options provided to the trigger.
+     * @return {Promise<CancelableTriggerResult<IPreSelectTransactionPaymentMethodTriggerOptions>>} The cancelable promise containing the response.
      */
     public execute(options: IPreSelectTransactionPaymentMethodTriggerOptions): Promise<CancelableTriggerResult<IPreSelectTransactionPaymentMethodTriggerOptions>> {
         this.context.logger.logInformational("Executing CreditCardOnlyPreSelectTransactionPaymentMethod with options " + JSON.stringify(options) + ".");
 
-        // Check if any payment options are configured
+        // Check if any payment options are configured.
         if (!ObjectExtensions.isNullOrUndefined(options.tenderTypes) && options.tenderTypes.length > 0) {
-            // Filter out all non-credit card options
+            // Filter out all non-credit card options.
             options.tenderTypes = options.tenderTypes.filter(value => {
                 return (value.Name == "Cards");
             });
         }
 
-        // Return non-canceled result with modified data options
+        // Return non-canceled result with modified data options.
         return Promise.resolve(new CancelableTriggerResult<IPreSelectTransactionPaymentMethodTriggerOptions>(false, options))
     }
 }

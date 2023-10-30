@@ -8,6 +8,7 @@
             ]
         },
         "noImplicitAny": false,
-        "noUnusedLocals": false
+        "noUnusedLocals": false,
+        "removeComments": true
     }
 }

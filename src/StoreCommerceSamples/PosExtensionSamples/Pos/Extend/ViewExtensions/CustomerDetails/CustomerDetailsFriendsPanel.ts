@@ -1,6 +1,6 @@
 /**
  * SAMPLE CODE NOTICE
- * 
+ *
  * THIS SAMPLE CODE IS MADE AVAILABLE AS IS.  MICROSOFT MAKES NO WARRANTIES, WHETHER EXPRESS OR IMPLIED,
  * OF FITNESS FOR A PARTICULAR PURPOSE, OF ACCURACY OR COMPLETENESS OF RESPONSES, OF RESULTS, OR CONDITIONS OF MERCHANTABILITY.
  * THE ENTIRE RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS SAMPLE CODE REMAINS WITH THE USER.
@@ -22,7 +22,7 @@ export default class CustomerDetailsFriendsPanel extends CustomerDetailsCustomCo
     public dataList: Controls.IDataList<ProxyEntities.Customer>;
     public readonly title: ko.Observable<string>;
 
-    private static readonly TEMPLATE_ID: string = "Microsot_Pos_Extensibility_Samples_CustomerDetailsFriendsPanel";
+    private static readonly TEMPLATE_ID: string = "Microsoft_Pos_Extensibility_Samples_CustomerDetailsFriendsPanel";
     private _state: ICustomerDetailsCustomControlState;
     private _friends: ProxyEntities.Customer[] = [];
 

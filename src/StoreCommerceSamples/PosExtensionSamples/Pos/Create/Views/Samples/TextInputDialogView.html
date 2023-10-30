@@ -1,0 +1,78 @@
+﻿<!--
+    HTMLLint is an internal tool that fails on this file due to non-localized example labels,
+    there is no need for this comment and the one below in real-world extensions.
+-->
+<!-- HTMLLint Disable LabelExistsValidator -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>TextInputDialogView</title>
+</head>
+<body>
+    <div class="TextInputDialogView">
+            <div class="grow marginBottom48 scrollY">
+                <div class="pad20 col width680">
+                    <h3>TextDialog</h3>
+                    <div class="pad8">
+                        <button id="btnOpenTextDialog" data-bind="resx: { ariaLabel: 'string_49' }, click: openTextDialog">Open Text Input Dialog</button>
+                    </div>
+                    <div class="h4">Dialog result</div>
+                    <div class="h4" data-bind="text: dialogResult"></div>
+                    <div class="h4 padTop40">Text Dialog options interface</div>
+                    <textarea class="height220">
+export interface ITextInputDialogOptions extends IInputDialogOptions< ITextInputDialogResult > {
+    label?: string;
+    defaultText?: string;
+}
+                    </textarea>
+                    <div class="h4 padTop40">Controller syntax</div>
+                    <textarea class="height220">
+import * as Views from "PosApi/Create/Views";
+import { ObjectExtensions } from "PosApi/TypeExtensions";
+/**
+ * The controller for HeaderSplitViewView.
+ */
+export default class HeaderSplitViewView extends Views.CustomViewControllerBase {
+
+    constructor(context: Views.ICustomViewControllerContext) {
+        // Do not save in history
+        super(context);
+        this.state.title = "TextInputDialog sample";
+    }
+    /**
+     * Bind the html element with view controller.
+     *
+     * @param {HTMLElement} element DOM element.
+     */
+    public onReady(element: HTMLElement): void {
+
+        ko.applyBindings(this, element);
+    }
+
+    /**
+    * Opens the text input dialog sample.
+    */
+    public openTextDialog(): void {
+        let textInputDialog: TextInputDialog = new TextInputDialog();
+        textInputDialog.show(this.context, this.context.resources.getString("string_55"))
+        .then((result: string) => {
+            this.dialogResult(result);
+        }).catch((reason: any) => {
+            this.context.logger.logError("TextDialog: " + JSON.stringify(reason));
+        });
+    }
+
+    /**
+     * Called when the object is disposed.
+     */
+    public dispose(): void {
+        ObjectExtensions.disposeAllProperties(this);
+    }
+}
+                    </textarea>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

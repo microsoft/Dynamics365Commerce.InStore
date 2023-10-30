@@ -1,6 +1,6 @@
 /**
  * SAMPLE CODE NOTICE
- * 
+ *
  * THIS SAMPLE CODE IS MADE AVAILABLE AS IS.  MICROSOFT MAKES NO WARRANTIES, WHETHER EXPRESS OR IMPLIED,
  * OF FITNESS FOR A PARTICULAR PURPOSE, OF ACCURACY OR COMPLETENESS OF RESPONSES, OF RESULTS, OR CONDITIONS OF MERCHANTABILITY.
  * THE ENTIRE RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS SAMPLE CODE REMAINS WITH THE USER.
@@ -11,11 +11,8 @@ import {
     ICustomLinesGridColumnContext,
     CustomLinesGridColumnBase
 } from "PosApi/Extend/Views/CartView";
-
 import { CustomGridColumnAlignment } from "PosApi/Extend/Views/CustomGridColumns";
-
 import { ProxyEntities } from "PosApi/Entities";
-
 import { BooleanFormatter } from "PosApi/Consume/Formatters";
 
 /**
@@ -38,14 +35,27 @@ export default class LinesCustomGridColumn4 extends CustomLinesGridColumnBase {
         super(context);
     }
 
+    /**
+     * Gets the column title.
+     * @returns {string} The column title.
+     */
     public title(): string {
         return this.context.resources.getString("string_73");
     }
 
+    /**
+     * Computes the value to display in the column.
+     * @param cartLine The cart line.
+     * @returns {string} The value to display in the column.
+     */
     public computeValue(cartLine: ProxyEntities.CartLine): string {
         return BooleanFormatter.toYesNo(cartLine.IsVoided);
     }
 
+    /**
+     * Gets the alignment of the column.
+     * @returns {CustomGridColumnAlignment} The alignment.
+     */
     public alignment(): CustomGridColumnAlignment {
         return CustomGridColumnAlignment.Left;
     }

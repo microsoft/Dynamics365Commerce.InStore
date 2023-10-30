@@ -1,6 +1,6 @@
 /**
  * SAMPLE CODE NOTICE
- * 
+ *
  * THIS SAMPLE CODE IS MADE AVAILABLE AS IS.  MICROSOFT MAKES NO WARRANTIES, WHETHER EXPRESS OR IMPLIED,
  * OF FITNESS FOR A PARTICULAR PURPOSE, OF ACCURACY OR COMPLETENESS OF RESPONSES, OF RESULTS, OR CONDITIONS OF MERCHANTABILITY.
  * THE ENTIRE RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS SAMPLE CODE REMAINS WITH THE USER.
@@ -21,12 +21,15 @@ import {
 import { ProxyEntities } from "PosApi/Entities";
 import ko from "knockout";
 
+/**
+ * The controller for LineDetailsCustomControl.
+ */
 export default class LineDetailsCustomControl extends CartViewCustomControlBase {
     public readonly cartLineItemId: ko.Computed<string>;
     public readonly cartLineDescription: ko.Computed<string>;
     public readonly isCartLineSelected: ko.Computed<boolean>;
 
-    private static readonly TEMPLATE_ID: string = "Microsot_Pos_Extensibility_Samples_LineDetails";
+    private static readonly TEMPLATE_ID: string = "Microsoft_Pos_Extensibility_Samples_LineDetails";
     private readonly _cartLine: ko.Observable<ProxyEntities.CartLine>;
     private _state: ICartViewCustomControlState;
 

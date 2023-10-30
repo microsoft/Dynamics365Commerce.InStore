@@ -1,0 +1,41 @@
+﻿<!--
+    HTMLLint is an internal tool that fails on this file due to non-localized example labels,
+    there is no need for this comment and the one below in real-world extensions.
+-->
+<!-- HTMLLint Disable LabelExistsValidator -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ApiView</title>
+</head>
+<body>
+    <div class="ApiView">
+            <div class="grow marginBottom48 scrollY">
+                <div class="pad20 col width680">
+                    <div>
+                        <div class="h4">Refresh cart</div>
+                        <button data-bind="click:onRefreshCart">Refresh</button>
+                    </div>
+                    <div>
+                        <div class="h4">Override price in cart</div>
+                        <button data-bind="click:function(){this.onPriceOverride(10);}">10%</button>
+                        <button data-bind="click:function(){this.onPriceOverride(20);}">20%</button>
+                        <button data-bind="click:function(){this.onPriceOverride(30);}">30%</button>
+                        <button data-bind="click:function(){this.onPriceOverride(40);}">40%</button>
+                        <button data-bind="click:function(){this.onPriceOverride(50);}">50%</button>
+                    </div>
+                    <div>
+                        <div class="h4">Add comment to transaction</div>
+                        <input type="text" placeholder="comment" data-bind="value: transactionComment" /><button data-bind="click:onTransactionComment">Comment</button>
+                    </div>
+                    <div>
+                        <div class="h4">Add comment to cart line</div>
+                        <input type="text" placeholder="comment" data-bind="value: cartLineComment" /><button data-bind="click:onCartLineComment">Comment</button>
+                    </div>
+                    <pre class="height220" data-bind="text: lastStatus"></pre>
+                </div>
+            </div>
+    </div>
+</body>
+</html>

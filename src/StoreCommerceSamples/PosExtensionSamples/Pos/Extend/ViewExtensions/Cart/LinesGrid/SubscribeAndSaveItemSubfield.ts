@@ -1,6 +1,6 @@
 /**
  * SAMPLE CODE NOTICE
- * 
+ *
  * THIS SAMPLE CODE IS MADE AVAILABLE AS IS.  MICROSOFT MAKES NO WARRANTIES, WHETHER EXPRESS OR IMPLIED,
  * OF FITNESS FOR A PARTICULAR PURPOSE, OF ACCURACY OR COMPLETENESS OF RESPONSES, OF RESULTS, OR CONDITIONS OF MERCHANTABILITY.
  * THE ENTIRE RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS SAMPLE CODE REMAINS WITH THE USER.
@@ -41,6 +41,6 @@ export default class SubscribeAndSaveItemSubfield extends CustomLinesGridItemSub
      * @returns {boolean} Whether or not the given cart line is for an item that supports subscribing and saving.
      */
     private _isSubscribeAndSaveCartLine(cartLine: ProxyEntities.CartLine): boolean {
-        return !ObjectExtensions.isNullOrUndefined(cartLine) && cartLine.ItemId === "0006"; // Inner Tube Patches
+        return !ObjectExtensions.isNullOrUndefined(cartLine) && cartLine.ItemId === "0006"; // Inner Tube Patches.
     }
 }
