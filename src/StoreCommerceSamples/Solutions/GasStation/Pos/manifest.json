@@ -1,0 +1,78 @@
+﻿{
+  "$schema": "./devDependencies/schemas/manifestSchema.json",
+  "name": "GasStation",
+  "publisher": "Contoso",
+  "version": "1.0.0.0",
+  "minimumPosVersion": "9.32.0.0",
+  "dependencies": [
+    {
+      "alias": "knockout",
+      "format": "amd",
+      "modulePath": "Libraries/knockout"
+    }
+  ],
+  "components": {
+    "extend": {
+      "header": {
+        "customPackingItems": [
+          {
+            "name": "Gas Pump Status Header Item",
+            "description": "An item showing the gas pump status on the POS header.",
+            "modulePath": "Extend/Header/GasPumpStatusPackingItem",
+            "htmlPath": "Extend/Header/GasPumpStatusPackingItem.html"
+          }
+        ]
+      },
+      "triggers": [
+        {
+          "triggerType": "ApplicationStart",
+          "modulePath": "Extend/Triggers/InitializeStationTrigger",
+          "name": "Initialize Gas Pumps Trigger",
+          "description": "An application start trigger to initialize the gas pump status."
+        }
+      ],
+      "requestHandlers": [
+        {
+          "name": "Auto Key in Gas Quantity Request Handler",
+          "description": "An extension for the get keyed in quantity request handler that automatically keys in the gasoline quantity",
+          "modulePath": "Extend/RequestHandlers/KeyInGasolineQuantityRequestHandler"
+        }
+      ],
+      "views": {
+        "SimpleProductDetailsView": {
+          "appBarCommands": [
+            {
+              "modulePath": "Extend/Views/PumpGasExtensionCommand"
+            }
+          ]
+        }
+      }
+    },
+    "create": {
+      "views": [
+        {
+          "name": "Gas Pump Status View",
+          "description": "The view showing the status of the gas pumps",
+          "pageName": "GasPumpStatusView",
+          "phonePageName": "GasPumpStatusView",
+          "viewDirectory": "Create/Views/",
+          "viewControllerPath": "Create/Views/GasPumpStatusView"
+        }
+      ],
+      "templatedDialogs": [
+        {
+          "name": "Gas Station Details Dialog",
+          "description": "A dialog showing the details of the gas station.",
+          "modulePath": "Create/Dialogs/GasStationDetailsDialog",
+          "htmlPath": "Create/Dialogs/GasStationDetailsDialog.html"
+        },
+        {
+          "name": "Gas Pump Simulator Dialog",
+          "description": "A dialog showing a gas pump simulator.",
+          "modulePath": "Create/Dialogs/PumpGasDialog",
+          "htmlPath": "Create/Dialogs/PumpGasDialog.html"
+        }
+      ]
+    }
+  }
+}

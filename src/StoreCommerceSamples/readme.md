@@ -14,4 +14,4 @@ This folder contains sample solutions that demonstrate how to customize the Stor
   - Triggers/
     - [TriggerSamples](./Extend/Triggers/TriggerSamples/readme.md)
 - Solutions/
-  - [GasStationSample](./Solutions/GasStationSample/README.md)
+  - [GasStation](./Solutions/GasStation/README.md)

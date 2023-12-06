@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\CustomizationPackage.props " />
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net472</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Dynamics.Commerce.Sdk.Installers.StoreCommerce" Version="$(CommerceSdkPackagesVersion)" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommerceRuntime\Contoso.GasStation.CommerceRuntime.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\Pos\Contoso.GasStation.Pos.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Settings included in the CommerceRuntimeExtensionSettings item group will be added to the generated CommerceRuntime config file and available at runtime in the CommerceRuntime extension. -->
+    <CommerceRuntimeExtensionSettings Include="ext.Contoso.GasolineItemId">
+      <Value>gasoline</Value>
+    </CommerceRuntimeExtensionSettings>
+  </ItemGroup>
+</Project>

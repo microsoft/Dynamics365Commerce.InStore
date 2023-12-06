@@ -1,0 +1,11 @@
+<Project>
+    <Import Project="..\..\..\..\repo.props" />
+    <PropertyGroup>
+      <PackagePublisher Condition="'$(PackagePublisher)' == ''">$(Publisher)</PackagePublisher>
+      <PackagePublisherDisplayName Condition="'$(PackagePublisherDisplayName)' == ''">$(PublisherDisplayName)</PackagePublisherDisplayName>
+      <PackageVersion Condition="'$(PackageVersion)' == ''">$(Version)</PackageVersion>
+      <PackageName Condition="'$(PackageName)' == ''">Contoso.QRCode</PackageName>
+      <PackageDisplayName Condition="'$(PackageDisplayName)' == ''">QR Code Sample</PackageDisplayName>
+      <PackageDescription Condition="'$(PackageDescription)' == ''">A sample showcasing a solution how to print QR code on a receipt.</PackageDescription>
+    </PropertyGroup>
+  </Project>
