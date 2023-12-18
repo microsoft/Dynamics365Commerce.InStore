@@ -14,10 +14,10 @@
     <EmitLegacyAssetsFileItems>true</EmitLegacyAssetsFileItems>
   </PropertyGroup>
   <PropertyGroup>
-    <CommerceSdkPackagesVersion>[9.48.23351.5-preview,9.49)</CommerceSdkPackagesVersion>
+    <CommerceSdkPackagesVersion>[9.48.23352.5-preview,9.49)</CommerceSdkPackagesVersion>
     <CommercePosPackagesVersion>[9.48.*,9.49)</CommercePosPackagesVersion>
-    <CommerceChannelPackagesVersion>[9.48.23349.2-preview,9.49)</CommerceChannelPackagesVersion>
-    <CommerceHwsPackagesVersion>[9.48.23350.1-preview,9.49)</CommerceHwsPackagesVersion>
+    <CommerceChannelPackagesVersion>[9.48.23351.1-preview,9.49)</CommerceChannelPackagesVersion>
+    <CommerceHwsPackagesVersion>[9.48.23351.1-preview,9.49)</CommerceHwsPackagesVersion>
     <CommerceToolsPackagesVersion>[10.32.23313.2,10.33)</CommerceToolsPackagesVersion>
     <CommercePaymentsPackagesVersion>[10.48.23342.1-preview,10.49)</CommercePaymentsPackagesVersion>
     <TypeScriptPackagesVersion>4.7.*</TypeScriptPackagesVersion>
