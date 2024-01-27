@@ -37,3 +37,8 @@ This project contains samples on how to create Commerce Runtime/Channel database
 
 ### Contoso.StoreCommercePackagingSample.StoreCommerce.Installer.csproj
 This project contains samples on how to create Store Commerce extensions installer.
+
+## Additional Resources
+- [POS Extension Overview](https://docs.microsoft.com/en-us/dynamics365/commerce/dev-itpro/pos-extension/pos-extension-getting-started)
+- [Store Commerce Overview](https://learn.microsoft.com/en-us/dynamics365/commerce/dev-itpro/store-commerce)
+- [Debugging Store Commerce Extensions](https://learn.microsoft.com/en-us/dynamics365/commerce/dev-itpro/sc-debug)
