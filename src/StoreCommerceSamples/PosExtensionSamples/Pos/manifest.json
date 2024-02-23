@@ -156,6 +156,20 @@
           "modulePath": "Extend/Triggers/PostLogonTrigger"
         }
       ],
+      "fieldDefinitions": [
+        {
+          "name": "Address add edit view field definitions",
+          "description": "Defines custom field properties for adding/editing address view.",
+          "definitionType": "AddressAddEditFieldDefinitions",
+          "modulePath": "Extend/FieldDefinitions/AddressAddEditFieldDefinitions"
+        },
+        {
+          "name": "Customer add edit view field definitions",
+          "description": "Defines custom field properties for adding/editing customer view.",
+          "definitionType": "CustomerAddEditFieldDefinitions",
+          "modulePath": "Extend/FieldDefinitions/CustomerAddEditFieldDefinitions"
+        }
+      ],
       "views": {
         "AddressAddEditView": {
           "controlsConfig": {
@@ -363,6 +377,9 @@
           "productAppBarCommands": [
             {
               "modulePath": "Extend/ViewExtensions/Search/QuickCompareProductsCommand"
+            },
+            {
+              "modulePath": "Extend/ViewExtensions/Search/NavigateToSamplesViewCommand"
             }
           ],
           "customerAppBarCommands": [

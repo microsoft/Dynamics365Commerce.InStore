@@ -213,7 +213,6 @@
                     {
                         case ReceiptPartType.LegacyLogo:
                         case ReceiptPartType.LogoWithBytes:
-                            break;
                         case ReceiptPartType.Image:
                             var imageText = part.Value;
                             var data = Convert.FromBase64String(imageText.Substring(ImageTagStart.Length, imageText.Length - ImageTagStart.Length - ImageTagEnd.Length));

@@ -10,20 +10,30 @@
 import * as Views from "PosApi/Create/Views";
 import * as Controls from "PosApi/Consume/Controls";
 import { ObjectExtensions } from "PosApi/TypeExtensions";
+import { INumPadInputSubscriber } from "PosApi/Consume/Peripherals";
 import ko from "knockout";
 
 /**
  * The controller for NumericNumPadView.
  */
-export default class NumericNumPadView extends Views.CustomViewControllerBase {
+export default class NumericNumPadView extends Views.CustomViewControllerBase implements Views.INumPadInputSubscriberEndpoint {
     public numPad: Controls.INumericNumPad;
     public numPadValue: ko.Observable<string>;
+    public readonly implementsINumPadInputSubscriberEndpoint: true;
+    private readonly _numPadOptions: Controls.INumericNumPadOptions;
 
     constructor(context: Views.ICustomViewControllerContext) {
         super(context);
         this.state.title = "NumericNumPad sample";
 
         this.numPadValue = ko.observable("");
+        this.implementsINumPadInputSubscriberEndpoint = true; // Set the flag to true to indicate that the view implements INumPadInputSubscriberEndpoint.
+        this._numPadOptions = {
+            decimalPrecision: 1,
+            globalInputBroker: undefined,
+            label: "NumPad label",
+            value: 0
+        };
     }
 
     /**
@@ -35,19 +45,19 @@ export default class NumericNumPadView extends Views.CustomViewControllerBase {
         ko.applyBindings(this, element);
 
         //Initialize numpad
-        let inputBroker: Commerce.Peripherals.INumPadInputBroker = null;
-        let numPadOptions: Controls.INumericNumPadOptions = {
-            decimalPrecision: 1,
-            globalInputBroker: inputBroker,
-            label: "NumPad label",
-            value: 0
-        };
-
         let numPadRootElem: HTMLDivElement = element.querySelector("#NumericNumPad") as HTMLDivElement;
-        this.numPad = this.context.controlFactory.create(this.context.logger.getNewCorrelationId(), "NumericNumPad", numPadOptions, numPadRootElem);
+        this.numPad = this.context.controlFactory.create(this.context.logger.getNewCorrelationId(), "NumericNumPad", this._numPadOptions, numPadRootElem);
         this.numPad.addEventListener("EnterPressed", (eventData: { value: Commerce.Extensibility.NumPadValue }) => {
             this.onNumPadEnter(eventData.value);
         });
+    }
+
+    /**
+     * Sets the numpad input subscriber for the custom view.
+     * @param numPadInputSubscriber The numpad input subscriber.
+     */
+    public setNumPadInputSubscriber(numPadInputSubscriber: INumPadInputSubscriber): void {
+        this._numPadOptions.globalInputBroker = numPadInputSubscriber;
     }
 
     /**

@@ -122,3 +122,7 @@ src/Dependencies/
 
 # Ignore generated nuget packages
 *.nupkg
+
+# Ignore generated build artifacts
+.pid
+.sign/

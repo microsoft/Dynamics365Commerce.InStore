@@ -13,16 +13,30 @@ import * as Products from "PosApi/Consume/Products";
 import { ITransactionNumPad, ITransactionNumPadOptions } from "PosApi/Consume/Controls";
 import { ClientEntities, ProxyEntities } from "PosApi/Entities";
 import { ObjectExtensions } from "PosApi/TypeExtensions";
+import { INumPadInputBroker, INumPadInputSubscriber } from "PosApi/Consume/Peripherals";
+import { CustomViewControllerBase, IBarcodeScannerEndpoint, IMagneticStripeReaderEndpoint, INumPadInputSubscriberEndpoint } from "PosApi/Create/Views";
+import { ErrorHelper } from "../../../Helpers";
 import ko from "knockout";
+
+type ScanSource = "BarcodeScanner" | "MagneticStripeReader" | "NumberPad";
 
 /**
  * The controller for TransactionNumPadView.
+ * The view implements INumPadInputSubscriberEndpoint which allows it to receive global keyboard input for the numpad.
+ * The view implements IBarcodeScannerEndpoint which allows it to receive barcode scanner events.
+ * The view implements IMagneticStripeReaderEndpoint which allows it to receive magnetic stripe reader events.
  */
-export default class TransactionNumPadView extends Views.CustomViewControllerBase {
+export default class TransactionNumPadView extends CustomViewControllerBase implements INumPadInputSubscriberEndpoint, IMagneticStripeReaderEndpoint, IBarcodeScannerEndpoint {
     public numPad: ITransactionNumPad;
     public numPadValue: ko.Observable<string>;
     public numPadQuantity: ko.Observable<string>;
     public scanResult: ko.Observable<string>;
+    public scanResultSourceText: ko.Observable<string>;
+    public readonly implementsINumPadInputSubscriberEndpoint: true;
+    public readonly implementsIBarcodeScannerEndpoint: true; // Set the flag to true to indicate that the view implements IBarcodeScannerEndpoint.
+    public readonly implementsIMagneticStripeReaderEndpoint: true;
+
+    private _numPadInputSubscriber: INumPadInputSubscriber;
 
     constructor(context: Views.ICustomViewControllerContext) {
         // Do not save in history
@@ -31,11 +45,15 @@ export default class TransactionNumPadView extends Views.CustomViewControllerBas
         this.numPadValue = ko.observable("");
         this.numPadQuantity = ko.observable("");
         this.scanResult = ko.observable("");
+        this.scanResultSourceText = ko.observable("");
+        this._numPadInputSubscriber = undefined;
+        this.implementsINumPadInputSubscriberEndpoint = true; // Set the flag to true to indicate that the view implements INumPadInputSubscriberEndpoint.
+        this.implementsIBarcodeScannerEndpoint = true; // Set the flag to true to indicate that the view implements IBarcodeScannerEndpoint.
+        this.implementsIMagneticStripeReaderEndpoint = true; // Set the flag to true to indicate that the view implements IMagneticStripeReaderEndpoint.
     }
 
     /**
      * Bind the html element with view controller.
-     *
      * @param {HTMLElement} element DOM element.
      */
     public onReady(element: HTMLElement): void {
@@ -44,7 +62,7 @@ export default class TransactionNumPadView extends Views.CustomViewControllerBas
 
         //Initialize numpad
         let numPadOptions: ITransactionNumPadOptions = {
-            globalInputBroker: new Commerce.Peripherals.NumPadInputBroker(),
+            globalInputBroker: this._numPadInputSubscriber as INumPadInputBroker,
             label: "NumPad label",
             value: this.numPadValue()
         };
@@ -58,23 +76,54 @@ export default class TransactionNumPadView extends Views.CustomViewControllerBas
             } else {
                 this.numPadQuantity("");
             }
-            this.onNumPadEnter(eventData.value);
+            this._getScanResult(eventData.value, "NumberPad");
         });
     }
 
     /**
-     * Callback for numpad.
-     * @param {string} value Numpad current value.
+     * Sets the numpad input subscriber for the custom view.
+     * @param numPadInputSubscriber The numpad input subscriber.
      */
-    private onNumPadEnter(value: string): void {
+    public setNumPadInputSubscriber(numPadInputSubscriber: INumPadInputSubscriber): void {
+        this._numPadInputSubscriber = numPadInputSubscriber;
+    }
+
+    /**
+     * The callback for barcode scanner events.
+     * @param barcode The scanned barcode.
+     */
+    public onBarcodeScanned(barcode: string): void {
+        this._getScanResult(barcode, "BarcodeScanner");
+    }
+
+    /**
+     * The callback for magnetic stripe reader events.
+     * @param cardInfo The card information.
+     */
+    public onMagneticStripeRead(cardInfo: ClientEntities.ICardInfo): void {
+        this._getScanResult(cardInfo.CardNumber, "MagneticStripeReader");
+    }
+
+    /**
+     * Callback for numpad.
+     * @param {string} scanText Numpad current value.
+     */
+    private _getScanResult(scanText: string, scanSource: ScanSource): void {
         this.numPad.value = "";
         this.scanResult("");
+        this.scanResultSourceText("Scan text source: " + scanSource);
+        if (scanSource !== "NumberPad") {
+            this.numPadQuantity("");
+            this.numPadValue("");
+        }
 
+        this.state.isProcessing = true; // Setting this flag to true will show the processing indicator (spinner) on the view.
         let getScanResultClientRequest: ScanResults.GetScanResultClientRequest<ScanResults.GetScanResultClientResponse> =
-            new ScanResults.GetScanResultClientRequest(value);
+            new ScanResults.GetScanResultClientRequest(scanText);
 
         this.context.runtime.executeAsync(getScanResultClientRequest)
             .then((response: ClientEntities.ICancelableDataResult<ScanResults.GetScanResultClientResponse>): void => {
+                this.state.isProcessing = false; // Setting this flag to false will hide the processing indicator.
                 if (ObjectExtensions.isNullOrUndefined(response.data)
                     || ObjectExtensions.isNullOrUndefined(response.data.result)) {
                     this.scanResult("Error");
@@ -143,10 +192,16 @@ export default class TransactionNumPadView extends Views.CustomViewControllerBas
                             break;
                     }
                 }
+            }).catch((reason: any) => {
+                this.state.isProcessing = false; // Setting this flag to false will hide the processing indicator.
+                ErrorHelper.displayErrorAsync(this.context, reason);
             });
     }
 
-    dispose(): void {
+    /**
+     * Called when the object is disposed.
+     */
+    public dispose(): void {
         ObjectExtensions.disposeAllProperties(this);
     }
 }

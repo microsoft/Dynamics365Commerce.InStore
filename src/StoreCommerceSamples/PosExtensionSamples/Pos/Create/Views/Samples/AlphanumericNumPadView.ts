@@ -10,20 +10,24 @@
 import * as Views from "PosApi/Create/Views";
 import * as Controls from "PosApi/Consume/Controls";
 import { ObjectExtensions } from "PosApi/TypeExtensions";
+import { INumPadInputSubscriber } from "PosApi/Consume/Peripherals";
 import ko from "knockout";
 
 /**
  * The controller for AlphanumericNumPadView.
  */
-export default class AlphanumericNumPadView extends Views.CustomViewControllerBase {
+export default class AlphanumericNumPadView extends Views.CustomViewControllerBase implements Views.INumPadInputSubscriberEndpoint {
     public numPad: Controls.IAlphanumericNumPad;
     public numPadValue: ko.Observable<string>;
+    public implementsINumPadInputSubscriberEndpoint: true;
+    private _numpadInputSubscriber: INumPadInputSubscriber;
 
     constructor(context: Views.ICustomViewControllerContext) {
         super(context);
         this.state.title = "AlphanumericNumPad sample";
 
         this.numPadValue = ko.observable("");
+        this.implementsINumPadInputSubscriberEndpoint = true; // Set the flag to true to indicate that the view implements INumPadInputSubscriberEndpoint.
     }
 
     /**
@@ -35,7 +39,7 @@ export default class AlphanumericNumPadView extends Views.CustomViewControllerBa
 
         //Initialize numpad
         let numPadOptions: Controls.IAlphanumericNumPadOptions = {
-            globalInputBroker: null,
+            globalInputBroker: this._numpadInputSubscriber as Commerce.Peripherals.INumPadInputBroker,
             label: "NumPad Label",
             value: this.numPadValue()
         };
@@ -45,6 +49,14 @@ export default class AlphanumericNumPadView extends Views.CustomViewControllerBa
         this.numPad.addEventListener("EnterPressed", (eventData: { value: Commerce.Extensibility.NumPadValue }) => {
             this.onNumPadEnter(eventData.value);
         });
+    }
+
+    /**
+     * Sets the num pad input subscriber for the custom view.
+     * @param numPadInputSubscriber The numpad input subscriber.
+     */
+    public setNumPadInputSubscriber(numPadInputSubscriber: INumPadInputSubscriber): void {
+        this._numpadInputSubscriber = numPadInputSubscriber;
     }
 
     /**
