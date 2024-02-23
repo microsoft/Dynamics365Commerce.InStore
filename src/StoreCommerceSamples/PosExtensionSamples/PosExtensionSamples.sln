@@ -9,17 +9,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contoso.PosExtensions.CommerceRuntime", "CommerceRuntime\Contoso.PosExtensions.CommerceRuntime.csproj", "{AD7B7677-571F-49EF-946E-593B5E75FF4A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contoso.PosExtensions.StoreCommerce.Installer", "StoreCommerce.Installer\Contoso.PosExtensions.StoreCommerce.Installer.csproj", "{C4A6DB34-1D85-4320-BD72-123533E9BD81}"
-	ProjectSection(ProjectDependencies) = postProject
-		{AD7B7677-571F-49EF-946E-593B5E75FF4A} = {AD7B7677-571F-49EF-946E-593B5E75FF4A}
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contoso.PosExtensions.Pos", "Pos\Contoso.PosExtensions.Pos.csproj", "{F82792A3-8BC0-4D1C-AB84-3BCB2EA3DF04}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contoso.PosExtensions.StoreCommerce.Installer", "StoreCommerce.Installer\Contoso.PosExtensions.StoreCommerce.Installer.csproj", "{C4A6DB34-1D85-4320-BD72-123533E9BD81}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contoso.PosExtensions.ScaleUnit.Installer", "ScaleUnit.Installer\Contoso.PosExtensions.ScaleUnit.Installer.csproj", "{5BAC52DF-D840-40FC-B397-CDEAA23BB60C}"
-	ProjectSection(ProjectDependencies) = postProject
-		{AD7B7677-571F-49EF-946E-593B5E75FF4A} = {AD7B7677-571F-49EF-946E-593B5E75FF4A}
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,14 +25,14 @@ Global
 		{AD7B7677-571F-49EF-946E-593B5E75FF4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD7B7677-571F-49EF-946E-593B5E75FF4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD7B7677-571F-49EF-946E-593B5E75FF4A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C4A6DB34-1D85-4320-BD72-123533E9BD81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C4A6DB34-1D85-4320-BD72-123533E9BD81}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C4A6DB34-1D85-4320-BD72-123533E9BD81}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C4A6DB34-1D85-4320-BD72-123533E9BD81}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F82792A3-8BC0-4D1C-AB84-3BCB2EA3DF04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F82792A3-8BC0-4D1C-AB84-3BCB2EA3DF04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F82792A3-8BC0-4D1C-AB84-3BCB2EA3DF04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F82792A3-8BC0-4D1C-AB84-3BCB2EA3DF04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4A6DB34-1D85-4320-BD72-123533E9BD81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4A6DB34-1D85-4320-BD72-123533E9BD81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4A6DB34-1D85-4320-BD72-123533E9BD81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4A6DB34-1D85-4320-BD72-123533E9BD81}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5BAC52DF-D840-40FC-B397-CDEAA23BB60C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5BAC52DF-D840-40FC-B397-CDEAA23BB60C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BAC52DF-D840-40FC-B397-CDEAA23BB60C}.Release|Any CPU.ActiveCfg = Release|Any CPU
