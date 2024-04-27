@@ -218,6 +218,14 @@
               }
             ]
           },
+          "incomeExpenseGrid": {
+            "customItemSubfields": [
+              {
+                "itemSubfieldName": "IncomeExpenseLineSubfield",
+                "modulePath": "Extend/ViewExtensions/Cart/IncomeExpenseGrid/IncomeExpenseLineSubfield"
+              }
+            ]
+          },
           "paymentsGrid": {
             "customColumn1": {
               "modulePath": "Extend/ViewExtensions/Cart/PaymentsGrid/CustomColumn1Configuration"
@@ -420,6 +428,14 @@
               {
                 "itemSubfieldName": "subscribeAndSaveItemSubfield",
                 "modulePath": "Extend/ViewExtensions/ShowJournal/LinesGrid/SubscribeAndSaveItemSubfield"
+              }
+            ]
+          },
+          "incomeExpenseGrid": {
+            "customItemSubfields": [
+              {
+                "itemSubfieldName": "IncomeExpenseLineSubfield",
+                "modulePath": "Extend/ViewExtensions/Cart/IncomeExpenseGrid/IncomeExpenseLineSubfield"
               }
             ]
           }

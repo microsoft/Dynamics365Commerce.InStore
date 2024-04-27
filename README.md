@@ -56,10 +56,10 @@ The branches in the repo are organized by Dynamics 365 Commerce application rele
 
 | Release branch name                                                                        | version | Application release version |
 | ------------------------------------------------------------------------------------------ | ------- | --------------------------- |
-| [Release/9.46](https://github.com/microsoft/Dynamics365Commerce.InStore/tree/release/9.46) | 9.46.\* | 10.0.36                     |
 | [Release/9.47](https://github.com/microsoft/Dynamics365Commerce.InStore/tree/release/9.47) | 9.47.\* | 10.0.37                     |
 | [Release/9.48](https://github.com/microsoft/Dynamics365Commerce.InStore/tree/release/9.48) | 9.48.\* | 10.0.38                     |
 | [Release/9.49](https://github.com/microsoft/Dynamics365Commerce.InStore/tree/release/9.49) | 9.49.\* | 10.0.39                     |
+| [Release/9.50](https://github.com/microsoft/Dynamics365Commerce.InStore/tree/release/9.50) | 9.50.\* | 10.0.40                     |
 
 ## Referencing Commerce SDK Nuget packages
 
@@ -116,9 +116,6 @@ Consume the commerce packages from this [location](https://pkgs.dev.azure.com/co
 
 | Package version  | Application release      |
 | ---------------- | ------------------------ |
-| 9.46.x.x-preview | 10.0.36 PEAP release     |
-| 9.46.x.x         | 10.0.36 Customer preview |
-| 9.46.x.x         | 10.0.36 GA               |
 | 9.47.x.x-preview | 10.0.37 PEAP release     |
 | 9.47.x.x         | 10.0.37 Customer preview |
 | 9.47.x.x         | 10.0.37 GA               |
@@ -128,17 +125,20 @@ Consume the commerce packages from this [location](https://pkgs.dev.azure.com/co
 | 9.49.x.x-preview | 10.0.39 PEAP release     |
 | 9.49.x.x         | 10.0.39 Customer preview |
 | 9.49.x.x         | 10.0.39 GA               |
+| 9.50.x.x-preview | 10.0.40 PEAP release     |
+| 9.50.x.x         | 10.0.40 Customer preview |
+| 9.50.x.x         | 10.0.40 GA               |
 
 Extension project can consume the correct version by adding the package reference to the project with full version number or use wild card to always get the latest version, recommend option is to use the full version number and update the version based on your go-live version.
 
 ```xml
-<PackageReference Include="Microsoft.Dynamics.Commerce.Sdk.Pos " Version="9.48.x.x" />
+<PackageReference Include="Microsoft.Dynamics.Commerce.Sdk.Pos " Version="9.50.x.x" />
 ```
 
 Or
 
 ```xml
-<PackageReference Include="Microsoft.Dynamics.Commerce.Sdk.Pos " Version="9.48.*" />
+<PackageReference Include="Microsoft.Dynamics.Commerce.Sdk.Pos " Version="9.50.*" />
 ```
 
 With every hotfix and new application release, new version of the package will be published in the same public feed, consume the right package version based on the version required for your go live. Consuming the higher version of the package than your go-live application version may result in runtime and deployment failures.
