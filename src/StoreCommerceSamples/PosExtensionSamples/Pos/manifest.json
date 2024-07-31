@@ -554,6 +554,9 @@
         },
         {
           "modulePath": "Extend/RequestHandlers/GetCountedTenderDetailAmountClientRequestHandlerExt"
+        },
+        {
+          "modulePath": "Extend/RequestHandlers/PaymentTerminalExecuteTaskRequestHandlerExt"
         }
       ]
     },
