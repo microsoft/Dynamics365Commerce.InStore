@@ -1,6 +1,6 @@
 ## Hardware Station(HWS) Extension
 
-Hardware Station is used by Store Commerce, Modern POS (MPOS) and Cloud POS(CPOS) to connect to hardware peripherals, such as printers, cash drawers, scanners, and payment terminals. This project contains sample code on how to create HWS extensions and extension installers for shared HWS.  
+Hardware Station is used by Store Commerce, Modern POS (MPOS) and Cloud POS(CPOS) to connect to hardware peripherals, such as printers, cash drawers, scanners, and payment terminals. This project contains sample code on how to create HWS extensions and extension installers for shared HWS.
 
 The Sealed Shared HWS installer must be installed before running the extension installer, follow this doc to [install HWS](https://docs.microsoft.com/en-us/dynamics365/commerce/dev-itpro/enhanced-mass-deployment)
 
@@ -40,7 +40,7 @@ To deploy the Dedicated Hardware station extensions (OPOS and Windows printer sa
 2. Rebuild the Contoso.HardwareStation.Samples solution. Verify that in the build output, the installer completed successfully by seeing the message:
 
   `InstallStoreCommerceExtensions: Running the StoreCommerce extensions installer completed successfully.`
-  
+
 3. Copy the CommerceRuntime DLL (HardwareStationSamples\CommerceRuntime\bin\Debug\netstandard2.0\Contoso.HardwareStationSamples.CommerceRuntime.dll) into your dev environment's Retail Server extension folder (\Pkg\bin\Ext).
 4. In the same folder, open the CommerceRuntime.Ext.config and add a line for the extension assembly:
   `	<add source="assembly" value="Contoso.HardwareStationSamples.CommerceRuntime" />`

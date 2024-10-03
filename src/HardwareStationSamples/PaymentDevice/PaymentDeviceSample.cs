@@ -57,7 +57,7 @@ namespace Contoso.Commerce.HardwareStation.PaymentSample
     public class PaymentDeviceSample : INamedRequestHandler, IDisposable
 #pragma warning restore CS0618 // Type or member is obsolete
     {
-        private PaySdk.PaymentProperty[] merchantProperties;      
+        private PaySdk.PaymentProperty[] merchantProperties;
         private string paymentConnectorName;
         private SettingsInfo terminalSettings;
         private CancellationTokenSource timeoutTask;

@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33403.182
+MinimumVisualStudioVersion = 15.0.0.0
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contoso.StoreCommerce.MobileApp", "StoreCommerce.MobileApp\Contoso.StoreCommerce.MobileApp.csproj", "{643E5537-47CE-4C69-9660-80B7583FECBC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{52930FB4-3599-4CC3-B7FB-DEC7056CE9C1} = {52930FB4-3599-4CC3-B7FB-DEC7056CE9C1}
+		{B5561175-66C2-4FA7-A10E-0296EB3BC292} = {B5561175-66C2-4FA7-A10E-0296EB3BC292}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contoso.PaymentDeviceSample", "..\..\HardwareStationSamples\PaymentDevice\Contoso.PaymentDeviceSample.csproj", "{B5561175-66C2-4FA7-A10E-0296EB3BC292}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contoso.PeripheralCustomizations", "..\..\HardwareStationSamples\PeripheralCustomizations\Contoso.PeripheralCustomizations.csproj", "{52930FB4-3599-4CC3-B7FB-DEC7056CE9C1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AF807C19-0008-481E-9C48-A2BD5F8A7212}"
+	ProjectSection(SolutionItems) = preProject
+		CustomizationPackage.props = CustomizationPackage.props
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{643E5537-47CE-4C69-9660-80B7583FECBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{643E5537-47CE-4C69-9660-80B7583FECBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{643E5537-47CE-4C69-9660-80B7583FECBC}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{643E5537-47CE-4C69-9660-80B7583FECBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{643E5537-47CE-4C69-9660-80B7583FECBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{643E5537-47CE-4C69-9660-80B7583FECBC}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{B5561175-66C2-4FA7-A10E-0296EB3BC292}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5561175-66C2-4FA7-A10E-0296EB3BC292}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5561175-66C2-4FA7-A10E-0296EB3BC292}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5561175-66C2-4FA7-A10E-0296EB3BC292}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52930FB4-3599-4CC3-B7FB-DEC7056CE9C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52930FB4-3599-4CC3-B7FB-DEC7056CE9C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52930FB4-3599-4CC3-B7FB-DEC7056CE9C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52930FB4-3599-4CC3-B7FB-DEC7056CE9C1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {94595632-82A6-4FBA-BA6F-A595F070BC98}
+	EndGlobalSection
+EndGlobal

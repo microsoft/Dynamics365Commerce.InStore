@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+  <Import Project="..\CustomizationPackage.props" />
+
+  <PropertyGroup>
+    <TargetFrameworks>net8.0-android</TargetFrameworks>
+    <UseMaui>true</UseMaui>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Contoso.StoreCommerce.MobileApp</RootNamespace>
+    <AssemblyName>Contoso.StoreCommerce.MobileApp</AssemblyName>
+
+    <!-- Display name -->
+    <ApplicationTitle Condition="$(ApplicationTitle) == ''">Contoso Store Commerce Mobile App</ApplicationTitle>
+
+    <!-- App Identifier -->
+    <ApplicationId Condition="$(ApplicationId) == ''">contoso.storecommerce.mobileapp</ApplicationId>
+
+    <!-- Versions -->
+    <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+    <ApplicationVersion>1</ApplicationVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Dynamics.Commerce.Sdk.StoreCommerce.Mobile" Version="$(CommerceSdkPackagesVersion)" />
+    <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="$(MauiVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\HardwareStationSamples\PaymentDevice\Contoso.PaymentDeviceSample.csproj" ReferenceOutputAssembly="False" />
+    <ProjectReference Include="..\..\..\HardwareStationSamples\PeripheralCustomizations\Contoso.PeripheralCustomizations.csproj" ReferenceOutputAssembly="False" />
+  </ItemGroup>
+</Project>

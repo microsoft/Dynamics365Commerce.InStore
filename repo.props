@@ -24,5 +24,6 @@
     <CommerceToolsPackagesVersion>[10.34.*-*,10.35)</CommerceToolsPackagesVersion>
     <CommercePaymentsPackagesVersion>[10.51.*-*,10.52)</CommercePaymentsPackagesVersion>
     <TypeScriptPackagesVersion>4.7.*</TypeScriptPackagesVersion>
+    <MauiVersion>8.0.82</MauiVersion>
   </PropertyGroup>
 </Project>
