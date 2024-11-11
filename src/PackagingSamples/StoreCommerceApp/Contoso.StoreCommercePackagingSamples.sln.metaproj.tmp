@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" InitialTargets="ValidateSolutionConfiguration;ValidateToolsVersions;ValidateProjects">
+  <Target Name="GetSolutionConfigurationContents" />
+  <Target Name="Publish" />
+  <Target Name="ValidateProjects" />
+  <Target Name="Clean" />
+  <Target Name="Build" />
+  <Target Name="Rebuild" />
+  <Target Name="ValidateSolutionConfiguration" />
+  <Target Name="ValidateToolsVersions" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\SolutionFile\ImportBefore\*" Condition="'$(ImportByWildcardBeforeSolution)' != 'false' and exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\SolutionFile\ImportBefore')" />
+  <PropertyGroup Condition="'$(ImportDirectorySolutionProps)' != 'false' and '$(DirectorySolutionPropsPath)' == ''">
+    <_DirectorySolutionPropsFile Condition="'$(_DirectorySolutionPropsFile)' == ''">Directory.Solution.props</_DirectorySolutionPropsFile>
+    <_DirectorySolutionPropsBasePath Condition="'$(_DirectorySolutionPropsBasePath)' == ''">$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildProjectDirectory), '$(_DirectorySolutionPropsFile)'))</_DirectorySolutionPropsBasePath>
+    <DirectorySolutionPropsPath Condition="'$(_DirectorySolutionPropsBasePath)' != '' and '$(_DirectorySolutionPropsFile)' != ''">$([System.IO.Path]::Combine('$(_DirectorySolutionPropsBasePath)', '$(_DirectorySolutionPropsFile)'))</DirectorySolutionPropsPath>
+  </PropertyGroup>
+  <Import Project="$(DirectorySolutionPropsPath)" Condition="'$(ImportDirectorySolutionProps)' != 'false' and exists('$(DirectorySolutionPropsPath)')" />
+  <Import Project="C:\__w\1\s\r\src\PackagingSamples\StoreCommerceApp\before.Contoso.StoreCommercePackagingSamples.sln.targets" Condition="exists('C:\__w\1\s\r\src\PackagingSamples\StoreCommerceApp\before.Contoso.StoreCommercePackagingSamples.sln.targets')" />
+  <PropertyGroup Condition=" '$(Configuration)' == '' ">
+    <Configuration>Debug</Configuration>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == '' ">
+    <Platform>Any CPU</Platform>
+  </PropertyGroup>
+  <PropertyGroup Condition=" ('$(AspNetConfiguration)' == '') ">
+    <AspNetConfiguration>$(Configuration)</AspNetConfiguration>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SolutionDir>C:\__w\1\s\r\src\PackagingSamples\StoreCommerceApp\</SolutionDir>
+    <SolutionExt>.sln</SolutionExt>
+    <SolutionFileName>Contoso.StoreCommercePackagingSamples.sln</SolutionFileName>
+    <SolutionName>Contoso.StoreCommercePackagingSamples</SolutionName>
+    <SolutionPath>C:\__w\1\s\r\src\PackagingSamples\StoreCommerceApp\Contoso.StoreCommercePackagingSamples.sln</SolutionPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFrameworkVersion Condition="'$(TargetFrameworkVersion)' == '' and '$(MSBuildToolsVersion)' == '2.0'">v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion Condition="'$(TargetFrameworkVersion)' == '' and ('$(MSBuildToolsVersion)' == '3.5' or '$(MSBuildToolsVersion)' == '3.0')">v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion Condition="'$(TargetFrameworkVersion)' == '' and !('$(MSBuildToolsVersion)' == '3.5' or '$(MSBuildToolsVersion)' == '3.0' or '$(MSBuildToolsVersion)' == '2.0')">v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Any CPU') ">
+    <CurrentSolutionConfigurationContents>
+      <SolutionConfiguration xmlns="">
+  <ProjectConfiguration Project="{AB736233-4FD4-4D88-B9CF-B3C5ADE45D28}" AbsolutePath="C:\__w\1\s\r\src\PackagingSamples\StoreCommerceApp\CommerceRuntime\Contoso.StoreCommercePackagingSample.CommerceRuntime.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{70924F96-D4FC-4885-93FD-17DF94EB3602}" AbsolutePath="C:\__w\1\s\r\src\PackagingSamples\StoreCommerceApp\ChannelDatabase\Contoso.StoreCommercePackagingSample.ChannelDatabase.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{D099E054-B6EA-4AE9-B9FD-1D4217922F43}" AbsolutePath="C:\__w\1\s\r\src\PackagingSamples\StoreCommerceApp\Pos\Contoso.StoreCommercePackagingSample.Pos.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{EA33FFE0-2D8A-4BF5-B9A0-E8C514A5FFB1}" AbsolutePath="C:\__w\1\s\r\src\PackagingSamples\StoreCommerceApp\HardwareStation\Contoso.StoreCommercePackagingSample.HardwareStation.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{A0CEA225-A427-463A-B9D8-9DAB892B5E89}" AbsolutePath="C:\__w\1\s\r\src\PackagingSamples\StoreCommerceApp\StoreCommerce.Installer\Contoso.StoreCommercePackagingSample.StoreCommerce.Installer.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{AB736233-4FD4-4D88-B9CF-B3C5ADE45D28}" /></ProjectConfiguration>
+</SolutionConfiguration>
+    </CurrentSolutionConfigurationContents>
+  </PropertyGroup>
+  <ItemGroup>
+    <SolutionConfiguration Include="Debug|Any CPU">
+      <Configuration>Debug</Configuration>
+      <Platform>Any CPU</Platform>
+      <Content>
+        <SolutionConfiguration xmlns="">
+  <ProjectConfiguration Project="{AB736233-4FD4-4D88-B9CF-B3C5ADE45D28}" AbsolutePath="C:\__w\1\s\r\src\PackagingSamples\StoreCommerceApp\CommerceRuntime\Contoso.StoreCommercePackagingSample.CommerceRuntime.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{70924F96-D4FC-4885-93FD-17DF94EB3602}" AbsolutePath="C:\__w\1\s\r\src\PackagingSamples\StoreCommerceApp\ChannelDatabase\Contoso.StoreCommercePackagingSample.ChannelDatabase.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{D099E054-B6EA-4AE9-B9FD-1D4217922F43}" AbsolutePath="C:\__w\1\s\r\src\PackagingSamples\StoreCommerceApp\Pos\Contoso.StoreCommercePackagingSample.Pos.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{EA33FFE0-2D8A-4BF5-B9A0-E8C514A5FFB1}" AbsolutePath="C:\__w\1\s\r\src\PackagingSamples\StoreCommerceApp\HardwareStation\Contoso.StoreCommercePackagingSample.HardwareStation.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{A0CEA225-A427-463A-B9D8-9DAB892B5E89}" AbsolutePath="C:\__w\1\s\r\src\PackagingSamples\StoreCommerceApp\StoreCommerce.Installer\Contoso.StoreCommercePackagingSample.StoreCommerce.Installer.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{AB736233-4FD4-4D88-B9CF-B3C5ADE45D28}" /></ProjectConfiguration>
+</SolutionConfiguration>
+      </Content>
+    </SolutionConfiguration>
+    <SolutionConfiguration Include="Release|Any CPU">
+      <Configuration>Release</Configuration>
+      <Platform>Any CPU</Platform>
+      <Content>
+        <SolutionConfiguration xmlns="">
+  <ProjectConfiguration Project="{AB736233-4FD4-4D88-B9CF-B3C5ADE45D28}" AbsolutePath="C:\__w\1\s\r\src\PackagingSamples\StoreCommerceApp\CommerceRuntime\Contoso.StoreCommercePackagingSample.CommerceRuntime.csproj" BuildProjectInSolution="True">Release|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{70924F96-D4FC-4885-93FD-17DF94EB3602}" AbsolutePath="C:\__w\1\s\r\src\PackagingSamples\StoreCommerceApp\ChannelDatabase\Contoso.StoreCommercePackagingSample.ChannelDatabase.csproj" BuildProjectInSolution="True">Release|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{D099E054-B6EA-4AE9-B9FD-1D4217922F43}" AbsolutePath="C:\__w\1\s\r\src\PackagingSamples\StoreCommerceApp\Pos\Contoso.StoreCommercePackagingSample.Pos.csproj" BuildProjectInSolution="True">Release|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{EA33FFE0-2D8A-4BF5-B9A0-E8C514A5FFB1}" AbsolutePath="C:\__w\1\s\r\src\PackagingSamples\StoreCommerceApp\HardwareStation\Contoso.StoreCommercePackagingSample.HardwareStation.csproj" BuildProjectInSolution="True">Release|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{A0CEA225-A427-463A-B9D8-9DAB892B5E89}" AbsolutePath="C:\__w\1\s\r\src\PackagingSamples\StoreCommerceApp\StoreCommerce.Installer\Contoso.StoreCommercePackagingSample.StoreCommerce.Installer.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{AB736233-4FD4-4D88-B9CF-B3C5ADE45D28}" /></ProjectConfiguration>
+</SolutionConfiguration>
+      </Content>
+    </SolutionConfiguration>
+  </ItemGroup>
+  <PropertyGroup Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Any CPU') ">
+    <CurrentSolutionConfigurationContents>
+      <SolutionConfiguration xmlns="">
+  <ProjectConfiguration Project="{AB736233-4FD4-4D88-B9CF-B3C5ADE45D28}" AbsolutePath="C:\__w\1\s\r\src\PackagingSamples\StoreCommerceApp\CommerceRuntime\Contoso.StoreCommercePackagingSample.CommerceRuntime.csproj" BuildProjectInSolution="True">Release|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{70924F96-D4FC-4885-93FD-17DF94EB3602}" AbsolutePath="C:\__w\1\s\r\src\PackagingSamples\StoreCommerceApp\ChannelDatabase\Contoso.StoreCommercePackagingSample.ChannelDatabase.csproj" BuildProjectInSolution="True">Release|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{D099E054-B6EA-4AE9-B9FD-1D4217922F43}" AbsolutePath="C:\__w\1\s\r\src\PackagingSamples\StoreCommerceApp\Pos\Contoso.StoreCommercePackagingSample.Pos.csproj" BuildProjectInSolution="True">Release|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{EA33FFE0-2D8A-4BF5-B9A0-E8C514A5FFB1}" AbsolutePath="C:\__w\1\s\r\src\PackagingSamples\StoreCommerceApp\HardwareStation\Contoso.StoreCommercePackagingSample.HardwareStation.csproj" BuildProjectInSolution="True">Release|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{A0CEA225-A427-463A-B9D8-9DAB892B5E89}" AbsolutePath="C:\__w\1\s\r\src\PackagingSamples\StoreCommerceApp\StoreCommerce.Installer\Contoso.StoreCommercePackagingSample.StoreCommerce.Installer.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{AB736233-4FD4-4D88-B9CF-B3C5ADE45D28}" /></ProjectConfiguration>
+</SolutionConfiguration>
+    </CurrentSolutionConfigurationContents>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\SolutionFile\ImportAfter\*" Condition="'$(ImportByWildcardBeforeSolution)' != 'false' and exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\SolutionFile\ImportAfter')" />
+  <PropertyGroup Condition="'$(ImportDirectorySolutionTargets)' != 'false' and '$(DirectorySolutionTargetsPath)' == ''">
+    <_DirectorySolutionTargetsFile Condition="'$(_DirectorySolutionTargetsFile)' == ''">Directory.Solution.targets</_DirectorySolutionTargetsFile>
+    <_DirectorySolutionTargetsBasePath Condition="'$(_DirectorySolutionTargetsBasePath)' == ''">$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildProjectDirectory), '$(_DirectorySolutionTargetsFile)'))</_DirectorySolutionTargetsBasePath>
+    <DirectorySolutionTargetsPath Condition="'$(_DirectorySolutionTargetsBasePath)' != '' and '$(_DirectorySolutionTargetsFile)' != ''">$([System.IO.Path]::Combine('$(_DirectorySolutionTargetsBasePath)', '$(_DirectorySolutionTargetsFile)'))</DirectorySolutionTargetsPath>
+  </PropertyGroup>
+  <Import Project="$(DirectorySolutionTargetsPath)" Condition="'$(ImportDirectorySolutionTargets)' != 'false' and exists('$(DirectorySolutionTargetsPath)')" />
+  <Import Project="C:\__w\1\s\r\src\PackagingSamples\StoreCommerceApp\after.Contoso.StoreCommercePackagingSamples.sln.targets" Condition="exists('C:\__w\1\s\r\src\PackagingSamples\StoreCommerceApp\after.Contoso.StoreCommercePackagingSamples.sln.targets')" />
+</Project>
