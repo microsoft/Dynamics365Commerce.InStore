@@ -14,6 +14,8 @@ App_Data
 *.user
 *.sln.cache
 *.suo
+*.metaproj
+*.metaproj.tmp
 TestResults
 [Tt]humbs.db
 buildd.*
