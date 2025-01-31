@@ -1,7 +1,7 @@
 <Project>
   <PropertyGroup>
     <BuildNumber Condition="'$(BuildNumber)' == ''">0.0</BuildNumber>
-    <MajorVersion>9.52</MajorVersion>
+    <MajorVersion>9.53</MajorVersion>
     <Version>$(MajorVersion).$(BuildNumber)</Version>
   </PropertyGroup>
 
@@ -17,13 +17,13 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <CommerceSdkPackagesVersion>[9.52.*-*,9.53)</CommerceSdkPackagesVersion>
-    <CommercePosPackagesVersion>[9.52.*-*,9.53)</CommercePosPackagesVersion>
-    <CommerceChannelPackagesVersion>[9.52.*-*,9.53)</CommerceChannelPackagesVersion>
-    <CommerceHwsPackagesVersion>[9.52.*-*,9.53)</CommerceHwsPackagesVersion>
+    <CommerceSdkPackagesVersion>[9.53.*-*,9.54)</CommerceSdkPackagesVersion>
+    <CommercePosPackagesVersion>[9.53.*-*,9.54)</CommercePosPackagesVersion>
+    <CommerceChannelPackagesVersion>[9.53.*-*,9.54)</CommerceChannelPackagesVersion>
+    <CommerceHwsPackagesVersion>[9.53.*-*,9.54)</CommerceHwsPackagesVersion>
     <CommerceToolsPackagesVersion>[10.34.*-*,10.35)</CommerceToolsPackagesVersion>
-    <CommercePaymentsPackagesVersion>[10.52.*-*,10.53)</CommercePaymentsPackagesVersion>
+    <CommercePaymentsPackagesVersion>[10.53.*-*,10.54)</CommercePaymentsPackagesVersion>
     <TypeScriptPackagesVersion>4.7.*</TypeScriptPackagesVersion>
-    <MauiVersion>8.0.82</MauiVersion>
+    <MauiVersion>8.0.100</MauiVersion>
   </PropertyGroup>
 </Project>
