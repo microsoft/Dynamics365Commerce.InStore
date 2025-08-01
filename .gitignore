@@ -35,11 +35,13 @@ lock
 /.corext/cache
 versionsmk.inc
 Logs
+.DS_Store
 
 # Weird MSBuild output folders
 [0-9]
 
 # msbuild logs
+msbuild.binlog
 msbuild.log
 msbuild.err
 msbuild.wrn

@@ -8,5 +8,6 @@
     <PackageName Condition="'$(PackageName)' == ''">Contoso.StoreCommercePackagingSample</PackageName>
     <PackageDisplayName Condition="'$(PackageDisplayName)' == ''">Contoso Store Commerce Customization Packaging Sample</PackageDisplayName>
     <PackageDescription Condition="'$(PackageDescription)' == ''">Contoso Store Commerce Customization Packaging Sample</PackageDescription>
+    <GenerateSQLiteDb Condition="'$(GenerateSQLiteDb)' == ''">false</GenerateSQLiteDb>
   </PropertyGroup>
 </Project>
