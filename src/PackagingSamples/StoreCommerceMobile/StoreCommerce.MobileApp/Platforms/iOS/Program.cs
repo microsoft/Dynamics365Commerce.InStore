@@ -16,18 +16,20 @@ NO TECHNICAL SUPPORT IS PROVIDED.  YOU MAY NOT DISTRIBUTE THIS CODE UNLESS YOU H
 
 namespace Contoso.StoreCommerce.MobileApp
 {
-    using global::Android.App;
-    using global::Android.Content.PM;
-    using Microsoft.Dynamics.Commerce.StoreCommerce.Maui;
+    using UIKit;
 
     /// <summary>
-    /// The main activity.
+    /// The program class.
     /// </summary>
-    [Activity(
-        Theme = "@style/StoreCommerceTheme",
-        MainLauncher = true,
-        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize | ConfigChanges.Density)]
-    public class MainActivity : StoreCommerceActivity
+    public static class Program
     {
+        /// <summary>
+        /// Main entry point of the application.
+        /// </summary>
+        /// <param name="args">The arguments.</param>
+        public static void Main(string[] args)
+        {
+            UIApplication.Main(args, principalClass: null, typeof(ApplicationHandler));
+        }
     }
 }

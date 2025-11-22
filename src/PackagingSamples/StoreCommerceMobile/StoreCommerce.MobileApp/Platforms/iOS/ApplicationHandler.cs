@@ -16,18 +16,14 @@ NO TECHNICAL SUPPORT IS PROVIDED.  YOU MAY NOT DISTRIBUTE THIS CODE UNLESS YOU H
 
 namespace Contoso.StoreCommerce.MobileApp
 {
-    using global::Android.App;
-    using global::Android.Content.PM;
+    using Foundation;
     using Microsoft.Dynamics.Commerce.StoreCommerce.Maui;
 
     /// <summary>
-    /// The main activity.
+    /// The application handler class.
     /// </summary>
-    [Activity(
-        Theme = "@style/StoreCommerceTheme",
-        MainLauncher = true,
-        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize | ConfigChanges.Density)]
-    public class MainActivity : StoreCommerceActivity
+    [Register("ApplicationHandler")]
+    public class ApplicationHandler : StoreCommerceApplicationHandler
     {
     }
 }
