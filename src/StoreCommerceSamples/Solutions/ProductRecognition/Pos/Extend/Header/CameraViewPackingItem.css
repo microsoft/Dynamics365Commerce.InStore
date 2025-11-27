@@ -1,0 +1,5 @@
+.iconCamera::before {
+  content: "\E722";
+  font-family: "Segoe MDL2 Assets";
+  font-size: 20px;
+}
