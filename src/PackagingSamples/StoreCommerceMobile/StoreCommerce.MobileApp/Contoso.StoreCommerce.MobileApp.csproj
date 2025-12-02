@@ -17,6 +17,9 @@
     <!-- Versions -->
     <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
     <ApplicationVersion>1</ApplicationVersion>
+
+    <!-- Prevent extension assemblies from being trimmed on iOS builds -->
+    <UseInterpreter Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">true</UseInterpreter>
   </PropertyGroup>
 
   <ItemGroup>
