@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="$(SolutionDir)CustomizationPackage.props" />
+	<Import Project="$(SolutionDir)CustomizationPackage.props" />
 
-  <PropertyGroup>
+	<PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <OutputLocation>$(OutputPath)</OutputLocation>
