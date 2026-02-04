@@ -1,8 +1,9 @@
 <Project>
   <PropertyGroup>
     <BuildNumber Condition="'$(BuildNumber)' == ''">0.0</BuildNumber>
-    <MajorVersion>9.53</MajorVersion>
-    <Version>$(MajorVersion).$(BuildNumber)</Version>
+    <Build_BuildNumber>$(BuildNumber)</Build_BuildNumber>
+    <MajorVersion>9.57</MajorVersion>
+    <Version>$(MajorVersion).$(Build_BuildNumber)</Version>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -17,13 +18,13 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <CommerceSdkPackagesVersion>[9.53.*-*,9.54)</CommerceSdkPackagesVersion>
-    <CommercePosPackagesVersion>[9.53.*-*,9.54)</CommercePosPackagesVersion>
-    <CommerceChannelPackagesVersion>[9.53.*-*,9.54)</CommerceChannelPackagesVersion>
-    <CommerceHwsPackagesVersion>[9.53.*-*,9.54)</CommerceHwsPackagesVersion>
-    <CommerceToolsPackagesVersion>[10.34.*-*,10.35)</CommerceToolsPackagesVersion>
-    <CommercePaymentsPackagesVersion>[10.53.*-*,10.54)</CommercePaymentsPackagesVersion>
+    <CommerceSdkPackagesVersion>[9.57.*-*,9.58)</CommerceSdkPackagesVersion>
+    <CommercePosPackagesVersion>[9.57.*-*,9.58)</CommercePosPackagesVersion>
+    <CommerceChannelPackagesVersion>[9.57.*-*,9.58)</CommerceChannelPackagesVersion>
+    <CommerceHwsPackagesVersion>[9.57.*-*,9.58)</CommerceHwsPackagesVersion>
+    <CommerceToolsPackagesVersion>[10.38.*-*,10.39)</CommerceToolsPackagesVersion>
+    <CommercePaymentsPackagesVersion>[10.57.*-*,10.58)</CommercePaymentsPackagesVersion>
     <TypeScriptPackagesVersion>4.7.*</TypeScriptPackagesVersion>
-    <MauiVersion>8.0.100</MauiVersion>
+    <MauiVersion>9.0.110</MauiVersion>
   </PropertyGroup>
 </Project>

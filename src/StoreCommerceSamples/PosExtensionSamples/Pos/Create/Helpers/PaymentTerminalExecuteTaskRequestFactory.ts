@@ -59,6 +59,9 @@ export default class PaymentTerminalExecuteTaskRequestFactory {
                         { Key: "MenuEntry2", Value: { StringValue: "Paris" } },
                         { Key: "MenuEntry3", Value: { StringValue: "Beijing" } },
                         { Key: "MenuEntry4", Value: { StringValue: "Tokyo" } },
+                        { Key: "MenuEntry5", Value: { StringValue: "Seattle" } },
+                        { Key: "MinLength", Value: { IntegerValue: 1 } }, // If MinLength or MaxLength is specified, multiple answers can be selected. If both are missing, only a single answer is allowed.
+                        { Key: "MaxLength", Value: { IntegerValue: 3 } },
                     ]
                 },
                 undefined,

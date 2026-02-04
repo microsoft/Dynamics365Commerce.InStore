@@ -1,10 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="..\CustomizationPackage.props" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="$(SolutionDir)CustomizationPackage.props" />
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <OutputLocation>$(OutputPath)</OutputLocation>
+    <OutputLocation Condition="'$(OutputLocation)' == ''">$(MSBuildProjectDirectory)\bin\$(Configuration)\$(TargetFramework)</OutputLocation>
   </PropertyGroup>
+
   <ItemGroup>
-    <PackageReference Include="Microsoft.Dynamics.Commerce.Sdk.ChannelDatabase" Version="$(CommerceSdkPackagesVersion)" />
+    <!-- SQLite extensions build is only supported on Windows Platform. -->
+    <PackageReference Include="Microsoft.Dynamics.Commerce.Sdk.ChannelDatabase" Version="$(CommerceSdkPackagesVersion)" Condition="$([System.OperatingSystem]::IsWindows())" />
   </ItemGroup>
 </Project>

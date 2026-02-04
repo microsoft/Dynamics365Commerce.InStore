@@ -1,15 +1,15 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+<Project Sdk="Microsoft.NET.Sdk.Razor">
   <Import Project="..\CustomizationPackage.props" />
 
   <PropertyGroup>
-    <TargetFrameworks>net8.0-android</TargetFrameworks>
+    <TargetFrameworks>net9.0-android;net9.0-ios</TargetFrameworks>
     <UseMaui>true</UseMaui>
     <OutputType>Exe</OutputType>
     <RootNamespace>Contoso.StoreCommerce.MobileApp</RootNamespace>
     <AssemblyName>Contoso.StoreCommerce.MobileApp</AssemblyName>
 
     <!-- Display name -->
-    <ApplicationTitle Condition="$(ApplicationTitle) == ''">Contoso Store Commerce Mobile App</ApplicationTitle>
+    <ApplicationTitle Condition="$(ApplicationTitle) == ''">Contoso Store Commerce</ApplicationTitle>
 
     <!-- App Identifier -->
     <ApplicationId Condition="$(ApplicationId) == ''">contoso.storecommerce.mobileapp</ApplicationId>
@@ -17,6 +17,9 @@
     <!-- Versions -->
     <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
     <ApplicationVersion>1</ApplicationVersion>
+
+    <!-- Prevent extension assemblies from being trimmed on iOS builds -->
+    <UseInterpreter Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">true</UseInterpreter>
   </PropertyGroup>
 
   <ItemGroup>
@@ -26,6 +29,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\StoreCommerceApp\ChannelDatabase\Contoso.StoreCommercePackagingSample.ChannelDatabase.csproj"  ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\..\..\StoreCommerceSamples\PosExtensionSamples\CommerceRuntime\Contoso.PosExtensions.CommerceRuntime.csproj" ReferenceOutputAssembly="'$(Configuration)' != 'Release'" />
+    <ProjectReference Include="..\..\..\StoreCommerceSamples\PosExtensionSamples\Pos\Contoso.PosExtensions.Pos.csproj" ReferenceOutputAssembly="'$(Configuration)' != 'Release'" />
     <ProjectReference Include="..\..\..\HardwareStationSamples\PaymentDevice\Contoso.PaymentDeviceSample.csproj" ReferenceOutputAssembly="'$(Configuration)' != 'Release'" />
     <ProjectReference Include="..\..\..\HardwareStationSamples\PeripheralCustomizations\Contoso.PeripheralCustomizations.csproj" ReferenceOutputAssembly="'$(Configuration)' != 'Release'" />
   </ItemGroup>

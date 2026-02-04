@@ -1,0 +1,21 @@
+.select-product-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 20px;
+}
+
+.product-list-section {
+    flex: 1;
+    margin-bottom: 20px;
+}
+
+.instructions {
+    margin-bottom: 16px;
+    font-size: 16px;
+    color: #333;
+}
+
+#productDataList {
+    height: 100%;
+}
