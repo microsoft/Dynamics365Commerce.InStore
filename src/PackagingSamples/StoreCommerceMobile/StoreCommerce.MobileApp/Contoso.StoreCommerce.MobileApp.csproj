@@ -15,7 +15,7 @@
     <ApplicationId Condition="$(ApplicationId) == ''">contoso.storecommerce.mobileapp</ApplicationId>
 
     <!-- Versions -->
-    <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+    <ApplicationDisplayVersion>$(PackageVersion)</ApplicationDisplayVersion>
     <ApplicationVersion>1</ApplicationVersion>
   </PropertyGroup>
 

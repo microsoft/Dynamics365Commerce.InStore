@@ -16,7 +16,15 @@ This solution demonstrates how to create a Store Commerce mobile app package wit
 In order to build the Store Commerce mobile app sample, you must follow the below steps to consume the Store Commerce Mobile SDK.
 
 ### Pre-requisites:
-  Install the .NET Multi-platform App UI development Visual Studio 2022 workload.
+  Install the .NET Multi-platform App UI development Visual Studio workload.
+
+  Alternatively, you can install the MAUI .NET Workloads via command line:
+  ```powershell
+  $mauiVersion = dotnet --version
+
+  # Use sudo if on macOS or Linux
+  dotnet workload install maui --version $mauiVersion
+  ```
 
 ### Steps:
   - Navigate to the [LCS Shared Asset Library](https://lcs.dynamics.com/V2/SharedAssetLibrary)
