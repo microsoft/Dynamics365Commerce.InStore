@@ -7,7 +7,7 @@
  * NO TECHNICAL SUPPORT IS PROVIDED.  YOU MAY NOT DISTRIBUTE THIS CODE UNLESS YOU HAVE A LICENSE AGREEMENT WITH MICROSOFT THAT ALLOWS YOU TO DO SO.
  */
 
-import { ExtensionOperationRequestType, ExtensionOperationRequestHandlerBase } from "PosApi/Create/Operations";
+import { ExtensionOperationRequestType, ExtensionOperationRequestHandlerBase, IExtensionOperationMetadata, FluentIcons } from "PosApi/Create/Operations";
 import PrintOperationResponse from "./PrintOperationResponse";
 import PrintOperationRequest from "./PrintOperationRequest";
 import { ClientEntities } from "PosApi/Entities";
@@ -16,6 +16,11 @@ import { ClientEntities } from "PosApi/Entities";
  * (Sample) Request handler for the PrintOperationRequest class.
  */
 export default class PrintOperationRequestHandler extends ExtensionOperationRequestHandlerBase<PrintOperationResponse> {
+    public static readonly operationMetadata: IExtensionOperationMetadata = {
+        nameStringResourceId: "string_100",
+        fluentIconName: FluentIcons.Print24Regular
+    };
+
     /**
      * Gets the supported request type.
      * @return {RequestType<TResponse>} The supported request type.

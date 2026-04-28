@@ -14,7 +14,7 @@
   ],
   "components": {
     "resources": {
-      "supportedUICultures": [ "en-US" ],
+      "supportedUICultures": [ "en-US", "es-ES" ],
       "fallbackUICulture": "en-US",
       "culturesDirectoryPath": "Resources",
       "stringResourcesFileName": "strings.resjson"
@@ -213,6 +213,9 @@
             "customColumn5": {
               "modulePath": "Extend/ViewExtensions/Cart/LinesGrid/CustomColumn5Configuration"
             },
+            "customColumn6": {
+              "modulePath": "Extend/ViewExtensions/Cart/LinesGrid/CustomColumn6HtmlConfiguration"
+            },
             "customItemSubfields": [
               {
                 "itemSubfieldName": "fraudCheckReminderItemSubfield",
@@ -221,6 +224,10 @@
               {
                 "itemSubfieldName": "subscribeAndSaveItemSubfield",
                 "modulePath": "Extend/ViewExtensions/Cart/LinesGrid/SubscribeAndSaveItemSubfield"
+              },
+              {
+                "itemSubfieldName": "stockItemSubfieldCustomContent",
+                "modulePath": "Extend/ViewExtensions/Cart/LinesGrid/StockItemSubfieldCustomContent"
               }
             ]
           },
@@ -787,21 +794,29 @@
       "operations": [
         {
           "operationId": "5000",
+          "name": "Print operation",
+          "description": "A sample operation that prints a message to the console.",
           "operationRequestFactoryPath": "Create/Operations/Print/PrintOperationRequestFactory",
           "operationRequestHandlerPath": "Create/Operations/Print/PrintOperationRequestHandler"
         },
         {
           "operationId": "5001",
+          "name": "End of day operation",
+          "description": "A sample operation that executes end of day workflows.",
           "operationRequestFactoryPath": "Create/Operations/EndOfDay/EndOfDayOperationRequestFactory",
           "operationRequestHandlerPath": "Create/Operations/EndOfDay/EndOfDayOperationRequestHandler"
         },
         {
           "operationId": "5002",
+          "name": "Check gift card balance",
+          "description": "A sample operation that checks a gift card balance.",
           "operationRequestFactoryPath": "Create/Operations/CheckGiftCardBalance/CheckGiftCardBalanceFactory",
           "operationRequestHandlerPath": "Create/Operations/CheckGiftCardBalance/CheckGiftCardBalanceHandler"
         },
         {
           "operationId": "5003",
+          "name": "Save data to selected cart line",
+          "description": "A sample operation that saves extension properties to a selected cart line.",
           "operationRequestFactoryPath": "Create/Operations/SaveDataToSelectedCartLine/SaveDataToSelectedCartLineFactory",
           "operationRequestHandlerPath": "Create/Operations/SaveDataToSelectedCartLine/SaveDataToSelectedCartLineHandler"
         }

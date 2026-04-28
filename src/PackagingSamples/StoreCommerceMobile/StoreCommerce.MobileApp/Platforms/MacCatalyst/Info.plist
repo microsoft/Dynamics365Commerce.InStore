@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<key>UIDeviceFamily</key>
+	<array>
+		<integer>6</integer>
+	</array>
+	<key>UIPrerenderedIcon</key>
+	<true/>
+	<key>UIDesignRequiresCompatibility</key>
+	<true/>
+	<key>CFBundleIdentifier</key>
+	<string>contoso.storecommerce.mobileapp</string>
+	<key>CFBundleDisplayName</key>
+	<string>Contoso Store Commerce</string>
+	<key>CFBundleName</key>
+	<string>Contoso Store Commerce</string>
+	<key>CFBundleVersion</key>
+	<string></string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>ar</string>
+		<string>ar-AE</string>
+		<string>ar-BH</string>
+		<string>ar-EG</string>
+		<string>ar-KW</string>
+		<string>ar-OM</string>
+		<string>ar-QA</string>
+		<string>cs</string>
+		<string>da</string>
+		<string>de</string>
+		<string>de-AT</string>
+		<string>de-CH</string>
+		<string>el</string>
+		<string>en-AU</string>
+		<string>en-CA</string>
+		<string>en-GB</string>
+		<string>en-HK</string>
+		<string>en-IE</string>
+		<string>en-IN</string>
+		<string>en-MY</string>
+		<string>en-NZ</string>
+		<string>en-DG</string>
+		<string>en-ZA</string>
+		<string>es</string>
+		<string>es-MX</string>
+		<string>et</string>
+		<string>fi</string>
+		<string>fr</string>
+		<string>fr-BE</string>
+		<string>fr-CH</string>
+		<string>he</string>
+		<string>hu</string>
+		<string>id</string>
+		<string>is</string>
+		<string>it</string>
+		<string>it-CH</string>
+		<string>ja</string>
+		<string>ko</string>
+		<string>lt</string>
+		<string>lv</string>
+		<string>nb-NO</string>
+		<string>nl</string>
+		<string>nl-BE</string>
+		<string>pl</string>
+		<string>pt-BR</string>
+		<string>pt-PT</string>
+		<string>ro</string>
+		<string>ru</string>
+		<string>sv</string>
+		<string>th</string>
+		<string>tr</string>
+		<string>vi</string>
+		<string>zh-Hans</string>
+		<string>zh-Hant</string>
+	</array>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en-US</string>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>arm64</string>
+	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSAllowsLocalNetworking</key>
+		<true/>
+	</dict>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>msauthv2</string>
+		<string>msauthv3</string>
+	</array>
+	<key>XSAppIconAssets</key>
+	<string>Assets.xcassets/appicon.appiconset</string>
+	<key>UILaunchStoryboardName</key>
+	<string>MauiSplash</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Required for barcode scanning</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Required for communication with card readers</string>
+</dict>
+</plist>

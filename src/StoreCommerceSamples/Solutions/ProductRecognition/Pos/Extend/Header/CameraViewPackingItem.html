@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <link rel="stylesheet" href="CameraViewPackingItem.css">
+</head>
+
+<body>
+  <!-- Unpacked template -->
+  <script id="UnpackedCameraViewItem" type="text/html">
+    <button class="buttonSecondary col grow width48 pad0 center buttonIcon iconCamera" data-bind="click: onItemClickedHandler.bind($data)">
+    </button>
+  </script>
+
+  <!-- Packed template -->
+  <script id="PackedCameraViewItem" type="text/html">
+    <button class="packingItem row pad0 center" data-bind="click: onItemClickedHandler.bind($data)">
+      <div class="col width48 center">
+        <div class="iconCamera buttonIcon center"></div>
+      </div>
+      <div class="grow col marginLeft8">
+        <div class="h4 row" data-bind="text: label"></div>
+      </div>
+    </button>
+  </script>
+</body>
+
+</html>
