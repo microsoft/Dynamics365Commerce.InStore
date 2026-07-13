@@ -20,6 +20,10 @@
 
     <!-- Prevent extension assemblies from being trimmed on iOS builds -->
     <UseInterpreter Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">true</UseInterpreter>
+
+    <!-- Prevent extension assemblies from being embedded in the APK on Android Release builds -->
+    <Optimize Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">false</Optimize>
+    <EmbedAssembliesIntoApk Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">false</EmbedAssembliesIntoApk>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,9 +34,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\StoreCommerceApp\ChannelDatabase\Contoso.StoreCommercePackagingSample.ChannelDatabase.csproj"  ReferenceOutputAssembly="false" />
-    <ProjectReference Include="..\..\..\StoreCommerceSamples\PosExtensionSamples\CommerceRuntime\Contoso.PosExtensions.CommerceRuntime.csproj" ReferenceOutputAssembly="'$(Configuration)' != 'Release'" />
-    <ProjectReference Include="..\..\..\StoreCommerceSamples\PosExtensionSamples\Pos\Contoso.PosExtensions.Pos.csproj" ReferenceOutputAssembly="'$(Configuration)' != 'Release'" />
-    <ProjectReference Include="..\..\..\HardwareStationSamples\PaymentDevice\Contoso.PaymentDeviceSample.csproj" ReferenceOutputAssembly="'$(Configuration)' != 'Release'" />
-    <ProjectReference Include="..\..\..\HardwareStationSamples\PeripheralCustomizations\Contoso.PeripheralCustomizations.csproj" ReferenceOutputAssembly="'$(Configuration)' != 'Release'" />
+    <ProjectReference Include="..\..\..\StoreCommerceSamples\PosExtensionSamples\CommerceRuntime\Contoso.PosExtensions.CommerceRuntime.csproj" />
+    <ProjectReference Include="..\..\..\StoreCommerceSamples\PosExtensionSamples\Pos\Contoso.PosExtensions.Pos.csproj" />
+    <ProjectReference Include="..\..\..\HardwareStationSamples\PaymentDevice\Contoso.PaymentDeviceSample.csproj" />
+    <ProjectReference Include="..\..\..\HardwareStationSamples\PeripheralCustomizations\Contoso.PeripheralCustomizations.csproj" />
   </ItemGroup>
 </Project>
