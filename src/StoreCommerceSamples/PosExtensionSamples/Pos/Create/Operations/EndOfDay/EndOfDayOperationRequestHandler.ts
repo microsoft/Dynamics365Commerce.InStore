@@ -7,7 +7,7 @@
  * NO TECHNICAL SUPPORT IS PROVIDED.  YOU MAY NOT DISTRIBUTE THIS CODE UNLESS YOU HAVE A LICENSE AGREEMENT WITH MICROSOFT THAT ALLOWS YOU TO DO SO.
  */
 
-import { ExtensionOperationRequestType, ExtensionOperationRequestHandlerBase } from "PosApi/Create/Operations";
+import { ExtensionOperationRequestType, ExtensionOperationRequestHandlerBase, IExtensionOperationMetadata } from "PosApi/Create/Operations";
 import { CloseShiftOperationRequest, CloseShiftOperationResponse } from "PosApi/Consume/Shifts";
 import { SafeDropOperationRequest, SafeDropOperationResponse } from "PosApi/Consume/StoreOperations";
 import { TenderDeclarationOperationRequest, TenderDeclarationOperationResponse } from "PosApi/Consume/StoreOperations";
@@ -20,6 +20,11 @@ import EndOfDayOperationRequest from "./EndOfDayOperationRequest";
  * (Sample) Request handler for the EndOfDayOperationRequest class.
  */
 export default class EndOfDayOperationRequestHandler extends ExtensionOperationRequestHandlerBase<EndOfDayOperationResponse> {
+    public static readonly operationMetadata: IExtensionOperationMetadata = {
+        nameStringResourceId: "string_101",
+        iconSvg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M12 2a10 10 0 100 20A10 10 0 0012 2zm0 2a8 8 0 110 16A8 8 0 0112 4z"/><path fill="currentColor" d="M7 12.5L10 15.5 17 8.5 16 7.5 10 13.5 8 11.5z"/></svg>`
+    };
+
     /**
      * Gets the supported request type.
      * @return {RequestType<TResponse>} The supported request type.

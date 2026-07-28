@@ -1,22 +1,29 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+<Project Sdk="Microsoft.NET.Sdk.Razor">
   <Import Project="..\CustomizationPackage.props" />
 
   <PropertyGroup>
-    <TargetFrameworks>net8.0-android</TargetFrameworks>
+    <TargetFrameworks>net10.0-android;net10.0-ios;net10.0-maccatalyst</TargetFrameworks>
     <UseMaui>true</UseMaui>
     <OutputType>Exe</OutputType>
     <RootNamespace>Contoso.StoreCommerce.MobileApp</RootNamespace>
     <AssemblyName>Contoso.StoreCommerce.MobileApp</AssemblyName>
 
     <!-- Display name -->
-    <ApplicationTitle Condition="$(ApplicationTitle) == ''">Contoso Store Commerce Mobile App</ApplicationTitle>
+    <ApplicationTitle Condition="$(ApplicationTitle) == ''">Contoso Store Commerce</ApplicationTitle>
 
     <!-- App Identifier -->
     <ApplicationId Condition="$(ApplicationId) == ''">contoso.storecommerce.mobileapp</ApplicationId>
 
     <!-- Versions -->
-    <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+    <ApplicationDisplayVersion>$(PackageVersion)</ApplicationDisplayVersion>
     <ApplicationVersion>1</ApplicationVersion>
+
+    <!-- Prevent extension assemblies from being trimmed on iOS/MacCatalyst builds -->
+    <UseInterpreter Condition="($(TargetFramework.Contains('-ios')) or $(TargetFramework.Contains('-maccatalyst'))) and '$(Configuration)' == 'Release'">true</UseInterpreter>
+
+    <!-- Prevent extension assemblies from being embedded in the APK on Android Release builds -->
+    <Optimize Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">false</Optimize>
+    <EmbedAssembliesIntoApk Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">false</EmbedAssembliesIntoApk>
   </PropertyGroup>
 
   <ItemGroup>
@@ -26,7 +33,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\HardwareStationSamples\PaymentDevice\Contoso.PaymentDeviceSample.csproj" ReferenceOutputAssembly="'$(Configuration)' != 'Release'" />
-    <ProjectReference Include="..\..\..\HardwareStationSamples\PeripheralCustomizations\Contoso.PeripheralCustomizations.csproj" ReferenceOutputAssembly="'$(Configuration)' != 'Release'" />
+    <ProjectReference Include="..\..\StoreCommerceApp\ChannelDatabase\Contoso.StoreCommercePackagingSample.ChannelDatabase.csproj" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\..\..\StoreCommerceSamples\PosExtensionSamples\CommerceRuntime\Contoso.PosExtensions.CommerceRuntime.csproj" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\..\..\StoreCommerceSamples\PosExtensionSamples\Pos\Contoso.PosExtensions.Pos.csproj" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\..\..\HardwareStationSamples\PaymentDevice\Contoso.PaymentDeviceSample.csproj" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\..\..\HardwareStationSamples\PeripheralCustomizations\Contoso.PeripheralCustomizations.csproj" ReferenceOutputAssembly="false" />
   </ItemGroup>
 </Project>

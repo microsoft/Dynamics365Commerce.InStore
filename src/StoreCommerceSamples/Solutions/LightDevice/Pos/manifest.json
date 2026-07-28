@@ -1,0 +1,43 @@
+{
+  "$schema": "./devDependencies/schemas/manifestSchema.json",
+  "name": "Contoso.LightDevice",
+  "publisher": "Contoso",
+  "version": "1.0.0.0",
+  "minimumPosVersion": "9.50.0.0",
+  "components": {
+    "extend": {
+      "triggers": [
+        {
+          "triggerType": "PostLogOn",
+          "modulePath": "Extend/Triggers/PostLogOnTrigger",
+          "name": "Post Log On Trigger",
+          "description": "Turns on the light after login."
+        },
+        {
+          "triggerType": "PostLogOff",
+          "modulePath": "Extend/Triggers/PostLogOffTrigger",
+          "name": "Post Log Off Trigger",
+          "description": "Turns off the light after logout."
+        },
+        {
+          "triggerType": "PreOperation",
+          "modulePath": "Extend/Triggers/PreOperationTrigger",
+          "name": "Pre Operation Trigger",
+          "description": "Blinks the light when calling for assistance."
+        },
+        {
+          "triggerType": "PreElevateUser",
+          "modulePath": "Extend/Triggers/PreElevateUserTrigger",
+          "name": "Pre Elevate User Trigger",
+          "description": "Stops blinking the light when manager override starts."
+        },
+        {
+          "triggerType": "OperationFailure",
+          "modulePath": "Extend/Triggers/OperationFailureTrigger",
+          "name": "Operation Failure Trigger",
+          "description": "Stops blinking the light if the operation fails."
+        }
+      ]
+    }
+  }
+}

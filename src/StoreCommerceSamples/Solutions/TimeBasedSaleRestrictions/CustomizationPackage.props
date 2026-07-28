@@ -1,0 +1,12 @@
+<Project>
+  <Import Project="..\..\..\..\repo.props" />
+
+  <PropertyGroup>
+    <PackagePublisher Condition="'$(PackagePublisher)' == ''">$(Publisher)</PackagePublisher>
+    <PackagePublisherDisplayName Condition="'$(PackagePublisherDisplayName)' == ''">$(PublisherDisplayName)</PackagePublisherDisplayName>
+    <PackageVersion Condition="'$(PackageVersion)' == ''">$(Version)</PackageVersion>
+    <PackageName Condition="'$(PackageName)' == ''">Contoso.TimeRestrictions</PackageName>
+    <PackageDisplayName Condition="'$(PackageDisplayName)' == ''">Contoso Time-Based Sale Restrictions</PackageDisplayName>
+    <PackageDescription Condition="'$(PackageDescription)' == ''">Commerce Runtime extension for time-based sale restrictions</PackageDescription>
+  </PropertyGroup>
+</Project>

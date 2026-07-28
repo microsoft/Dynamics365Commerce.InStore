@@ -10,6 +10,8 @@ This folder contains sample solutions that demonstrate how to customize the Stor
 - Create/
   - Dialogs/
     - [BarcodeMsrDialogSample](./Create/Dialogs/BarcodeMsrDialogSample/readme.md)
+  - DeepLinkActions/
+    - [DeepLinkActionsSample](./PosExtensionSamples/Pos/Create/DeepLinkActions/readme.md) - Demonstrates deep link action extensibility (CREATE and EXTEND patterns)
 - Extend/
   - Triggers/
     - [TriggerSamples](./Extend/Triggers/TriggerSamples/readme.md)

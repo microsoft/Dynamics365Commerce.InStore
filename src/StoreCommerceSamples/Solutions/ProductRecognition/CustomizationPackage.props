@@ -1,0 +1,12 @@
+<Project>
+  <Import Project="..\..\..\..\repo.props" />
+
+  <PropertyGroup>
+    <PackagePublisher Condition="'$(PackagePublisher)' == ''">$(Publisher)</PackagePublisher>
+    <PackagePublisherDisplayName Condition="'$(PackagePublisherDisplayName)' == ''">$(PublisherDisplayName)</PackagePublisherDisplayName>
+    <PackageVersion Condition="'$(PackageVersion)' == ''">$(Version)</PackageVersion>
+    <PackageName Condition="'$(PackageName)' == ''">Contoso.ProductRecognition</PackageName>
+    <PackageDisplayName Condition="'$(PackageDisplayName)' == ''">Product Recognition Sample</PackageDisplayName>
+    <PackageDescription Condition="'$(PackageDescription)' == ''">A sample showcasing a solution to create a user interface for product recognition.</PackageDescription>
+  </PropertyGroup>
+</Project>

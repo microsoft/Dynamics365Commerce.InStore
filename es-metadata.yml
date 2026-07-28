@@ -1,0 +1,77 @@
+schemaVersion: 1.0.0
+providers:
+  - provider: InventoryAsCode
+    version: 1.0.0
+    metadata:
+      isProduction: true
+      accountableOwners:
+        service: e61713e1-3ecf-42af-ab37-9111c5413102
+      routing:
+        defaultAreaPath:
+          org: msdyneng
+          path: FinOps\Retail and Services\Store Commerce Framework
+
+  - provider: Ownership/CodeReviewers
+    version: 1.0.0
+    metadata:
+      options:
+        allowInheritance: true
+      reviewers:
+
+        # Default branch policies (refs/heads/main)
+
+        # Policy 94611: BAGIE intl PR approvers
+        - branches: '[Ref] refs/heads/main'
+          scope: |
+            [Glob] **/*.lcl;
+            **/*.lss;
+            **/*.lci;
+            **/*.resx;
+            **/*.resjson
+          notifyOnly: [BAGintlPR]
+
+        # Policy 56134: D365 Commerce CR Store Commerce Framework
+        - branches: '[Ref] refs/heads/main'
+          scope: |
+            [Glob] **/*;
+            !**/*.lcl;
+            !**/*.lss;
+            !**/*.lci;
+            !**/*.resx;
+            !**/*.resjson
+          required: [D365CCRSCF]
+
+        # Release branch policies (refs/heads/release/*)
+
+        # Policy 94612: BAG IE intl PR approvers
+        - branches: '[Prefix] release/'
+          scope: |
+            [Glob] **/*.lcl;
+            **/*.lss;
+            **/*.lci;
+            **/*.resx;
+            **/*.resjson
+          notifyOnly: [BAGintlPR]
+
+        # Policy 87714: D365 Commerce Core Shiproom Approvers
+        - branches: '[Prefix] release/'
+          scope: |
+            [Glob] **/*;
+            !**/*.lcl;
+            !**/*.lss;
+            !**/*.lci;
+            !**/*.resx;
+            !**/*.resjson;
+            !**/*.yml
+          required: [d365ccshiproomapprov]
+
+        # Policy 87715: D365 Commerce Release PR Approvers
+        - branches: '[Prefix] release/'
+          scope: |
+            [Glob] **/*;
+            !**/*.lcl;
+            !**/*.lss;
+            !**/*.lci;
+            !**/*.resx;
+            !**/*.resjson
+          required: [d365cprapprovers]

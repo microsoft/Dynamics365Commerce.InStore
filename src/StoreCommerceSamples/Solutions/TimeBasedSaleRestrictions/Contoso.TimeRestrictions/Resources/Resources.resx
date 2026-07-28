@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="xml:space" use="required" fixed="preserve" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+
+  <data name="TimeRestriction_Item" xml:space="preserve">
+    <value>item</value>
+  </data>
+  <data name="TimeRestriction_FallbackCutoff" xml:space="preserve">
+    <value>the configured cutoff time</value>
+  </data>
+  <data name="TimeRestriction_Blocked" xml:space="preserve">
+    <value>Sales of this item are not permitted after {0}.</value>
+  </data>
+  <data name="TimeRestriction_BlockedAtCheckout" xml:space="preserve">
+    <value>Cart contains items that cannot be sold after {0}. Remove restricted items to proceed.</value>
+  </data>
+  <data name="TimeRestriction_PermittedTimeWindowFormat" xml:space="preserve">
+    <value>Sales of {0} are only permitted between {1} and {2}.</value>
+    <comment>Format: item name, start time, end time. Example: Sales of this item are only permitted between 08:00 and 20:00.</comment>
+  </data>
+  <data name="TimeRestriction_NotPermittedAfterFormat" xml:space="preserve">
+    <value>Sales of {0} are not permitted after {1}.</value>
+    <comment>Format: item name, cutoff time. Example: Sales of this item are not permitted after 20:00.</comment>
+  </data>
+  <data name="TimeRestriction_NotPermittedBeforeFormat" xml:space="preserve">
+    <value>Sales of {0} are not permitted before {1}.</value>
+    <comment>Format: item name, start time. Example: Sales of this item are not permitted before 08:00.</comment>
+  </data>
+  <data name="TimeRestriction_NotPermittedGeneric" xml:space="preserve">
+    <value>Sales of {0} are restricted at this time.</value>
+    <comment>Format: item name. Example: Sales of this item are restricted at this time.</comment>
+  </data>
+  <data name="TimeRestriction_DefaultItemName" xml:space="preserve">
+    <value>this item</value>
+    <comment>Default item name when cart line description is not available</comment>
+  </data>
+</root>

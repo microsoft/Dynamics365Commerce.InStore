@@ -142,5 +142,20 @@
     "_string_73.comment"                            : "Voided column name.",
 
     "string_74"                                     : "Comment",
-    "_string_74.comment"                            : "Comment column name."
+    "_string_74.comment"                            : "Comment column name.",
+
+    "string_75"                                     : "HTML Element",
+    "_string_75.comment"                            : "The HTML element column name.",
+
+    "string_100"                                    : "Print operation",
+    "_string_100.comment"                           : "The localized operation name for the Print operation (operation ID 5000).",
+
+    "string_101"                                    : "End of day operation",
+    "_string_101.comment"                           : "The localized operation name for the End Of Day operation (operation ID 5001).",
+
+    "string_102"                                    : "Check gift card balance",
+    "_string_102.comment"                           : "The localized operation name for the Check Gift Card Balance operation (operation ID 5002).",
+
+    "string_103"                                    : "Save data to selected cart line",
+    "_string_103.comment"                           : "The localized operation name for the Save Data To Selected Cart Line operation (operation ID 5003)."
 }
