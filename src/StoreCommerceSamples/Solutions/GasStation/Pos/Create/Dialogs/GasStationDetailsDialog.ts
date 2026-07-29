@@ -49,8 +49,8 @@ export default class GasStationDetailsDialog extends Dialogs.ExtensionTemplatedD
     }
 
     /**
-     * Opens the GasPumpStatusDialog.
-     * @return {Promise<void>} The result from message dialog.
+     * Opens the gas station details dialog.
+     * @return {Promise<void>} The promise that represents showing the dialog.
      */
     public open(): Promise<void> {
         let promise: Promise<void> = new Promise<void>((resolve: () => void, reject: (reason: any) => void): void => {
@@ -82,7 +82,7 @@ export default class GasStationDetailsDialog extends Dialogs.ExtensionTemplatedD
     }
 
     /**
-     * Called when the enable pump button is clicked.
+     * Called when the OK button is clicked.
      * @return {boolean} True to close the dialog, false otherwise.
      */
     private _enablePumpClickHandler(): boolean {

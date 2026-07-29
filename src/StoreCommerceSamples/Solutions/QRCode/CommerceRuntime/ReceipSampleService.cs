@@ -22,7 +22,9 @@ namespace QRCode.CommerceRuntime
     /// </summary>
     public class GetSalesTransactionCustomReceiptFieldService : IRequestHandlerAsync
     {
-        /// <inheritdoc/>
+        /// <summary>
+        /// Gets the supported request types for this handler.
+        /// </summary>
         public IEnumerable<Type> SupportedRequestTypes => new[] { typeof(GetLocalizationCustomReceiptFieldServiceRequest) };
 
         /// <summary>
@@ -39,7 +41,7 @@ namespace QRCode.CommerceRuntime
         /// Executes the requests.
         /// </summary>
         /// <param name="request">The request parameter.</param>
-        /// <returns>The GetReceiptServiceResponse that contains the formatted receipts.</returns>
+        /// <returns>The response for the custom receipt field request.</returns>
         public async Task<Response> Execute(Request request)
         {
             ThrowIf.Null(request, nameof(request));

@@ -35,8 +35,8 @@ export default class EndOfDayOperationRequestHandler extends ExtensionOperationR
 
     /**
      * Executes the request handler asynchronously.
-     * @param {EndOfDayOperationRequest<TResponse>} request The request.
-     * @return {Promise<ICancelableDataResult<TResponse>>} The cancelable async result containing the response.
+     * @param {EndOfDayOperationRequest<EndOfDayOperationResponse>} printRequest The request.
+     * @return {Promise<ClientEntities.ICancelableDataResult<EndOfDayOperationResponse>>} The cancelable async result containing the response.
      */
     public executeAsync(printRequest: EndOfDayOperationRequest<EndOfDayOperationResponse>): Promise<ClientEntities.ICancelableDataResult<EndOfDayOperationResponse>> {
 

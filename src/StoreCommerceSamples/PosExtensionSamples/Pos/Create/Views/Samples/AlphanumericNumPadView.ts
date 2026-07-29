@@ -61,7 +61,7 @@ export default class AlphanumericNumPadView extends Views.CustomViewControllerBa
 
     /**
      * Callback for numpad.
-     * @param {number} value Numpad current value.
+     * @param {Commerce.Extensibility.NumPadValue} result Numpad current value.
      */
     private onNumPadEnter(result: Commerce.Extensibility.NumPadValue): void {
         this.numPadValue(result.toString());

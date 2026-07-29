@@ -10,7 +10,7 @@ This sample shows how to use Cancelable, NonCancelable, and DataModification tri
 ![Demo](./Demo.gif)
 
 ## Running the sample
-- Open the Developer Command Prompt for Visual Studio 2022
+- Open the Developer Command Prompt for Visual Studio 2026
 - Restore the nuget packages for the solution by running "nuget restore Contoso.TriggerSamples.sln"
 - Initialize Store Commerce development for the solution by running "msbuild Contoso.TriggerSamples.sln /t:InitDev"
 - Open Visual Studio Code in the solution root directory
@@ -67,7 +67,7 @@ This sample shows how to use Cancelable, NonCancelable, and DataModification tri
 - **ObjectExtensions**: The object extensions class provides utility methods that make it easier to work with javascript objects.
 
 ## Additional Resources
-- [Debugging POS Extensions in Store Commerce](https://learn.microsoft.com/en-us/dynamics365/commerce/dev-itpro/sc-debug)
-- [Debugging POS Extensions in Cloud POS](https://docs.microsoft.com/en-us/dynamics365/commerce/dev-itpro/pos-extension/debug-pos-extension#run-and-debug-cloud-pos)
-- [POS APIs](https://docs.microsoft.com/en-us/dynamics365/commerce/dev-itpro/pos-apis)
-- [POS Triggers](https://docs.microsoft.com/en-us/dynamics365/commerce/dev-itpro/pos-trigger-printing)
+- [Debugging POS Extensions in Store Commerce](https://learn.microsoft.com/dynamics365/commerce/dev-itpro/sc-debug)
+- [Debugging POS Extensions in Store Commerce for Web](https://learn.microsoft.com/dynamics365/commerce/dev-itpro/pos-extension/debug-pos-extension#run-and-debug-cloud-pos)
+- [POS APIs](https://learn.microsoft.com/dynamics365/commerce/dev-itpro/pos-apis)
+- [POS Triggers](https://learn.microsoft.com/dynamics365/commerce/dev-itpro/pos-trigger-printing)

@@ -10,7 +10,7 @@
 import * as Triggers from "PosApi/Extend/Triggers/PrintingTriggers";
 
 /**
- * Example implementation of an PostReceiptPromptTrigger trigger that logs to the console.
+ * Example implementation of a PostReceiptPromptTrigger trigger that logs to the console.
  */
 export default class PostReceiptPromptTrigger extends Triggers.PostReceiptPromptTrigger {
     /**

@@ -11,7 +11,7 @@ import { ExtensionRequestBase } from "PosApi/Create/RequestHandlers";
 import SendEmailResponse from "./SendEmailResponse";
 
 /**
- * The controller for SimpleNextView.
+ * The request for SendEmailRequestHandler.
  */
 export default class SendEmailRequest<TResponse extends SendEmailResponse> extends ExtensionRequestBase<TResponse> {
     public emailAddress: string;

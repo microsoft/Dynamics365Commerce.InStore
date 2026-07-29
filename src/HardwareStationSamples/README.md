@@ -1,30 +1,30 @@
-## Hardware Station(HWS) Extension
+## Hardware Station (HWS) Extension
 
-Hardware Station is used by Store Commerce, Modern POS (MPOS) and Cloud POS(CPOS) to connect to hardware peripherals, such as printers, cash drawers, scanners, and payment terminals. This project contains sample code on how to create HWS extensions and extension installers for shared HWS.
+Hardware Station is used by Store Commerce for Windows, Web, Mac, iOS, and Android to connect to hardware peripherals, such as printers, cash drawers, scanners, and payment terminals. This project contains sample code on how to create HWS extensions and extension installers for shared HWS.
 
-The Sealed Shared HWS installer must be installed before running the extension installer, follow this doc to [install HWS](https://docs.microsoft.com/en-us/dynamics365/commerce/dev-itpro/enhanced-mass-deployment)
+The Shared HWS installer must be installed before running the extension installer, follow this doc to [install HWS](https://learn.microsoft.com/dynamics365/commerce/dev-itpro/enhanced-mass-deployment)
 
-For detailed steps on how to create extension HWS installer, follow the [Generate an extension installer for the shared Hardware station](https://docs.microsoft.com/en-us/dynamics365/commerce/dev-itpro/hardware-device-extension#generate-an-extension-installer-for-the-shared-hardware-station-for-application-release-10018-or-later)
+For detailed steps on how to create an HWS extension installer, follow the [Generate an extension installer for the shared Hardware Station](https://learn.microsoft.com/dynamics365/commerce/dev-itpro/hardware-device-extension#generate-an-extension-installer-for-the-hardware-station)
 
 ## HWS docs:
 
-[Integrate the POS with a new hardware device](https://docs.microsoft.com/en-us/dynamics365/commerce/dev-itpro/hardware-device-extension)
+[Integrate the POS with a new hardware device](https://learn.microsoft.com/dynamics365/commerce/dev-itpro/hardware-device-extension)
 
-[Create an end-to-end payment integration for a payment terminal](https://docs.microsoft.com/en-us/dynamics365/commerce/dev-itpro/end-to-end-payment-extension)
+[Create an end-to-end payment integration for a payment terminal](https://learn.microsoft.com/dynamics365/commerce/dev-itpro/end-to-end-payment-extension)
 
-### Consume extension in MPOS local HWS
+### Consume extension in local HWS
 
-To consume the HWS extension in local/dedicated HWS, the HWS extension must be packaged with the MPOS, in the modern pos JavaScript project add reference to your HWS projects and then use the POS installer project to create the extension installer. Refer the sample JavaScript project available in the [Dynamics  365 Commerce InStore samples repo](https://github.com/microsoft/Dynamics365Commerce.InStore) - [src/PosSample/ModernPos/ModernPos.jsproj] folder for more details.
+To consume the HWS extension in local/dedicated HWS, the HWS extension must be packaged with the POS app: in the POS JavaScript project add a reference to your HWS projects, and then use the POS installer project to create the extension installer. Refer to the packaging samples available in the [Dynamics 365 Commerce InStore samples repo](https://github.com/microsoft/Dynamics365Commerce.InStore) - `src/PackagingSamples/StoreCommerceApp` folder for more details.
 
-If you have only HWS extension, then remove all the other unwanted project references from the sample. ModernPos.jsproj creates the msix installer and then the installer project consumes it and creates the exe installer, HWS extensions will be deployed as UWP app extension.
+If you have only an HWS extension, then remove all the other unwanted project references from the sample. The POS JavaScript project creates the msix installer and then the installer project consumes it and creates the exe installer, HWS extensions will be deployed as UWP app extension.
 
 
 ## Using the samples
 
-You can download the sample as zip and open it in Visual Studio (VS 2022).
-After opening in VS 2022, build the project. After successful build, output installer package will be created.
+You can download the sample as zip and open it in Visual Studio (VS 2026).
+After opening in VS 2026, build the project. After successful build, output installer package will be created.
 
-To deploy the Shared Hardware station extension for POS and to test it, follow the below steps.
+To deploy the Shared Hardware Station extension for POS and to test it, follow the below steps.
 
 1. Run the extension installer generated using command prompt.
 
@@ -34,14 +34,14 @@ To deploy the Shared Hardware station extension for POS and to test it, follow t
 3. Open POS and configure it to use the Shared Hardware Station.
 4. Validate the extension scenario.
 
-To deploy the Dedicated Hardware station extensions (OPOS and Windows printer samples) for POS and to test them, follow the steps below:
+To deploy the Dedicated Hardware Station extensions (OPOS and Windows printer samples) for POS and to test them, follow the steps below:
 
 1. Close POS if it's running.
 2. Rebuild the Contoso.HardwareStation.Samples solution. Verify that in the build output, the installer completed successfully by seeing the message:
 
   `InstallStoreCommerceExtensions: Running the StoreCommerce extensions installer completed successfully.`
 
-3. Copy the CommerceRuntime DLL (HardwareStationSamples\CommerceRuntime\bin\Debug\netstandard2.0\Contoso.HardwareStationSamples.CommerceRuntime.dll) into your dev environment's Retail Server extension folder (\Pkg\bin\Ext).
+3. Copy the CommerceRuntime DLL (HardwareStationSamples\CommerceRuntime\bin\Debug\netstandard2.0\Contoso.HardwareStationSamples.CommerceRuntime.dll) into your dev environment's Commerce Scale Unit extension folder (\Pkg\bin\Ext).
 4. In the same folder, open the CommerceRuntime.Ext.config and add a line for the extension assembly:
   `	<add source="assembly" value="Contoso.HardwareStationSamples.CommerceRuntime" />`
 5. Open POS and configure it to use the Local Hardware Station.

@@ -39,7 +39,7 @@ export default class GasPumpStatusPackingItem extends CustomPackingItem {
     private _pumpStatusChangedHandlerProxied: PumpStatusChangedHandler;
 
     /**
-     * Initializes a new instance of the CartAmountDuePackingItem class.
+     * Initializes a new instance of the GasPumpStatusPackingItem class.
      * @param {string} id The item identifier.
      * @param {ICustomPackingItemContext} context The custom packing item context.
      */
@@ -129,6 +129,8 @@ export default class GasPumpStatusPackingItem extends CustomPackingItem {
 
     /**
      * Method to reevaluate the status of the pumps and check for emergencies or disabled pumps.
+     * @param {GasPump[]} pumps The pumps to evaluate.
+     * @returns {GasPumpStatus} The overall status derived from the provided pumps.
      */
     private _getGeneralPumpsStatus(pumps: GasPump[]): GasPumpStatus {
         let newStatus: GasPumpStatus = GasPumpStatus.Unknown;

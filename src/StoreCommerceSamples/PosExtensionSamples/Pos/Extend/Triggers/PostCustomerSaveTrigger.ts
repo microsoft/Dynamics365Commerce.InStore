@@ -10,7 +10,7 @@
 import * as Triggers from "PosApi/Extend/Triggers/CustomerTriggers";
 
 /**
- * Example implementation of an PostCustomerSave trigger that logs to the console.
+ * Example implementation of a PostCustomerSave trigger that logs an informational message.
  */
 export default class PostCustomerSaveTrigger extends Triggers.PostCustomerSaveTrigger {
     /**

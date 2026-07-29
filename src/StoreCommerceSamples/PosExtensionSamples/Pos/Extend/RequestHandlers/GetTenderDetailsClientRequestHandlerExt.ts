@@ -18,8 +18,8 @@ export default class GetTenderDetailsClientRequestHandlerExt extends GetTenderDe
 
     /**
      * Executes the request handler asynchronously.
-     * @param {GetTenderDetailsClientRequest<GetTenderDetailsClientResponse>} The request containing the response.
-     * @return {Promise<ICancelableDataResult<GetTenderDetailsClientResponse>>} The cancelable promise containing the response.
+     * @param {GetTenderDetailsClientRequest<GetTenderDetailsClientResponse>} request The request.
+     * @return {Promise<ClientEntities.ICancelableDataResult<GetTenderDetailsClientResponse>>} The cancelable promise containing the response.
      */
     public executeAsync(request: GetTenderDetailsClientRequest<GetTenderDetailsClientResponse>):
         Promise<ClientEntities.ICancelableDataResult<GetTenderDetailsClientResponse>> {

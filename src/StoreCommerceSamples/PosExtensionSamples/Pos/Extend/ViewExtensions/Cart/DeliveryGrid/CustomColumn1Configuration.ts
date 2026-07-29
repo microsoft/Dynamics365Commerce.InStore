@@ -48,11 +48,11 @@ export default class DeliveryCustomGridColumn1 extends CustomDeliveryGridColumnB
 
     /**
      * The custom column cell compute value.
-     * @param {ProxyEntities.CartLine} tenderLine The tender line.
+     * @param {ProxyEntities.CartLine} cartLine The cart line.
      * @return {string} The cell value.
      */
-    public computeValue(tenderLine: ProxyEntities.CartLine): string {
-        return tenderLine.LineNumber.toString();
+    public computeValue(cartLine: ProxyEntities.CartLine): string {
+        return cartLine.LineNumber.toString();
     }
 
     /**

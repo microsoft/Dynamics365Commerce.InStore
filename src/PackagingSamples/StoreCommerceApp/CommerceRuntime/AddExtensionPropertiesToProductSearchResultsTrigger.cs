@@ -35,7 +35,7 @@ namespace Contoso.CommerceRuntime
         }
 
         /// <summary>
-        /// Post trigger code to retrieve extension properties.
+        /// Post trigger code to add product version extension properties.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <param name="response">The response.</param>

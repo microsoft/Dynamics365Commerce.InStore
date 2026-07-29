@@ -17,7 +17,7 @@ export default class QuickCompareProductsCommand extends SearchView.ProductSearc
 
     /**
      * Creates a new instance of the QuickCompareProductsCommand class.
-     * @param {IExtensionCommandContext<CustomerDetailsView.IProductSearchToExtensionCommandMessageTypeMap>} context The command context.
+     * @param {IExtensionCommandContext<SearchView.IProductSearchToExtensionCommandMessageTypeMap>} context The command context.
      * @remarks The command context contains APIs through which a command can communicate with POS.
      */
     constructor(context: IExtensionCommandContext<SearchView.IProductSearchToExtensionCommandMessageTypeMap>) {
@@ -40,7 +40,7 @@ export default class QuickCompareProductsCommand extends SearchView.ProductSearc
 
     /**
      * Initializes the command.
-     * @param {CustomerDetailsView.ICustomerDetailsExtensionCommandState} state The state used to initialize the command.
+     * @param {SearchView.IProductSearchExtensionCommandState} state The state used to initialize the command.
      */
     protected init(state: SearchView.IProductSearchExtensionCommandState): void {
         this.isVisible = true;

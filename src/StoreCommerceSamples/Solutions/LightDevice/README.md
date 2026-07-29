@@ -42,14 +42,14 @@ The sample consists of several components:
 
 ## Prerequisites
 
-- Visual Studio 2022 with .NET development workload
+- Visual Studio 2026 with .NET development workload
 - Store Commerce SDK
 - OPOS-compliant light device with proper drivers installed
 - OPOS Common Control Objects (CCOs) installed on the Hardware Station machine
 
 ## Running the sample
 
-1. Open the Developer Command Prompt for Visual Studio 2022
+1. Open the Developer Command Prompt for Visual Studio 2026
 2. Restore the NuGet packages for the solution:
    ```
    nuget restore Contoso.LightDevice.sln
@@ -114,8 +114,8 @@ Trigger extension points for intercepting POS operations:
 
 ## Additional Resources
 
-- [Dynamics 365 Commerce Hardware Station overview](https://docs.microsoft.com/en-us/dynamics365/commerce/dev-itpro/hardware-station-overview)
-- [Create a Hardware Station extension](https://docs.microsoft.com/en-us/dynamics365/commerce/dev-itpro/hardware-station-extension)
-- [POS extension triggers](https://docs.microsoft.com/en-us/dynamics365/commerce/dev-itpro/pos-extension/triggers-pos-extension)
-- [OPOS specifications](http://www.monroecs.com/opos/)
-- [Debugging POS Extensions](https://docs.microsoft.com/en-us/dynamics365/commerce/dev-itpro/pos-extension/debug-pos-extension)
+- [Integrate the POS with a new hardware device](https://learn.microsoft.com/dynamics365/commerce/dev-itpro/hardware-device-extension)
+- [Mass deployment of sealed Commerce self-service components](https://learn.microsoft.com/dynamics365/commerce/dev-itpro/enhanced-mass-deployment)
+- [Store Commerce app triggers and printing](https://learn.microsoft.com/dynamics365/commerce/dev-itpro/pos-trigger-printing)
+- [UnifiedPOS specification](https://www.omg.org/spec/UPOS/)
+- [Debugging POS Extensions](https://learn.microsoft.com/dynamics365/commerce/dev-itpro/pos-extension/debug-pos-extension)

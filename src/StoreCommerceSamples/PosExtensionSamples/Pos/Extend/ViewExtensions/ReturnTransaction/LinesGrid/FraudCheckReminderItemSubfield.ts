@@ -29,8 +29,8 @@ export default class FraudCheckReminderItemSubfield extends CustomSalesOrderLine
 
     /**
      * Computes a value to display as an item subfield based on the given sales line.
-     * @param {ClientEntities.ISalesLineForDisplay} salesLine The sales line.
-     * @returns {string} The computed value do display as an item subfield.
+     * @param {ProxyEntities.SalesLine} salesLine The sales line.
+     * @returns {string} The computed value to display as an item subfield.
      */
     public computeValue(salesLine: ProxyEntities.SalesLine): string {
         let value: string = StringExtensions.EMPTY;

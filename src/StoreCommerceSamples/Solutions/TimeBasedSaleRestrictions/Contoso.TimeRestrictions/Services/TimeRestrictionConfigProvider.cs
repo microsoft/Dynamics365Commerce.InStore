@@ -20,7 +20,7 @@ namespace Contoso.TimeRestrictions.Services
     using Microsoft.Dynamics.Commerce.Runtime.Services.Messages;
 
     /// <summary>
-    /// Provides access to time restriction configuration for products and channels.
+    /// Provides access to product time restriction configuration.
     /// </summary>
     public sealed class TimeRestrictionConfigProvider
     {

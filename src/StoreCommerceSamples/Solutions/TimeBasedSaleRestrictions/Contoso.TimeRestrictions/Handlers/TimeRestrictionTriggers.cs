@@ -25,7 +25,9 @@ namespace Contoso.TimeRestrictions.Handlers
     /// </summary>
     public sealed class TimeRestrictionTriggers : IRequestTriggerAsync
     {
-        /// <inheritdoc/>
+        /// <summary>
+        /// Gets the supported request types for the time restriction triggers.
+        /// </summary>
         public IEnumerable<Type> SupportedRequestTypes => new[]
         {
             typeof(AddCartLinesRequest),
@@ -34,14 +36,21 @@ namespace Contoso.TimeRestrictions.Handlers
             typeof(CalculateSalesTransactionServiceRequest)
         };
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Runs after supported requests are executed.
+        /// </summary>
+        /// <param name="request">The request that was executed.</param>
+        /// <param name="response">The response returned by the request.</param>
         public Task OnExecuted(Request request, Response response)
         {
             // No-op after execution
             return Task.CompletedTask;
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Validates time-based sales restrictions before supported requests are executed.
+        /// </summary>
+        /// <param name="request">The request to validate.</param>
         public async Task OnExecuting(Request request)
         {
             ThrowIf.Null(request, nameof(request));

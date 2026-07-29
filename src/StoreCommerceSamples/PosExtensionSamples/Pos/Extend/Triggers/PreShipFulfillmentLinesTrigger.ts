@@ -11,7 +11,7 @@ import * as Triggers from "PosApi/Extend/Triggers/SalesOrderTriggers";
 import { CancelableTriggerResult } from "PosApi/Extend/Triggers/Triggers";
 
 /**
- * Example implementation of an PreShipFulfillmentLinesTrigger trigger that logs its execution.
+ * Example implementation of a PreShipFulfillmentLinesTrigger trigger that logs its execution.
  */
 export default class PreShipFulfillmentLinesTrigger extends Triggers.PreShipFulfillmentLinesTrigger {
 

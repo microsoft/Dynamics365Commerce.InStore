@@ -94,7 +94,7 @@ export default class GiftCardNumberDialog {
      * @param {string} giftCardId The gift card ID.
      * @param {IExtensionContext} context The context object passed to all POS extensions.
      * @param {string} correlationId A telemetry correlation ID, used to group events logged from this request together with the calling context.
-     * @returns {Promise<Proxy.Entities.GiftCard>} The async result.
+     * @returns {Promise<ProxyEntities.GiftCard>} The async result.
      */
     private _getGiftCardByIdAsync(giftCardId: string, context: IExtensionContext, correlationId: string): Promise<ProxyEntities.GiftCard> {
         let request: GetGiftCardByIdServiceRequest<GetGiftCardByIdServiceResponse> = new GetGiftCardByIdServiceRequest(correlationId, giftCardId);

@@ -15,7 +15,7 @@ import { HardwareStationDeviceActionRequest, HardwareStationDeviceActionResponse
 export default class PostCheckoutPrintFileTrigger extends Triggers.PostCartCheckoutTrigger {
     /**
      * Executes the trigger functionality.
-     * @param {Triggers.IPreProductSaleTriggerOptions} options The options provided to the trigger.
+     * @param {Triggers.IPostCartCheckoutTriggerOptions} options The options provided to the trigger.
      */
     public execute(options: Triggers.IPostCartCheckoutTriggerOptions): Promise<void> {
         let dialogOptions: ClientEntities.Dialogs.IMessageDialogOptions = {

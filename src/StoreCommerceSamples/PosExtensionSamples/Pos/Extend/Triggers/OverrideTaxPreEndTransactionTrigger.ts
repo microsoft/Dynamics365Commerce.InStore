@@ -17,7 +17,7 @@ import {
 import { ArrayExtensions } from "PosApi/TypeExtensions";
 
 /**
- * Example implementation of a PreEndTransaction trigger that execute GetTaxOverridesServiceRequest and OverrideTransactionTaxOperationRequest.
+ * Example implementation of a PreEndTransaction trigger that executes GetTaxOverridesServiceRequest and may execute OverrideTransactionTaxOperationRequest.
  */
 export default class OverrideTaxPreEndTransactionTrigger extends Triggers.PreEndTransactionTrigger {
 

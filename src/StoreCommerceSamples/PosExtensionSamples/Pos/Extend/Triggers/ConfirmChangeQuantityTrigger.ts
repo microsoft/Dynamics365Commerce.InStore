@@ -13,7 +13,7 @@ export default class ConfirmChangeQuantityTrigger extends PreSetQuantityTrigger 
     /**
      * Executes the trigger functionality.
      * @param {IPreSetQuantityTriggerOptions} options The options provided to the trigger.
-     * @return {Promise<ICancelable>} The cancelable promise.
+     * @return {Promise<ClientEntities.ICancelable>} The cancelable promise.
      */
     public execute(options: IPreSetQuantityTriggerOptions): Promise<ClientEntities.ICancelable> {
         this.context.logger.logInformational("Executing ConfirmChangeQuantityTrigger with options " + JSON.stringify(options) + ".");

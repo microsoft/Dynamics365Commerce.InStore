@@ -50,7 +50,7 @@ namespace ProductRecognition.CommerceRuntime
         }
 
         /// <summary>
-        /// Retrieves the Custom Vision configuration from the resource file.
+        /// Retrieves the Custom Vision configuration from the configured handler fields.
         /// </summary>
         /// <param name="request">The configuration request.</param>
         /// <returns>The configuration response.</returns>

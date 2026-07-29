@@ -5,22 +5,22 @@ This sample showcases a sample where the Store Commerce App is extended to suppo
 ![Demo](./Demo.gif)
 
 ## Configuring the sample
-- [Create & configure a new product](https://docs.microsoft.com/en-us/dynamics365/commerce/create-new-product-commerce) with item id "gasoline" in HQ
+- [Create & configure a new product](https://learn.microsoft.com/dynamics365/commerce/create-new-product-commerce) with item id "gasoline" in HQ
   - Set the "Key in quantity" setting to "Must key in quantity" on the product under the "Commerce" tab
   - Set the unit of measure to gallons and configure base price on the product (See the "Configure a released product" section of the linked document.)
     - Edit the gallons unit of measure and set the decimal precision to 3
-- [Assort the product](https://docs.microsoft.com/en-us/dynamics365/commerce/tasks/manage-assortments-2016-11) to your store
+- [Assort the product](https://learn.microsoft.com/dynamics365/commerce/tasks/manage-assortments-2016-11) to your store
 - Run the download jobs (1040, 1070 or 9999)
 
 ## Running the sample
-- Open the Developer Command Prompt for Visual Studio 2022
+- Open the Developer Command Prompt for Visual Studio 2026
 - Restore the nuget packages for the solution by running "nuget restore GasStation.sln"
 - Initialize Store Commerce development for the solution by running "msbuild GasStation.sln /t:InitDev"
 - Open Visual Studio Code in the solution root directory
 - Build the solution using the "Build & Install Store Commerce Extension" task in VSCode
 - Open PowerShell as Admin in the ScaleUnit.Installer bin directory & run ".\Contoso.GasStation.ScaleUnit.Installer.exe install"
 - Open the "Run & Debug Tab" in VSCode and use the "Debug Store Commerce" option to launch Store Commerce app with the debugger attached.
-- Sign in to Store Commerce or Cloud POS
+- Sign in to Store Commerce for Windows or Store Commerce for Web
 - Navigate to the product details page for the gasoline product created in the previous section and click the pump gas command to launch the gas pump dialog.
 
 ## APIs and extension points used
@@ -78,8 +78,8 @@ This sample showcases a sample where the Store Commerce App is extended to suppo
 - ObjectExtensions: The object extensions class provides utility methods that make it easier to work with javascript objects.
 
 ## Additional Resources
-- [Debugging POS Extensions](https://docs.microsoft.com/en-us/dynamics365/commerce/dev-itpro/pos-extension/debug-pos-extension#run-and-debug-cloud-pos)
-- [Create a custom view in POS](https://docs.microsoft.com/en-us/dynamics365/commerce/dev-itpro/pos-extension/custom-pos-view)
-- [Using POS Controls](https://docs.microsoft.com/en-us/dynamics365/commerce/dev-itpro/pos-extension/controls-pos-extension)
-- [Use knockout.js in POS Extensions](https://docs.microsoft.com/en-us/dynamics365/commerce/dev-itpro/pos-extension/knockout-pos-extension)
-- [Consume custom headless Commerce APIs in POS](https://docs.microsoft.com/en-us/dynamics365/commerce/dev-itpro/pos-extension/consume-apis-pos)
+- [Debugging POS Extensions](https://learn.microsoft.com/dynamics365/commerce/dev-itpro/pos-extension/debug-pos-extension#run-and-debug-cloud-pos)
+- [Create a custom view in POS](https://learn.microsoft.com/dynamics365/commerce/dev-itpro/pos-extension/custom-pos-view)
+- [Using POS Controls](https://learn.microsoft.com/dynamics365/commerce/dev-itpro/pos-extension/controls-pos-extension)
+- [Use knockout.js in POS Extensions](https://learn.microsoft.com/dynamics365/commerce/dev-itpro/pos-extension/knockout-pos-extension)
+- [Consume custom headless Commerce APIs in POS](https://learn.microsoft.com/dynamics365/commerce/dev-itpro/pos-extension/consume-apis-pos)

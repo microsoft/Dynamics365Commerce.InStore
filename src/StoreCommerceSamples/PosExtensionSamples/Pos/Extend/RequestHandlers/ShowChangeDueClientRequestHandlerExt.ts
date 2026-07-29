@@ -18,8 +18,8 @@ export default class ShowChangeDueClientRequestHandlerExt extends ShowChangeDueC
 
     /**
      * Executes the request handler asynchronously.
-     * @param {ShowChangeDueClientRequest<ShowChangeDueClientResponse>} The request containing the response.
-     * @return {Promise<ICancelableDataResult<ShowChangeDueClientResponse>>} The cancelable promise containing the response.
+     * @param {ShowChangeDueClientRequest} request The request.
+     * @return {Promise<ClientEntities.ICancelableDataResult<ShowChangeDueClientResponse>>} The cancelable promise containing the response.
      */
     public executeAsync(request: ShowChangeDueClientRequest): Promise<ClientEntities.ICancelableDataResult<ShowChangeDueClientResponse>> {
 

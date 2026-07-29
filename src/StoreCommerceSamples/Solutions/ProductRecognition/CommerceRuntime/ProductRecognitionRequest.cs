@@ -14,7 +14,6 @@
         /// </summary>
         /// <param name="imageData">The image data as a base64 string.</param>
         /// <param name="confidenceThreshold">Optional POS override for confidence threshold.</param>
-        /// <param name="maxResults">Optional POS override for maximum number of results.</param>
         public ProductRecognitionRequest(
             string imageData,
             double? confidenceThreshold = null)

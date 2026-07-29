@@ -41,7 +41,7 @@ export default class ManageShiftsCommand extends ManageShiftsView.ManageShiftsEx
 
     /**
      * Initializes the command.
-     * @param {ManageShiftsView.IManageShiftsViewExtensionCommandState} state The state used to initialize the command.
+     * @param {ManageShiftsView.IManageShiftsExtensionCommandState} state The state used to initialize the command.
      */
     protected init(state: ManageShiftsView.IManageShiftsExtensionCommandState): void {
         this.isVisible = true;

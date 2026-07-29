@@ -69,7 +69,7 @@ export default class ExampleCreateDialog extends Dialogs.ExtensionTemplatedDialo
     }
 
     /**
-     * A handler for when the user clicks on the update button.
+     * A handler for when the user clicks on the create button.
      */
     private _buttonUpdateClickHandler(): boolean {
         this._resolvePromise(this._data);
@@ -85,8 +85,8 @@ export default class ExampleCreateDialog extends Dialogs.ExtensionTemplatedDialo
     }
 
     /**
-     * Resolves the stored promise with the payload of editResult.
-     * @param {Entities.ExampleEntity} createResult The edit result.
+     * Resolves the stored promise with the payload of createResult.
+     * @param {Entities.ExampleEntity} createResult The create result.
      */
     private _resolvePromise(createResult: Entities.ExampleEntity): void {
         if (ObjectExtensions.isFunction(this._resolve)) {

@@ -41,5 +41,5 @@ In order to build the Store Commerce mobile app sample, you must follow the belo
   - If you do not wish to develop an Android app, comment out the net10.0-android target framework in the mobile app project.
 
 #### iOS
-  - If you are developing on Windows, you need to pair a Mac for iOS development: https://learn.microsoft.com/en-us/dotnet/maui/ios/pair-to-mac?view=net-maui-10.0
+  - If you are developing on Windows, you need to pair a Mac for iOS development: https://learn.microsoft.com/dotnet/maui/ios/pair-to-mac?view=net-maui-10.0
   - If you do not wish to develop an iOS app, comment out the net10.0-ios target framework in the mobile app project.
