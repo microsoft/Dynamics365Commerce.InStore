@@ -23,8 +23,8 @@ The sample views listed below show how to implement some of the most common cust
   - [SimpleNextView](./SimpleNextView.ts)
 
 ## Additional Resources
-- [Debugging POS Extensions in Store Commerce](https://learn.microsoft.com/en-us/dynamics365/commerce/dev-itpro/sc-debug)
-- [Debugging POS Extensions in Cloud POS](https://docs.microsoft.com/en-us/dynamics365/commerce/dev-itpro/pos-extension/debug-pos-extension#run-and-debug-cloud-pos)
-- [POS APIs](https://docs.microsoft.com/en-us/dynamics365/commerce/dev-itpro/pos-apis)
-- [Create a custom view in POS](https://learn.microsoft.com/en-us/dynamics365/commerce/dev-itpro/pos-extension/custom-pos-view)
-- [Knockout.js in POS Extensions](https://learn.microsoft.com/en-us/dynamics365/commerce/dev-itpro/pos-extension/knockout-pos-extension)
+- [Debugging POS Extensions in Store Commerce](https://learn.microsoft.com/dynamics365/commerce/dev-itpro/sc-debug)
+- [Debugging POS Extensions in Store Commerce for Web](https://learn.microsoft.com/dynamics365/commerce/dev-itpro/pos-extension/debug-pos-extension#run-and-debug-cloud-pos)
+- [POS APIs](https://learn.microsoft.com/dynamics365/commerce/dev-itpro/pos-apis)
+- [Create a custom view in POS](https://learn.microsoft.com/dynamics365/commerce/dev-itpro/pos-extension/custom-pos-view)
+- [Knockout.js in POS Extensions](https://learn.microsoft.com/dynamics365/commerce/dev-itpro/pos-extension/knockout-pos-extension)

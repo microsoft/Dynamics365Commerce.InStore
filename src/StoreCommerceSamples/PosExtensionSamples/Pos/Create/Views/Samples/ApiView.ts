@@ -20,7 +20,7 @@ import ko from "knockout";
 type ICancelableDataResult<TResult> = ClientEntities.ICancelableDataResult<TResult>;
 
 /**
- * The controller for AppBarView.
+ * The controller for ApiView.
  */
 export default class ApiView extends Views.CustomViewControllerBase {
 
@@ -61,6 +61,7 @@ export default class ApiView extends Views.CustomViewControllerBase {
 
     /**
      * Callback for Override price for cart line API button
+     * @param {number} percent The discount percent to apply to the cart line.
      */
     public onPriceOverride(percent: number): void {
         let correlationId: string = this.context.logger.getNewCorrelationId();
@@ -122,6 +123,7 @@ export default class ApiView extends Views.CustomViewControllerBase {
     /**
      * Executes function on the first line in the current cart
      * @param {string} correlationId The correlation identifier.
+     * @returns {Promise<ProxyEntities.CartLine>} A promise that resolves with the first cart line in the current cart.
      */
     private getFirstCartLine(correlationId: string): Promise<ProxyEntities.CartLine> {
         this.context.logger.logInformational("ApiView.getFirstCartLine - Getting the current cart...", correlationId);

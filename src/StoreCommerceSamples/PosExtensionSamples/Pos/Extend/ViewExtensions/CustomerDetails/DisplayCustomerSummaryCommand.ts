@@ -21,7 +21,7 @@ export default class DisplayCustomerSummaryCommand extends CustomerDetailsView.C
     private _loyaltyCards: ProxyEntities.LoyaltyCard[];
 
     /**
-     * Creates a new instance of the EmailCustomerCommand class.
+     * Creates a new instance of the DisplayCustomerSummaryCommand class.
      * @param {IExtensionCommandContext<CustomerDetailsView.ICustomerDetailsToExtensionCommandMessageTypeMap>} context The command context.
      * @remarks The command context contains APIs through which a command can communicate with POS.
      */

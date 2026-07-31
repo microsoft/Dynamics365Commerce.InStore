@@ -19,7 +19,7 @@ import { IMessageDialogOptions, ShowMessageDialogClientRequest, ShowMessageDialo
 
 
 /**
- * A sample extension menu command for the the InventoryLookupMatrixView that shows additional information about the selected item availability.
+ * A sample extension menu command for the InventoryLookupMatrixView that shows additional information about the selected item availability.
  */
 export default class MoreDetailsMenuCommand extends InventoryLookupMatrixExtensionMenuCommandBase {
     public readonly label: string;

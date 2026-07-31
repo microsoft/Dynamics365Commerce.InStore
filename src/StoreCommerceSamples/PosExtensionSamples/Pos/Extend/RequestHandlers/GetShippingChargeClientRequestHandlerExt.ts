@@ -18,8 +18,8 @@ export default class GetShippingChargeClientRequestHandlerExt extends GetShippin
 
     /**
      * Executes the request handler asynchronously.
-     * @param {GetShippingChargeClientRequest<GetShippingChargeClientResponse>} The request containing the response.
-     * @return {Promise<ICancelableDataResult<GetShippingChargeClientResponse>>} The cancelable promise containing the response.
+     * @param {GetShippingChargeClientRequest<GetShippingChargeClientResponse>} request The request.
+     * @return {Promise<ClientEntities.ICancelableDataResult<GetShippingChargeClientResponse>>} The cancelable promise containing the response.
      */
     public executeAsync(request: GetShippingChargeClientRequest<GetShippingChargeClientResponse>):
         Promise<ClientEntities.ICancelableDataResult<GetShippingChargeClientResponse>> {

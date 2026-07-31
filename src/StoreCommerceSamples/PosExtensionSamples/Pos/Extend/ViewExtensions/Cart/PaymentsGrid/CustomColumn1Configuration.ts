@@ -48,7 +48,7 @@ export default class PaymentsCustomGridColumn1 extends CustomPaymentsGridColumnB
 
     /**
      * The custom column cell compute value.
-     * @param {ProxyEntities.TenderLine} data The input data.
+     * @param {ProxyEntities.TenderLine} tenderLine The tender line.
      * @return {string} The cell value.
      */
     public computeValue(tenderLine: ProxyEntities.TenderLine): string {

@@ -303,8 +303,8 @@ export default class ProductRecognitionRequestHandler<TResponse extends ProductR
     /**
      * Adds a product to cart using POS operation request.
      * @param {string} correlationId The telemetry correlation ID.
-     * @param {string} productId The product ID to add (will be converted to number).
-     * @return {Promise} Promise containing the result.
+     * @param {number} productId The product ID to add.
+     * @return {Promise<{ success: boolean; }>} Promise containing the result.
      */
     private async addProductToCart(correlationId: string, productId: number): Promise<{ success: boolean; }> {
         try {

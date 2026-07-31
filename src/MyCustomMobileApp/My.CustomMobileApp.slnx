@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="CustomizationPackage.props" />
+  </Folder>
+  <Project Path="MyApp/My.StoreCommerce.MobileApp.csproj" />
+  <Project Path="MyPosExtension/My.PosExtensions.csproj" />
+  <Project Path="MyHardwareStationExtension/My.HardwareStationExtensions.csproj" />
+</Solution>

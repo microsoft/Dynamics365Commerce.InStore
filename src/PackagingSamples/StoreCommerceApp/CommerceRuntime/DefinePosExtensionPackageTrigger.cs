@@ -33,7 +33,7 @@ namespace Contoso.CommerceRuntime
         }
 
         /// <summary>
-        /// Post trigger to retrieve extension package.
+        /// Post trigger to add the extension package definition.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <param name="response">The response.</param>

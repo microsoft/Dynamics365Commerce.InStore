@@ -1,0 +1,27 @@
+﻿{
+  "$schema": "./devDependencies/schemas/manifestSchema.json",
+  "name": "Contoso.StoreCommercePackagingSample",
+  "publisher": "Contoso",
+  "version": "1.0.0",
+  "minimumPosVersion": "9.28.0.0",
+  "description": "An extension package containing POS samples to showcase how to create a Store Commerce Extension Package and Installer.",
+  "dependencies": [
+    {
+      "alias": "knockout",
+      "format": "amd",
+      "modulePath": "Libraries/knockout"
+    }
+  ],
+  "components": {
+    "extend": {
+      "triggers": [
+        {
+          "name": "PostCartCheckoutPrintFileTrigger",
+          "description": "An extension to execute custom logic after the cart checkout is completed.",
+          "triggerType": "PostCartCheckoutTransaction",
+          "modulePath": "Triggers/PostCheckoutPrintFileTrigger"
+        }
+      ]
+    }
+  }
+}

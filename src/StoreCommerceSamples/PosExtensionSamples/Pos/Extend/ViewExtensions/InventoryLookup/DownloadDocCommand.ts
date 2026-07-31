@@ -19,7 +19,7 @@ export default class DownloadDocCommand extends InventoryLookupView.InventoryLoo
 
     /**
      * Creates a new instance of the DownloadDocCommand class.
-     * @param {IExtensionCommandContext<Extensibility.IInventoryLookupToExtensionCommandMessageTypeMap>} context The command context.
+     * @param {IExtensionCommandContext<InventoryLookupView.IInventoryLookupToExtensionCommandMessageTypeMap>} context The command context.
      * @remarks The command context contains APIs through which a command can communicate with POS.
      */
     constructor(context: IExtensionCommandContext<InventoryLookupView.IInventoryLookupToExtensionCommandMessageTypeMap>) {
@@ -41,7 +41,7 @@ export default class DownloadDocCommand extends InventoryLookupView.InventoryLoo
 
     /**
      * Initializes the command.
-     * @param {Extensibility.IInventoryLookupExtensionCommandState} state The state used to initialize the command.
+     * @param {InventoryLookupView.IInventoryLookupExtensionCommandState} state The state used to initialize the command.
      */
     protected init(state: InventoryLookupView.IInventoryLookupExtensionCommandState): void {
         this._locationAvailabilities = state.locationAvailabilities;
@@ -59,8 +59,8 @@ export default class DownloadDocCommand extends InventoryLookupView.InventoryLoo
     }
 
     /**
-     * Handles the product changed message by sending a message by updating the command state.
-     * @param {Extensibility.InventoryLookupProductChangedData} data The information about the selected product.
+     * Handles the product changed message by updating the command state.
+     * @param {InventoryLookupView.InventoryLookupProductChangedData} data The information about the selected product.
      */
     private _productChanged(data: InventoryLookupView.InventoryLookupProductChangedData): void {
         this._locationAvailabilities = data.locationAvailabilities;

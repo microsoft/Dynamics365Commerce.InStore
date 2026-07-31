@@ -64,7 +64,7 @@ export default class AddressAddEditCustomFieldsSection extends AddressAddEditCus
 
     /**
      * Initializes the control.
-     * @param {ICustomerIAddressAddEditCustomControlStateDetailCustomControlState} state The initial state of the page used to initialize the control.
+     * @param {IAddressAddEditCustomControlState} state The initial state of the page used to initialize the control.
      */
     public init(state: IAddressAddEditCustomControlState): void {
         this.isVisible = true;
@@ -79,7 +79,9 @@ export default class AddressAddEditCustomFieldsSection extends AddressAddEditCus
     }
 
     /**
-     * Gets the property value from the property bag, by its key. Optionally creates the property value on the bag, if it does not exist.
+     * Adds or updates a property value in the property bag by its key.
+     * @param {string} key The key of the property to add or update.
+     * @param {ProxyEntities.CommercePropertyValue} newValue The property value to set.
      */
     private _addOrUpdateExtensionProperty(key: string, newValue: ProxyEntities.CommercePropertyValue): void {
         let address: ProxyEntities.Address = this.address;

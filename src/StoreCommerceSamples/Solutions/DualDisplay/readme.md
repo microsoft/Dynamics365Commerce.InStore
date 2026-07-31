@@ -3,7 +3,7 @@
 This sample showcases a sample where the Store Commerce App is extended to show more information on dual display.
 
 ## Running the sample
-- Open the Developer Command Prompt for Visual Studio 2022
+- Open the Developer Command Prompt for Visual Studio 2026
 - Restore the nuget packages for the solution by running "nuget restore DualDisplay.sln"
 - Initialize Store Commerce development for the solution by running "msbuild DualDisplay.sln /t:InitDev"
 - Open Visual Studio Code in the solution root directory
@@ -20,6 +20,6 @@ To find your custom code in the debugger, you should use Developer tools (F12) i
 ![Example of debug window](DebugWindow.png)
 
 ## Additional Resources
-- [Using POS Controls](https://docs.microsoft.com/en-us/dynamics365/commerce/dev-itpro/pos-extension/controls-pos-extension)
-- [Use knockout.js in POS Extensions](https://docs.microsoft.com/en-us/dynamics365/commerce/dev-itpro/pos-extension/knockout-pos-extension)
-- [Extend the point of sale (POS) Dual display view](https://learn.microsoft.com/en-us/dynamics365/commerce/dev-itpro/pos-dual-display-extension)
+- [Using POS Controls](https://learn.microsoft.com/dynamics365/commerce/dev-itpro/pos-extension/controls-pos-extension)
+- [Use knockout.js in POS Extensions](https://learn.microsoft.com/dynamics365/commerce/dev-itpro/pos-extension/knockout-pos-extension)
+- [Extend the point of sale (POS) Dual display view](https://learn.microsoft.com/dynamics365/commerce/dev-itpro/pos-dual-display-extension)

@@ -22,7 +22,7 @@ export default class StockItemSubfieldCustomContent extends CustomLinesGridItemS
     /**
      * Computes a value to display as an item subfield based on the given cart line.
      * @param {ProxyEntities.CartLine} cartLine The cart line.
-     * @returns {string | Commerce.Extensibility.HtmlResponse} The computed value do display as an item subfield.
+     * @returns {string | Commerce.Extensibility.HtmlResponse} The computed value to display as an item subfield.
      */
     public computeValue(cartLine: ProxyEntities.CartLine): string | Commerce.Extensibility.HtmlResponse {
         let value = `<div style="line-height: 1.4;">

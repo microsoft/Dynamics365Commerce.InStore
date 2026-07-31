@@ -4,7 +4,7 @@ import { IPostProductSaleTriggerOptions, PostProductSaleTrigger } from "PosApi/E
 import { ObjectExtensions, ArrayExtensions } from "PosApi/TypeExtensions";
 
 /**
- * Example implementation of a PostProductSale trigger that executes ChangeUnitOfMeasureClientRequest for Product 81212 when modifying the cart.
+ * Example implementation of a PostProductSale trigger that executes ChangeCartLineUnitOfMeasureOperationRequest for Product 81212 when modifying the cart.
  */
 export default class ChangeUnitOfMeasurePostProductSaleTrigger extends PostProductSaleTrigger {
 

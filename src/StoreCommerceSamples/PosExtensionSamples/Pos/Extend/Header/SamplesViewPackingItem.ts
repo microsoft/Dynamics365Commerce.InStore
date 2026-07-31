@@ -5,7 +5,7 @@ import ko from "knockout";
 
 
 /**
- * (Sample) Custom packing item that shows the overall gas pump statuses and opens a dialog with more detailed info on click.
+ * (Sample) Custom packing item that navigates to the samples view.
  */
 export default class SamplesViewPackingItem extends CustomPackingItem {
     /**
@@ -19,7 +19,7 @@ export default class SamplesViewPackingItem extends CustomPackingItem {
     public label: ko.Computed<string>;
 
     /**
-     * Initializes a new instance of the CartAmountDuePackingItem class.
+     * Initializes a new instance of the SamplesViewPackingItem class.
      * @param {string} id The item identifier.
      * @param {ICustomPackingItemContext} context The custom packing item context.
      */

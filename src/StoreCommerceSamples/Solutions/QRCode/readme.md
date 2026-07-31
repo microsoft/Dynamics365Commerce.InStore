@@ -1,11 +1,11 @@
 # Printing QR Code Sample
 ## Overview
-This sample showcases a sample Store Commerce extension that prints a QR code on the receipt. The QR code can be scanned by a mobile device to open the receipt in the browser.
+This sample showcases a sample Store Commerce extension that prints a QR code on the receipt. The QR code can be scanned by a mobile device to open the URL encoded by the sample.
 
 ## Configuring the sample
-> For more details on how to extend Commerce Store receipts, see [Extend Commerce Store receipts](https://learn.microsoft.com/en-us/dynamics365/commerce/dev-itpro/retail-sdk/retail-sdk-samples).
+> For more details on how to extend Commerce Store receipts, see [Store Commerce app triggers and printing](https://learn.microsoft.com/dynamics365/commerce/dev-itpro/pos-trigger-printing).
 1. Sign in to HQ.
-2. Got to Retail and Commerce > Channel setup > POS setup > POS profiles > Language text.
+2. Go to Retail and Commerce > Channel setup > POS setup > POS profiles > Language text.
 3. On the POS tab, select Add to add new POS language text.
 4. Enter the following values:
     - Language ID: en-us
@@ -28,7 +28,7 @@ This sample showcases a sample Store Commerce extension that prints a QR code on
 16. Select the Channel configuration (1070) job, and then select Run now.
 
 ## Running the sample
-- Open the Developer Command Prompt for Visual Studio 2022
+- Open the Developer Command Prompt for Visual Studio 2026
 - Restore the nuget packages for the solution by running "nuget restore QRCode.sln"
 - Initialize Store Commerce development for the solution by running "msbuild QRCode.sln /t:InitDev"
 - Open Visual Studio Code in the solution root directory
@@ -41,6 +41,6 @@ This sample showcases a sample Store Commerce extension that prints a QR code on
 - Verify that the receipt contains a QR code.
 
 ## Additional Resources
-- [Extend Commerce Store receipts](https://learn.microsoft.com/en-us/dynamics365/commerce/dev-itpro/retail-sdk/retail-sdk-samples)
-- [Generate QR codes and print them on receipts](https://learn.microsoft.com/en-us/dynamics365/commerce/localizations/ind-generate-qr-code-print-receipt)
-- [Set up and design receipt formats](https://learn.microsoft.com/en-us/dynamics365/commerce/receipt-templates-printing)
+- [Store Commerce app triggers and printing](https://learn.microsoft.com/dynamics365/commerce/dev-itpro/pos-trigger-printing)
+- [Generate QR codes and print them on receipts](https://learn.microsoft.com/dynamics365/commerce/localizations/india/ind-generate-qr-code-print-receipt)
+- [Set up and design receipt formats](https://learn.microsoft.com/dynamics365/commerce/receipt-templates-printing)

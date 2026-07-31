@@ -2,7 +2,7 @@
 
 ## Overview
 
-This sample demonstrates how to integrate Azure Custom Vision AI with Dynamics 365 Commerce to enable product recognition from images. The solution allows point-of-sale (POS) systems to identify products by analyzing images captured through cameras or uploaded files, streamlining the checkout process and improving inventory management.
+This sample demonstrates how to integrate Azure Custom Vision AI with Dynamics 365 Commerce to enable product recognition from images. The solution allows point-of-sale (POS) systems to identify products by analyzing images captured through cameras, streamlining the checkout process and improving inventory management.
 
 ### Key Features
 

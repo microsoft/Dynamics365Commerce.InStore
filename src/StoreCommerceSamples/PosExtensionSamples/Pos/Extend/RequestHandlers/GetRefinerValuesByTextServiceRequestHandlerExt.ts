@@ -18,8 +18,8 @@ export default class GetRefinerValuesByTextServiceRequestHandlerExt extends GetR
 
     /**
      * Executes the request handler asynchronously.
-     * @param {GetRefinerValuesByTextServiceRequest<GetShippingDateClientResponse>} request The request containing the response.
-     * @return {Promise<ICancelableDataResult<GetRefinerValuesByTextServiceResponse>>} The cancelable promise containing the response.
+     * @param {GetRefinerValuesByTextServiceRequest<GetRefinerValuesByTextServiceResponse>} request The request.
+     * @return {Promise<ClientEntities.ICancelableDataResult<GetRefinerValuesByTextServiceResponse>>} The cancelable promise containing the response.
      */
     public executeAsync(request: GetRefinerValuesByTextServiceRequest<GetRefinerValuesByTextServiceResponse>):
         Promise<ClientEntities.ICancelableDataResult<GetRefinerValuesByTextServiceResponse>> {

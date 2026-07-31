@@ -11,7 +11,7 @@ import * as Triggers from "PosApi/Extend/Triggers/CustomerTriggers";
 import { ClientEntities } from "PosApi/Entities";
 
 /**
- * Example implementation of an PreCustomerSaveTrigger trigger that logs to the console.
+ * Example implementation of a PreCustomerSaveTrigger trigger that logs an informational message.
  */
 export default class PreCustomerSaveTrigger extends Triggers.PreCustomerSaveTrigger {
     /**

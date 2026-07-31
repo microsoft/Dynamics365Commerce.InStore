@@ -19,7 +19,7 @@ namespace Contoso
         using Microsoft.Dynamics.Commerce.Runtime.Hosting.Contracts;
 
         /// <summary>
-        /// PDF printer web API controller class.
+        /// File printer web API controller class.
         /// </summary>
         [RoutePrefix("FILEPRINTER")]
         public class FilePrinterController : IController
@@ -36,7 +36,7 @@ namespace Contoso
 
                 try
                 {
-                    // Add here the code to send the PDF file to the printer.
+                    // Add here the code to write the receipt lines to a file.
                     var directory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "Contoso", "FilePrinter");
                     if (!Directory.Exists(directory))
                     {

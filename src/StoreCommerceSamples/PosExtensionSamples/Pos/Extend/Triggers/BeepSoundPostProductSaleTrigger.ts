@@ -1,7 +1,7 @@
 import { IPostProductSaleTriggerOptions, PostProductSaleTrigger } from "PosApi/Extend/Triggers/ProductTriggers";
 
 /**
- * Example implementation of a PostProductSale trigger that trigger beep sound.
+ * Example implementation of a PostProductSale trigger that triggers a beep sound.
  */
 export default class BeepSoundPostProductSaleTrigger extends PostProductSaleTrigger {
 

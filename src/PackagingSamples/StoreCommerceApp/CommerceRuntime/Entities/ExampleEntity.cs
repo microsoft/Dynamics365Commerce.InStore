@@ -15,7 +15,7 @@ namespace Contoso.CommerceRuntime.DataModel
     using SystemAnnotations = System.ComponentModel.DataAnnotations;
 
     /// <summary>
-    /// Defines a simple class that holds information about opening and closing times for a particular day.
+    /// Defines a simple class that holds example entity data.
     /// </summary>
     public class ExampleEntity : CommerceEntity
     {

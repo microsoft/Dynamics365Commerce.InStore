@@ -7,7 +7,7 @@ A Commerce Runtime (CRT) extension that restricts sales of items to specific tim
 - Enforces restrictions at **add-to-cart** and again during **cart calculation** (safety net)
 - Supports **time windows** with `RestrictedBeforeTime` and `RestrictedAfterTime` attributes
 - Supports **overnight windows** (e.g., sales allowed from 20:00 to 08:00)
-- Uses **product** → **category** → **channel** precedence for configuration
+- Uses product attributes for configuration
 - Localized error messages (Resources.resx)
 
 ## How it works
@@ -19,10 +19,8 @@ The extension registers CRT **triggers** that intercept requests at key points i
 3. **Save Cart** (`SaveCartRequest`) - Validates all cart items when the cart is saved
 4. **Checkout Calculation** (`CalculateSalesTransactionServiceRequest`) - Final validation during checkout/totaling to ensure no restricted items proceed to payment
 
-### Configuration Precedence
-The system checks for time restriction configuration in the following order:
-1. **Product-level attributes** - Checked first via `GetAttributeValuesByProductIdsServiceRequest` with catalogId=0
-2. **Channel-level defaults** - Falls back to channel extension properties if product attributes are not set
+### Configuration Source
+The system reads time restriction configuration from product attributes via `GetAttributeValuesByProductIdsServiceRequest` with catalogId=0.
 
 ### Time Restriction Rule Evaluation
 Each product is evaluated against a rule composed of:
@@ -117,9 +115,7 @@ dotnet clean TimeBasedSaleRestrictions.sln -c Release
 
 ## Notes
 - Time conversion uses the **store/channel time zone** from channel configuration.
-- If product-level attributes are not found, the system falls back to channel-level extension properties.
 - Restrictions are enforced at multiple points: add-to-cart, cart updates, cart save, and checkout calculation.
-- Returns/exchanges (`IsReturnLine`) are **not** restricted.
 - Voided lines and lines with zero/negative quantity are skipped during validation.
 - Mixed carts: only offending lines are blocked, with a clear message.
 - Error messages adapt based on configuration:

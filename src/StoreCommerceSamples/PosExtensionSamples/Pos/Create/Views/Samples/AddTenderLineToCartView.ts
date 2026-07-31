@@ -25,7 +25,7 @@ import ko from "knockout";
 type ICancelableDataResult<TResult> = ClientEntities.ICancelableDataResult<TResult>;
 
 /**
- * The controller for AppBarView.
+ * The controller for AddTenderLineToCartView.
  */
 export default class AddTenderLineToCartView extends Views.CustomViewControllerBase {
     public readonly lastStatus: ko.Observable<string>;

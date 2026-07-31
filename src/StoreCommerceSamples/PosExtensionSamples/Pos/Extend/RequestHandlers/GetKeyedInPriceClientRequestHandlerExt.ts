@@ -18,8 +18,8 @@ export default class GetKeyedInPriceClientRequestHandlerExt extends GetKeyedInPr
 
     /**
      * Executes the request handler asynchronously.
-     * @param {GetKeyedInPriceClientRequest<GetKeyedInPriceClientResponse>} The request containing the response.
-     * @return {Promise<GetKeyedInPriceClientRequest<GetKeyedInPriceClientResponse>>} The cancelable promise containing the response.
+     * @param {GetKeyedInPriceClientRequest<GetKeyedInPriceClientResponse>} request The request.
+     * @return {Promise<ClientEntities.ICancelableDataResult<GetKeyedInPriceClientResponse>>} The cancelable promise containing the response.
      */
     public executeAsync(request: GetKeyedInPriceClientRequest<GetKeyedInPriceClientResponse>):
         Promise<ClientEntities.ICancelableDataResult<GetKeyedInPriceClientResponse>> {

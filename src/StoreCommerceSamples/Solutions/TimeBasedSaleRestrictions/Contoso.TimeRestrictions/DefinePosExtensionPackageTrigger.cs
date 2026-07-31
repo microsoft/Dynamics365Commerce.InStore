@@ -21,7 +21,9 @@ namespace Contoso.TimeRestrictions
     /// </summary>
     public class DefinePosExtensionPackageTrigger : IRequestTriggerAsync
     {
-        /// <inheritdoc/>
+        /// <summary>
+        /// Gets the supported requests for this trigger.
+        /// </summary>
         public IEnumerable<Type> SupportedRequestTypes
         {
             get
@@ -30,7 +32,11 @@ namespace Contoso.TimeRestrictions
             }
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Post trigger to add the extension package definition.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="response">The response.</param>
         public Task OnExecuted(Request request, Response response)
         {
             ThrowIf.Null(request, "request");
@@ -49,7 +55,10 @@ namespace Contoso.TimeRestrictions
             return Task.CompletedTask;
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Pre trigger code.
+        /// </summary>
+        /// <param name="request">The request.</param>
         public Task OnExecuting(Request request)
         {
             return Task.CompletedTask;

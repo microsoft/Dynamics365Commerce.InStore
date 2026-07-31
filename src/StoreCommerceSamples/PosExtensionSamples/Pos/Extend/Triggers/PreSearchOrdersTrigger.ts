@@ -15,13 +15,13 @@ import MessageDialog from "../../Create/Dialogs/DialogSample/MessageDialog";
 import IPreElevateUserTriggerOptions = Triggers.IPreSearchOrdersTriggerOptions;
 
 /**
- * Example implementation of an PreSearchOrdersTrigger trigger that modifies the order search criteria and logs to the console.
+ * Example implementation of a PreSearchOrdersTrigger trigger that modifies the order search criteria and logs to the console.
  */
 export default class PreSearchOrdersTrigger extends Triggers.PreSearchOrdersTrigger {
     /**
      * Executes the trigger functionality.
      * The orderSearchCriteria can be updated on the newOptions and this becomes the default value in the orders search view.
-     * @param {Triggers.IPreUnlockTerminalTriggerOptions} options The options provided to the trigger.
+     * @param {IPreElevateUserTriggerOptions} options The options provided to the trigger.
      * @return {Promise<CancelableTriggerResult<IPreElevateUserTriggerOptions>>} The cancelable promise containing the response.
      */
     public execute(options: IPreElevateUserTriggerOptions): Promise<CancelableTriggerResult<IPreElevateUserTriggerOptions>> {

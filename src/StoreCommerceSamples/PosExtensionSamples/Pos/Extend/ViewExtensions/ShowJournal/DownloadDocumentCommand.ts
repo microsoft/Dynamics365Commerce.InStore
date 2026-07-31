@@ -19,7 +19,7 @@ export default class DownloadDocumentCommand extends ShowJournalView.ShowJournal
 
     /**
      * Creates a new instance of the DownloadDocumentCommand class.
-     * @param {IExtensionCommandContext<Extensibility.IShowJournalToExtensionCommandMessageTypeMap>} context The command context.
+     * @param {IExtensionCommandContext<ShowJournalView.IShowJournalToExtensionCommandMessageTypeMap>} context The command context.
      * @remarks The command context contains APIs through which a command can communicate with POS.
      */
     constructor(context: IExtensionCommandContext<ShowJournalView.IShowJournalToExtensionCommandMessageTypeMap>) {
@@ -57,7 +57,7 @@ export default class DownloadDocumentCommand extends ShowJournalView.ShowJournal
 
     /**
      * Initializes the command.
-     * @param {Extensibility.IShowJournalExtensionCommandState} state The state used to initialize the command.
+     * @param {ShowJournalView.IShowJournalExtensionCommandState} state The state used to initialize the command.
      */
     protected init(state: ShowJournalView.IShowJournalExtensionCommandState): void {
         this._mode = state.mode;
@@ -74,8 +74,8 @@ export default class DownloadDocumentCommand extends ShowJournalView.ShowJournal
     }
 
     /**
-     * Handles the journal changed message by sending a message by updating the command state.
-     * @param {Extensibility.ShowJournalJournalSelectedData} data The information about the selected journal.
+     * Handles the journal changed message by updating the command state.
+     * @param {ShowJournalView.ShowJournalJournalSelectedData} data The information about the selected journal.
      */
     private _journalChanged(data: ShowJournalView.ShowJournalJournalSelectedData): void {
         this._selectedJournal = data.salesOrder;

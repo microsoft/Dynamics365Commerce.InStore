@@ -11,7 +11,7 @@
         using Microsoft.Dynamics.Commerce.Runtime.Messages;
 
         /// <summary>
-        /// Class implements windows based printer driver for hardware station.
+        /// Class implements a Windows-based printer driver for Hardware Station.
         /// </summary>
 #pragma warning disable CS0618 // JUSTIFICATION: Pending migration to asynchronous APIs.
         public class CustomWindowsPrinterDevice : INamedRequestHandlerAsync
@@ -66,7 +66,7 @@
                         // If print request is for X- or Z-report then center receipt content
                         if (printRequest.Header.Contains("X-Report") || printRequest.Header.Contains("Z-Report"))
                         {
-                            // Receipt content is read only, so create a new request instead of modifing original
+                            // Receipt content is read only, so create a new request instead of modifying original
                             PrintPrinterDeviceRequest customRequest = new PrintPrinterDeviceRequest(
                                 CenterReceiptContent(printRequest.Header),
                                 CenterReceiptContent(printRequest.Lines),
@@ -100,7 +100,7 @@
                 string[] seperator = { newLine };
                 string output = string.Empty;
 
-                // Split receipt content on new line seperator and loop through each line
+                // Split receipt content on new line separator and loop through each line
                 string[] lines = input.Split(seperator, StringSplitOptions.None);
                 foreach (string line in lines)
                 {
