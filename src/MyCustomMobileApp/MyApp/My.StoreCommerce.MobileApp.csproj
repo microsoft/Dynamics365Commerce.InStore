@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+  <Import Project="..\CustomizationPackage.props" />
+
+  <PropertyGroup>
+    <TargetFrameworks>net10.0-android;net10.0-ios;net10.0-maccatalyst</TargetFrameworks>
+    <UseMaui>true</UseMaui>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>My.StoreCommerce.MobileApp</RootNamespace>
+    <AssemblyName>My.StoreCommerce.MobileApp</AssemblyName>
+
+    <!-- Display name -->
+    <ApplicationTitle Condition="$(ApplicationTitle) == ''">My Store Commerce</ApplicationTitle>
+
+    <!-- App Identifier -->
+    <ApplicationId Condition="$(ApplicationId) == ''">my.storecommerce.mobileapp</ApplicationId>
+
+    <!-- Versions -->
+    <ApplicationDisplayVersion>$(PackageVersion)</ApplicationDisplayVersion>
+    <ApplicationVersion>1</ApplicationVersion>
+
+    <!-- Prevent extension assemblies from being embedded in the APK on Android Release builds -->
+    <Optimize Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">false</Optimize>
+    <EmbedAssembliesIntoApk Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">false</EmbedAssembliesIntoApk>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Dynamics.Commerce.Sdk.StoreCommerce.Mobile" Version="$(CommerceSdkPackagesVersion)" />
+    <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="$(MauiVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../MyPosExtension/My.PosExtensions.csproj" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="../MyHardwareStationExtension/My.HardwareStationExtensions.csproj" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+</Project>
