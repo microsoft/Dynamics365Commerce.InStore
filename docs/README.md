@@ -45,6 +45,7 @@ If you're new to the Commerce SDK, start with the end-to-end tutorial:
 | 7 | [Channel Database extension](./07-channel-database.md) | Coming soon. |
 | 8 | [Scale Unit installer](./08-scale-unit-installer.md) | Build an installer that deploys extensions to a Commerce Scale Unit. |
 | 9 | [Troubleshooting](./09-troubleshooting.md) | Common errors, common mistakes, and more resources. |
+| 10 | [Using AI skills](./10-using-ai-skills.md) | Use the Commerce Extension Developer skill with GitHub Copilot CLI or Claude Code. |
 
 ## Extension types at a glance
 

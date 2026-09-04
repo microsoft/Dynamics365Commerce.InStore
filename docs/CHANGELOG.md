@@ -18,6 +18,13 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-08-17
+
+### Added
+
+- `10-using-ai-skills.md`: how to use the Commerce Extension Developer skill with GitHub
+  Copilot CLI or Claude Code for Commerce extension development.
+
 ## [1.0.0] - 2026-07-25
 
 ### Added
@@ -46,4 +53,5 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   Android, iOS, and Mac, a POS extension, and a Hardware Station extension.
 
 [Unreleased]: https://github.com/microsoft/Dynamics365Commerce.InStore
+[1.0.1]: https://github.com/microsoft/Dynamics365Commerce.InStore
 [1.0.0]: https://github.com/microsoft/Dynamics365Commerce.InStore

@@ -15,6 +15,11 @@ This repo contains the sample code for how to customize the POS, Hardware Statio
 
 This file explains the structure of the InStore samples repo and explains how to set up a repo to reference the Commerce SDK NuGet packages from the public feed for Dynamics 365 Commerce extension development. Please visit our [docs site](https://learn.microsoft.com/en-us/dynamics365/commerce/dev-itpro/retail-sdk/sdk-github) for additional resources about Dynamics 365 Commerce development.
 
+## Commerce extension development
+
+See the [Using AI skills guide](./docs/10-using-ai-skills.md)
+for using the Commerce Extension Developer skill with GitHub Copilot CLI or Claude Code.
+
 ## Prerequisites
 
 This process doesn't require a specific pre-configured environment or virtual machine. Development and testing can be done on any machine with a supported version of Windows, such as Windows Server 2022 or Windows Server 2025. Install Visual Studio 2026, the .NET 10 SDK, and .NET Framework 4.7.2 or newer, which the extension installers require. For more details on the development environment prerequisites please refer to [this article](https://learn.microsoft.com/dynamics365/commerce/dev-itpro/pos-extension/pos-extension-overview)
