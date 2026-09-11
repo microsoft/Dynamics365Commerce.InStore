@@ -18,6 +18,15 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+
+- `10-using-ai-skills.md`: corrected the list of files that `InitDev` writes into the
+  solution repository, which never included a repository-root `marketplace/` folder;
+  replaced the `./marketplace` relative path with the absolute, machine-local path to the
+  restored package; removed the claim that these files refresh when a new SDK version is
+  restored; and added guidance to gitignore `.github/copilot/settings.json` and
+  `.claude/settings.json`.
+
 ## [1.0.1] - 2026-08-17
 
 ### Added

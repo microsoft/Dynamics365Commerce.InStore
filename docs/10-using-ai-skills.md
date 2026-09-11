@@ -23,16 +23,22 @@ approval before scaffolding code.
 
 ## What's in this bundle
 
-The initialized skill bundle is copied to the root of the solution repository:
+`InitDev` writes these files into the solution repository:
 
 ```text
-marketplace/                  Commerce Extension Developer skill and plugin content
-.github/copilot/settings.json Registers the marketplace for GitHub Copilot CLI
-.claude/settings.json         Registers the marketplace for Claude Code
+docs/agent-skills/commerce-ext-dev/      Skill knowledge base, mirrored from the package
+AGENTS.md                                Skill entry point for agent CLIs
+.github/agents/commerce-ext-dev.agent.md Entry point for GitHub Copilot CLI
+.github/copilot-instructions.md          Repository instructions for GitHub Copilot CLI
+.claude/skills/commerce-ext-dev/SKILL.md Entry point for Claude Code
+.github/copilot/settings.json            Registers the marketplace for GitHub Copilot CLI
+.claude/settings.json                    Registers the marketplace for Claude Code
 ```
 
-`InitDev` also copies the skill files into the repository root and updates them when a
-new SDK version is restored.
+The marketplace and the plugin it contains aren't copied into the repository. They stay in
+the restored NuGet package, and the two settings files point at them. The knowledge base
+and entry points listed above are copied in, and they're refreshed only when you run
+`InitDev`; restoring a new SDK version on its own does not update them.
 
 ## Set up an existing solution
 
@@ -48,7 +54,7 @@ Run these commands again after an SDK version update to receive the latest skill
 
 ## Install and use the plugin
 
-The bundled settings register the `marketplace/` directory, but installing the plugin
+The settings written by `InitDev` register the marketplace, but installing the plugin
 is a required one-time step because agent CLIs do not auto-install repository plugins.
 
 From the repository root, install it with GitHub Copilot CLI:
@@ -64,9 +70,13 @@ Then run `copilot` or `claude` from the repository root and ask the agent to bui
 Commerce extension, or invoke `commerce-ext-dev`. Review the proposed design before
 allowing the skill to scaffold files.
 
-The `path` in both settings files is `./marketplace`, resolved relative to the folder
-where you run the agent CLI. Keep `marketplace/` at the repository root or update both
-settings files consistently.
+The `path` in both settings files is an absolute, machine-local path to the restored
+package, such as
+`<package-cache>/microsoft.dynamics.commerce.sdk.<package>/<version>/contentFiles/marketplace`.
+Because that path is specific to one machine and one SDK version, don't commit
+`.github/copilot/settings.json` or `.claude/settings.json`. `InitDev` doesn't modify your
+`.gitignore`, so add the two entries yourself, and re-run `InitDev` on each machine and
+after every SDK version update.
 
 ## Responsible AI and human review
 
