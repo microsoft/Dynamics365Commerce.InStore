@@ -20,10 +20,6 @@
 
     <!-- Prevent extension assemblies from being trimmed on iOS/MacCatalyst builds -->
     <UseInterpreter Condition="($(TargetFramework.Contains('-ios')) or $(TargetFramework.Contains('-maccatalyst'))) and '$(Configuration)' == 'Release'">true</UseInterpreter>
-
-    <!-- Prevent extension assemblies from being embedded in the APK on Android Release builds -->
-    <Optimize Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">false</Optimize>
-    <EmbedAssembliesIntoApk Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">false</EmbedAssembliesIntoApk>
   </PropertyGroup>
 
   <ItemGroup>
