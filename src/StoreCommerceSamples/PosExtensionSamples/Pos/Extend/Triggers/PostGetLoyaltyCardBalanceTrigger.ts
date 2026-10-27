@@ -10,7 +10,7 @@
 import * as Triggers from "PosApi/Extend/Triggers/CustomerTriggers";
 
 /**
- * Example implementation of an PostGetLoyaltyCardBalance trigger that logs to the console.
+ * Example implementation of a PostGetLoyaltyCardBalance trigger that logs an informational message.
  */
 export default class PostGetLoyaltyCardBalanceTrigger extends Triggers.PostGetLoyaltyCardBalanceTrigger {
     /**

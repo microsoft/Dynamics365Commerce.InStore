@@ -52,7 +52,7 @@ export default class CurrencyNumPadView extends Views.CustomViewControllerBase {
 
     /**
      * Callback for numpad.
-     * @param {number} value Numpad current value.
+     * @param {Commerce.Extensibility.NumPadValue} value Numpad current value.
      */
     private onNumPadEnter(value: Commerce.Extensibility.NumPadValue): void {
         this.numPadValue(value.toString());

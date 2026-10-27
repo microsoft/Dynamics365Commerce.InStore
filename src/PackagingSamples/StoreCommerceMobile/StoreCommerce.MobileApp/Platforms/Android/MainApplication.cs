@@ -24,7 +24,7 @@ namespace Contoso.StoreCommerce.MobileApp
     /// The main application.
     /// </summary>
     [Application]
-    public class MainApplication : MauiApplication
+    public class MainApplication : StoreCommerceApplication
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="MainApplication"/> class.
@@ -34,12 +34,6 @@ namespace Contoso.StoreCommerce.MobileApp
         public MainApplication(IntPtr handle, JniHandleOwnership ownership)
             : base(handle, ownership)
         {
-        }
-
-        /// <inheritdoc/>
-        protected override MauiApp CreateMauiApp()
-        {
-            return MauiProgram.CreateMauiAppBuilder().Build();
         }
     }
 }

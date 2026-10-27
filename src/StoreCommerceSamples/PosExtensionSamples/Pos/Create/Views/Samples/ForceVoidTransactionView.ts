@@ -17,7 +17,7 @@ import ko from "knockout";
 type ICancelableDataResult<TResult> = ClientEntities.ICancelableDataResult<TResult>;
 
 /**
- * The controller for AppBarView.
+ * The controller for ForceVoidTransactionView.
  */
 export default class ForceVoidTransactionView extends Views.CustomViewControllerBase {
     public currentCart: ko.Observable<string>;

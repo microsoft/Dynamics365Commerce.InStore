@@ -15,7 +15,7 @@ import * as Triggers from "PosApi/Extend/Triggers/SalesOrderTriggers";
 export default class PreMarkFulfillmentLinesAsPackedTrigger extends Triggers.PreMarkFulfillmentLinesAsPackedTrigger {
     /**
      * Executes the trigger functionality.
-     * @param {Triggers.PreMarkFulfillmentLinesAsPackedTriggerOptions} options The options provided to the trigger.
+     * @param {Triggers.IPreMarkFulfillmentLinesAsPackedTriggerOptions} options The options provided to the trigger.
      * @return {Promise<Commerce.Triggers.CancelableTriggerResult<Triggers.IPreMarkFulfillmentLinesAsPackedTriggerOptions>>} The cancelable promise containing the response.
      */
     public execute(options: Triggers.IPreMarkFulfillmentLinesAsPackedTriggerOptions): Promise<Commerce.Triggers.CancelableTriggerResult<Triggers.IPreMarkFulfillmentLinesAsPackedTriggerOptions>> {

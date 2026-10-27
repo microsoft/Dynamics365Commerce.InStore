@@ -32,7 +32,7 @@ export default class GetExternalAddressCommand extends AddressAddEditView.Addres
 
     /**
      * Initializes the command.
-     * @param {ProductDetailsView.IProductDetailsExtensionCommandState} state The state used to initialize the command.
+     * @param {AddressAddEditView.IAddressAddEditExtensionCommandState} state The state used to initialize the command.
      */
     protected init(state: AddressAddEditView.IAddressAddEditExtensionCommandState): void {
         this.canExecute = true;

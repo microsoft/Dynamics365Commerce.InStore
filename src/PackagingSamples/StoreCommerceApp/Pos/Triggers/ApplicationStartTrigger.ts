@@ -24,7 +24,7 @@ export default class ApplicationStartTrigger extends Triggers.ApplicationStartTr
         /* This implementation is necessary to make POS controls behave properly when a custom version of knockout is used on extensions.
          *   - The 'controlsDescendantBindings = true' tells knockout to not bind the descendants of the element that has it.
          *   - All POS controls which use knockout have the __posStopExtensionBinding binding.
-         * Then, the code below is telling to the 'ko' imported by the extension to not rebind elements inside POS controls.
+         * Then, the code below tells the 'ko' imported by the extension to not rebind elements inside POS controls.
          * Otherwise using a POS data list would result in error because the data list defines new bindings to its descendants and
          * the local 'ko' doesn't know their implementation, only the 'ko' imported in the POS code knows.
          */

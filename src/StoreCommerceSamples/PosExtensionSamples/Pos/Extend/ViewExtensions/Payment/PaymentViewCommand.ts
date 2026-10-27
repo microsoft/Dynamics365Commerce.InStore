@@ -20,8 +20,8 @@ export default class PaymentViewCommand extends PaymentView.PaymentViewExtension
     private _paymentAmount: string;
 
     /**
-     * Creates a new instance of the ButtonCommand class.
-     * @param {IExtensionCommandContext<PaymentView.IPaymentToExtensionCommandMessageTypeMap>} context The command context.
+     * Creates a new instance of the PaymentViewCommand class.
+     * @param {IExtensionCommandContext<PaymentView.IPaymentViewToExtensionCommandMessageTypeMap>} context The command context.
      * @remarks The command context contains APIs through which a command can communicate with POS.
      */
     constructor(context: IExtensionCommandContext<PaymentView.IPaymentViewToExtensionCommandMessageTypeMap>) {

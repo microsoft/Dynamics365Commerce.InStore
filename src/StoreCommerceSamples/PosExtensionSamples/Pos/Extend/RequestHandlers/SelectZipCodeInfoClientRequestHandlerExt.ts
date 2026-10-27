@@ -18,8 +18,8 @@ export default class SelectZipCodeInfoClientRequestHandlerExt extends SelectZipC
 
     /**
      * Executes the request handler asynchronously.
-     * @param {SelectZipCodeInfoClientRequest<SelectZipCodeInfoClientResponse>} The request containing the response.
-     * @return {Promise<ICancelableDataResult<SelectZipCodeInfoClientResponse>>} The cancelable promise containing the response.
+     * @param {SelectZipCodeInfoClientRequest} request The request.
+     * @return {Promise<ClientEntities.ICancelableDataResult<SelectZipCodeInfoClientResponse>>} The cancelable promise containing the response.
      */
     public executeAsync(request: SelectZipCodeInfoClientRequest):
         Promise<ClientEntities.ICancelableDataResult<SelectZipCodeInfoClientResponse>> {

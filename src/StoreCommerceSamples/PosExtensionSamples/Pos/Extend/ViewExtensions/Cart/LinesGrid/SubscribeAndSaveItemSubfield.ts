@@ -24,7 +24,7 @@ export default class SubscribeAndSaveItemSubfield extends CustomLinesGridItemSub
     /**
      * Computes a value to display as an item subfield based on the given cart line.
      * @param {ProxyEntities.CartLine} cartLine The cart line.
-     * @returns {string} The computed value do display as an item subfield.
+     * @returns {string} The computed value to display as an item subfield.
      */
     public computeValue(cartLine: ProxyEntities.CartLine): string {
         let value: string = StringExtensions.EMPTY;

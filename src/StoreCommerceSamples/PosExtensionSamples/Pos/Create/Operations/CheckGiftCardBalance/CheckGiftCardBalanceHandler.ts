@@ -7,7 +7,7 @@
  * NO TECHNICAL SUPPORT IS PROVIDED.  YOU MAY NOT DISTRIBUTE THIS CODE UNLESS YOU HAVE A LICENSE AGREEMENT WITH MICROSOFT THAT ALLOWS YOU TO DO SO.
  */
 
-import { ExtensionOperationRequestType, ExtensionOperationRequestHandlerBase } from "PosApi/Create/Operations";
+import { ExtensionOperationRequestType, ExtensionOperationRequestHandlerBase, IExtensionOperationMetadata, FluentIcons } from "PosApi/Create/Operations";
 import { ClientEntities, ProxyEntities } from "PosApi/Entities";
 import CheckGiftCardBalanceRequest from "./CheckGiftCardBalanceRequest";
 import CheckGiftCardBalanceResponse from "./CheckGiftCardBalanceResponse";
@@ -18,6 +18,11 @@ import GiftCardNumberDialog from "../../Dialogs/GiftCardNumberDialog";
  * (Sample) Request handler for the CheckGiftCardBalanceRequest class.
  */
 export default class CheckGiftCardBalanceHandler<TResponse extends CheckGiftCardBalanceResponse> extends ExtensionOperationRequestHandlerBase<TResponse> {
+    public static readonly operationMetadata: IExtensionOperationMetadata = {
+        nameStringResourceId: "string_102",
+        fluentIconName: FluentIcons.ReceiptMoney24Regular
+    };
+
     /**
      * Gets the supported request type.
      * @return {RequestType<TResponse>} The supported request type.

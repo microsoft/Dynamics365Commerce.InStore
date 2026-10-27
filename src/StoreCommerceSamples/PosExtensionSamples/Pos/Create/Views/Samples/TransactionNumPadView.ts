@@ -107,6 +107,7 @@ export default class TransactionNumPadView extends CustomViewControllerBase impl
     /**
      * Callback for numpad.
      * @param {string} scanText Numpad current value.
+     * @param {ScanSource} scanSource Numpad current value source.
      */
     private _getScanResult(scanText: string, scanSource: ScanSource): void {
         this.numPad.value = "";

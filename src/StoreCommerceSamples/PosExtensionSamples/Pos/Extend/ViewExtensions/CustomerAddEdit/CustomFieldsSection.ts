@@ -76,7 +76,7 @@ export default class CustomFieldsSection extends CustomerAddEditCustomControlBas
 
     /**
      * Initializes the control.
-     * @param {ICustomerDetailCustomControlState} state The initial state of the page used to initialize the control.
+     * @param {ICustomerAddEditCustomControlState} state The initial state of the page used to initialize the control.
      */
     public init(state: ICustomerAddEditCustomControlState): void {
         if (!state.isSelectionMode) {

@@ -35,7 +35,8 @@ export default class GiftCardBalanceDialog extends Dialogs.ExtensionTemplatedDia
 
     /**
      * Opens the dialog.
-     * @returns {Promise<IBarcodeMsrDialogResult>} The promise that represents showing the dialog and contains the dialog result.
+     * @param {ProxyEntities.GiftCard} giftCard The gift card whose balance should be shown.
+     * @returns {Promise<IGiftCardBalanceDialogResult>} The promise that represents showing the dialog and contains the dialog result.
      */
     public open(giftCard: ProxyEntities.GiftCard): Promise<IGiftCardBalanceDialogResult> {
         this.balance(giftCard.BalanceCurrencyCode.concat(" ", giftCard.Balance.toString()));

@@ -21,9 +21,9 @@ export default class IncomeExpenseLineSubfield extends CustomLinesGridIncomeExpe
     }
 
     /**
-     * Computes a value to display as an item subfield based on the given encome/expense line.
-     * @param {ProxyEntities.IncomeExpenseLine} cartLine The income/expense line.
-     * @returns {string} The computed value do display as a subfield.
+     * Computes a value to display as an item subfield based on the given income/expense line.
+     * @param {ProxyEntities.IncomeExpenseLine} incomeExpenseLine The income/expense line.
+     * @returns {string} The computed value to display as a subfield.
      */
     public computeValue(incomeExpenseLine: ProxyEntities.IncomeExpenseLine): string {
         let value: string = null;

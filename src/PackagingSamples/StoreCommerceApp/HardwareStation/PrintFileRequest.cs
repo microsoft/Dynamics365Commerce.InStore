@@ -14,19 +14,19 @@ namespace Contoso
         using System.Runtime.Serialization;
 
         /// <summary>
-        /// Print PDF request class.
+        /// Print file request class.
         /// </summary>
         [DataContract]
         public class PrintFileRequest
         {
             /// <summary>
-            /// Gets or sets the encoded binary file.
+            /// Gets the lines to write to the file.
             /// </summary>
             [DataMember]
             public string[] Lines { get; private set; }
 
             /// <summary>
-            /// Gets or sets the device name.
+            /// Gets or sets the output file name.
             /// </summary>
             [DataMember]
             public string FileName { get; set; }

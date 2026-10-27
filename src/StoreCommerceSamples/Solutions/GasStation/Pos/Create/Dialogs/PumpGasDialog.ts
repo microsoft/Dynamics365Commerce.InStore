@@ -54,8 +54,9 @@ export default class PumpGasDialog extends Dialogs.ExtensionTemplatedDialogBase 
     }
 
     /**
-     * Opens the GasPumpStatusDialog.
-     * @return {Promise<void>} The result from message dialog.
+     * Opens the pump gas dialog.
+     * @param {{ pumpId: number }} options The pump options.
+     * @return {Promise<ClientEntities.ICancelableDataResult<number>>} The promise that represents showing the dialog and contains the pumped amount.
      */
     public open(options: { pumpId: number }): Promise<ClientEntities.ICancelableDataResult<number>> {
         this.gasPump = ArrayExtensions.firstOrUndefined(GasStationDataStore.instance.pumps, (pump): boolean => { return pump.Id === options.pumpId });
@@ -111,7 +112,7 @@ export default class PumpGasDialog extends Dialogs.ExtensionTemplatedDialogBase 
     }
 
     /**
-     * Called when the enable pump button is clicked.
+     * Called when the stop pumping button is clicked.
      * @return {boolean} True to close the dialog, false otherwise.
      */
     private _stopPumpClickHandler(): boolean {

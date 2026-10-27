@@ -18,6 +18,7 @@ export default class PostLogOnTrigger extends Triggers.PostLogOnTrigger {
     /**
      * Executes the trigger functionality.
      * @param {Triggers.IPostLogOnTriggerOptions} options The options provided to the trigger.
+     * @returns {Promise<any>} A promise that resolves when the navigated view signals that the logon operation can resume.
      */
     public execute(options: Triggers.IPostLogOnTriggerOptions): Promise<any> {
         this.context.logger.logInformational("Executing PostLogOnTrigger with options " + JSON.stringify(options) + ".");

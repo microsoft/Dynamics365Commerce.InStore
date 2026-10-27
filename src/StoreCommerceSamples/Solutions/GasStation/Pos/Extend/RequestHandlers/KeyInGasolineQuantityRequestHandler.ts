@@ -10,7 +10,7 @@ type RequestHandlerResult = ClientEntities.ICancelableDataResult<GetKeyedInQuant
 
 /**
  * The AutomatedKeyInGasolineQuantityRequestHandler automates the quantity entry for gasoline to be added to the transaction.
- * It by reading the gasoline quantity extension property value from the current cart which is previously set by the gas pump status page when creating the transaction.
+ * It reads the gasoline quantity extension property value from the current cart, which is set by the gas pump status page when creating the transaction.
  */
 export default class AutomatedKeyInGasolineQuantityRequestHandler extends GetKeyedInQuantityClientRequestHandler {
     /**

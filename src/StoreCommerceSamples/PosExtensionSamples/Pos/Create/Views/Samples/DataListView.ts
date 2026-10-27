@@ -158,6 +158,7 @@ export default class DataListView extends Views.CustomViewControllerBase {
 
     /**
      * Callback for data list selection changed.
+     * @param {IShiftData[]} items The selected data list items.
      */
     private _dataListSelectionChanged(items: IShiftData[]): void {
         this.context.logger.logInformational("SelectionChanged: " + JSON.stringify(items));
@@ -165,6 +166,7 @@ export default class DataListView extends Views.CustomViewControllerBase {
 
     /**
      * Callback for data list item invoked.
+     * @param {IShiftData} item The invoked data list item.
      */
     private _dataListItemInvoked(item: IShiftData): void {
         this.context.logger.logInformational("ItemInvoked " + JSON.stringify(item));

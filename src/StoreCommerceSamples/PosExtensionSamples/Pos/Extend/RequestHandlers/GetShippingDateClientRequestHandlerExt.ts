@@ -18,8 +18,8 @@ export default class GetShippingDateClientRequestHandlerExt extends GetShippingD
 
     /**
      * Executes the request handler asynchronously.
-     * @param {GetShippingDateClientRequest<GetShippingDateClientResponse>} The request containing the response.
-     * @return {Promise<ICancelableDataResult<GetShippingDateClientResponse>>} The cancelable promise containing the response.
+     * @param {GetShippingDateClientRequest<GetShippingDateClientResponse>} request The request.
+     * @return {Promise<ClientEntities.ICancelableDataResult<GetShippingDateClientResponse>>} The cancelable promise containing the response.
      */
     public executeAsync(request: GetShippingDateClientRequest<GetShippingDateClientResponse>):
         Promise<ClientEntities.ICancelableDataResult<GetShippingDateClientResponse>> {

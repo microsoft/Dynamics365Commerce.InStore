@@ -1,0 +1,14 @@
+<Project>
+  <Import Project="..\..\repo.props" />
+
+  <!-- Extension projects that import this file build into the Contoso.MyMobileAppSecondExtensions extension package. -->
+  <PropertyGroup>
+    <PackagePublisher Condition="'$(PackagePublisher)' == ''">$(Publisher)</PackagePublisher>
+    <PackagePublisherDisplayName Condition="'$(PackagePublisherDisplayName)' == ''">$(PublisherDisplayName)</PackagePublisherDisplayName>
+    <PackageVersion Condition="'$(PackageVersion)' == ''">$(Version)</PackageVersion>
+    <PackageName Condition="'$(PackageName)' == ''">Contoso.MyMobileAppSecondExtensions</PackageName>
+    <PackageDisplayName Condition="'$(PackageDisplayName)' == ''">My Store Commerce Mobile App Second Extensions</PackageDisplayName>
+    <PackageDescription Condition="'$(PackageDescription)' == ''">My Store Commerce Mobile App Second Extensions Packaging Sample</PackageDescription>
+    <GenerateSQLiteDb Condition="'$(GenerateSQLiteDb)' == ''">true</GenerateSQLiteDb>
+  </PropertyGroup>
+</Project>

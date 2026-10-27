@@ -18,8 +18,8 @@ export default class GetReceiptEmailAddressClientRequestHandlerExt extends GetRe
 
     /**
      * Executes the request handler asynchronously.
-     * @param {GetReceiptEmailAddressClientRequest<GetReceiptEmailAddressClientResponse>} The request containing the response.
-     * @return {Promise<ICancelableDataResult<GetReceiptEmailAddressClientResponse>>} The cancelable promise containing the response.
+     * @param {GetReceiptEmailAddressClientRequest<GetReceiptEmailAddressClientResponse>} request The request.
+     * @return {Promise<ClientEntities.ICancelableDataResult<GetReceiptEmailAddressClientResponse>>} The cancelable promise containing the response.
      */
     public executeAsync(request: GetReceiptEmailAddressClientRequest<GetReceiptEmailAddressClientResponse>):
         Promise<ClientEntities.ICancelableDataResult<GetReceiptEmailAddressClientResponse>> {

@@ -15,6 +15,7 @@ export default class PreProductSaleTrigger extends Triggers.PreProductSaleTrigge
     /**
      * Executes the trigger functionality.
      * @param {Triggers.IPreProductSaleTriggerOptions} options The options provided to the trigger.
+     * @returns {Promise<ClientEntities.ICancelable>} The cancelable promise.
      */
     public execute(options: Triggers.IPreProductSaleTriggerOptions): Promise<ClientEntities.ICancelable> {
         if (ObjectExtensions.isNullOrUndefined(options)) {

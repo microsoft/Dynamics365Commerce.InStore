@@ -18,16 +18,17 @@ namespace Contoso.StoreCommerce.MobileApp
 {
     using global::Android.App;
     using global::Android.Content.PM;
+    using Microsoft.Dynamics.Commerce.StoreCommerce.Maui;
 
     /// <summary>
     /// The main activity.
     /// </summary>
     [Activity(
-        Label = "Contoso Store Commerce Mobile App",
         Theme = "@style/StoreCommerceTheme",
         MainLauncher = true,
+        LaunchMode = LaunchMode.SingleTask,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize | ConfigChanges.Density)]
-    public class MainActivity : MauiAppCompatActivity
+    public class MainActivity : StoreCommerceActivity
     {
     }
 }

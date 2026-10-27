@@ -12,14 +12,14 @@ import { GetPickupDateClientRequest, GetPickupDateClientResponse } from "PosApi/
 import { ClientEntities } from "PosApi/Entities";
 
 /**
- * Override request handler class for getting serial number request.
+ * Override request handler class for getting pickup date request.
  */
 export default class GetPickupDateClientRequestHandlerExt extends GetPickupDateClientRequestHandler {
 
     /**
      * Executes the request handler asynchronously.
-     * @param {GetPickupDateClientRequest<GetPickupDateClientResponse>} The request containing the response.
-     * @return {Promise<ICancelableDataResult<GetPickupDateClientResponse>>} The cancelable promise containing the response.
+     * @param {GetPickupDateClientRequest<GetPickupDateClientResponse>} request The request.
+     * @return {Promise<ClientEntities.ICancelableDataResult<GetPickupDateClientResponse>>} The cancelable promise containing the response.
      */
     public executeAsync(request: GetPickupDateClientRequest<GetPickupDateClientResponse>):
         Promise<ClientEntities.ICancelableDataResult<GetPickupDateClientResponse>> {

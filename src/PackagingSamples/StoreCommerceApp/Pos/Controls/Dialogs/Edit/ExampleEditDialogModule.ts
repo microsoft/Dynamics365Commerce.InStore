@@ -38,7 +38,8 @@ export default class ExampleEditDialog extends Dialogs.ExtensionTemplatedDialogB
 
     /**
      * Opens the dialog.
-     * @param {Entities.ExampleEntity} dataToEdit The date to be edited through the dialog.
+     * @param {Entities.ExampleEntity} dataToEdit The data to be edited through the dialog.
+     * @returns {Promise<Entities.ExampleEntity>} A promise that resolves with the edited data when the dialog is closed.
      */
     public open(dataToEdit: Entities.ExampleEntity): Promise<Entities.ExampleEntity> {
         this._data = dataToEdit;

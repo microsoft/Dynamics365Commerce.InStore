@@ -5,11 +5,11 @@ This sample shows how to create a new dialog that listens to barcode scanner and
 ![Demo](./Demo.gif)
 
 ## Running the sample
-- Open the solution in Visual Studio 2022
+- Open the solution in Visual Studio 2026
 - Restore the nuget packages for the solution
 - Build the solution
-- Follow the steps outlined [here](https://docs.microsoft.com/en-us/dynamics365/commerce/dev-itpro/pos-extension/debug-pos-extension#run-and-debug-cloud-pos) on how to debug extensions
-- Sign in to Cloud POS
+- Follow the steps outlined [here](https://learn.microsoft.com/dynamics365/commerce/dev-itpro/pos-extension/debug-pos-extension#run-and-debug-cloud-pos) on how to debug extensions
+- Sign in to Store Commerce for Web
 - Navigate to the fulfillment line view and click the "Scan and Select Product" app bar button
 
 ## APIs and extension points used
@@ -39,5 +39,5 @@ This sample shows how to create a new dialog that listens to barcode scanner and
   - packingSlipSelectionClearedHandler: Setting the packingSlipSelectionClearedHandler event handler enables the extension command to update when the packing slip selection is cleared.
 
 ## Additional Resources
-- [Debugging POS Extensions](https://docs.microsoft.com/en-us/dynamics365/commerce/dev-itpro/pos-extension/debug-pos-extension#run-and-debug-cloud-pos)
-- [Using POS Controls](https://docs.microsoft.com/en-us/dynamics365/commerce/dev-itpro/pos-extension/controls-pos-extension)
+- [Debugging POS Extensions](https://learn.microsoft.com/dynamics365/commerce/dev-itpro/pos-extension/debug-pos-extension#run-and-debug-cloud-pos)
+- [Using POS Controls](https://learn.microsoft.com/dynamics365/commerce/dev-itpro/pos-extension/controls-pos-extension)

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:supportsRtl="true" android:installLocation="auto">
+  <uses-sdk android:minSdkVersion="24" android:targetSdkVersion="36" />
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.VIBRATE" />
+  <uses-permission android:name="android.permission.FLASHLIGHT" />
+  <uses-permission android:name="android.permission.CAMERA" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+  <uses-feature android:name="android.hardware.camera.any" android:required="false" />
+  <uses-feature android:name="android.hardware.camera" android:required="false" />
+  <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
+  <uses-feature android:name="android.hardware.camera.flash" android:required="false" />
+  <application android:icon="@drawable/Icon" android:networkSecurityConfig="@xml/network_security_config">
+    <!--Intent filter to capture authorization code response from the default browser on the device calling back to our app after interactive sign in -->
+    <activity android:name="microsoft.identity.client.BrowserTabActivity" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data android:scheme="ms-appx-web" android:host="microsoft.aad.brokerplugin" android:path="/d6b5a0bd-bf3f-4a8c-b370-619fb3d0e1cc" />
+      </intent-filter>
+    </activity>
+  </application>
+  <queries>
+    <intent>
+      <action android:name="android.support.customtabs.action.CustomTabsService" />
+    </intent>
+  </queries>
+</manifest>

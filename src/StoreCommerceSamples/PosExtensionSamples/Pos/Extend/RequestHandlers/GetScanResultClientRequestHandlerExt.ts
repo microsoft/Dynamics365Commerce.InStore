@@ -18,8 +18,8 @@ export default class GetScanResultClientRequestHandlerExt extends GetScanResultC
 
     /**
      * Executes the request handler asynchronously.
-     * @param {GetScanResultClientRequest<GetScanResultClientResponse>} The request containing the response.
-     * @return {Promise<ICancelableDataResult<GetScanResultClientResponse>>} The cancelable promise containing the response.
+     * @param {GetScanResultClientRequest<GetScanResultClientResponse>} request The request.
+     * @return {Promise<ClientEntities.ICancelableDataResult<GetScanResultClientResponse>>} The cancelable promise containing the response.
      */
     public executeAsync(request: GetScanResultClientRequest<GetScanResultClientResponse>):
         Promise<ClientEntities.ICancelableDataResult<GetScanResultClientResponse>> {

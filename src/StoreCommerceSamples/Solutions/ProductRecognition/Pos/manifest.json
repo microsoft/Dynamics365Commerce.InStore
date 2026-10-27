@@ -1,0 +1,64 @@
+{
+  "$schema": "./devDependencies/schemas/manifestSchema.json",
+  "name": "ProductRecognition",
+  "publisher": "Contoso",
+  "version": "1.0.0.0",
+  "minimumPosVersion": "9.32.0.0",
+  "dependencies": [
+    {
+      "alias": "knockout",
+      "format": "amd",
+      "modulePath": "Libraries/knockout"
+    }
+  ],
+  "components": {
+    "extend": {
+      "header": {
+        "customPackingItems": [
+          {
+            "name": "Camera View Header Item",
+            "description": "A header item that navigates to the Camera View for product recognition.",
+            "modulePath": "Extend/Header/CameraViewPackingItem",
+            "htmlPath": "Extend/Header/CameraViewPackingItem.html"
+          }
+        ]
+      }
+    },
+    "create": {
+      "views": [
+        {
+          "title": "Camera View",
+          "pageName": "CameraView",
+          "phonePageName": "CameraView",
+          "viewDirectory": "Create/Views/",
+          "viewControllerPath": "Create/Views/CameraView"
+        },
+        {
+          "title": "Select Product",
+          "pageName": "SelectProductView",
+          "phonePageName": "SelectProductView",
+          "viewDirectory": "Create/Views/",
+          "viewControllerPath": "Create/Views/SelectProductView"
+        }
+      ],
+      "operations": [
+        {
+          "operationId": "5001",
+          "operationRequestFactoryPath": "Create/Operations/ProductRecognitionRequestFactory",
+          "operationRequestHandlerPath": "Create/Operations/ProductRecognitionRequestHandler"
+        }
+      ],
+      "templatedDialogs": [
+        {
+          "htmlPath": "Create/Dialogs/CameraCapture/CameraCaptureDialog.html",
+          "modulePath": "Create/Dialogs/CameraCapture/CameraCaptureDialog"
+        }
+      ]
+    }
+  },
+  "resources": {
+    "css": [
+      "Create/Dialogs/CameraCapture/CameraCaptureDialog.css"
+    ]
+  }
+}

@@ -102,7 +102,7 @@ export default class PriceCheckCustomControlPanel extends PriceCheckCustomContro
 
     /**
      * The handler for the customer changed message.
-     * @param {PriceCheckCustomerChangedData} customer The changed customer.
+     * @param {PriceCheckCustomerChangedData} data The customer changed data.
      */
     public customerChanged(data: PriceCheckCustomerChangedData): void {
         this._setCustomer(data.customer);

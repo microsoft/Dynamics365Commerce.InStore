@@ -18,8 +18,8 @@ export default class PrintPackingSlipClientRequestHandlerExt extends PrintPackin
 
     /**
      * Executes the request handler asynchronously.
-     * @param {PrintPackingSlipClientRequest<PrintPackingSlipClientResponse>} The request containing the response.
-     * @return {Promise<ICancelableDataResult<PrintPackingSlipClientResponse>>} The cancelable promise containing the response.
+     * @param {PrintPackingSlipClientRequest<PrintPackingSlipClientResponse>} request The request.
+     * @return {Promise<ClientEntities.ICancelableDataResult<PrintPackingSlipClientResponse>>} The cancelable promise containing the response.
      */
     public executeAsync(request: PrintPackingSlipClientRequest<PrintPackingSlipClientResponse>):
         Promise<ClientEntities.ICancelableDataResult<PrintPackingSlipClientResponse>> {

@@ -7,7 +7,7 @@
  * NO TECHNICAL SUPPORT IS PROVIDED.  YOU MAY NOT DISTRIBUTE THIS CODE UNLESS YOU HAVE A LICENSE AGREEMENT WITH MICROSOFT THAT ALLOWS YOU TO DO SO.
  */
 
-import { ExtensionOperationRequestType, ExtensionOperationRequestHandlerBase } from "PosApi/Create/Operations";
+import { ExtensionOperationRequestType, ExtensionOperationRequestHandlerBase, IExtensionOperationMetadata, FluentIcons } from "PosApi/Create/Operations";
 import { ClientEntities, ProxyEntities } from "PosApi/Entities";
 import { StringExtensions } from "PosApi/TypeExtensions";
 import { IExtensionContext } from "PosApi/Framework/ExtensionContext";
@@ -28,6 +28,24 @@ import CartViewController from "../../../Extend/ViewExtensions/Cart/CartViewCont
  */
 export default class SaveDataToSelectedCartLineHandler<TResponse extends SaveDataToSelectedCartLineResponse>
     extends ExtensionOperationRequestHandlerBase<TResponse> {
+
+    // operationMetadata is used when this operation is surfaced as an inline action in the
+    // Transaction Grid. The action appears as a list item with an icon followed by a label —
+    // fluentIconName (or iconSvg) sets the icon and nameStringResourceId sets the localized label.
+    public static readonly operationMetadata: IExtensionOperationMetadata = {
+        nameStringResourceId: "string_103",
+        fluentIconName: FluentIcons.ShoppingBagTag24Regular
+    };
+
+    // Alternatively, a custom SVG can be provided via iconSvg instead of fluentIconName.
+    // The SVG must use fill="currentColor" on each shape element directly — do not rely on
+    // SVG attribute inheritance or stroke-based icons, as the framework applies
+    // fill: currentColor via CSS which overrides inherited fill values.
+    //
+    // public static readonly operationMetadata: IExtensionOperationMetadata = {
+    //     nameStringResourceId: "string_103",
+    //     iconSvg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M10 3h4v10h3l-5 6-5-6h3z"/><path fill="currentColor" d="M4 20h16v2H4z"/></svg>`
+    // };
 
     /**
      * Gets the supported request type.

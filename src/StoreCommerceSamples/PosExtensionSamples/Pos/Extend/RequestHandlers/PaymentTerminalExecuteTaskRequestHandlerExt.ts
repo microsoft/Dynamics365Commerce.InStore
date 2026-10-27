@@ -20,8 +20,8 @@ import PaymentTerminalExecuteTaskRequestFactory from "Create/Helpers/PaymentTerm
 export default class PaymentTerminalExecuteTaskRequestHandlerExt extends PaymentTerminalExecuteTaskRequestHandler {
     /**
      * Executes the request handler asynchronously.
-     * @param {PaymentTerminaExecuteTaskRequest<PaymentTerminalExecuteTaskResponse>} request The request.
-     * @return {Promise<ICancelableDataResult<PaymentTerminalExecuteTaskResponse>>} 
+     * @param {PaymentTerminalExecuteTaskRequest<PaymentTerminalExecuteTaskResponse>} request The request.
+     * @return {Promise<ClientEntities.ICancelableDataResult<PaymentTerminalExecuteTaskResponse>>}
      * The cancelable promise containing the response.
      */
     public executeAsync(request: PaymentTerminalExecuteTaskRequest<PaymentTerminalExecuteTaskResponse>):
@@ -29,7 +29,7 @@ export default class PaymentTerminalExecuteTaskRequestHandlerExt extends Payment
         let cart: ProxyEntities.Cart = null;
         let cartRequest: GetCurrentCartClientRequest<GetCurrentCartClientResponse> = new GetCurrentCartClientRequest();
 
-        // Get cart first and then build PaymentTerminalExecuteTaskRequest base on request task and cart info.
+        // Get cart first and then build PaymentTerminalExecuteTaskRequest based on the request task and cart info.
         return this.context.runtime.executeAsync(cartRequest)
             .then((result: ClientEntities.ICancelableDataResult<GetCurrentCartClientResponse>): void => {
                 if (!(result.canceled || ObjectExtensions.isNullOrUndefined(result.data))) {

@@ -10,7 +10,7 @@
 import * as Triggers from "PosApi/Extend/Triggers/CashManagementTriggers";
 
 /**
- * Example implementation of an PostFloatEntry trigger that logs to the console.
+ * Example implementation of a PostFloatEntry trigger that logs an informational message.
  */
 export default class PostFloatEntryTrigger extends Triggers.PostFloatEntryTrigger {
     /**

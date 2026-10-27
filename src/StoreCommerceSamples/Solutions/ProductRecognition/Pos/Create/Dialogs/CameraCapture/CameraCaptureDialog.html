@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Capture</title>
+    <link rel="stylesheet" href="CameraCaptureDialog.css">
+</head>
+<body>
+    <div class="camera-dialog-capture-container">
+        <div class="camera-dialog-preview-section">
+            <video id="camera-preview-dialog" autoplay playsinline muted></video>
+            <canvas id="capture-canvas-dialog" style="display: none;"></canvas>
+
+            <div class="camera-dialog-overlay">
+                <div class="camera-dialog-capture-frame"></div>
+            </div>
+        </div>
+
+        <div class="camera-dialog-controls">
+            <button id="capture-btn" class="primary-button">
+                Capture Image
+            </button>
+            <button id="cancel-btn" class="secondary-button">
+                Cancel
+            </button>
+        </div>
+
+        <div class="camera-dialog-status" id="camera-status">
+            <div class="camera-dialog-status-message">Initializing camera...</div>
+        </div>
+    </div>
+</body>
+</html>

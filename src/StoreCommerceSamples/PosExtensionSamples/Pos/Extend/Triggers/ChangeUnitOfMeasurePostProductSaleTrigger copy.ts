@@ -13,7 +13,7 @@ import { ChangeCartLineUnitOfMeasureOperationRequest, ChangeCartLineUnitOfMeasur
 import { ObjectExtensions, ArrayExtensions } from "PosApi/TypeExtensions";
 
 /**
- * Example implementation of an PostProductSale trigger that execute ChangeUnitOfMeasureClientRequest for different products and different options.
+ * Example implementation of a PostProductSale trigger that executes ChangeUnitOfMeasureClientRequest for different products and different options.
  */
 export default class ChangeUnitOfMeasurePostProductSaleTrigger extends Triggers.PostProductSaleTrigger {
 

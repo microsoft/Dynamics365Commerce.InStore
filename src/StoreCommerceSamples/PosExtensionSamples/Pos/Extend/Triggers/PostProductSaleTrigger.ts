@@ -10,7 +10,7 @@
 import * as Triggers from "PosApi/Extend/Triggers/ProductTriggers";
 
 /**
- * Example implementation of an PostProductSale trigger that logs to the console.
+ * Example implementation of a PostProductSale trigger that logs to the console.
  */
 export default class PostProductSaleTrigger extends Triggers.PostProductSaleTrigger {
     /**

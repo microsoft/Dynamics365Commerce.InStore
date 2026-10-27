@@ -157,9 +157,9 @@ namespace Contoso.HardwareStation.Peripherals.DeviceCustomizations
         }
 
         /// <summary>
-        /// Encodes the given charater in ANSI encoding.
+        /// Encodes the given character in ANSI encoding.
         /// </summary>
-        /// <param name="value">The chracter being encoded.</param>
+        /// <param name="value">The character being encoded.</param>
         /// <returns>A numeric representation of the character in ANSI encoding.</returns>
         private static int EncodeANSI(char value)
         {

@@ -14,7 +14,7 @@
   ],
   "components": {
     "resources": {
-      "supportedUICultures": [ "en-US" ],
+      "supportedUICultures": [ "en-US", "es-ES" ],
       "fallbackUICulture": "en-US",
       "culturesDirectoryPath": "Resources",
       "stringResourcesFileName": "strings.resjson"
@@ -42,6 +42,12 @@
           "description": "A sample trigger showing how to implement a cancelable trigger. Opens a deep link URL in a new window.",
           "triggerType": "PreOpenUrl",
           "modulePath": "Extend/Triggers/OpenDeepLinkUrlTrigger"
+        },
+        {
+          "name": "PreDeepLinkActionTrigger",
+          "description": "Generic PreDeepLinkAction trigger that routes multiple actions to handlers. Validates item minimum quantities for D365.CreateTransaction.",
+          "triggerType": "PreDeepLinkAction",
+          "modulePath": "Extend/Triggers/PreDeepLinkActionTrigger"
         },
         {
           "name": "ConfirmChangeQuantityTrigger",
@@ -213,6 +219,9 @@
             "customColumn5": {
               "modulePath": "Extend/ViewExtensions/Cart/LinesGrid/CustomColumn5Configuration"
             },
+            "customColumn6": {
+              "modulePath": "Extend/ViewExtensions/Cart/LinesGrid/CustomColumn6HtmlConfiguration"
+            },
             "customItemSubfields": [
               {
                 "itemSubfieldName": "fraudCheckReminderItemSubfield",
@@ -221,6 +230,10 @@
               {
                 "itemSubfieldName": "subscribeAndSaveItemSubfield",
                 "modulePath": "Extend/ViewExtensions/Cart/LinesGrid/SubscribeAndSaveItemSubfield"
+              },
+              {
+                "itemSubfieldName": "stockItemSubfieldCustomContent",
+                "modulePath": "Extend/ViewExtensions/Cart/LinesGrid/StockItemSubfieldCustomContent"
               }
             ]
           },
@@ -564,6 +577,14 @@
         {
           "modulePath": "Extend/RequestHandlers/PaymentTerminalExecuteTaskRequestHandlerExt"
         }
+      ],
+      "deepLinkActions": [
+        {
+          "actionName": "D365.RecallOrder",
+          "modulePath": "Extend/DeepLinkActions/RecallOrderReplacementHandler",
+          "name": "Recall Order Replacement Handler",
+          "description": "Sample replacement handler that completely overrides the built-in D365.RecallOrder deep link action with custom validation and logging"
+        }
       ]
     },
     "create": {
@@ -787,23 +808,39 @@
       "operations": [
         {
           "operationId": "5000",
+          "name": "Print operation",
+          "description": "A sample operation that prints a message to the console.",
           "operationRequestFactoryPath": "Create/Operations/Print/PrintOperationRequestFactory",
           "operationRequestHandlerPath": "Create/Operations/Print/PrintOperationRequestHandler"
         },
         {
           "operationId": "5001",
+          "name": "End of day operation",
+          "description": "A sample operation that executes end of day workflows.",
           "operationRequestFactoryPath": "Create/Operations/EndOfDay/EndOfDayOperationRequestFactory",
           "operationRequestHandlerPath": "Create/Operations/EndOfDay/EndOfDayOperationRequestHandler"
         },
         {
           "operationId": "5002",
+          "name": "Check gift card balance",
+          "description": "A sample operation that checks a gift card balance.",
           "operationRequestFactoryPath": "Create/Operations/CheckGiftCardBalance/CheckGiftCardBalanceFactory",
           "operationRequestHandlerPath": "Create/Operations/CheckGiftCardBalance/CheckGiftCardBalanceHandler"
         },
         {
           "operationId": "5003",
+          "name": "Save data to selected cart line",
+          "description": "A sample operation that saves extension properties to a selected cart line.",
           "operationRequestFactoryPath": "Create/Operations/SaveDataToSelectedCartLine/SaveDataToSelectedCartLineFactory",
           "operationRequestHandlerPath": "Create/Operations/SaveDataToSelectedCartLine/SaveDataToSelectedCartLineHandler"
+        }
+      ],
+      "deepLinkActions": [
+        {
+          "actionName": "LogInventoryCheck",
+          "modulePath": "Create/DeepLinkActions/LogInventoryCheckActionHandler",
+          "name": "Log Inventory Check",
+          "description": "Custom deep link action that logs inventory check request and displays a dialog with item and store information"
         }
       ]
     }

@@ -22,8 +22,8 @@ export default class SubscribeAndSaveItemSubfield extends CustomLinesGridItemSub
 
     /**
      * Computes a value to display as an item subfield based on the given sales line.
-     * @param {ClientEntities.ISalesLineForDisplay} salesLine The sales line.
-     * @returns {string} The computed value do display as an item subfield.
+     * @param {ProxyEntities.SalesLine} salesLine The sales line.
+     * @returns {string} The computed value to display as an item subfield.
      */
     public computeValue(salesLine: ProxyEntities.SalesLine): string {
         let value: string = StringExtensions.EMPTY;
@@ -36,7 +36,7 @@ export default class SubscribeAndSaveItemSubfield extends CustomLinesGridItemSub
 
     /**
      * Returns whether or not the given sales line is for an item that supports subscribing and saving.
-     * @param {ClientEntities.ISalesLineForDisplay} salesLine The sales line.
+     * @param {ProxyEntities.SalesLine} salesLine The sales line.
      * @returns {boolean} Whether or not the given sales line is for an item that supports subscribing and saving.
      */
     private _isSubscribeAndSaveCartLine(salesLine: ProxyEntities.SalesLine): boolean {

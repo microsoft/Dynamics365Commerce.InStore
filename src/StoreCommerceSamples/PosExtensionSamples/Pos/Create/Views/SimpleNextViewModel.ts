@@ -34,7 +34,7 @@ export class SimpleNextViewModel extends KnockoutExtensionViewModelBase {
     /**
      * Creates a new instance of the SimpleNextViewModel class.
      * @param {ICustomViewControllerContext} context The custom view controller context.
-     * @param {ICustomViewControllerBaseState} state Tbe custom view controller base state.
+     * @param {ICustomViewControllerBaseState} state The custom view controller base state.
      * @param {ISimpleNextViewModelOptions} [options] The view model options, if any.
      */
     constructor(context: ICustomViewControllerContext, state: ICustomViewControllerBaseState,

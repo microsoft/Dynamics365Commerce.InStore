@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="..\CustomizationPackage.props" />
+
+    <PropertyGroup>
+        <RootNamespace>Contoso.LightDevice.HardwareStation</RootNamespace>
+        <TargetFramework>net48</TargetFramework>
+        <LangVersion>8.0</LangVersion>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Dynamics.Commerce.Sdk.HardwareAndPeripherals" Version="$(CommerceSdkPackagesVersion)" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Reference Include="Microsoft.CSharp" />
+    </ItemGroup>
+</Project>

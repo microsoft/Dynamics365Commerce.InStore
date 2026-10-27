@@ -69,6 +69,7 @@ export class GasStationDataStore {
 
     /**
      * Initializes the gas station data store.
+     * @param {IExtensionContext} context The extension context.
      * @returns {Promise<void>} The resulting promise.
      */
     public initAsync(context: IExtensionContext): Promise<void> {
@@ -160,9 +161,11 @@ export class GasStationDataStore {
     }
 
     /**
-     * Updates the pump with the specified identifier with the specified status.
+     * Updates the pump with the specified identifier with the specified state.
+     * @param {IExtensionContext} context The extension context.
      * @param {number} id The pump's identifier.
-     * @param {IGasPumpStatus} status The updated status.
+     * @param {GasPumpState} state The updated state.
+     * @returns {Promise<GasPump>} A promise that resolves with the updated pump, or with null if the request was canceled.
      */
     public updatePumpStatusAsync(context: IExtensionContext, id: number, state: GasPumpState): Promise<GasPump> {
         let pumpIndex: number = this._pumps.map(p => p.Id).indexOf(id);
@@ -187,7 +190,8 @@ export class GasStationDataStore {
 
     /**
      * Adds a handler to be executed when the pump status changes.
-     * @param {(pump: IGasPump, previousStatus: IGasPumpStatus) => void} handler The handler to execute after the pump status change.
+     * @param {(updatedPumps: GasPump[]) => void} handler The handler to execute after the pump status change.
+     * @returns {number} The handler identifier, which can be passed to removePumpStatusChangedHandler.
      */
     public addPumpStatusChangedHandler(handler: (updatedPumps: GasPump[]) => void): number {
         if (!ObjectExtensions.isFunction(handler)) {

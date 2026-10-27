@@ -15,7 +15,7 @@ import { StringExtensions } from "PosApi/TypeExtensions";
 import MessageDialog from "../../Create/Dialogs/DialogSample/MessageDialog";
 
 /**
- * Example implementation of an GetCountedTenderDetailAmountClientRequestHandler request handler that shown a message on the screen
+ * Example implementation of a GetCountedTenderDetailAmountClientRequestHandler request handler that shows a message on the screen
  * and returns a fixed value of counted tender (without showing a dialog).
  */
 export default class GetCountedTenderDetailAmountClientRequestHandlerExt extends TenderCountingRequestHandlers.GetCountedTenderDetailAmountClientRequestHandler {

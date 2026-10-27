@@ -36,17 +36,17 @@ namespace Contoso.Commerce.HardwareStation.PaymentSample
     /// </summary>
     /// <remarks>
     /// This class intentionally implements a no-op Payment device handler as a way to demonstrate the capabilities that this handler provides
-    /// and also the information that it requires to work with the hardware station infrastructure.
+    /// and also the information that it requires to work with the Hardware Station infrastructure.
     /// The functionalities supported by this handler are the following:
     /// - Device management:
     ///   LockPaymentTerminalDeviceRequest, ReleasePaymentTerminalDeviceRequest, OpenPaymentTerminalDeviceRequest,
     ///   ClosePaymentTerminalDeviceRequest, BeginTransactionPaymentTerminalDeviceRequest, EndTransactionPaymentTerminalDeviceRequest,
-    ///   CancelOperationPaymentTerminalDeviceRequestCancel Operation and UpdateLineItemsPaymentTerminalDeviceRequest
+    ///   CancelOperationPaymentTerminalDeviceRequest and UpdateLineItemsPaymentTerminalDeviceRequest
     /// - Payment operations:
     ///   AuthorizePaymentTerminalDeviceRequest, CapturePaymentTerminalDeviceRequest, VoidPaymentTerminalDeviceRequest, RefundPaymentTerminalDeviceRequest
     /// - Gift operations:
     ///   GetGiftCardBalancePaymentTerminalRequest, AddBalanceToGiftCardPaymentTerminalRequest, ActivateGiftCardPaymentTerminalRequest
-    /// - Duplicated Payment Protection:
+    /// - Duplicate Payment Protection:
     ///   GetTransactionReferencePaymentTerminalDeviceRequest, GetTransactionByTransactionReferencePaymentTerminalDeviceRequest
     /// - Misc operations:
     ///   GetPrivateTenderPaymentTerminalDeviceRequest, ExecuteTaskPaymentTerminalDeviceRequest, FetchTokenPaymentTerminalDeviceRequest
@@ -220,7 +220,7 @@ namespace Contoso.Commerce.HardwareStation.PaymentSample
         /// </summary>
         /// <param name="paymentConnectorName">The payment connector name to use.</param>
         /// <param name="initialPropertyList">The initial list of properties to add to the array.</param>
-        /// <returns></returns>
+        /// <returns>The array of payment properties, containing the initial list followed by the connector properties.</returns>
         private static PaySdk.PaymentProperty[] GetPaymentPropertiesWithInitialList(string paymentConnectorName, PaySdk.PaymentProperty[] initialPropertyList)
         {
             // Several below values are hardcoded, real implementations should take this data from real device.
@@ -234,7 +234,7 @@ namespace Contoso.Commerce.HardwareStation.PaymentSample
         /// Gets an array of payment properties.
         /// </summary>
         /// <param name="paymentConnectorName">The payment connector name to use.</param>
-        /// <returns></returns>
+        /// <returns>The array of payment properties for the specified payment connector.</returns>
         private static PaySdk.PaymentProperty[] GetPaymentProperties(string paymentConnectorName)
         {
             // Several below values are hardcoded, real implementations should take this data from real device.
@@ -417,7 +417,7 @@ namespace Contoso.Commerce.HardwareStation.PaymentSample
         /// Make refund payment.
         /// </summary>
         /// <param name="request">Request for refund.</param>
-        /// <returns>A task that can await until the refund has completed.</returns>
+        /// <returns>The refund payment response.</returns>
         private RefundPaymentTerminalDeviceResponse RefundPayment(RefundPaymentTerminalDeviceRequest request)
         {
             ThrowIf.Null(request, nameof(request));
@@ -637,7 +637,7 @@ namespace Contoso.Commerce.HardwareStation.PaymentSample
         /// <param name="currency">The currency.</param>
         /// <param name="tenderInfo">Tender information.</param>
         /// <param name="extensionTransactionProperties">Optional extension transaction properties.</param>
-        /// <returns>A task that can await until the authorization has completed.</returns>
+        /// <returns>A task that can be awaited until the authorization has completed.</returns>
         [SuppressMessage("Microsoft.Usage", "CA1801", Justification = "Suppressed on adding CA for backward compatibility")]
         private async Task<PaymentInfo> AuthorizePaymentAsync(string paymentConnectorName, decimal amount, string currency, TenderInfo tenderInfo, ExtensionTransaction extensionTransactionProperties)
         {
@@ -654,7 +654,7 @@ namespace Contoso.Commerce.HardwareStation.PaymentSample
         /// <param name="currency">The currency.</param>
         /// <param name="paymentPropertiesXml">The payment properties of the authorization response.</param>
         /// <param name="extensionTransactionProperties">Optional extension transaction properties.</param>
-        /// <returns>A task that can await until the settlement has completed.</returns>
+        /// <returns>A task that can be awaited until the settlement has completed.</returns>
         [SuppressMessage("Microsoft.Usage", "CA1801", Justification = "Suppressed on adding CA for backward compatibility")]
         private async Task<PaymentInfo> CapturePaymentAsync(decimal amount, string currency, string paymentPropertiesXml, ExtensionTransaction extensionTransactionProperties)
         {
@@ -685,7 +685,7 @@ namespace Contoso.Commerce.HardwareStation.PaymentSample
         /// <param name="tenderInfo">The tender information.</param>
         /// <param name="paymentPropertiesXml">The payment properties of the authorization response.</param>
         /// <param name="extensionTransactionProperties">Optional extension transaction properties.</param>
-        /// <returns>A task that can await until the void has completed.</returns>
+        /// <returns>A task that can be awaited until the void has completed.</returns>
         [SuppressMessage("Microsoft.Usage", "CA1801", Justification = "Suppressed on adding CA for backward compatibility")]
         private async Task<PaymentInfo> VoidPaymentAsync(string paymentConnectorName, decimal amount, string currency, TenderInfo tenderInfo, string paymentPropertiesXml, ExtensionTransaction extensionTransactionProperties)
         {
@@ -714,7 +714,7 @@ namespace Contoso.Commerce.HardwareStation.PaymentSample
         /// <param name="currency">The currency.</param>
         /// <param name="isManualEntry">If manual credit card entry is required.</param>
         /// <param name="extensionTransactionProperties">Optional extension transaction properties.</param>
-        /// <returns>A task that can await until the refund has completed.</returns>
+        /// <returns>A task that can be awaited until the refund has completed.</returns>
         [SuppressMessage("Microsoft.Usage", "CA1801", Justification = "Suppressed on adding CA for backward compatibility")]
         private async Task<PaymentInfo> RefundPaymentAsync(decimal amount, string currency, bool isManualEntry, ExtensionTransaction extensionTransactionProperties)
         {
@@ -746,7 +746,7 @@ namespace Contoso.Commerce.HardwareStation.PaymentSample
         /// </summary>
         /// <param name="isManualEntry">The value indicating whether credit card should be entered manually.</param>
         /// <param name="extensionTransactionProperties">Optional extension transaction properties.</param>
-        /// <returns>A task that can await until the token generation has completed.</returns>
+        /// <returns>A task that fails because token generation is not supported by this sample.</returns>
         [SuppressMessage("Microsoft.Usage", "CA1801", Justification = "Suppressed on adding CA for backward compatibility")]
         private async Task<PaymentInfo> FetchTokenAsync(bool isManualEntry, ExtensionTransaction extensionTransactionProperties)
         {
@@ -762,7 +762,7 @@ namespace Contoso.Commerce.HardwareStation.PaymentSample
         /// <param name="currencyCode">The currency.</param>
         /// <param name="tenderInfo">The tender information.</param>
         /// <param name="extensionTransactionProperties">Optional extension transaction properties.</param>
-        /// <returns>A task that can await until the void has completed.</returns>
+        /// <returns>A task that fails because gift card activation is not supported by this sample.</returns>
         [SuppressMessage("Microsoft.Usage", "CA1801", Justification = "Suppressed on adding CA for backward compatibility")]
         private async Task<PaymentInfo> ActivateGiftCardAsync(string paymentConnectorName, decimal? amount, string currencyCode, TenderInfo tenderInfo, ExtensionTransaction extensionTransactionProperties)
         {
@@ -778,7 +778,7 @@ namespace Contoso.Commerce.HardwareStation.PaymentSample
         /// <param name="currencyCode">The currency.</param>
         /// <param name="tenderInfo">The tender information.</param>
         /// <param name="extensionTransactionProperties">Optional extension transaction properties.</param>
-        /// <returns>A task that can await until the void has completed.</returns>
+        /// <returns>A task that fails because adding balance to a gift card is not supported by this sample.</returns>
         [SuppressMessage("Microsoft.Usage", "CA1801", Justification = "Suppressed on adding CA for backward compatibility")]
         private async Task<PaymentInfo> AddBalanceToGiftCardAsync(string paymentConnectorName, decimal? amount, string currencyCode, TenderInfo tenderInfo, ExtensionTransaction extensionTransactionProperties)
         {
@@ -793,7 +793,7 @@ namespace Contoso.Commerce.HardwareStation.PaymentSample
         /// <param name="currencyCode">The currency.</param>
         /// <param name="tenderInfo">The tender information.</param>
         /// <param name="extensionTransactionProperties">Optional extension transaction properties.</param>
-        /// <returns>A task that can await until the void has completed.</returns>
+        /// <returns>A task that fails because retrieving a gift card balance is not supported by this sample.</returns>
         [SuppressMessage("Microsoft.Using", "CA1801", Justification = "Suppressed on adding CA for backward compatibility")]
         private async Task<PaymentInfo> GetGiftCardBalanceAsync(string paymentConnectorName, string currencyCode, TenderInfo tenderInfo, ExtensionTransaction extensionTransactionProperties)
         {

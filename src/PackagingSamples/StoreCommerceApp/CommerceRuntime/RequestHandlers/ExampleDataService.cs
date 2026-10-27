@@ -44,7 +44,7 @@ namespace Contoso.CommerceRuntime
         }
 
         /// <summary>
-        /// Entry point to StoreHoursDataService service.
+        /// Entry point to ExampleDataService service.
         /// </summary>
         /// <param name="request">The request to execute.</param>
         /// <returns>Result of executing request, or null object for void operations.</returns>

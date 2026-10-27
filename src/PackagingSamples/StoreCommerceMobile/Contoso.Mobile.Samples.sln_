@@ -5,13 +5,21 @@ VisualStudioVersion = 17.4.33403.182
 MinimumVisualStudioVersion = 15.0.0.0
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contoso.StoreCommerce.MobileApp", "StoreCommerce.MobileApp\Contoso.StoreCommerce.MobileApp.csproj", "{643E5537-47CE-4C69-9660-80B7583FECBC}"
 	ProjectSection(ProjectDependencies) = postProject
+		{AD7B7677-571F-49EF-946E-593B5E75FF4A} = {AD7B7677-571F-49EF-946E-593B5E75FF4A}
+		{F82792A3-8BC0-4D1C-AB84-3BCB2EA3DF04} = {F82792A3-8BC0-4D1C-AB84-3BCB2EA3DF04}
 		{52930FB4-3599-4CC3-B7FB-DEC7056CE9C1} = {52930FB4-3599-4CC3-B7FB-DEC7056CE9C1}
 		{B5561175-66C2-4FA7-A10E-0296EB3BC292} = {B5561175-66C2-4FA7-A10E-0296EB3BC292}
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contoso.PosExtensions.CommerceRuntime", "..\..\StoreCommerceSamples\PosExtensionSamples\CommerceRuntime\Contoso.PosExtensions.CommerceRuntime.csproj", "{AD7B7677-571F-49EF-946E-593B5E75FF4A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contoso.PosExtensions.Pos", "..\..\StoreCommerceSamples\PosExtensionSamples\Pos\Contoso.PosExtensions.Pos.csproj", "{F82792A3-8BC0-4D1C-AB84-3BCB2EA3DF04}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contoso.PaymentDeviceSample", "..\..\HardwareStationSamples\PaymentDevice\Contoso.PaymentDeviceSample.csproj", "{B5561175-66C2-4FA7-A10E-0296EB3BC292}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contoso.PeripheralCustomizations", "..\..\HardwareStationSamples\PeripheralCustomizations\Contoso.PeripheralCustomizations.csproj", "{52930FB4-3599-4CC3-B7FB-DEC7056CE9C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contoso.StoreCommercePackagingSample.ChannelDatabase", "..\StoreCommerceApp\ChannelDatabase\Contoso.StoreCommercePackagingSample.ChannelDatabase.csproj", "{69CA96D2-DF05-612B-9F6D-7D589EC8DAA7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AF807C19-0008-481E-9C48-A2BD5F8A7212}"
 	ProjectSection(SolutionItems) = preProject
@@ -30,6 +38,14 @@ Global
 		{643E5537-47CE-4C69-9660-80B7583FECBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{643E5537-47CE-4C69-9660-80B7583FECBC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{643E5537-47CE-4C69-9660-80B7583FECBC}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{AD7B7677-571F-49EF-946E-593B5E75FF4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD7B7677-571F-49EF-946E-593B5E75FF4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD7B7677-571F-49EF-946E-593B5E75FF4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD7B7677-571F-49EF-946E-593B5E75FF4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F82792A3-8BC0-4D1C-AB84-3BCB2EA3DF04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F82792A3-8BC0-4D1C-AB84-3BCB2EA3DF04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F82792A3-8BC0-4D1C-AB84-3BCB2EA3DF04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F82792A3-8BC0-4D1C-AB84-3BCB2EA3DF04}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B5561175-66C2-4FA7-A10E-0296EB3BC292}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B5561175-66C2-4FA7-A10E-0296EB3BC292}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5561175-66C2-4FA7-A10E-0296EB3BC292}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -38,6 +54,10 @@ Global
 		{52930FB4-3599-4CC3-B7FB-DEC7056CE9C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52930FB4-3599-4CC3-B7FB-DEC7056CE9C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52930FB4-3599-4CC3-B7FB-DEC7056CE9C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69CA96D2-DF05-612B-9F6D-7D589EC8DAA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69CA96D2-DF05-612B-9F6D-7D589EC8DAA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69CA96D2-DF05-612B-9F6D-7D589EC8DAA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69CA96D2-DF05-612B-9F6D-7D589EC8DAA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

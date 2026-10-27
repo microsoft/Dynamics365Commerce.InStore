@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camera View</title>
+  <link rel="stylesheet" href="CameraView.css">
+</head>
+
+<body>
+  <div class="camera-view-container">
+    <div class="camera-view-preview-section">
+      <video id="camera-preview" autoplay playsinline muted></video>
+      <canvas id="capture-canvas"></canvas>
+
+      <div class="camera-view-overlay">
+        <div class="camera-view-capture-frame"></div>
+      </div>
+    </div>
+
+    <div class="camera-view-status">
+      <div class="camera-view-status-message" data-bind="text: statusMessage"></div>
+    </div>
+  </div>
+</body>
+
+</html>

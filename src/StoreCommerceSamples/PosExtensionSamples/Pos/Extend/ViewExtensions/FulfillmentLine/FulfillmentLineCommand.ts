@@ -28,7 +28,7 @@ export default class FulfillmentLineCommand extends FulfillmentLineExtensionComm
     private _selectedFulfillmentLines: ProxyEntities.FulfillmentLine[];
 
     /**
-     * Creates a new instance of the FulfillmentLineViewCommand class.
+     * Creates a new instance of the FulfillmentLineCommand class.
      * @param {IExtensionCommandContext<IFulfillmentLineToExtensionCommandMessageTypeMap>} context The context.
      * @remarks The command context contains APIs through which a command can communicate with POS.
      */

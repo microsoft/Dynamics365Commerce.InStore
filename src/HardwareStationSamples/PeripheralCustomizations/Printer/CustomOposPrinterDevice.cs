@@ -106,6 +106,7 @@
             /// </summary>
             /// <param name="context">The OPOS printer.</param>
             /// <param name="textToPrint">The text to print on the receipt.</param>
+            /// <returns>A task that represents the asynchronous print operation.</returns>
             private async Task PrintTextAsync(RequestContext context, string textToPrint)
             {
                 int resultCode;
@@ -121,7 +122,7 @@
                     // Check if printer run out of paper after previous print call.
                     await this.CheckPaperStatusAsync(context).ConfigureAwait(false);
 
-                    // Text is barcode if it doesn't contain any special escape characters found in normal receipt strings for OPS (e.g., '&#x1B;|1C' or '1C').
+                    // Text is barcode if it doesn't contain any special escape characters found in normal receipt strings for OPOS (e.g., '&#x1B;|1C' or '1C').
                     bool isBarcode = !Regex.IsMatch(toPrint, OPOSMarkersForSplitRegEx, RegexOptions.Compiled | RegexOptions.Multiline);
 
                     // If it is barcode, print it using special OPOS PrintBarCode method.
@@ -159,9 +160,11 @@
             /// <summary>
             /// Print the data on printer.
             /// </summary>
+            /// <param name="context">The OPOS printer.</param>
             /// <param name="header">The header.</param>
             /// <param name="lines">The lines.</param>
             /// <param name="footer">The footer.</param>
+            /// <returns>A task that represents the asynchronous print operation.</returns>
             private async Task PrintAsync(RequestContext context, string header, string lines, string footer)
             {
                 header = header.Replace(EscMarker, EscCharacter);
@@ -175,7 +178,7 @@
                 await PrintReceiptParts(context, receiptPartsResponse.ReceiptLinesParts).ConfigureAwait(false);
                 await PrintReceiptParts(context, receiptPartsResponse.ReceiptFooterParts).ConfigureAwait(false);
 
-                // Avoid paper cut when noting is printed.
+                // Avoid paper cut when nothing is printed.
                 if (!string.IsNullOrEmpty(header + lines + footer) && await ShouldCutPaperAsync(context).ConfigureAwait(false))
                 {
                     // The number of lines that must be advanced before the receipt paper is cut.
@@ -205,6 +208,7 @@
             /// </summary>
             /// <param name="context">The request context.</param>
             /// <param name="partsToPrint">The receipt parts to print.</param>
+            /// <returns>A task that represents the asynchronous print operation.</returns>
             private async Task PrintReceiptParts(RequestContext context, IReadOnlyCollection<ReceiptPart> partsToPrint)
             {
                 foreach (var part in partsToPrint)
@@ -232,6 +236,7 @@
             /// </summary>
             /// <param name="context">The OPOS printer.</param>
             /// <param name="image">Image bytes to print.</param>
+            /// <returns>A task that represents the asynchronous print operation.</returns>
             private async Task PrintImageAsync(RequestContext context, byte[] image)
             {
                 // Check if printer run out of paper after previous print call.
@@ -305,6 +310,7 @@
             /// Check the OPOS printer paper status.
             /// </summary>
             /// <param name="context">The OPOS printer.</param>
+            /// <returns>A task that represents the asynchronous paper status check.</returns>
             private async Task CheckPaperStatusAsync(RequestContext context)
             {
                 var emptySensor = (bool)await GetOposPropertyValueAsync(context, "CapRecEmptySensor").ConfigureAwait(false);
@@ -317,7 +323,7 @@
             }
 
             /// <summary>
-            /// Determines if the printer should cut the receipt paper based on the hardware station configuration and if it is supported on the OPOS printer.
+            /// Determines if the OPOS printer supports cutting the receipt paper.
             /// </summary>
             /// <param name="context">The OPOS printer.</param>
             /// <returns>True if the receipt paper should be cut. False otherwise.</returns>
@@ -341,7 +347,7 @@
             /// <param name="context">The request context.</param>
             /// <param name="methodName">The name of the method to execute.</param>
             /// <param name="args">The list of arguments to send.</param>
-            /// <returns></returns>
+            /// <returns>A task that represents the asynchronous method execution on the OPOS device.</returns>
             private async Task ExecuteOposMethodAsync(RequestContext context, string methodName, params object[] args)
             {
                 var request = new ExecuteOposDeviceMethodRequest(OposDeviceType.Printer, peripheralName, methodName, args);
@@ -353,7 +359,7 @@
             /// </summary>
             /// <param name="context">The request context.</param>
             /// <param name="propertyName">The name of the property.</param>
-            /// <returns></returns>
+            /// <returns>A task that returns the value of the requested OPOS device property.</returns>
             private async Task<object> GetOposPropertyValueAsync(RequestContext context, string propertyName)
             {
                 var request = new GetOposDevicePropertyValueRequest(OposDeviceType.Printer, peripheralName, propertyName);
@@ -367,7 +373,7 @@
             /// <param name="context">The request context.</param>
             /// <param name="propertyName">The name of the property.</param>
             /// <param name="value">The value to set on the property.</param>
-            /// <returns></returns>
+            /// <returns>A task that represents the asynchronous property update on the OPOS device.</returns>
             private async Task SetOposPropertyValueAsync(RequestContext context, string propertyName, object value)
             {
                 var request = new SetOposDevicePropertyValueRequest(OposDeviceType.Printer, peripheralName, propertyName, value);

@@ -1,0 +1,20 @@
+{
+  "$schema": "./devDependencies/schemas/manifestSchema.json",
+  "name": "Contoso.MyMobileAppSecondExtensions",
+  "publisher": "Contoso",
+  "version": "1.0.0",
+  "minimumPosVersion": "9.28.0.0",
+  "description": "An extension package that shows how to add a second extension package to a custom Store Commerce mobile app.",
+  "components": {
+    "extend": {
+      "triggers": [
+        {
+          "name": "PostLogOnMessageTrigger",
+          "description": "An extension that shows a message after the user logs on.",
+          "triggerType": "PostLogOn",
+          "modulePath": "Triggers/PostLogOnMessageTrigger"
+        }
+      ]
+    }
+  }
+}

@@ -18,13 +18,13 @@ export default class CashDrawerOpenRequestHandlerExt extends CashDrawerOpenReque
 
     /**
      * Executes the request handler asynchronously.
-     * @param {CashDrawerOpenRequest<CashDrawerOpenResponse>} The request containing the response.
-     * @return {Promise<ICancelableDataResult<CashDrawerOpenResponse>>} The cancelable promise containing the response.
+     * @param {CashDrawerOpenRequest<CashDrawerOpenResponse>} request The request.
+     * @return {Promise<ClientEntities.ICancelableDataResult<CashDrawerOpenResponse>>} The cancelable promise containing the response.
      */
     public executeAsync(request: CashDrawerOpenRequest<CashDrawerOpenResponse>):
         Promise<ClientEntities.ICancelableDataResult<CashDrawerOpenResponse>> {
 
-        // User could implement new business logic here to to override the open cash drawer operation.
+        // User could implement new business logic here to override the open cash drawer operation.
 
         return this.defaultExecuteAsync(request);
     }

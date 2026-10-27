@@ -18,7 +18,7 @@ export default class ViewCustomerSummaryCommand extends SearchView.CustomerSearc
 
     /**
      * Creates a new instance of the ViewCustomerSummaryCommand class.
-     * @param {IExtensionCommandContext<CustomerDetailsView.ICustomerSearchToExtensionCommandMessageTypeMap>} context The command context.
+     * @param {IExtensionCommandContext<SearchView.ICustomerSearchToExtensionCommandMessageTypeMap>} context The command context.
      * @remarks The command context contains APIs through which a command can communicate with POS.
      */
     constructor(context: IExtensionCommandContext<SearchView.ICustomerSearchToExtensionCommandMessageTypeMap>) {
@@ -42,7 +42,7 @@ export default class ViewCustomerSummaryCommand extends SearchView.CustomerSearc
 
     /**
      * Initializes the command.
-     * @param {CustomerDetailsView.ICustomerDetailsExtensionCommandState} state The state used to initialize the command.
+     * @param {SearchView.ICustomerSearchExtensionCommandState} state The state used to initialize the command.
      */
     protected init(state: SearchView.ICustomerSearchExtensionCommandState): void {
         this.isVisible = true;
